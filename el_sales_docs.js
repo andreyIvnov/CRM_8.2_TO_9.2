@@ -1,7 +1,4 @@
 (function (el_sales_docs) {
-
-
-    var FORMSTATE_CREATE = 1;
     var MANUFACTURER_BMW = 1;
     var MANUFACTURER_MAZDA = 2;
     var MANUFACTURER_FORD = 3;
@@ -24,7 +21,7 @@
     var CUSTOMER_TYPE_MOD = 10;
     var CUSTOMER_TYPE_TAXY = 9;
     var formContext;
-    var common;
+    var commons;
     var oDataUtil;
     var oDataUtilExternal;
     var CURRENT_MANUFACTURER_NAME;
@@ -262,7 +259,7 @@
         }
     }
 
-    function setManufacturerType() {
+    el_sales_docs.setManufacturerType = function() {
         var manufacturer = Xrm.Page.getAttribute("el_id_manufacturer");
         var el_l_manufacturer = Xrm.Page.getAttribute("el_l_manufacturer");
         if (manufacturer && manufacturer.getValue()) {
@@ -315,44 +312,66 @@
     //commons - end 
 
 
-    el_sales_docs.onLoad = function (executionContext) {
-        debugger
-        formContext = executionContext.getFormContext();
-        common = new elad_commons(formContext);
-        oDataUtilExternal = new common.OdataUtil();
-        oDataUtil = new common.OdataUtil();
-        try {
-            el_sales_docs.docAssignEventActions();
-            el_sales_docs.getManufacturerAffiliation();
-            if (Xrm.Page.ui.getFormType() == FORMSTATE_CREATE) {
-                el_sales_docs.setMainField();
-                el_sales_docs.setAccountType();
-                el_sales_docs.setManufacturerType();
-                el_sales_docs.setDocsFields();
-                el_sales_docs.setDocsSectionsVisibility();
-                el_sales_docs.setNoscanDoc();
-                el_sales_docs.hideField();
-                el_sales_docs.setDocumentFieldsVisibilityAccording2Manufacturer();
-                el_sales_docs.ZeroKMVehicleLogic();
 
-            }
-            else {
-                var attrIsDigital = Xrm.Page.getAttribute("el_b_digital_document");
-                if (attrIsDigital != null && attrIsDigital.getValue()) {
-                    Xrm.Page.ui.tabs.get("tab_digitalsigning").setVisible(true);
-                }
-            }
+
+
+
+    
+
+    el_sales_docs.onLoad = function (executionContext) {
+        try {
+            debugger;
+            commons = new elad_commons();
+            commons.SetFormContext(executionContext.getFormContext());
+
+            el_sales_docs.onLoadEvents();
+
+            el_sales_docs.onChangeEvents();
 
         } catch (error) {
-            console.error(error);
-            common.SetFormNotification("ERROR on salesDoc_onLoad(): " + error.message, "ERROR", "salesDoc_onLoad");
+            commons.PageErrorHandler(error, "el_sales_docs.onLoad")
         }
-
     }
+
+    el_sales_docs.onLoadEvents = function () {
+
+        el_sales_docs.getManufacturerAffiliation()
+            .then(
+                success => {
+                    if (commons.GetFormType() == Enum.FormType.Create) {
+                        el_sales_docs.setDocsSectionsVisibility();
+                        el_sales_docs.setDocumentFieldsVisibilityAccording2Manufacturer();
+                    }
+                    else {
+                        if (commons.GetFieldValue("el_b_digital_document")) {
+                            commons.SetTabVisibility("tab_digitalsigning", true);
+                        }
+                    }
+                }
+            );
+
+
+        if (commons.GetFormType() == Enum.FormType.Create) {
+
+            el_sales_docs.setMainField();
+            el_sales_docs.setAccountType();
+            el_sales_docs.setManufacturerType();
+            el_sales_docs.setDocsFields();
+            el_sales_docs.setNoscanDoc();
+            el_sales_docs.hideField();
+            el_sales_docs.ZeroKMVehicleLogic();
+        }
+        else {
+            if (commons.GetFieldValue("el_b_digital_document")) {
+                commons.SetTabVisibility("tab_digitalsigning", true);
+            }
+        }
+    }
+    
     el_sales_docs.setDocumentFieldsVisibilityAccording2Manufacturer = function () {
-        var manufacturer = Xrm.Page.getAttribute("el_id_manufacturer").getValue();
-        if (manufacturer != null && manufacturer[0] != null && manufacturer[0].name) {
-            switch (manufacturer[0].name) {
+        const manufName = commons.GetLookupName("el_id_manufacturer");
+        if (manufName) {
+            switch (manufName) {
                 case "FORD":
                     el_sales_docs.docFieldFORD();
                     break;
@@ -379,13 +398,12 @@
     }
 
     el_sales_docs.setFieldEurodriveGeneral = function () {
-        var manufacturer = Xrm.Page.getAttribute("el_id_manufacturer").getValue() != null ?
-            Xrm.Page.getAttribute("el_id_manufacturer").getValue()[0].name : "Undefined";
-        var fields2Show = ["el_b_eurodrive_order_attache_general"];
-        var fields2Hide = ["el_b_car_order_appendix"];
+        const manufacturer = commons.GetLookupName("el_id_manufacturer") ?? "Undefined";
+        const fields2Show = ["el_b_eurodrive_order_attache_general"];
+        const fields2Hide = ["el_b_car_order_appendix"];
         if (manufacturer == "ZONTES") {
-            var zontesFields2Show = ["el_b_cobra_motorcycle", "el_b_exibit_car_customer_declaration_zont"];
-            var zontesFields2Hide = ["el_b_exibit_car_customer_declaration"];
+            const zontesFields2Show = ["el_b_cobra_motorcycle", "el_b_exibit_car_customer_declaration_zont"];
+            const zontesFields2Hide = ["el_b_exibit_car_customer_declaration"];
             el_sales_docs.SetFieldsVisibility(zontesFields2Show, true);
             el_sales_docs.SetFieldsVisibility(zontesFields2Hide, false);
         }
@@ -394,62 +412,69 @@
     }
 
     el_sales_docs.setFieldEurodriveOperational = function () {
-        Xrm.Page.getControl("el_b_eurodrive_order_attache_operational").setVisible(true);
-        Xrm.Page.getControl("el_b_declaration_form_4_operational_vehicle").setVisible(true);
-        Xrm.Page.getControl("el_b_warranty_terms_for_operational_vehicle").setVisible(true);
+        commons.SetVisible("el_b_eurodrive_order_attache_operational", true);
+        commons.SetVisible("el_b_declaration_form_4_operational_vehicle", true);
+        commons.SetVisible("el_b_warranty_terms_for_operational_vehicle", true);
     }
 
+    //To Check -> Retrieve
     el_sales_docs.getManufacturerAffiliation = function () {
-        var manufacturerId = Xrm.Page.getAttribute("el_id_manufacturer").getValue()[0].id;
-        var url = "el_manufacturerSet?$select=el_b_eurodrive_manufacturer,el_name,el_b_operational_manufacturer&$filter=el_manufacturerId eq guid'" + manufacturerId + "'";
-        var manufacturer = oDataUtilExternal.RetrieveDataByUrl("", url, null, null, true);
-        if (manufacturer && manufacturer.results && manufacturer.results[0]) {
-            manufacturerAffiliation = {
-                isEurodriveManufacturer: manufacturer.results[0].el_b_eurodrive_manufacturer == null ? false : manufacturer.results[0].el_b_eurodrive_manufacturer,
-                isOperationalManufacturer: manufacturer.results[0].el_b_operational_manufacturer == null ? false : manufacturer.results[0].el_b_operational_manufacturer
+        return new Promise((resolve, reject) => {
+            try {
+                // var url = "el_manufacturerSet?$select=el_b_eurodrive_manufacturer,el_name,el_b_operational_manufacturer&$filter=el_manufacturerId eq guid'" + manufacturerId + "'";
+                // var manufacturer = oDataUtilExternal.RetrieveDataByUrl("", url, null, null, true);
+                const manufId = commons.StripGuid(commons.GetLookupId("el_id_manufacturer"));
+                commons.RetrieveRecord("el_manufacturer", manufId, "?$select=el_b_eurodrive_manufacturer,el_name,el_b_operational_manufacturer")
+                    .then(
+                        function success (result){
+                            if (result) {
+                                manufacturerAffiliation = {
+                                    isEurodriveManufacturer: result.el_b_eurodrive_manufacturer == null ? false : result.el_b_eurodrive_manufacturer,
+                                    isOperationalManufacturer: result.el_b_operational_manufacturer == null ? false : result.el_b_operational_manufacturer
+                                }
+                            }
+                        },
+                        err => commons.SetFormNotification("Error on retrievent el_manufacturer into el_sales_docs.getManufacturerAffiliation: " + err.message)
+                    )
+            } catch (error) {
+                commons.PageErrorHandler(error, "el_sales_docs.getManufacturerAffiliation")
             }
-        }
+        })
     }
-
-
-
 
     el_sales_docs.setAllSectionsInTabVisibility = function (tabName, isVisible) {
-        var tab = Xrm.Page.ui.tabs.get(tabName);
+        const tab = commons.GetTab(tabName);
         if (tab) {
-            var sections = tab.sections.get();
-            for (var i = 0; i < sections.length; i++) {
+            const sections = tab.sections.get();
+            for (let i = 0; i < sections.length; i++) {
                 sections[i].setVisible(isVisible);
             }
         }
     }
 
-
-
-
     el_sales_docs.docFieldFORD = function () {
-        var customerType = Xrm.Page.getAttribute("el_l_customer_type");
-        Xrm.Page.getControl("el_b_proforma_commercial_department").setVisible(true);
-        Xrm.Page.getControl("el_b_proforma_vehicle_not_in_israel_cd").setVisible(true);
-        Xrm.Page.getControl("el_b_ford_bronco_convertible_top").setVisible(true);
-        Xrm.Page.getControl("el_b_bronco_accessories_without_installation").setVisible(true);
-        Xrm.Page.getControl("el_b_loan_leumi_van").setVisible(true);
-        Xrm.Page.getControl("el_b_loan_hapoalim_commercial_car").setVisible(true);
-        Xrm.Page.getControl("el_b_loan_leumi_van_heavy_subsidized_0_km").setVisible(true);
-        if (customerType.getValue() == CUSTOMER_TYPE_GENERAL_EXEMPT) {
-            Xrm.Page.getControl("el_b_airconditioner_transit_combi").setVisible(true);
-        }
-        Xrm.Page.getControl("el_b_towinghook_for_ranger").setVisible(true);
-        Xrm.Page.getControl("el_b_no_key").setVisible(true);
 
-        common.SetFieldVisibility("el_b_leumi_loan_reference_light_subsidized", true);
-        common.SetFieldVisibility("el_b_leumi_loan_reference_heavy_subsidized", true);
-        common.SetFieldVisibility("el_b_loan_leumi_van_heavy_subsidized_0_km", true);
+        commons.SetVisible("el_b_proforma_commercial_department", true);
+        commons.SetVisible("el_b_proforma_vehicle_not_in_israel_cd", true);
+        commons.SetVisible("el_b_ford_bronco_convertible_top", true);
+        commons.SetVisible("el_b_bronco_accessories_without_installation", true);
+        commons.SetVisible("el_b_loan_leumi_van", true);
+        commons.SetVisible("el_b_loan_hapoalim_commercial_car", true);
+        commons.SetVisible("el_b_loan_leumi_van_heavy_subsidized_0_km", true);
+        commons.SetVisible("el_b_towinghook_for_ranger", true);
+        commons.SetVisible("el_b_no_key", true);
+        commons.SetVisible("el_b_leumi_loan_reference_light_subsidized", true);
+        commons.SetVisible("el_b_leumi_loan_reference_heavy_subsidized", true);
+        commons.SetVisible("el_b_loan_leumi_van_heavy_subsidized_0_km", true);
+
+        if (commons.GetFieldValue("el_l_customer_type") == CUSTOMER_TYPE_GENERAL_EXEMPT) {
+            commons.SetVisible("el_b_airconditioner_transit_combi", true);
+        }
 
     }
 
     el_sales_docs.docFieldBMW = function () {
-        var relatedOppEntRef = common.GetLookupFieldValue("el_id_opportunity");
+        var relatedOppEntRef = commons.GetLookupFieldValue("el_id_opportunity");
         var MINI_sub_manufacturer = 1;
         var fieldsOfBMW = ["el_b_sim_card_cancellation_connected_drive", "el_b_information_to_customer_with_cd", "el_b_siging_contract_for_car_with_cd"];
         var relatedOpp = oDataUtil.RetrieveData("OpportunitySet", relatedOppEntRef.id, "el_id_family", null, null, null, false);
@@ -498,7 +523,7 @@
 
 
 
-    el_sales_docs.docAssignEventActions = function () {
+    el_sales_docs.onChangeEvents = function () {
         Xrm.Page.getAttribute("el_b_credit_card_charge").addOnChange(el_sales_docs.setNoscanDoc);
         Xrm.Page.getAttribute("el_b_bank_account_charge").addOnChange(el_sales_docs.setNoscanDoc);
     }
@@ -700,13 +725,13 @@
      * TASK 1232
      */
     el_sales_docs.docFieldMINI = function () {
-        var relatedOppEntRef = common.GetLookupFieldValue("el_id_opportunity");
+        var relatedOppEntRef = commons.GetLookupFieldValue("el_id_opportunity");
         var MINI_sub_manufacturer = 1;
         var fieldsOfMINI = ["el_b_canceling_a_sim_card_mini_connected", "el_b_mini_connected_system_information_form", "el_b_mini_connected_privacy_policy_info_form",
             "el_b_car_with_connected_contract_drive_mini"];
 
-        if (CURRENT_MANUFACTURER_NAME == null && common.GetLookupFieldValue("el_id_manufacturer") != null) {
-            CURRENT_MANUFACTURER_NAME = common.GetLookupFieldValue("el_id_manufacturer").name;
+        if (CURRENT_MANUFACTURER_NAME == null && commons.GetLookupFieldValue("el_id_manufacturer") != null) {
+            CURRENT_MANUFACTURER_NAME = commons.GetLookupFieldValue("el_id_manufacturer").name;
         }
         if (CURRENT_MANUFACTURER_NAME == Const.Manufacturer.BMW && relatedOppEntRef != null) {
             //Check if is Sub Manufacturer MINI
@@ -738,7 +763,7 @@
             return;
 
         for (var i = 0; i < fieldsArr.length; i++) {
-            common.SetFieldVisibility(fieldsArr[i], visible);
+            commons.SetFieldVisibility(fieldsArr[i], visible);
         }
     }
 
@@ -749,12 +774,12 @@
         var isNewZeroKMCar = el_sales_docs.GetCarPurchaseFirstHandFieldValue();
 
         if (isNewZeroKMCar == true) {
-            common.SetFieldValue("el_b_car_order_appendix", null);
+            commons.SetFieldValue("el_b_car_order_appendix", null);
             el_sales_docs.SetFieldsVisibility(["el_b_car_order_appendix", "el_b_new_car_warranty"], false);
-            common.ToggleSection("tab_docs", "tab_docs_section_firstHand", true)
+            commons.ToggleSection("tab_docs", "tab_docs_section_firstHand", true)
         } else {
-            common.SetFieldValue("el_b_annex_to_the_order_0km", false);
-            common.ToggleSection("tab_docs", "tab_docs_section_firstHand", false)
+            commons.SetFieldValue("el_b_annex_to_the_order_0km", false);
+            commons.ToggleSection("tab_docs", "tab_docs_section_firstHand", false)
         }
     }
 
@@ -764,7 +789,7 @@
      */
     el_sales_docs.GetCarPurchaseFirstHandFieldValue = function () {
         var isNewZeroKMCar = false;
-        var relatedOppEntRef = common.GetLookupFieldValue("el_id_opportunity");
+        var relatedOppEntRef = commons.GetLookupFieldValue("el_id_opportunity");
 
         if (relatedOppEntRef != null) {
             var url = "el_car_purchaseSet?$select=el_b_first_hand&" +
@@ -788,8 +813,8 @@
      */
     el_sales_docs.errorCallbackForRetrievings = function (data, textStatus, errorThrown) {
         var message = "errorCallbackForRetrievings: " + errorThrown;
-        if (common != null && errorThrown != null)
-            common.SetFormNotification(message, "ERROR", "errorCallbackForRetrievings");
+        if (commons != null && errorThrown != null)
+            commons.SetFormNotification(message, "ERROR", "errorCallbackForRetrievings");
         else
             console.log(message);
     }
@@ -798,14 +823,14 @@
         var fieldsOfDONGFENG = ["el_b_dongfeng_car_ordering_appendix", "el_b_hero_car_ordering_appendix", "el_b_voyah_car_ordering_appendix",
             "el_b_new_car_warranty_dongfendbox", "el_b_new_car_warranty_voyah", "el_b_new_car_warranty_mhero"];
         var fieldsToHide = ["el_b_car_order_appendix", "el_b_new_car_warranty"];
-        if (CURRENT_MANUFACTURER_NAME == null && common.GetLookupFieldValue("el_id_manufacturer") != null) {
-            CURRENT_MANUFACTURER_NAME = common.GetLookupFieldValue("el_id_manufacturer").name;
+        if (CURRENT_MANUFACTURER_NAME == null && commons.GetLookupFieldValue("el_id_manufacturer") != null) {
+            CURRENT_MANUFACTURER_NAME = commons.GetLookupFieldValue("el_id_manufacturer").name;
         }
         if (CURRENT_MANUFACTURER_NAME == Const.Manufacturer.DONGFENG) {
             el_sales_docs.SetFieldsVisibility(fieldsOfDONGFENG, true);
             //Other fields logic
-            common.SetFieldValue("el_b_car_order_appendix", false);
-            common.SetFieldValue("el_b_new_car_warranty", false);
+            commons.SetFieldValue("el_b_car_order_appendix", false);
+            commons.SetFieldValue("el_b_new_car_warranty", false);
             el_sales_docs.SetFieldsVisibility(fieldsToHide, false);
         }
     }
@@ -883,8 +908,8 @@
     el_sales_docs.Ribon.EnableRules = el_sales_docs.Ribon.EnableRules || {};
 
     el_sales_docs.Ribon.EnableRules.sendDocuments4signEnableRule = function () {
-        common = new elad_commons();
-        oDataUtil = new common.OdataUtil();
+        commons = new elad_commons();
+        oDataUtil = new commons.OdataUtil();
         var opportunityId = Xrm.Page.getAttribute("el_id_opportunity").getValue()[0].id.replace(/[{}]/g, "").toLowerCase();
         var showroom = oDataUtil.RetrieveDataByUrl("OpportunitySet", "?$select=el_showroom_opportunity/el_b_send_documents4sign&$expand=el_showroom_opportunity&$filter=OpportunityId eq guid'" +
             opportunityId + "'", null, null, false);
