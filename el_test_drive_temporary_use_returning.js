@@ -183,6 +183,7 @@
             var pageInput = {
                 pageType: "webresource",
                 webresourceName: "el_open_document.html", //Point to problem -> schem name or name
+                data : url
             };
 
             var navigationOptions = {
