@@ -2234,9 +2234,9 @@ var CommonsRibbonCrmActionParameters = window.CommonsRibbonCrmActionParameters |
             // Check if the current record was opened/created from another entity
             if (pageContext.input && pageContext.input.createFromEntity) {
                 return {
-                    openerId = pageContext.input.createFromEntity.id,
-                    openerName = pageContext.input.createFromEntity.name,
-                    openerType = pageContext.input.createFromEntity.entityType
+                    openerId : pageContext.input.createFromEntity.id,
+                    openerName : pageContext.input.createFromEntity.name,
+                    openerType : pageContext.input.createFromEntity.entityType
                 }
             }
             return null;
