@@ -152,54 +152,7 @@
     };
 
 
-    //To Check -> Variables using
-    el_tradein_deal.addOpenLegacyParameters = async function (accountid) {
-        try {
-            const account = await el_tradein_deal.getAccountData(accountid);
-
-            const parameters = "";
-            if (account) {
-                parameters += "cpd.shemPrati=" + el_tradein_deal.notNullParam(account.el_s_first_name).trim() + "&";
-                parameters += "cpd.shemMishpaha=" + el_tradein_deal.notNullParam(account.el_s_last_name).trim() + "&";
-                parameters += "cpd.taarihLeda=" + el_tradein_deal.getOdataDate(account.el_dt_date_of_birth) + "&";
-                parameters += "cmd.sugLakoah=" + el_tradein_deal.getTypeId(account.el_id_type_account) + "&";
-                parameters += "cpd.misparZeutHevra=" + el_tradein_deal.notNullParam(account.el_s_idnumber_text).trim() + "&";
-                parameters += "tel.telephoneCelolari=" + el_tradein_deal.notNullParam(account.telephone1).trim() + "&";
-                parameters += "tel.misparTelephoneA=" + el_tradein_deal.notNullParam(account.telephone2).trim() + "&";
-                parameters += "tel.misparTelephoneB=" + el_tradein_deal.notNullParam(account.telephone1).trim() + "&";
-                parameters += "tel.misparFax=" + el_tradein_deal.notNullParam(account.fax).trim() + "&";
-                parameters += "cpd.ktovetEmail=" + el_tradein_deal.notNullParam(account.emailaddress1).trim() + "&";
-                if (account.el_el_address_account) {
-                    const city = account.el_el_address_account.el_id_city != null && account.el_el_address_account.el_id_city.name != "אחר" ? el_tradein_deal.notNullLookupParam(account.el_el_address_account.el_id_city) : el_tradein_deal.notNullParam(account.el_el_address_account.el_s_city_text) == "" ? "" : el_tradein_deal.notNullParam(account.el_el_address_account.el_s_city_text);
-                    if (city == "")
-                        city = el_tradein_deal.notNullLookupParam(account.el_el_address_account.el_id_pob_city)
-                    parameters += "cpd.ir=" + city + "&";
-                    const getCityCode4Params_response = await el_tradein_deal.getCityCode4Params(account.el_el_address_account, "address");
-                    const semelIshuv = getCityCode4Params_response ? getCityCode4Params_response : await el_tradein_deal.getCityCode4Params(account.el_el_address_account, "pob");
-                    parameters += "cpd.semelIshuv=" + semelIshuv + "&"; //maybe will be necessary retrieve value with this guid (code)
-                    const street = account.el_el_address_account.el_id_street_synonym.name && account.el_el_address_account.el_id_street_synonym.name != "אחר" ? el_tradein_deal.notNullLookupParam(account.el_el_address_account.el_id_street_synonym) : el_tradein_deal.notNullParam(account.el_el_address_account.el_s_street_text) == "" ? "" : el_tradein_deal.notNullParam(account.el_el_address_account.el_s_street_text);
-                    parameters += "cpd.rehov=" + street + "&";
-                    parameters += "cpd.mispar=" + el_tradein_deal.notNullParam(account.el_el_address_account.el_n_house_number) + "&";
-                    parameters += "cpd.knisa=" + el_tradein_deal.notNullParam(account.el_el_address_account.el_s_entrance).trim() + "&";
-                    const zip = account.el_el_address_account.el_n_zip != null ? el_tradein_deal.notNullParam(account.el_el_address_account.el_n_zip) : el_tradein_deal.notNullParam(account.el_el_address_account.el_n_pob_zip);
-                    parameters += "cpd.mikud=" + zip + "&";
-                    parameters += "cpd.tdMispar=" + el_tradein_deal.notNullParam(account.el_el_address_account.el_n_pob) + "&";
-                    parameters += "cpd.tdIshuv=" + el_tradein_deal.notNullLookupParam(account.el_el_address_account.el_id_pob_city);
-                }
-                else {
-                    parameters += "cpd.ir=&cpd.semelIshuv=&cpd.rehov=&cpd.mispar=&cpd.knisa=&cpd.mikud=&cpd.tdMispar=&cpd.tdIshuv="
-                }
-            }
-            else {
-                parameters += "cpd.shemPrati=&cpd.shemMishpaha=&cpd.taarihLeda=&cmd.sugLakoah=&cpd.misparZeutHevra=&tel.telephoneCelolari=&tel.misparTelephoneA=&tel.misparTelephoneB=&tel.misparFax=&cpd.ktovetEmail=&cpd.ir=&cpd.semelIshuv=&cpd.rehov=&cpd.mispar=&cpd.knisa=&cpd.mikud=&cpd.tdMispar=&cpd.tdIshuv="
-            }
-
-            return parameters;
-
-        } catch (error) {
-            commons.PageErrorHandler(error, "el_tradein_deal.addOpenLegacyParameters");
-        }
-    };
+   
 
     //To Check -> Variables using
     el_tradein_deal.addOpenLegacyTradeinParameters = async function (accountid, opportunityTradeinid, as400accountcode) {
@@ -274,7 +227,7 @@
 
 
     //To Check -> openUrl
-    el_tradein_deal.showOpenLegacyRibbon = async function (field, customerfieldname, actionType, as400code) {
+    commons.showOpenLegacyRibbon = async function (field, customerfieldname, actionType, as400code) {
         if (commons.GetOpenerEntityInfo()) {
             commons.OpenAlertDialog("לא ניתן לבצע פעולה זו מתוך חלון מוקפץ.\nיש לחזור לחלון הראשי ולנסות שנית");
             return;
@@ -342,7 +295,7 @@
             url += "&tz=" + customerIdentification + "&guid=" + IncidentID + "&asmachta=" + incidentNumber;
         }
         if (addAccountParams)
-            url = url + await el_tradein_deal.addOpenLegacyParameters(accountid);
+            url = url + await commons.addOpenLegacyParameters(accountid);
         if (addTradeinAccountParams)
             url = url + await el_tradein_deal.addOpenLegacyTradeinParameters(accountid, commons.StripGuid(commons.GetCurrentEntityId()), as400code);
         if (addTradeinQuotAccountParams) {
@@ -522,4 +475,4 @@
         })
     }
 
-})((window.el_tradein_deal = window.el_tradein_deal || {}))
+})(window.el_tradein_deal = window.el_tradein_deal || {})
