@@ -6,7 +6,9 @@
     var TRADEIN_LAST_OFFER = 5;
     var TRADEIN_DEAL_COMPLETED = 6;
     var TRADEIN_IS_BMW_FALSE = 2;
+    var TOPTRADE_FACTOR = 1;
     var BPS_FACTOR = 2;
+
 
     var commons;
     var isQuickCreateForm = false;
@@ -30,7 +32,6 @@
 
     el_tradein_offer.onLoadEvents = function () {
         el_tradein_offer.setFormCreateType();
-        el_tradein_offer.sectionsVisibilityController();
         el_tradein_offer.updateTradeInFactor();
         el_tradein_offer.setModelAndManufacturerFields();
         el_tradein_offer.setMazdaFordLicenseExpiryDateField();
@@ -51,41 +52,14 @@
         }
     }
 
+
     el_tradein_offer.qickFormOnloadEvents = function () {
+        resizeQuickCreateForm();
         //Part of task 1560 - car licenses fields maping
-        commons.CurrentUserInSecurityRole(Const.SecurityRolesName.DM_Pailot_Scan_Car_Licenses)
-            .then(
-                function success(result) {
-                    if (result === true) {
-                        commons.SetRequiredLevel("el_s_managed_licence_plate", "required");
-                        el_tradein_offer.setFieldsRequiredLevel([
-                            "el_id_competitor",
-                            "el_id_global_model",
-                            "el_s_manufacturer",
-                            "el_s_model",
-                            "el_l_trade_in_factor",
-                            "el_s_tr_manuf_year",
-                            "el_s_tr_engine_volume",
-                            "el_s_doors",
-                            "el_l_transmission_type",
-                            "el_s_tr_number_of_owners",
-                            "el_l_owner_type",
-                            "el_s_tr_distance",
-                            "el_s_tr_car_color",
-                            "el_s_tr_accessories",
-                            "el_l_tr_accident",
-                            "el_l_is_bmw",
-                            "el_dt_license_expiry_date"],
-
-                            "none"
-                        );
-                    }
-                },
-                err => {
-                    console.error("Error on retrieving users roles: into el_tradein_offer.qickFormOnloadEvents(): ", err)
-                }
-            )
-
+        commons.SetRequiredLevel("el_s_managed_licence_plate", "required");
+        commons.SetRequiredLevel(["el_id_competitor", "el_id_global_model", "el_s_manufacturer", "el_s_model", "el_l_trade_in_factor",
+            "el_s_tr_manuf_year", "el_s_tr_engine_volume", "el_s_doors", "el_l_transmission_type", "el_s_tr_number_of_owners", "el_l_owner_type",
+            "el_s_tr_distance", "el_s_tr_car_color", "el_s_tr_accessories", "el_l_tr_accident", "el_l_is_bmw", "el_dt_license_expiry_date"], "none");
     }
 
     el_tradein_offer.onChange = function () {
@@ -116,7 +90,6 @@
             commons.AddOnSave(el_tradein_offer.testValidationOfFieldNumberOfOwners);
         }
     }
-
 
     el_tradein_offer.initializeTradeinStatus = function () {
         commons.ClearNotification("el_l_tradein_offer_status");
@@ -157,6 +130,11 @@
                             case 'BMW':
                             case 'BMC':
                                 commons.SetFieldValue("el_l_trade_in_factor", BPS_FACTOR);
+                                break;
+
+                            case 'MAZDA':
+                            case 'FORD':
+                                commons.SetFieldValue("el_l_trade_in_factor", TOPTRADE_FACTOR);
                                 break;
 
                             default:
@@ -445,10 +423,8 @@
                         .then(
                             function success(teamRetrieveResults) {
                                 if (teamRetrieveResults && teamRetrieveResults.length > 0) {
-                                    const teamCounter;
-
                                     // iterate through all of the matching teams, checking to see if the current user has a membership
-                                    for (teamCounter = 0; teamCounter < results.length; teamCounter++) {
+                                    for (let teamCounter = 0; teamCounter < teamRetrieveResults.length; teamCounter++) {
                                         const teamId = teamRetrieveResults[teamCounter].teamid;
 
                                         // get current user teams
@@ -458,8 +434,8 @@
 
                                                     // Check whether current user teams matches the target team
                                                     if (currentUserTeamsResults != null) {
-                                                        for (var i = 0; i < currentUserTeamsResults.length; i++) {
-                                                            var userTeam = currentUserTeamsResults[i];
+                                                        for (let i = 0; i < currentUserTeamsResults.length; i++) {
+                                                            let userTeam = currentUserTeamsResults[i];
 
                                                             // check to see if the team guid matches the user team membership id
                                                             if (el_tradein_offer.guidsAreEqual(userTeam.teamid, teamId)) {
@@ -591,7 +567,7 @@
 
     el_tradein_offer.guidsAreEqual = function (guid1, guid2) {
         // compares two guids
-        var isEqual = false;
+        let isEqual = false;
         if (guid1 == null || guid2 == null) {
             isEqual = false;
         } else {
@@ -600,60 +576,9 @@
         return isEqual;
     }
 
-    var buttonClicked = false;
-    //To Check
-    el_tradein_offer.executeCreateMazdaFordProposalWorkFlow = function (CommandProperties) {
-        debugger;
-        if (buttonClicked)
-            return;
-        buttonClicked = true;
-
-        var guid = commons.GetCurrentEntityId();
-        if (guid != '' || guid != null)
-            commons.ExecuteWorkflow("E27B084B-6402-4093-811B-5F0AFB3A9D46", commons.StripGuid(commons.GetCurrentEntityId()))
-        commons.RefreshForm(true);
-    }
-
-    //To Check
-    el_tradein_offer.getDocRegardingOffer = function () {
-        // var guid = Xrm.Page.data.entity.getId();
-
-        // var odatautil = new OdataUtil();
-        // var url = "el_tradein_offerSet?$select=el_s_proposal_url&$filter=el_tradein_offerId eq (guid'" + guid + "')"
-        // var proposals = odatautil.RetrieveDataByUrl("", url, null, null, true);
-        // if (proposals && proposals.results && proposals.results.length > 0) {
-        //     //window.open("file:" + proposals.results[0].el_s_proposal_url)
-        //     var win = window.open(Xrm.Page.context.getClientUrl() + '/webresources/el_open_document.htm?data=' + encodeURIComponent(proposals.results[0].el_s_proposal_url), "_blank", "status=0,resizable=1,top=100,left=100,width=400px,height=300px");
-        // }
-
-        commons.RetrieveRecord("el_tradein_offer", commons.GetCurrentEntityId(), "?$select=el_s_proposal_url")
-            .then(
-                function success(tradeinOfferResult) {
-                    if (tradeinOfferResult) {
-                        var pageInput = {
-                            pageType: "webresource",
-                            webresourceName: "el_open_document.htm", //Point to problem -> schem name or name
-                            data: tradeinOfferResult.el_s_proposal_url
-                        };
-
-                        var navigationOptions = {
-                            target: 2, // 2 opens the page as a modal dialog
-                            width: 400,
-                            height: 300,
-                            position: 1 // 1 for center, 2 for side pane
-                        };
-
-                        commons.NavigateTo(pageInput, navigationOptions)
-                    }
-                },
-                err => console.error("Error on retrieve el_tradein_offer into el_tradein_offer.getDocRegardingOffer(): ", err)
-            )
-
-    }
-
     el_tradein_offer.validateMazdaFordManufacturer = function () {
         return new Promise((resolve, reject) => {
-            var oppId = commons.GetLookupId("el_id_opportunity");
+            let oppId = commons.GetLookupId("el_id_opportunity");
             if (oppId) {
                 // var odatautil = new OdataUtil();
                 // var url = "OpportunitySet?$select=el_id_manufacturer&$filter=OpportunityId eq (guid'" + oppId + "')"
@@ -687,38 +612,6 @@
         })
     }
 
-    el_tradein_offer.dysplayMazdaFordCreateDoc = function () {
-        return new Promise((resolve, reject) => {
-
-            if (commons.IsMobile())
-                resolve(false);
-            if (commons.GetFormType() == Enum.FormType.Create)
-                resolve(false);
-
-            el_tradein_offer.validateMazdaFordManufacturer()
-                .then(
-                    success => {
-                        if (success === true && commons.GetFieldValue("el_n_bid") && !commons.GetFieldValue("el_s_proposal_url")) {
-                            resolve(true);
-                        } else
-                            resolve(false);
-                    },
-                    reject
-                )
-        })
-    }
-
-    el_tradein_offer.dysplayMazdaFordOpenDoc = function () {
-        if (commons.getGlobalContext().client.getClient() == "Mobile")
-            return false;
-        if (commons.GetFormType() == Enum.FormType.Create)
-            return false;
-
-        if (commons.GetFieldValue("el_s_proposal_url")) {
-            return true;
-        }
-    }
-
     el_tradein_offer.testValidationOfFieldNumberOfOwners = function () {
         const value = commons.GetFieldValue("el_s_tr_number_of_owners"); // קבלת הערך של השדה
         if (value) {
@@ -733,34 +626,10 @@
     }
 
     /**
-     * Method manage the sections on form
-     */
-    el_tradein_offer.sectionsVisibilityController = function () {
-        el_tradein_offer.carLicenseScanResultSection();
-    }
-
-    /**
-     * Method show car license scna result section only for System Managers
-     * Part of TASK 1515
-     */
-    el_tradein_offer.carLicenseScanResultSection = function () {
-        //CONST is the correct way to work with JS, if you don't understand it, you need to learn about "scooping" of javascript
-        commons.IsCurrentUserInSecurityRolesArrayGeneric(Const.SecurityRolesName.DM_Pailot_Scan_Car_Licenses)
-            .then(
-                userIsSystemManager => {
-                    if (userIsSystemManager && userIsSystemManager === true && isQuickCreateForm !== true) {
-                        commons.SetSectionVisibility("tab_4", "tab_4_section_3_car_license_scan_result", true);
-                    }
-                }
-            )
-    }
-
-    /**
     * Method is recognaze a Form Type: Quick Create \ Regular Create
     */
     el_tradein_offer.setFormCreateType = function () {
-        const formIsQuickCreation = commons.GetCurrentItem();
-        if (formIsQuickCreation) {
+        if (commons.GetFormType() === 10) {
             isQuickCreateForm = true;
         }
     }
@@ -808,15 +677,16 @@
 
     //To Check
     el_tradein_offer.getSalesProcessAccount = function () {
-        const opportunityId;
+        let opportunityId;
         if (commons.GetAttribute("regardingobjectid"))
             opportunityId = commons.GetLookupId("regardingobjectid");
         if (commons.GetAttribute("el_id_opportunity"))
             opportunityId = commons.GetLookupId("el_id_opportunity");
 
-        if (opportunityId) {
 
-            return new Promise((resolve, reject) => {
+        return new Promise((resolve, reject) => {
+            if (opportunityId) {
+
                 commons.RetrieveRecord(Enum.EntityLogicalName.Opportunity, opportunityId, "?$select=_customerid_value&$expand=customerid_account($select=accountid,name)")
                     .then(
                         function success(result) {
@@ -834,11 +704,11 @@
                             reject(err)
                         }
                     )
-            })
-        }
-        else
-            return null;
 
+            }
+            else
+                resolve(null);
+        })
         // var url = "OpportunitySet?$select=opportunity_customer_accounts/AccountId,opportunity_customer_accounts/Name&$expand=opportunity_customer_accounts&$filter=OpportunityId eq guid'" + opportunityId + "'";
         // var account = odatautil.RetrieveDataByUrl("", url, null, null, true);
         // if (account && account.results && account.results[0] && account.results[0].opportunity_customer_accounts) {
@@ -846,7 +716,122 @@
         //     var name = account.results[0].opportunity_customer_accounts.Name;
         //     accountLookup = getLookupField(id, name, "account");
         // }
-        // }
     }
 
-})((window.el_tradein_offer = window.el_tradein_offer || {}))
+
+
+    var buttonClicked = false;
+
+    el_tradein_offer.Ribbon = {};
+
+    //To Check
+    el_tradein_offer.Ribbon.getDocRegardingOffer = function (primaryControl) {
+        // var guid = Xrm.Page.data.entity.getId();
+
+        // var odatautil = new OdataUtil();
+        // var url = "el_tradein_offerSet?$select=el_s_proposal_url&$filter=el_tradein_offerId eq (guid'" + guid + "')"
+        // var proposals = odatautil.RetrieveDataByUrl("", url, null, null, true);
+        // if (proposals && proposals.results && proposals.results.length > 0) {
+        //     //window.open("file:" + proposals.results[0].el_s_proposal_url)
+        //     var win = window.open(Xrm.Page.context.getClientUrl() + '/webresources/el_open_document.htm?data=' + encodeURIComponent(proposals.results[0].el_s_proposal_url), "_blank", "status=0,resizable=1,top=100,left=100,width=400px,height=300px");
+        // }
+
+        debugger;
+        if (!commons) {
+            commons = new elad_commons();
+            commons.SetFormContext(primaryControl);
+        }
+
+        commons.RetrieveRecord("el_tradein_offer", commons.GetCurrentEntityId(), "?$select=el_s_proposal_url")
+            .then(
+                function success(tradeinOfferResult) {
+                    if (tradeinOfferResult) {
+                        let pageInput = {
+                            pageType: "webresource",
+                            webresourceName: "el_open_document.htm", //Point to problem -> schem name or name
+                            data: tradeinOfferResult.el_s_proposal_url
+                        };
+
+                        let navigationOptions = {
+                            target: 2, // 2 opens the page as a modal dialog
+                            width: 400,
+                            height: 300,
+                            position: 1 // 1 for center, 2 for side pane
+                        };
+
+                        commons.NavigateTo(pageInput, navigationOptions)
+                    }
+                },
+                err => console.error("Error on retrieve el_tradein_offer into el_tradein_offer.Ribbon.getDocRegardingOffer(): ", err)
+            )
+
+    }
+
+    //To Check
+    el_tradein_offer.Ribbon.executeCreateMazdaFordProposalWorkFlow = function (primaryControl) {
+        debugger;
+        if (!commons) {
+            commons = new elad_commons();
+            commons.SetFormContext(primaryControl);
+        }
+
+        if (buttonClicked)
+            return;
+        buttonClicked = true;
+
+        let guid = commons.GetCurrentEntityId();
+        if (guid != '' || guid != null)
+            commons.ExecuteWorkflow("E27B084B-6402-4093-811B-5F0AFB3A9D46", commons.StripGuid(commons.GetCurrentEntityId()))
+        commons.RefreshForm(true);
+    }
+
+
+
+    el_tradein_offer.Ribbon.EnableRules = {};
+
+    el_tradein_offer.Ribbon.EnableRules.dysplayMazdaFordCreateDoc = function (primaryControl) {
+        return new Promise((resolve, reject) => {
+            debugger;
+            if (!commons) {
+                commons = new elad_commons();
+                commons.SetFormContext(primaryControl);
+            }
+
+            if (commons.IsMobile())
+                resolve(false);
+            if (commons.GetFormType() == Enum.FormType.Create)
+                resolve(false);
+
+            el_tradein_offer.validateMazdaFordManufacturer()
+                .then(
+                    success => {
+                        if (success === true && commons.GetFieldValue("el_n_bid") && !commons.GetFieldValue("el_s_proposal_url")) {
+                            resolve(true);
+                        } else
+                            resolve(false);
+                    },
+                    reject
+                )
+        })
+    }
+
+    el_tradein_offer.Ribbon.EnableRules.dysplayMazdaFordOpenDoc = function (primaryControl) {
+        debugger;
+        if (!commons) {
+            commons = new elad_commons();
+            commons.SetFormContext(primaryControl);
+        }
+
+        if (commons.getGlobalContext().client.getClient() == "Mobile")
+            return false;
+        if (commons.GetFormType() == Enum.FormType.Create)
+            return false;
+
+        if (commons.GetFieldValue("el_s_proposal_url")) {
+            return true;
+        }
+    }
+
+
+
+})(window.el_tradein_offer = window.el_tradein_offer || {})

@@ -60,7 +60,7 @@
         // extRaqs += "&pName=" + name;
         // extRaqs += "&pType=" + Xrm.Page.context.getQueryStringParameters().etc;
         // window.open(Xrm.Page.context.prependOrgName("/main.aspx?etc=" + EL_DOC_TYPECODE + "&pagetype=entityrecord&extraqs=" + encodeURIComponent(extRaqs)), "_blank", features, false);
-        const name;
+        let name;
         if (commons.GetFieldValue("name"))
             name = commons.GetFieldValue("name");
         else if (commons.GetFieldValue("el_name"))
@@ -70,7 +70,7 @@
         else
             name = commons.GetCurrentEntityName();
 
-        const pageInput = {
+        let pageInput = {
             pageType: "entityrecord",
             entityName: "el_doc",
             formParameters: {
@@ -80,7 +80,7 @@
             }
         }
 
-        const navigationOptions = {
+        let navigationOptions = {
             target: 2, // 2 opens the page as a modal dialog
             position: 1 // 1 for center, 2 for side pane
         };
@@ -159,7 +159,7 @@
         try {
             const account = await el_tradein_deal.getAccountData(accountid);
 
-            const parameters = "";
+            let parameters = "";
             if (account != null) {
                 parameters += "msLakoah=" + as400accountcode.trim() + "&";
                 parameters += "shemLakoah=" + el_tradein_deal.notNullParam(account.Name).trim() + "&";
@@ -196,7 +196,7 @@
 
             const account = await el_tradein_deal.getAccountData(accountid);
 
-            const parameters = "";
+            let parameters = "";
 
             if (account != null) {
                 parameters += "shemLakoah=" + el_tradein_deal.notNullParam(account.name).trim() + "&";
@@ -233,16 +233,16 @@
             return;
         }
 
-        const addIncidentGuidAndID = false;
-        const addCarNumber = false;
-        const addAccountParams = false;
-        const addTradeinAccountParams = false;
-        const addTradeinQuotAccountParams = false;
-        const addTradeinDealParams = false;
-        const addOpportunityNum = false;
-        const addPurchaseNum = false;
-        const addOrderParams = false;
-        const url = await commons.GetGlobalParameterValueByName(field) + "?";
+        let addIncidentGuidAndID = false;
+        let addCarNumber = false;
+        let addAccountParams = false;
+        let addTradeinAccountParams = false;
+        let addTradeinQuotAccountParams = false;
+        let addTradeinDealParams = false;
+        let addOpportunityNum = false;
+        let addPurchaseNum = false;
+        let addOrderParams = false;
+        let url = await commons.GetGlobalParameterValueByName(field) + "?";
 
         const accountid = customerfieldname && commons.GetLookupId(customerfieldname) ? commons.GetLookupId(customerfieldname) : "00000000-0000-0000-0000-000000000000";
 
@@ -346,26 +346,26 @@
 
 
     el_tradein_deal.yyyymmdd = function (dateIn, utcMatchNeeded) {
-        const yyyy = dateIn.getFullYear();
-        const mm = dateIn.getMonth() + 1; // getMonth() is zero-based
-        const dd = dateIn.getDate();
+        let yyyy = dateIn.getFullYear();
+        let mm = dateIn.getMonth() + 1; // getMonth() is zero-based
+        let dd = dateIn.getDate();
 
         if (utcMatchNeeded) {
-            const utcmils = Date.UTC(yyyy, mm, dd);
-            const localmils = new Date(yyyy, mm, dd).getTime();
-            const utcDiff = utcmils - localmils;
-            const todayUtc = new Date(yyyy, mm - 1, dd);
+            let utcmils = Date.UTC(yyyy, mm, dd);
+            let localmils = new Date(yyyy, mm, dd).getTime();
+            let utcDiff = utcmils - localmils;
+            let todayUtc = new Date(yyyy, mm - 1, dd);
             todayUtc.setTime(todayUtc.getTime() - utcDiff); //less 2-3 hours
             yyyy = todayUtc.getFullYear();
             mm = todayUtc.getMonth() + 1; // getMonth() is zero-based
             dd = todayUtc.getDate();
         }
-        const result = String(10000 * yyyy + 100 * mm + dd); // Leading zeros for mm and dd
+        let result = String(10000 * yyyy + 100 * mm + dd); // Leading zeros for mm and dd
         return result.substring(0, 4) + '-' + result.substring(4, 6) + '-' + result.substring(6, 8);
     };
 
     el_tradein_deal.changeRecordStatus = function (recordId, stateCode, statusCode, entityName) {
-        var entityData = {
+        let entityData = {
             "statecode": stateCode,
             "statuscode": statusCode
         };
@@ -438,18 +438,6 @@
 
     };
 
-    el_tradein_deal.showInvoiceRestoreRibbon = () => commons.GetFieldValue("el_s_as400t_statuscod_original") === TRADEIN_STATUS_INVOICE;
-
-    el_tradein_deal.showReceiptRibbon = () => commons.GetFieldValue("el_s_as400t_statuscod_original") === TRADEIN_STATUS_ORDER;
-
-    el_tradein_deal.showInvoiceRibbon = () => commons.GetFieldValue("el_s_as400t_statuscod_original") === TRADEIN_STATUS_ORDER;
-
-    el_tradein_deal.showCancelInvoiceRibbon = () => commons.GetFieldValue("el_s_as400t_statuscod_original") === TRADEIN_STATUS_INVOICE;
-
-    el_tradein_deal.showCancelAdvanceRibbon = () => commons.GetFieldValue("el_s_as400t_statuscod_original") === TRADEIN_STATUS_ORDER;
-
-    el_tradein_deal.showEditTradeinRibbon = () => (commons.GetFieldValue("el_s_as400t_statuscod_original") === TRADEIN_STATUS_INTERESTED_TOSELL || commons.GetFieldValue("el_s_as400t_statuscod_original") === TRADEIN_STATUS_STOCK);
-
     el_tradein_deal.getAccountData = function (accountId) {
         commons.PageClearMessages("el_tradein_deal.getAccountData");
         return new Promise((resolve, reject) => {
@@ -474,5 +462,22 @@
             }
         })
     }
+
+
+    
+    el_tradein_deal.Ribbon.EnableRules = {};
+
+    el_tradein_deal.Ribbon.EnableRules.showCancelAdvanceRibbon = () => commons.GetFieldValue("el_s_as400t_statuscod_original") === TRADEIN_STATUS_ORDER;
+
+    el_tradein_deal.Ribbon.EnableRules.showCancelInvoiceRibbon = () => commons.GetFieldValue("el_s_as400t_statuscod_original") === TRADEIN_STATUS_INVOICE;
+
+    el_tradein_deal.Ribbon.EnableRules.showEditTradeinRibbon = () => (commons.GetFieldValue("el_s_as400t_statuscod_original") === TRADEIN_STATUS_INTERESTED_TOSELL || commons.GetFieldValue("el_s_as400t_statuscod_original") === TRADEIN_STATUS_STOCK);
+
+    el_tradein_deal.Ribbon.EnableRules.showReceiptRibbon = () => commons.GetFieldValue("el_s_as400t_statuscod_original") === TRADEIN_STATUS_ORDER;
+
+    el_tradein_deal.Ribbon.EnableRules.showInvoiceRestoreRibbon = () => commons.GetFieldValue("el_s_as400t_statuscod_original") === TRADEIN_STATUS_INVOICE;
+
+    el_tradein_deal.Ribbon.EnableRules.showInvoiceRibbon = () => commons.GetFieldValue("el_s_as400t_statuscod_original") === TRADEIN_STATUS_ORDER;
+
 
 })(window.el_tradein_deal = window.el_tradein_deal || {})

@@ -22,9 +22,10 @@
     var TRADEIN_QUOT = "TRADEIN_QUOT";
 
     el_car.OnLoad = function (executionContext) {
-
-        common = new elad_commons(executionContext.getFormContext());
         try {
+            debugger;
+            common = new elad_commons();
+            common.SetFormContext(executionContext.getFormContext());
 
 
         } catch (e) {
@@ -107,7 +108,7 @@
         return parameters;
     }
 
-    el.car.addOpenLegacyTradeinParameters = async function (accountid, opportunityTradeinid, as400accountcode) {
+    el_car.addOpenLegacyTradeinParameters = async function (accountid, opportunityTradeinid, as400accountcode) {
         
         var parameters = "";
         var options =
@@ -174,7 +175,7 @@
         return parameters;
     }
 
-    el.car.addOpenLegacyTradeinQuotParameters = async function (accountid, opportunityTradeinid) {
+    el_car.addOpenLegacyTradeinQuotParameters = async function (accountid, opportunityTradeinid) {
 
         var options =
             "?$select=" +
@@ -219,7 +220,6 @@
         }
         return parameters;
     }
-
 
     el_car.showOpenLegacyRibbon = function (field, customerfieldname, actionType, as400code) {
         if (window.top.opener) {
@@ -317,7 +317,7 @@
 
     }
 
-    function getCustomerIdentification(accountID) {
+    el_car.getCustomerIdentification = function (accountID) {
         var url = "AccountSet?$select=el_s_idnumber_text&$filter=AccountId eq guid'" + accountID + "'";
         var odatautil = new OdataUtil();
         var customer = odatautil.RetrieveDataByUrl("", url, null, null, true);
@@ -327,12 +327,23 @@
         return "";
     }
 
-    el_car.openCarInAS400 = function () {
-        showOpenLegacyRibbon(CAR_STATUS_URL, null, null, null);
-    }
-
     el_car.ShowDocuments = function () {
         common.OpenAlertDialog("מסמכים");
     }
+
+    
+    el_car.Ribbon = {};
+    
+    el_car.Ribbon.openCarInAS400 = function (primaryControl) {
+        debugger;
+        if (!common) {
+            common = new elad_commons();
+            common.SetFormContext(primaryControl);
+        }
+        
+        el_car.showOpenLegacyRibbon(CAR_STATUS_URL, null, null, null);
+    }
+
+
 
 })((window.el_car = window.el_car || {}));

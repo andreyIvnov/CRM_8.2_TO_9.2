@@ -6,7 +6,9 @@
 
     el_contact.onLoad = function (executionContext) {
         try {
+
             debugger;
+
             commons = new elad_commons();
             commons.SetFormContext(executionContext.getFormContext());
 
@@ -18,14 +20,14 @@
     }
 
     el_contact.onLoadEvents = function () {
-        el_contact.checkIfRecipient();
+
     }
 
     el_contact.updateContactLookupOnIncidentForm = function () {
-        var contactid = commons.GetCurrentEntityId();
-        var name = commons.GetFieldValue("fullname");
+        const contactid = commons.GetCurrentEntityId();
+        const name = commons.GetFieldValue("fullname");
 
-        var contactOpener = commons.GetOpenerEntityInfo();
+        const contactOpener = commons.GetOpenerEntityInfo();
         if (contactOpener) {
             if (contactOpener.openerType === "incident" && contactOpener.setContactLookup) {
                 contactOpener.setContactLookup(contactid, name);
@@ -34,49 +36,6 @@
 
     }
 
-    el_contact.contactShowSaveAndCloseButton = function () {
-        var contactOpener = commons.GetOpenerEntityInfo();
-        if (contactOpener.openerType === "incident") {
-            return true;
-        }
-        return false;
-    }
-
-    el_contact.contactSaveAndCLose = function () {
-        commons.Save().then(
-            function () {
-                window.setTimeout(
-                    function () {
-                        el_contact.updateContactLookupOnIncidentForm();
-                        commons.ClosePage();
-                    }, 500);
-            });
-    }
-
-    el_contact.checkIfRecipient = function () {
-        var isVisible = false;
-        if (commons.GetFormType() !== Enum.FormType.Create) {
-            if (commons.GetFieldValue("el_l_attribute") === customerTypeCode.Ricipient)
-                isVisible = true;
-
-            el_contact.setFieldsVisibility(
-                [
-                    "fullname",
-                    "firstname",
-                    "lastname",
-                    "mobilephone",
-                    "emailaddress1",
-                    "parentcustomerid",
-                    "donotsendmm",
-                    "el_l_attribute",
-                ],
-                isVisible
-            )
-
-            commons.SetTabVisibility("annotationsTab", isVisible);
-            //commons.SetTabVisibility("recipientInterestTab", isVisible);
-        }
-    }
 
     el_contact.setFieldsVisibility = function (fieldsArr, isVisible) {
         try {
@@ -90,4 +49,38 @@
         }
     }
 
-})((window.el_contact = window.el_contact || {}))
+
+
+    el_contact.Ribbon = {};
+
+    el_contact.Ribbon.contactSaveAndCLose = function (primaryControl) {
+        if (!commons) {
+            commons = new elad_commons();
+            commons.SetFormContext(primaryControl);
+        }
+
+        commons.Save().then(
+            function () {
+                window.setTimeout(
+                    function () {
+                        el_contact.updateContactLookupOnIncidentForm();
+                        commons.ClosePage();
+                    }, 500);
+            });
+    }
+
+    el_contact.Ribbon.EnableRules.contactShowSaveAndCloseButton = function (primaryControl) {
+        if (!commons) {
+            commons = new elad_commons();
+            commons.SetFormContext(primaryControl);
+        }
+
+        debugger;
+        const contactOpener = commons.GetOpenerEntityInfo();
+        if (contactOpener.openerType === "incident") {
+            return true;
+        }
+        return false;
+    }
+
+})(window.el_contact = window.el_contact || {})
