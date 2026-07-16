@@ -283,7 +283,7 @@
             url += "license=" + carLicense;
         }
         if (addIncidentGuidAndID) {
-            var customerIdentification = getCustomerIdentification(accountid);
+            var customerIdentification = el_car.getCustomerIdentification(accountid);
             var IncidentID = common.NotNullParam(common.GetCurrentEntityId().replace(/[{}]/g, ''));
             var incidentNumber = common.GetFieldValue("el_s_incident_number");
             url += "&tz=" + customerIdentification + "&guid=" + IncidentID + "&asmachta=" + incidentNumber;
