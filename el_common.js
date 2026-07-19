@@ -49,11 +49,11 @@ var CommonsRibbonCrmActionParameters = window.CommonsRibbonCrmActionParameters |
     //    Inactive: "1"
     //};
 
-    //elad_commons_obj.OnChangeBehavior = {
-    //    None: 0,
-    //    IfChanged: 1,
-    //    Always: 2
-    //};
+    elad_commons_obj.OnChangeBehavior = {
+        None: 0,
+        IfChanged: 1,
+        Always: 2
+    };
 
     //elad_commons_obj.LogLevel = {
     //    Error: 1,
@@ -586,7 +586,7 @@ var CommonsRibbonCrmActionParameters = window.CommonsRibbonCrmActionParameters |
         return (val == null || val.length == 0);
     };
 
-    elad_commons_obj.SetFieldValue = function (fieldName, newValue, onChangeBehavior) {
+    elad_commons_obj.SetFieldValue = function (fieldName, newValue, onChangeBehavior = 0) {
         var attr = elad_commons_obj.GetAttribute(fieldName);
         if (attr != null) {
             var oldValue = attr.getValue();
@@ -619,7 +619,7 @@ var CommonsRibbonCrmActionParameters = window.CommonsRibbonCrmActionParameters |
         }
     };
 
-    elad_commons_obj.SetLookupValue = function (fieldName, id, name, entityType, onChangeBehavior) {
+    elad_commons_obj.SetLookupValue = function (fieldName, id, name, entityType, onChangeBehavior = 0) {
         if (fieldName != null && id != null) {
             var attr = elad_commons_obj.GetAttribute(fieldName);
             if (attr != null) {
@@ -847,7 +847,7 @@ var CommonsRibbonCrmActionParameters = window.CommonsRibbonCrmActionParameters |
         }
         return false;
     };
-
+    
     elad_commons_obj.SetRequiredLevel = function (fieldName, requirementLevel) {
         var attr = elad_commons_obj.GetAttribute(fieldName);
         if (attr != null) {
@@ -1017,12 +1017,12 @@ var CommonsRibbonCrmActionParameters = window.CommonsRibbonCrmActionParameters |
 
     elad_commons_obj.SaveCommand = function (formContext) {
         commons = new elad_commons();
-        commons.SetFormContext(formContext);
+        elad_commons_obj.SetFormContext(formContext);
         try {
             elad_commons_obj.Save();
         }
         catch (err) {
-            commons.PageErrorHandler(err, "SaveCommand");
+            elad_commons_obj.PageErrorHandler(err, "SaveCommand");
         }
     };
 
@@ -1280,6 +1280,37 @@ var CommonsRibbonCrmActionParameters = window.CommonsRibbonCrmActionParameters |
         })
     };
 
+    elad_commons_obj.MergeODataLookupFields = function (record) {
+        if (!record || typeof record !== "object") {
+            return record;
+        }
+
+        Object.keys(record).forEach(function (key) {
+            if (!key || key.indexOf("_") !== 0 || key.lastIndexOf("_value") !== key.length - 6) {
+                return;
+            }
+
+            var navPropertyKey = key + "@Microsoft.Dynamics.CRM.associatednavigationproperty";
+            var logicalNameKey = key + "@Microsoft.Dynamics.CRM.lookuplogicalname";
+            var formattedValueKey = key + "@OData.Community.Display.V1.FormattedValue";
+            var idValue = record[key];
+            var fallbackPropertyName = key.substring(1, key.length - 6);
+            var propertyName = record[navPropertyKey] || fallbackPropertyName;
+
+            if (!propertyName || record[propertyName] != null) {
+                return;
+            }
+
+            record[propertyName] = {
+                id: idValue,
+                entityname: record[formattedValueKey] || null,
+                entitytype: record[logicalNameKey] || null
+            };
+        });
+
+        return record;
+    };
+
     elad_commons_obj.RetrieveRecord = function (entityLogicalName, id, options, forceNotCached) {
         var id = elad_commons_obj.StripGuid(id);
         var cacheKey = [entityLogicalName, '(', id, ')?', options].join('');
@@ -1289,6 +1320,7 @@ var CommonsRibbonCrmActionParameters = window.CommonsRibbonCrmActionParameters |
             }
             else {
                 Xrm.WebApi.retrieveRecord(entityLogicalName, id, options).then(function (result) {
+                    result = elad_commons_obj.MergeODataLookupFields(result);
                     if (!forceNotCached) {
                         elad_commons_obj.DataCache[cacheKey] = result;
                     }
@@ -1540,7 +1572,7 @@ var CommonsRibbonCrmActionParameters = window.CommonsRibbonCrmActionParameters |
     }
 
     elad_commons_obj.isNullOrEmpty = function (value) {
-        return (s == null || s === "");
+        return (value == null || value === "");
     }
 
     elad_commons_obj.openUrl = function (url, urlOptions) {
@@ -2234,9 +2266,9 @@ var CommonsRibbonCrmActionParameters = window.CommonsRibbonCrmActionParameters |
             // Check if the current record was opened/created from another entity
             if (pageContext.input && pageContext.input.createFromEntity) {
                 return {
-                    openerId : pageContext.input.createFromEntity.id,
-                    openerName : pageContext.input.createFromEntity.name,
-                    openerType : pageContext.input.createFromEntity.entityType
+                    openerId: pageContext.input.createFromEntity.id,
+                    openerName: pageContext.input.createFromEntity.name,
+                    openerType: pageContext.input.createFromEntity.entityType
                 }
             }
             return null;
@@ -2253,6 +2285,12 @@ var CommonsRibbonCrmActionParameters = window.CommonsRibbonCrmActionParameters |
      * @param {any} navigationOptions
      */
     elad_commons_obj.NavigateTo = function (pageInput, navigationOptions) {
+        var entityType = elad_commons_obj.GetCurrentEntityName();
+        var id = elad_commons_obj.GetCurrentEntityId();
+        pageInput.createFromEntity = {
+            entityType: entityType,
+            id: id
+        }
         return new Promise((resolve, reject) => {
             try {
                 Xrm.Navigation.navigateTo(pageInput, navigationOptions).then(
@@ -2401,23 +2439,8 @@ var CommonsRibbonCrmActionParameters = window.CommonsRibbonCrmActionParameters |
      * @param {Object} updateEntity Data to update into record
      */
     elad_commons_obj.updateRecord = function (entityName, recordId, updateEntity) {
-        //try {
-        //    return Xrm.WebApi.updateRecord(
-        //        entityName,
-        //        commons.StripGuid(recordId),
-        //        updateEntity
-        //    ).then(function (result) {
-        //        return result;
-        //    }).catch(function (error) {
-        //        commons.PageErrorHandler(error, "common.updateRecord");
-        //    });
-
-        //} catch (error) {
-        //    commons.PageErrorHandler(error, "common.updateRecord");
-        //}
-
         return new Promise((resolve, reject) => {
-            if (entityLogicalName && entityId) {
+            if (entityName && recordId) {
                 Xrm.WebApi.updateRecord(entityName, recordId, updateEntity)
                     .then(
                         function success(result) {
@@ -2434,6 +2457,22 @@ var CommonsRibbonCrmActionParameters = window.CommonsRibbonCrmActionParameters |
     };
 
     // Aya - functions from el_incident
+    elad_commons_obj.ToggleTab = function (tabName, visible) {
+        var tab = elad_commons_obj.GetFormContext().ui.tabs.get(tabName);
+        if (!tab) {
+            return;
+        }
+        tab.setVisible(visible);
+    };
+    elad_commons_obj.GetLookupFieldValue = function (fieldName) {
+        var lookupValue = elad_commons_obj.GetFieldValue(fieldName);
+
+        if (lookupValue && lookupValue.length > 0) {
+            return lookupValue[0];
+        }
+
+        return null;
+    };
     elad_commons_obj.GetOdataDate = function (dateField) {
         try {
             if (!dateField) return "";
@@ -2443,7 +2482,7 @@ var CommonsRibbonCrmActionParameters = window.CommonsRibbonCrmActionParameters |
             dateValue.setDate(dateValue.getDate());
             return [dateValue.getMonth() + 1, dateValue.getDate(), dateValue.getFullYear()].join("/");
         } catch (error) {
-            commons.PageErrorHandler(error, "commons.GetOdataDate");
+            elad_commons_obj.PageErrorHandler(error, "commons.GetOdataDate");
             return "";
         }
     };
@@ -2499,17 +2538,39 @@ var CommonsRibbonCrmActionParameters = window.CommonsRibbonCrmActionParameters |
             return "";
         }
     };
-    elad_commons_obj.getCityCode4Params = function (address, addressType) {
+    
+    elad_commons_obj.GetCityCode4Params = function (address, addressType) {
         try {
-            if (address == null || ((address.el_id_city == null || address.el_id_city.Id == null) && (address.el_id_pob_city == null || address.el_id_pob_city.Id == null))) return "";
-            var odataUtilObj = new OdataUtil();
-            var result = null;
-            if (addressType == "address") result = odataUtilObj.RetrieveData("el_citySet", address.el_id_city.Id, "el_n_ministry_city_code", null, null, null, false);
-            if (addressType == "pob") result = odataUtilObj.RetrieveData("el_citySet", address.el_id_pob_city.Id, "el_n_ministry_city_code", null, null, null, false);
-            return result != null && result.el_n_ministry_city_code != null ? result.el_n_ministry_city_code : "";
+            if (!address || ((!address.el_id_city || !address.el_id_city.Id) && (!address.el_id_pob_city || !address.el_id_pob_city.Id))) {
+                return Promise.resolve("");
+            }
+
+            var cityId = null;
+
+            if (addressType == "address" && address.el_id_city && address.el_id_city.Id) {
+                cityId = address.el_id_city.Id;
+            }
+
+            if (addressType == "pob" && address.el_id_pob_city && address.el_id_pob_city.Id) {
+                cityId = address.el_id_pob_city.Id;
+            }
+
+            if (!cityId) {
+                return Promise.resolve("");
+            }
+
+            cityId = elad_commons_obj.StripGuid(cityId);
+
+            return elad_commons_obj.RetrieveRecord("el_city", cityId, "?$select=el_n_ministry_city_code").then(function (result) {
+                return result && result.el_n_ministry_city_code ? result.el_n_ministry_city_code : "";
+            }).catch(function (error) {
+                elad_commons_obj.PageErrorHandler(error, "elad_commons_obj.GetCityCode4Params");
+                return "";
+            });
+
         } catch (error) {
-            elad_commons_obj.PageErrorHandler(error, "elad_commons_obj.getCityCode4Params");
-            return "";
+            elad_commons_obj.PageErrorHandler(error, "elad_commons_obj.GetCityCode4Params");
+            return Promise.resolve("");
         }
     };
     elad_commons_obj.getTypeId = function (type) {
@@ -2981,39 +3042,10 @@ var CommonsRibbonCrmActionParameters = window.CommonsRibbonCrmActionParameters |
                 await elad_commons_obj._formContext.data.refresh(save === true);
             }
         } catch (error) {
-            commons.PageErrorHandler(error, "commons.RefreshForm");
+            elad_commons_obj.PageErrorHandler(error, "commons.RefreshForm");
         }
     };
-    elad_commons_obj.AddFileRibbon = function () {
-        try {
-            var name;
-
-            if (elad_commons_obj.GetFieldValue("name")) {
-                name = elad_commons_obj.GetFieldValue("name");
-            } else if (elad_commons_obj.GetFieldValue("el_name")) {
-                name = elad_commons_obj.GetFieldValue("el_name");
-            } else if (elad_commons_obj.GetFieldValue("title")) {
-                name = elad_commons_obj.GetFieldValue("title");
-            } else {
-                name = elad_commons_obj.GetEntityName();
-            }
-
-            var extRaqs = "";
-            var features = "location=no,menubar=no,status=no,toolbar=no,scrollbars=yes,resizable=yes";
-
-            extRaqs += "pId=" + elad_commons_obj.GetRecordId();
-            extRaqs += "&pName=" + name;
-            extRaqs += "&pType=" + elad_commons_obj.GetQueryStringParameter("etc");
-            extRaqs += "&el_l_funding_offer=" + elad_commons_obj.GetFieldValue("el_l_funding_offer");
-
-            var url = elad_commons_obj.PrependOrgName("/main.aspx?etc=" + EL_DOC_TYPECODE + "&pagetype=entityrecord&extraqs=" + encodeURIComponent(extRaqs));
-
-            elad_commons_obj.openUrl(url, "_blank", features, false);
-
-        } catch (error) {
-            elad_commons_obj.PageErrorHandler(error, "common.AddFileRibbon");
-        }
-    };
+   
     elad_commons_obj.yyyymmdd = function (dateIn, utcMatchNeeded) {
         try {
             var yyyy = dateIn.getFullYear();
@@ -3038,16 +3070,114 @@ var CommonsRibbonCrmActionParameters = window.CommonsRibbonCrmActionParameters |
             return result.substring(0, 4) + "-" + result.substring(4, 6) + "-" + result.substring(6, 8);
 
         } catch (error) {
-            commons.PageErrorHandler(error, "common.yyyymmdd");
+            elad_commons_obj.PageErrorHandler(error, "common.yyyymmdd");
             return "";
         }
     };
-    //el_opportunity_tradein
-   
+    elad_commons_obj.ParseDate = function (dateField) {
+        try {
+            if (dateField != null) {
+                return dateField.replace("/Date(", "").replace(")/", "");
+            }
+
+            return "";
+
+        } catch (error) {
+            elad_commons_obj.PageErrorHandler(error, "elad_commons_obj.parseDate");
+            return "";
+        }
+    };
+    //el_digital_doc
+    elad_commons_obj.TicksToDate = function (ticks) {
+        try {
+            if (!ticks) {
+                return null;
+            }
+            var ticksString =
+                ticks.replace("/Date(", "").replace(")/", "");
+            var parsedTicks = parseInt(ticksString);
+            return new Date(parsedTicks);
+        } catch (error) {
+            elad_commons_obj.PageErrorHandler(error, "commons.TicksToDate");
+            return null;
+        }
+    };
+    elad_commons_obj.LogOnConsoleAndOpenAlertDialog = function (textOnAlert) {
+        try {
+            var alertStrings = elad_commons_obj.GetNewXrmAlertStrings(textOnAlert);
+
+            console.log(textOnAlert);
+
+            elad_commons_obj.OpenAlertDialog(alertStrings, null, null);
+
+        } catch (error) {
+            elad_commons_obj.PageErrorHandler(error, "commons.LogOnConsoleAndOpenAlertDialog");
+        }
+    };
+    //20260713
+    elad_commons_obj.SetSectionsVisibilityArray = function (tabName, sections) {
+        try {
+            if (!tabName || !sections || sections.length == 0) {
+                return;
+            }
+
+            var tab = elad_commons_obj.GetTab(tabName);
+
+            if (!tab) {
+                return;
+            }
+
+            sections.forEach(function (section) {
+                if (!section || !section.sectionName) {
+                    return;
+                }
+
+                var sectionControl = tab.sections.get(section.sectionName);
+
+                if (!sectionControl) {
+                    return;
+                }
+
+                sectionControl.setVisible(section.visible === true);
+            });
+
+        } catch (error) {
+            elad_commons_obj.PageErrorHandler(error, "commons.SetSectionsArrayVisibility");
+        }
+    };
+    elad_commons_obj.SetRequiredLevelArray = function (fieldNames, requiredLevel) {
+        try {
+            if (!fieldNames || fieldNames.length == 0) {
+                return;
+            }
+
+            fieldNames.forEach(function (fieldName) {
+                elad_commons_obj.SetRequiredLevel(fieldName, requiredLevel);
+            });
+
+        } catch (error) {
+            elad_commons_obj.PageErrorHandler(error, "commons.SetRequiredLevels");
+        }
+    }
+    elad_commons_obj.SetVisibleArray = function (fieldsNameArray, visible, isControlCollection) {
+        try {
+            if (!fieldsNameArray || fieldsNameArray.length === 0) {
+                return;
+            }
+
+            fieldsNameArray.forEach(function (fieldName) {
+                elad_commons_obj.SetVisible(fieldName, visible, isControlCollection);
+            });
+
+        } catch (error) {
+            elad_commons_obj.PageErrorHandler(error, "elad_commons_obj.SetVisibleArray");
+        }
+    };
+     
     //--- AYA END ---
 })(window.elad_commons_obj = window.elad_commons_obj || {});
 
-var elad_commons = function () {
+function elad_commons() {
     return elad_commons_obj;
 }
 
