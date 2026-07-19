@@ -2267,7 +2267,6 @@ var CommonsRibbonCrmActionParameters = window.CommonsRibbonCrmActionParameters |
             if (pageContext.input && pageContext.input.createFromEntity) {
                 return {
                     openerId: pageContext.input.createFromEntity.id,
-                    openerName: pageContext.input.createFromEntity.name,
                     openerType: pageContext.input.createFromEntity.entityType
                 }
             }
@@ -2289,7 +2288,7 @@ var CommonsRibbonCrmActionParameters = window.CommonsRibbonCrmActionParameters |
         var id = elad_commons_obj.GetCurrentEntityId();
         pageInput.createFromEntity = {
             entityType: entityType,
-            id: id
+            id: id,
         }
         return new Promise((resolve, reject) => {
             try {
@@ -2705,15 +2704,19 @@ var CommonsRibbonCrmActionParameters = window.CommonsRibbonCrmActionParameters |
     elad_commons_obj.addOpenLegacyParameters = async function (accountid) {
         try {
             if (!accountid) return "";
-            var account = await elad_commons_obj.RetrieveRecord("account", elad_commons_obj.StripGuid(accountid),
-                "?$select=el_s_first_name,donotbulkemail,el_s_last_name,el_dt_date_of_birth,el_s_idnumber_text,telephone1,telephone2,fax,emailaddress1&$expand=el_id_type_account($select=el_n_id_type_code),el_el_address_account($select=el_s_city_text,el_s_street_text,el_n_house_number,el_s_entrance,el_n_zip,el_n_pob_zip,el_n_pob)");
+            //TODO: Add address reference (el_address isn't exist into CRM)
+            // var account = await elad_commons_obj.RetrieveRecord("account", elad_commons_obj.StripGuid(accountid),
+            //     "?$select=el_s_first_name,donotbulkemail,el_s_last_name,el_dt_date_of_birth,el_s_idnumber_text,telephone1,telephone2,fax,emailaddress1&$expand=el_id_type_code($select=el_n_id_type_code),el_el_address_account($select=el_s_city_text,el_s_street_text,el_n_house_number,el_s_entrance,el_n_zip,el_n_pob_zip,el_n_pob)");
+           
+            var account = await elad_commons_obj.RetrieveRecord("account", elad_commons_obj.StripGuid(accountid), "?$select=el_s_first_name,donotbulkemail,el_s_last_name,el_dt_date_of_birth,el_s_idnumber_text,telephone1,telephone2,fax,emailaddress1&$expand=el_id_type_code($select=el_n_id_type_code)");
+
             var parameters = "";
             if (account != null) {
                 parameters += "cpd.shemPrati=" + elad_commons_obj.notNullParam(account.el_s_first_name).trim() + "&";
                 parameters += "cpd.hasumLeDivur=" + elad_commons_obj.notNullParam(account.donotbulkemail).trim() + "&";
                 parameters += "cpd.shemMishpaha=" + elad_commons_obj.notNullParam(account.el_s_last_name).trim() + "&";
                 parameters += "cpd.taarihLeda=" + elad_commons_obj.GetOdataDate(account.el_dt_date_of_birth) + "&";
-                parameters += "cmd.sugLakoah=" + elad_commons_obj.getTypeId(account.el_id_type_account) + "&";
+                parameters += "cmd.sugLakoah=" + elad_commons_obj.getTypeId(account.el_id_type_code) + "&";
                 parameters += "cpd.misparZeutHevra=" + elad_commons_obj.notNullParam(account.el_s_idnumber_text).trim() + "&";
                 parameters += "tel.telephoneCelolari=" + elad_commons_obj.notNullParam(account.telephone1).trim() + "&";
                 parameters += "tel.misparTelephoneA=" + elad_commons_obj.notNullParam(account.telephone2).trim() + "&";
@@ -2752,7 +2755,10 @@ var CommonsRibbonCrmActionParameters = window.CommonsRibbonCrmActionParameters |
     elad_commons_obj.addOpenLegacyTradeinParameters = async function (accountid, opportunityTradeinid, as400accountcode) {
         try {
             if (!accountid) return "";
-            var account = await elad_commons_obj.RetrieveRecord("account", elad_commons_obj.StripGuid(accountid), "?$select=name,el_s_idnumber_text,telephone1,telephone2,fax,emailaddress1&$expand=el_el_address_account($select=el_s_city_text,el_s_street_text,el_n_house_number,el_n_zip)");
+            //TODO: Add address reference (el_address isn't exist into CRM)
+            // var account = await elad_commons_obj.RetrieveRecord("account", elad_commons_obj.StripGuid(accountid), "?$select=name,el_s_idnumber_text,telephone1,telephone2,fax,emailaddress1&$expand=el_el_address_account($select=el_s_city_text,el_s_street_text,el_n_house_number,el_n_zip)");
+
+            var account = await elad_commons_obj.RetrieveRecord("account", elad_commons_obj.StripGuid(accountid), "?$select=name,el_s_idnumber_text,telephone1,telephone2,fax,emailaddress1");
             var parameters = "";
             if (account != null) {
                 parameters += "msLakoah=" + elad_commons_obj.notNullParam(as400accountcode).trim() + "&";
@@ -2785,7 +2791,9 @@ var CommonsRibbonCrmActionParameters = window.CommonsRibbonCrmActionParameters |
     elad_commons_obj.addOpenLegacyTradeinQuotParameters = async function (accountid, opportunityTradeinid) {
         try {
             if (!accountid) return "";
-            var account = await elad_commons_obj.RetrieveRecord("account", elad_commons_obj.StripGuid(accountid), "?$select=name,telephone1,emailaddress1&$expand=el_el_address_account($select=el_s_city_text,el_s_street_text,el_n_house_number,el_n_zip)");
+            //TODO: Add address reference (el_address isn't exist into CRM)
+            // var account = await elad_commons_obj.RetrieveRecord("account", elad_commons_obj.StripGuid(accountid), "?$select=name,telephone1,emailaddress1&$expand=el_el_address_account($select=el_s_city_text,el_s_street_text,el_n_house_number,el_n_zip)");
+            var account = await elad_commons_obj.RetrieveRecord("account", elad_commons_obj.StripGuid(accountid), "?$select=name,telephone1,emailaddress1");
             var parameters = "";
             if (account != null) {
                 parameters += "shemLakoah=" + elad_commons_obj.notNullParam(account.name).trim() + "&";
@@ -2812,8 +2820,8 @@ var CommonsRibbonCrmActionParameters = window.CommonsRibbonCrmActionParameters |
         }
     };
     elad_commons_obj.showOpenLegacyRibbon = async function (field, customerfieldname, actionType, as400code) {
-        try { //TODO CRM Online: replace opener logic
-            if (window.top.opener) {
+        try {
+            if (elad_commons_obj.GetOpenerEntityInfo()) {
                 elad_commons_obj.OpenAlertDialog("לא ניתן לבצע פעולה זו מתוך חלון מוקפץ.\nיש לחזור לחלון הראשי ולנסות שנית");
                 return;
             }
@@ -2826,7 +2834,8 @@ var CommonsRibbonCrmActionParameters = window.CommonsRibbonCrmActionParameters |
             var addOpportunityNum = false;
             var addPurchaseNum = false;
             var addOrderParams = false;
-            var url = elad_commons_obj.GetGlobalParameter(field) + "?";
+
+            var url = await elad_commons_obj.GetGlobalParameterValueByName(field) + "?";
             var customer = customerfieldname ? elad_commons_obj.GetLookupFieldValue(customerfieldname) : null;
             var accountid = customer && customer.id ? customer.id : "00000000-0000-0000-0000-000000000000";
             switch (field) {
@@ -2870,20 +2879,20 @@ var CommonsRibbonCrmActionParameters = window.CommonsRibbonCrmActionParameters |
                     break;
             }
             if (addCarNumber) {
-                var entityName = elad_commons_obj.GetEntityName();
+                var entityName = elad_commons_obj.GetCurrentEntityName();
                 var carLicense = entityName == "incident" ? elad_commons_obj.GetLookupFieldValue("el_id_car").name : elad_commons_obj.GetFieldValue("el_name");
                 url += "license=" + carLicense;
             }
             if (addIncidentGuidAndID) {
-                var customerIdentification = elad_commons_obj.getCustomerIdentification(accountid);
-                var incidentID = elad_commons_obj.notNullParam(elad_commons_obj.GetRecordId().replace(/[{}]/g, ""));
+                var customerIdentification = await elad_commons_obj.getCustomerIdentification(accountid);
+                var incidentID = elad_commons_obj.notNullParam(elad_commons_obj.GetCurrentEntityId().replace(/[{}]/g, ""));
                 var incidentNumber = elad_commons_obj.GetFieldValue("el_s_incident_number");
                 url += "&tz=" + customerIdentification + "&guid=" + incidentID + "&asmachta=" + incidentNumber;
             }
             if (addAccountParams) url += await elad_commons_obj.addOpenLegacyParameters(accountid);
-            if (addTradeinAccountParams) url += await elad_commons_obj.addOpenLegacyTradeinParameters(accountid, elad_commons_obj.GetRecordId(), as400code);
-            if (addTradeinQuotAccountParams) url += await elad_commons_obj.addOpenLegacyTradeinQuotParameters(accountid, elad_commons_obj.GetRecordId());
-            if (addOpportunityNum) url += "&cmd.misparIzdamnut=" + elad_commons_obj.notNullParam(elad_commons_obj.GetRecordId().replace("{", "").replace("}", ""));
+            if (addTradeinAccountParams) url += await elad_commons_obj.addOpenLegacyTradeinParameters(accountid, elad_commons_obj.GetCurrentEntityId(), as400code);
+            if (addTradeinQuotAccountParams) url += await elad_commons_obj.addOpenLegacyTradeinQuotParameters(accountid, elad_commons_obj.GetCurrentEntityId());
+            if (addOpportunityNum) url += "&cmd.misparIzdamnut=" + elad_commons_obj.notNullParam(elad_commons_obj.GetCurrentEntityId().replace("{", "").replace("}", ""));
             if (addPurchaseNum) {
                 url += addAccountParams ? "&" : "";
                 url += "cmd.misparTeuda=" + elad_commons_obj.GetFieldValue("el_s_purchase_num");

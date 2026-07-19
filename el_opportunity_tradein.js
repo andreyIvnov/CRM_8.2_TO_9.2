@@ -32,6 +32,11 @@
     var DOCTYPE_BUY_USED_CAR = 12;
     var DOCTYPE_BUY_NEW_CAR = 50;
     var DOCTYPE_BUY_NEW_CAR_OWNER = 51;
+    var DOCTYPE_EURODRIVE_SELL_USED_CAR = 29;
+    var DOCTYPE_EURODRIVE_BUY_USED_CAR = 30;
+    var SHOWROOM_CODE_BMC_TLV = "8B";
+
+
 
     var CAR_CHECK_STATUS_INTERESTED = 1;
     var tradeinTypes = {
@@ -47,33 +52,31 @@
     var TESTDRIVE_PERFORMED = 4;
     var TESTDRIVE_CANCELLED = 6;
     var TESTDRIVE_OFFER_YES = 1;
-    el_opportunity_tradein.Ribbon = el_opportunity_tradein.Ribbon || {};
     el_opportunity_tradein.OnLoad = function (executionContext) {
         try {
+            debugger;
             commons = new elad_commons();
             commons.SetFormContext(executionContext.getFormContext());
             el_opportunity_tradein.setupBasicEvents();
-            el_opportunity_tradein.opportunityTradeinAssignEventActions();
-
             if (commons.GetFieldValue("el_id_showroom") == null) {
-                commons.fillShowRoom();
+                commons.FillShowRoom();
             }
 
             el_opportunity_tradein.setNameFieldOnLoad();
-
+            
             if (commons.GetFieldValue("statecode") == 0) {
-                commons.SetFieldVisibility("el_l_closure_reason", false);
-                commons.SetFieldVisibility("el_s_closure_notes", false);
+                commons.SetVisible("el_l_closure_reason", false);
+                commons.SetVisible("el_s_closure_notes", false);
             }
-
+            
             el_opportunity_tradein.statusOnchange();
-
+            
             el_opportunity_tradein.openAccountForm();
-
+            
             if (commons.GetLookupFieldValue("el_id_tradein_deal_future")) {
-                commons.GetSection("PreferencesTab", "FutureCar").setVisible(true);
+                commons.SetSectionVisibility("PreferencesTab", "FutureCar", true);
             } else {
-                commons.GetSection("PreferencesTab", "FutureCar").setVisible(false);
+                commons.SetSectionVisibility("PreferencesTab", "FutureCar", false);
             }
 
             el_opportunity_tradein.showTradeinOffersTab();
@@ -89,7 +92,7 @@
             el_opportunity_tradein.showCarLicenseBoughtField();
 
         } catch (error) {
-            commons.PageErrorHandler(error, "el_opportunity_tradein.opportunityTradein_OnLoad");
+            commons.PageErrorHandler(error, "el_opportunity_tradein.OnLoad");
         }
 
     };
@@ -116,12 +119,13 @@
                 el_opportunity_tradein.setTestDriveFields
             );
 
-            commons.GetAttribute("el_id_showrrom").addOnChange(
+            commons.GetAttribute("el_id_showroom").addOnChange(
                 el_opportunity_tradein.updatePhoneShowroom
             );
 
+
         } catch (error) {
-            commons.PageErrorHandler(error, "el_opportunity_tradein.opportunityTradeinAssignEventActions");
+            commons.PageErrorHandler(error, "el_opportunity_tradein.setupBasicEvents");
         }
     };
     el_opportunity_tradein.getCityCode4Params = function (address, addressType) {
@@ -297,14 +301,14 @@
     el_opportunity_tradein.showCarLicenseBoughtField = function () {
         try {
             if (commons.GetFieldValue("el_l_purchase_type") == tradeinTypes.USED_USED || commons.GetFieldValue("el_l_purchase_type") == tradeinTypes.SELL_ONLY) {
-                commons.SetFieldVisibility("el_s_car_license_dm_buys", true);
+                commons.SetVisible("el_s_car_license_dm_buys", true);
             }
             else {
                 if (commons.GetFieldValue("el_s_car_license_dm_buys")) {
                     commons.SetFieldValue("el_s_car_license_dm_buys", null);
                 }
 
-                commons.SetFieldVisibility("el_s_car_license_dm_buys", false);
+                commons.SetVisible("el_s_car_license_dm_buys", false);
             }
 
         } catch (error) {
@@ -329,8 +333,8 @@
             var today = new Date();
 
             if (commons.GetFieldValue("el_b_document_testdrive") == true) {
-                commons.GetSection("testDriveTab", "testdriveDoc").setVisible(true);
-                commons.GetSection("testDriveTab", "testdrive").setVisible(false);
+                commons.SetSectionVisibility("testDriveTab", "testdriveDoc", true);
+                commons.SetSectionVisibility("testDriveTab", "testdrive", false);
                 commons.SetRequiredLevel("el_dt_testdrive_doc_date", "required");
                 commons.SetRequiredLevel("el_l_testdrive_doc_type", "required");
                 commons.SetFieldValue("el_dt_testdrive_doc_date", new Date(today.getFullYear(), today.getMonth(), today.getDate(), 0, 0, 0, 0));
@@ -342,8 +346,8 @@
                 commons.SetRequiredLevel("el_l_testdrive_doc_type", "none");
                 commons.SetFieldValue("el_dt_testdrive_doc_date", null);
                 commons.SetFieldValue("el_l_testdrive_doc_type", null);
-                commons.GetSection("testDriveTab", "testdriveDoc").setVisible(false);
-                commons.GetSection("testDriveTab", "testdrive").setVisible(true);
+                commons.SetSectionVisibility("testDriveTab", "testdriveDoc", false);
+                commons.SetSectionVisibility("testDriveTab", "testdrive", true);
             }
 
         } catch (error) {
@@ -380,10 +384,10 @@
     el_opportunity_tradein.showTestDriveTab = function () {
         try {
             if (commons.GetFieldValue("el_l_purchase_type") && (commons.GetFieldValue("el_l_purchase_type") == tradeinTypes.USED_USED || commons.GetFieldValue("el_l_purchase_type") == tradeinTypes.SELL_ONLY)) {
-                commons.GetTab("testDriveTab").setVisible(true);
+                commons.SetTabVisibility("testDriveTab", true);
             }
             else {
-                commons.GetTab("testDriveTab").setVisible(false);
+                commons.SetTabVisibility("testDriveTab", false);
             }
 
         } catch (error) {
@@ -432,42 +436,38 @@
             commons.PageErrorHandler(error, "el_opportunity_tradein.setNameFieldOnLoad");
         }
     };
-    el_opportunity_tradein.accountHasNoIdNumber = function () {
+    el_opportunity_tradein.accountHasNoIdNumber = async function () {
         try {
             var account = commons.GetLookupFieldValue("el_id_account");
 
             if (account && account.id) {
-                return commons.RetrieveRecord("account", commons.StripGuid(account.id), "?$select=el_s_idnumber_text").then(function (accountRecord) {
-                    if (accountRecord != null) {
-                        return accountRecord.el_s_idnumber_text == null || accountRecord.el_s_idnumber_text == "";
-                    }
-                });
+                var accountRecord = await commons.RetrieveRecord("account", commons.StripGuid(account.id), "?$select=el_s_idnumber_text");
+                if (accountRecord != null) {
+                    return accountRecord.el_s_idnumber_text == null || accountRecord.el_s_idnumber_text == "";
+                }
             }
-
-            return Promise.resolve(undefined);
-
+            return undefined;
         } catch (error) {
             commons.PageErrorHandler(error, "el_opportunity_tradein.accountHasNoIdNumber");
-            return Promise.resolve(undefined);
+            return undefined;
         }
     };
-    el_opportunity_tradein.accountRefuseToIdentify = function () {
+    el_opportunity_tradein.accountRefuseToIdentify = async function () {
         try {
             var account = commons.GetLookupFieldValue("el_id_account");
 
             if (account && account.id) {
-                return commons.RetrieveRecord("account", commons.StripGuid(account.id), "?$select=el_b_refusetoidentify").then(function (accountRecord) {
-                    if (accountRecord != null) {
-                        return accountRecord.el_b_refusetoidentify;
-                    }
-                });
+                var accountRecord = await commons.RetrieveRecord("account", commons.StripGuid(account.id), "?$select=el_b_refusetoidentify");
+                if (accountRecord != null) {
+                    return accountRecord.el_b_refusetoidentify;
+                }
             }
 
-            return Promise.resolve(undefined);
+            return undefined;
 
         } catch (error) {
             commons.PageErrorHandler(error, "el_opportunity_tradein.accountRefuseToIdentify");
-            return Promise.resolve(undefined);
+            return undefined;
         }
     };
     el_opportunity_tradein.getTradeinDeal = function (agreementType) {
@@ -508,102 +508,9 @@
             return Promise.resolve(null);
         }
     };
-    el_opportunity_tradein.addTradeinQuot = function () {
+    el_opportunity_tradein.tradeinCarAssigned = async function () {
         try {
-            commons.showOpenLegacyRibbon(TRADEIN_QUOT, "el_id_account", null, null);
-
-        } catch (error) {
-            commons.PageErrorHandler(error, "el_opportunity_tradein.addTradeinQuot");
-        }
-    };
-    el_opportunity_tradein.reopenTradeinProcess = function (primaryControl) {
-        try {
-            var commons = new elad_commons();
-
-            commons.SetFormContext(primaryControl);
-
-            var stateCode = TRADEIN_OPP_STATE_ACTIVE;
-            var statuscode = TRADEIN_OPP_STATUS_OPPORTUNITY;
-            var entityId = commons.GetRecordId();
-            var entityName = commons.GetEntityName();
-
-            commons.ChangeRecordStatus(entityId, stateCode, statuscode, entityName);
-
-        } catch (error) {
-            commons.PageErrorHandler(error, "el_opportunity_tradein.reopenTradeinProcess");
-        }
-    };
-    el_opportunity_tradein.enableTradeInRibbon = function (primaryControl) {
-        try {
-            var commons = new elad_commons();
-
-            commons.SetFormContext(primaryControl);
-
-            var formState = commons.GetFormType();
-
-            return formState != FORMSTATE_CREATE && commons.UserHasRole(OPEN_TRADEIN_SYSTEM_ROLE);
-
-        } catch (error) {
-            commons.PageErrorHandler(error, "el_opportunity_tradein.enableTradeInRibbon");
-            return false;
-        }
-    };
-    el_opportunity_tradein.assignCar = function (primaryControl) {
-        try {
-            var commons = new elad_commons();
-
-            commons.SetFormContext(primaryControl);
-
-            return el_opportunity_tradein.tradeinCarAssigned().then(function (carAssigned) {
-
-                if (carAssigned) {
-                    commons.OpenAlertDialog("לא ניתן לשבץ יותר מרכב אחד בתהליך טרייד אין");
-                    return;
-                }
-
-                var stars = "\n*******************************************************";
-                var blanks = "\n                                                      ";
-
-                return el_opportunity_tradein.accountRefuseToIdentify().then(function (refuseToIdentify) {
-
-                    if (refuseToIdentify) {
-                        var txt1 = "\nלא ניתן לשבץ  רכב  ללקוח   שמסרב   להזדהות\n";
-                        var txt2 = "\nנא לעדכן מס' ת.ז ללקוח\n";
-
-                        commons.OpenAlertDialog(unescape("%u200F%u200F") + stars + stars + blanks + txt1 + txt2 + stars + stars + unescape("%u200F"));
-
-                        return;
-                    }
-
-                    return el_opportunity_tradein.accountHasNoIdNumber().then(function (hasNoIdNumber) {
-
-                        if (!refuseToIdentify && hasNoIdNumber) {
-                            var txt3 = "\nלא ניתן  לשבץ  רכב   ללקוח   ללא מס' ת.ז   \n";
-                            var txt4 = "\nנא לעדכן מס' ת.ז ללקוח\n";
-
-                            commons.OpenAlertDialog(unescape("%u200F%u200F") + stars + stars + blanks + txt3 + txt4 + stars + stars + unescape("%u200F"));
-
-                            return;
-                        }
-
-                        var as400accountcode = "";
-
-                        commons.showOpenLegacyRibbon(TRADEIN_SYSTEM_URL_ASSIGN, "el_id_account", null, as400accountcode);
-                    });
-                });
-            });
-
-        } catch (error) {
-            commons.PageErrorHandler(error, "el_opportunity_tradein.assignCar");
-        }
-    };
-    el_opportunity_tradein.tradeinCarAssigned = function (primaryControl) {
-        try {
-            var commons = new elad_commons();
-
-            commons.SetFormContext(primaryControl);
-
-            var result = commons.RetrieveMultipleRecordsSync("el_tradein_deal", "?$select=_el_id_opportunity_tradein_value&$filter=_el_id_opportunity_tradein_value eq " + commons.StripGuid(commons.GetRecordId()));
+            var result = await commons.RetrieveMultipleRecords("el_tradein_deal", "?$select=_el_id_opportunity_tradein_value&$filter=_el_id_opportunity_tradein_value eq " + commons.StripGuid(commons.GetCurrentEntityId()));
 
             if (result && result.length >= 1) {
                 return true;
@@ -616,91 +523,29 @@
             return false;
         }
     };
-    el_opportunity_tradein.deactivateTradeinOpportunity = function (primaryControl) {
-        try {
-            var commons = new elad_commons();
+    el_opportunity_tradein.tradeinSellDealExists = function () {
+        return new Promise((resolve, reject) => {
+            try {
+                commons.RetrieveMultipleRecords("el_tradein_deal", "?$select=_el_id_opportunity_tradein_sell_value&$filter=_el_id_opportunity_tradein_sell_value eq " + commons.StripGuid(commons.GetCurrentEntityId()))
+                    .then(
+                        function (results) {
+                            if (results && results.length >= 1) {
+                                resolve(true);
+                            } else {
+                                resolve(false);
+                            }
+                        },
+                        err => {
+                            commons.SetFormNotification("Error retrieving trade-in sell deal into el_opportunity_tradein.tradeinSellDealExists : " + err.message, "ERROR", "el_opportunity_tradein.tradeinSellDealExists");
+                            resolve(false);
+                        }
+                    );
 
-            commons.SetFormContext(primaryControl);
-
-            var stateCode = 1;
-            var statuscode = TRADEIN_OPPORTUNITY_STATUS_LOST;
-
-            commons.SetFieldVisibility("el_l_closure_reason", true);
-            commons.SetFieldVisibility("el_s_closure_notes", true);
-
-            if (!commons.GetFieldValue("el_s_closure_notes") || !commons.GetFieldValue("el_l_closure_reason")) {
-                commons.OpenAlertDialog("נא למלא סיבת הפסד והערות סגירה לפני סגירת התהליך");
-
-                if (!commons.GetFieldValue("el_l_closure_reason")) {
-                    commons.GetControl("el_l_closure_reason").setFocus();
-                }
-
-                if (!commons.GetFieldValue("el_s_closure_notes")) {
-                    commons.GetControl("el_s_closure_notes").setFocus();
-                }
+            } catch (error) {
+                commons.PageErrorHandler(error, "el_opportunity_tradein.tradeinSellDealExists");
+                resolve(false);
             }
-            else {
-                commons.ChangeRecordStatus(commons.GetRecordId(), stateCode, statuscode, commons.GetEntityName());
-            }
-
-        } catch (error) {
-            commons.PageErrorHandler(error, "el_opportunity_tradein.deactivateTradeinOpportunity");
-        }
-    };
-    el_opportunity_tradein.addNewTradeinDeal = function (primaryControl) {
-        try {
-            var commons = new elad_commons();
-
-            commons.SetFormContext(primaryControl);
-
-            if (el_opportunity_tradein.tradeinSellDealExists(primaryControl)) {
-                commons.OpenAlertDialog("לא ניתן לפתוח יותר מעסקת מכירה אחת בתהליך טרייד אין");
-                return;
-            }
-
-            var as400accountcode = "";
-            var account = commons.GetLookupFieldValue("el_id_account");
-
-            if (account && account.id) {
-                var result = commons.RetrieveMultipleRecordsSync("el_car_purchase", "?$select=el_s_as400lakcod&$orderby=createdon desc&$filter=el_l_purchase_type eq 1 and (el_l_order_status ne 3 and el_l_order_status ne 4) and _el_id_account_value eq " + commons.StripGuid(account.id));
-
-                if (result && result.length >= 1) {
-                    as400accountcode = result[0].el_s_as400lakcod;
-                }
-            }
-
-            if (as400accountcode == "") {
-                var result = commons.RetrieveMultipleRecordsSync("el_tradein_deal", "?$select=el_s_as400lakcod_buyer&$filter=_el_id_opportunity_tradein_value eq " + commons.StripGuid(commons.GetRecordId()));
-
-                if (result && result.length >= 1) {
-                    as400accountcode = result[0].el_s_as400lakcod_buyer;
-                }
-            }
-
-            commons.showOpenLegacyRibbon(TRADEIN_SYSTEM_URL_MAAGAR, "el_id_account", null, as400accountcode);
-
-        } catch (error) {
-            commons.PageErrorHandler(error, "el_opportunity_tradein.addNewTradeinDeal");
-        }
-    };
-    el_opportunity_tradein.tradeinSellDealExists = function (primaryControl) {
-        try {
-            var commons = new elad_commons();
-
-            commons.SetFormContext(primaryControl);
-
-            var result = commons.RetrieveMultipleRecordsSync("el_tradein_deal", "?$select=_el_id_opportunity_tradein_sell_value&$filter=_el_id_opportunity_tradein_sell_value eq " + commons.StripGuid(commons.GetRecordId()));
-
-            if (result && result.length >= 1) {
-                return true;
-            }
-
-            return false;
-
-        } catch (error) {
-            commons.PageErrorHandler(error, "el_opportunity_tradein.tradeinSellDealExists");
-            return false;
-        }
+        })
     };
     // TODO CRM Online: verify behavior \\ replace to button from ribbon
     //function dynamicMenuAgreement(CommandProperties) {
@@ -728,43 +573,6 @@
     //}
 
 
-    el_opportunity_tradein.showButtonEnableRule = async function () {
-        if (Common.GetAttribute("el_id_showroom")) {
-            showroomId = common.GetLookupFieldValue("el_id_showroom").id;
-            var showroom = await common.RetrieveRecord("el_showroom", showroomId, options);
-            if (showroom != null) {
-                if (showroom.el_s_showroom_cod == SHOWROOM_CODE_BMC_TLV)
-                    return true;
-                else
-                    return false;
-            }
-        }
-
-    };
-
-    el_opportunity_tradein.searchOpenAgreement = function (CommandProperties) {
-        debugger;
-        var actions = {
-            'el_opportunity_tradein|NoRelationship|Form|el_opportunity_tradein.ButtonSellUsedCar': DOCTYPE_SELL_USED_CAR,
-            'el_opportunity_tradein|NoRelationship|Form|el_opportunity_tradein.ButtonSell0Km24': DOCTYPE_SELL_USED_CAR_0_KM_UNTIL_24_MONTHS,
-            'el_opportunity_tradein|NoRelationship|Form|el_opportunity_tradein.ButtonBuyUsed': DOCTYPE_BUY_USED_CAR,
-            'el_opportunity_tradein|NoRelationship|Form|el_opportunity_tradein.ButtonBuyNew0km': DOCTYPE_BUY_NEW_CAR,
-            'el_opportunity_tradein|NoRelationship|Form|el_opportunity_tradein.ButtonBuyNew0kmPrivate': DOCTYPE_BUY_NEW_CAR_OWNER,
-            'el_opportunity_tradein|NoRelationship|Form|el_opportunity_tradein.ButtonSell0KmAbove24': DOCTYPE_SELL_USED_CAR_0_KM_ABOVE_24_MONTHS,
-            'el_opportunity_tradein|NoRelationship|Form|el_opportunity_tradein.ButtonEurodriveSellUsedCar': DOCTYPE_EURODRIVE_SELL_USED_CAR,
-            'el_opportunity_tradein|NoRelationship|Form|el_opportunity_tradein.ButtonEurodriveBuyUsedCar': DOCTYPE_EURODRIVE_BUY_USED_CAR
-
-        };
-
-        var documentType = actions[CommandProperties.SourceControlId];
-
-        if (documentType) {
-            openTradeinAgreement(documentType);
-        }
-        else {
-            commons.OpenAlertDialog('Button Unknown');
-        }
-    };
 
     //el_opportunity_tradein.searchOpenAgreement = function (primaryControl, CommandProperties) {
     //    try {
@@ -810,12 +618,8 @@
     //};
 
 
-    el_opportunity_tradein.openTradeinAgreement = function (primaryControl, agreementType) {
+    el_opportunity_tradein.openTradeinAgreement = function (agreementType) {
         try {
-            var commons = new elad_commons();
-
-            commons.SetFormContext(primaryControl);
-
             var name = commons.GetFieldValue("el_name") ? commons.GetFieldValue("el_name") : commons.GetEntityName();
             var account = commons.GetLookupFieldValue("el_id_account");
             var extRaqs = "";
@@ -838,39 +642,41 @@
             commons.PageErrorHandler(error, "commons.openTradeinAgreement");
         }
     };
-    el_opportunity_tradein.openAccountForm = function (primaryControl) {
+    el_opportunity_tradein.openAccountForm = function () {
         try {
-            var commons = new elad_commons();
-
-            commons.SetFormContext(primaryControl);
-
-            if (commons.GetLookupFieldValue("el_id_account") && el_opportunity_tradein.accountFormIncomplete(primaryControl)) {
-                var parameters = commons.GetClientUrl() + "/main.aspx?";
-
-                parameters += "etc=" + ACCOUNT_TYPECODE;
-                parameters += "&extraqs=";
-                parameters += "&id=" + commons.GetLookupFieldValue("el_id_account").id;
-                parameters += "&newWindow=true&pagetype=entityrecord";
-
-                commons.openUrl(parameters, "", "status=0,resizable=1,top=100,left=100,width=1000px,height=600px");
+            if (commons.GetLookupFieldValue("el_id_account")) {
+                el_opportunity_tradein.accountFormIncomplete()
+                    .then(
+                        accountFormIsIncommplete => {
+                            if (accountFormIsIncommplete === true){
+                                var parameters = commons.GetClientUrl() + "/main.aspx?";
+                
+                                parameters += "etc=" + ACCOUNT_TYPECODE;
+                                parameters += "&extraqs=";
+                                parameters += "&id=" + commons.GetLookupFieldValue("el_id_account").id;
+                                parameters += "&newWindow=true&pagetype=entityrecord";
+                
+                                commons.openUrl(parameters, "", "status=0,resizable=1,top=100,left=100,width=1000px,height=600px");
+                            }
+                        },
+                        err => commons.SetFormNotification("Error retrieving account data into el_opportunity_tradein.openAccountForm : " + err.message, "ERROR", "el_opportunity_tradein.openAccountForm")
+                    )
             }
 
         } catch (error) {
             commons.PageErrorHandler(error, "el_opportunity_tradein.openAccountForm");
         }
     };
-    el_opportunity_tradein.accountFormIncomplete = function (primaryControl) {
+    el_opportunity_tradein.accountFormIncomplete = async function () {
         try {
-            var commons = new elad_commons();
-
-            commons.SetFormContext(primaryControl);
-
             var originatingTradeInleadid = commons.GetLookupFieldValue("el_id_tradein_lead");
             var accountLookup = commons.GetLookupFieldValue("el_id_account");
 
             if (accountLookup && accountLookup.id) {
-                var select = "?$select=el_b_refuse_email,el_b_refusetoidentify,_el_id_address_value,_el_id_type_code_value,el_s_first_name,el_s_idnumber_text,el_s_last_name,emailaddress1,telephone1,telephone2";
-                var account = commons.RetrieveRecordSync("account", commons.StripGuid(accountLookup.id), select);
+                //TODO: Add address reference (el_id_address isn't exist into Account)
+                // var select = "?$select=el_b_refuse_email,el_b_refusetoidentify,_el_id_address_value,_el_id_type_code_value,el_s_first_name,el_s_idnumber_text,el_s_last_name,emailaddress1,telephone1,telephone2";
+                var select = "?$select=el_b_refuse_email,el_b_refusetoidentify,_el_id_type_code_value,el_s_first_name,el_s_idnumber_text,el_s_last_name,emailaddress1,telephone1,telephone2";
+                var account = await commons.RetrieveRecord("account", commons.StripGuid(accountLookup.id), select);
 
                 if (account && originatingTradeInleadid) {
                     if (!account.el_s_first_name) {
@@ -893,9 +699,9 @@
                         return true;
                     }
 
-                    if (account._el_id_address_value == null) {
-                        return true;
-                    }
+                    // if (account._el_id_address_value == null) {
+                    //     return true;
+                    // }
 
                     if (!account.el_b_refusetoidentify && (!account._el_id_type_code_value || !account.el_s_idnumber_text)) {
                         return true;
@@ -910,33 +716,11 @@
             return false;
         }
     };
-    el_opportunity_tradein.sendSmsTried2ReachYouRibbon = function (primaryControl) {
-        try {
-            var commons = new elad_commons();
-
-            commons.SetFormContext(primaryControl);
-
-            commons.ExecuteWorkflow(
-                Const.Workflow.el_opportunity_tradein["שלח הודעת SMS - ניסינו להשיגך - תהליך טרייד אין"],
-                commons.GetRecordId(),
-                function (result) {
-                    commons.OpenAlertDialog("נשלחה הודעה ללקוח");
-                },
-                function (error) {
-                    commons.PageErrorHandler(error, "el_opportunity_tradein.sendSmsTried2ReachYouRibbon.ExecuteWorkflow");
-                }
-            );
-
-        } catch (error) {
-            commons.PageErrorHandler(error, "el_opportunity_tradein.sendSmsTried2ReachYouRibbon");
-        }
-    };
-
     el_opportunity_tradein.updatePhoneShowroom = async function () {
 
         try {
             var showroomphone;
-            var showroomId = common.GetLookupId("el_id_showroom");
+            var showroomId = commons.GetLookupId("el_id_showroom");
             var options =
                 "?$select=" +
                 "el_s_phone," +
@@ -946,7 +730,7 @@
                 "el_el_s_phone_dongfeng," +
                 "el_s_phone_eurodrive";
 
-            var showroom = await common.RetrieveRecord("el_showroom", showroomId, options);
+            var showroom = await commons.RetrieveRecord("el_showroom", showroomId, options);
             showroom = showroom != null ? showroom : null;
             if (showroom != null) {
                 if (showroom.el_s_phone != null)
@@ -962,12 +746,383 @@
                 else
                     showroomphone = showroom.el_s_phone_eurodrive;
 
-                common.SetFieldValue(el_s_showroom_phonenumber, showroomphone);
+                commons.SetFieldValue("el_s_showroom_phonenumber", showroomphone);
             }
 
         } catch (error) {
             commons.PageErrorHandler(error, "el_opportunity_tradein.updatePhoneShowroom");
         }
     }
-})((window.el_opportunity_tradein = window.el_opportunity_tradein || {}))
 
+    el_opportunity_tradein.setTestDriveFields = function () {
+        commons.ClearNotification("el_l_testdrive");
+        
+        el_opportunity_tradein.setTestDriveFieldsDoc();
+
+        if (commons.GetFieldValue("el_l_offer_testdrive") == TESTDRIVE_OFFER_YES) {
+
+            commons.SetSectionVisibility("testDriveTab", "testdrive", true);
+
+            commons.SetRequiredLevel("el_l_testdrive", "required");
+            commons.SetFieldValue("el_b_offer_testdrive", true);
+            commons.SetVisible("el_b_document_testdrive", true);
+        }
+        else {
+            commons.SetSectionVisibility("testDriveTab", "testdrive", false);
+            commons.SetRequiredLevel("el_l_testdrive", "none");
+            commons.SetFieldValue("el_b_offer_testdrive", false);
+            commons.SetVisible("el_b_document_testdrive", false);
+            commons.SetFieldValue("el_l_testdrive", null);
+        }
+    }
+
+
+
+    el_opportunity_tradein.Ribbon = el_opportunity_tradein.Ribbon || {};
+
+    el_opportunity_tradein.Ribbon.reopenTradeinProcess = function (primaryControl) {
+        try {
+            debugger;
+            if (!commons) {
+                commons = new elad_commons();
+                commons.SetFormContext(primaryControl);
+            }
+
+            commons.OpenProgressIndicator("פותח תהליך טרייד אין מחדש...");
+
+            var entityId = commons.StripGuid(commons.GetCurrentEntityId());
+            var entityName = commons.GetCurrentEntityName();
+
+            var updateEntity = {
+                statecode: TRADEIN_OPP_STATE_ACTIVE,
+                statuscode: TRADEIN_OPP_STATUS_OPPORTUNITY
+            };
+
+            commons.updateRecord(entityName, entityId, updateEntity)
+                .then(
+                    function (result) {
+                        commons.CloseProgressIndicator();
+                    },
+                    err => {
+                        commons.CloseProgressIndicator();
+                        commons.SetFormNotification("Error on Ribbon.reopenTradeinProcess => updateRecord: " + err.message, commons.FormNotificationLevel.ERROR, "Ribbon.reopenTradeinProcess");
+                    }
+                );
+
+
+        } catch (error) {
+            commons.CloseProgressIndicator();
+            commons.PageErrorHandler(error, "el_opportunity_tradein.reopenTradeinProcess");
+        }
+    };
+
+    el_opportunity_tradein.Ribbon.deactivateTradeinOpportunity = function (primaryControl) {
+        try {
+            debugger;
+            if (!commons) {
+                commons = new elad_commons();
+                commons.SetFormContext(primaryControl);
+            }
+
+
+            var stateCode = 1;
+            var statuscode = TRADEIN_OPPORTUNITY_STATUS_LOST;
+
+            commons.SetVisible("el_l_closure_reason", true);
+            commons.SetVisible("el_s_closure_notes", true);
+
+            if (!commons.GetFieldValue("el_s_closure_notes") || !commons.GetFieldValue("el_l_closure_reason")) {
+                commons.OpenAlertDialog("נא למלא סיבת הפסד והערות סגירה לפני סגירת התהליך");
+
+                if (!commons.GetFieldValue("el_l_closure_reason")) {
+                    commons.SetFocus("el_l_closure_reason");
+                }
+
+                if (!commons.GetFieldValue("el_s_closure_notes")) {
+                    commons.SetFocus("el_s_closure_notes");
+                }
+            }
+            else {
+
+                commons.OpenProgressIndicator("סגירת תהליך טרייד אין...");
+
+                var updateEntity = {
+                    statecode: 1,
+                    statuscode: TRADEIN_OPPORTUNITY_STATUS_LOST
+                };
+
+                commons.updateRecord(commons.GetCurrentEntityName(), commons.StripGuid(commons.GetCurrentEntityId()), updateEntity)
+                    .then(
+                        function (result) {
+                            commons.CloseProgressIndicator();
+                        },
+                        err => {
+                            commons.CloseProgressIndicator();
+                            commons.SetFormNotification("Error on Ribbon.deactivateTradeinOpportunity => updateRecord: " + err.message, commons.FormNotificationLevel.ERROR, "Ribbon.deactivateTradeinOpportunity");
+                        }
+                    );
+
+            }
+
+        } catch (error) {
+            commons.CloseProgressIndicator();
+            commons.PageErrorHandler(error, "el_opportunity_tradein.deactivateTradeinOpportunity");
+        }
+    };
+    
+    el_opportunity_tradein.Ribbon.addNewTradeinDeal = async function (primaryControl) {
+        try {
+            debugger;
+            if (!commons) {
+                commons = new elad_commons();
+                commons.SetFormContext(primaryControl);
+            }
+
+            let isTradeinSellDealExists = await el_opportunity_tradein.tradeinSellDealExists();
+            if (isTradeinSellDealExists) {
+                commons.OpenAlertDialog("לא ניתן לפתוח יותר מעסקת מכירה אחת בתהליך טרייד אין");
+                return;
+            }
+
+            var as400accountcode = "";
+            var accountId = commons.GetLookupId("el_id_account");
+
+            if (accountId) {
+                var carPurchasesResults = await commons.RetrieveMultipleRecords("el_car_purchase", "?$select=el_s_as400lakcod&$orderby=createdon desc&$filter=el_l_purchase_type eq 1 and (el_l_order_status ne 3 and el_l_order_status ne 4) and _el_id_account_value eq " + commons.StripGuid(accountId));
+
+                if (carPurchasesResults && carPurchasesResults.length >= 1) {
+                    as400accountcode = carPurchasesResults[0].el_s_as400lakcod;
+                }
+            }
+
+            if (!as400accountcode) {
+                var tradeinDealsResults = await commons.RetrieveMultipleRecords("el_tradein_deal", "?$select=el_s_as400lakcod_buyer&$filter=_el_id_opportunity_tradein_value eq " + commons.StripGuid(commons.GetCurrentEntityId()));
+
+                if (tradeinDealsResults && tradeinDealsResults.length >= 1) {
+                    as400accountcode = tradeinDealsResults[0].el_s_as400lakcod_buyer;
+                }
+            }
+
+            commons.showOpenLegacyRibbon(TRADEIN_SYSTEM_URL_MAAGAR, "el_id_account", null, as400accountcode);
+
+        } catch (error) {
+            commons.PageErrorHandler(error, "el_opportunity_tradein.addNewTradeinDeal");
+        }
+    };
+
+    el_opportunity_tradein.Ribbon.addTradeinQuot = function (primaryControl) {
+        try {
+            debugger;
+            if (!commons) {
+                commons = new elad_commons();
+                commons.SetFormContext(primaryControl);
+            }
+
+            commons.showOpenLegacyRibbon(TRADEIN_QUOT, "el_id_account", null, null);
+
+        } catch (error) {
+            commons.PageErrorHandler(error, "el_opportunity_tradein.addTradeinQuot");
+        }
+    };
+
+    el_opportunity_tradein.Ribbon.assignCar = function (primaryControl) {
+        try {
+            debugger;
+            if (!commons) {
+                commons = new elad_commons();
+                commons.SetFormContext(primaryControl);
+            }
+
+            return el_opportunity_tradein.tradeinCarAssigned().then(function (carAssigned) {
+
+                if (carAssigned) {
+                    commons.OpenAlertDialog("לא ניתן לשבץ יותר מרכב אחד בתהליך טרייד אין");
+                    return;
+                }
+
+                var stars = "\n*******************************************************";
+                var blanks = "\n                                                      ";
+
+                return el_opportunity_tradein.accountRefuseToIdentify()
+                    .then(
+                        function (refuseToIdentify) {
+
+                            if (refuseToIdentify) {
+                                var txt1 = "\nלא ניתן לשבץ  רכב  ללקוח   שמסרב   להזדהות\n";
+                                var txt2 = "\nנא לעדכן מס' ת.ז ללקוח\n";
+
+                                commons.OpenAlertDialog(unescape("%u200F%u200F") + stars + stars + blanks + txt1 + txt2 + stars + stars + unescape("%u200F"));
+
+                                return;
+                            }
+
+                            return el_opportunity_tradein.accountHasNoIdNumber()
+                                .then(
+                                    function (hasNoIdNumber) {
+
+                                        if (!refuseToIdentify && hasNoIdNumber) {
+                                            var txt3 = "\nלא ניתן  לשבץ  רכב   ללקוח   ללא מס' ת.ז   \n";
+                                            var txt4 = "\nנא לעדכן מס' ת.ז ללקוח\n";
+
+                                            commons.OpenAlertDialog(unescape("%u200F%u200F") + stars + stars + blanks + txt3 + txt4 + stars + stars + unescape("%u200F"));
+
+                                            return;
+                                        }
+
+                                        var as400accountcode = "";
+
+                                        commons.showOpenLegacyRibbon(TRADEIN_SYSTEM_URL_ASSIGN, "el_id_account", null, as400accountcode);
+                                    });
+                });
+            });
+
+        } catch (error) {
+            commons.PageErrorHandler(error, "el_opportunity_tradein.assignCar");
+        }
+    };
+
+    el_opportunity_tradein.Ribbon.sendSmsTried2ReachYouRibbon = function (primaryControl) {
+        try {
+            debugger;
+            if (!commons) {
+                commons = new elad_commons();
+                commons.SetFormContext(primaryControl);
+            }
+            
+            commons.OpenProgressIndicator("שליחת הודע מסוג 'ניסינו להשיגך,'...");
+
+            commons.ExecuteWorkflow( Const.Workflow.el_opportunity_tradein["שלח הודעת SMS - ניסינו להשיגך - תהליך טרייד אין"], commons.GetCurrentEntityId())
+                .then(
+                    function (result) {
+                        commons.CloseProgressIndicator();
+                        commons.OpenAlertDialog("נשלחה הודעה ללקוח");
+                    },
+                    function (error) {
+                        commons.CloseProgressIndicator();
+                        commons.PageErrorHandler(error, "el_opportunity_tradein.sendSmsTried2ReachYouRibbon.ExecuteWorkflow");
+                    }
+                );
+
+        } catch (error) {
+            commons.CloseProgressIndicator();
+            commons.PageErrorHandler(error, "el_opportunity_tradein.sendSmsTried2ReachYouRibbon");
+        }
+    };
+
+    el_opportunity_tradein.Ribbon.searchOpenAgreement = function (CommandProperties, primaryControl) {
+        debugger;
+        if (!commons) {
+            commons = new elad_commons();
+            commons.SetFormContext(primaryControl);
+        }
+
+        var actions = {
+            'el_opportunity_tradein|NoRelationship|Form|el_opportunity_tradein.ButtonSellUsedCar': DOCTYPE_SELL_USED_CAR,
+            'el_opportunity_tradein|NoRelationship|Form|el_opportunity_tradein.ButtonSell0Km24': DOCTYPE_SELL_USED_CAR_0_KM_UNTIL_24_MONTHS,
+            'el_opportunity_tradein|NoRelationship|Form|el_opportunity_tradein.ButtonBuyUsed': DOCTYPE_BUY_USED_CAR,
+            'el_opportunity_tradein|NoRelationship|Form|el_opportunity_tradein.ButtonBuyNew0km': DOCTYPE_BUY_NEW_CAR,
+            'el_opportunity_tradein|NoRelationship|Form|el_opportunity_tradein.ButtonBuyNew0kmPrivate': DOCTYPE_BUY_NEW_CAR_OWNER,
+            'el_opportunity_tradein|NoRelationship|Form|el_opportunity_tradein.ButtonSell0KmAbove24': DOCTYPE_SELL_USED_CAR_0_KM_ABOVE_24_MONTHS,
+            'el_opportunity_tradein|NoRelationship|Form|el_opportunity_tradein.ButtonEurodriveSellUsedCar': DOCTYPE_EURODRIVE_SELL_USED_CAR,
+            'el_opportunity_tradein|NoRelationship|Form|el_opportunity_tradein.ButtonEurodriveBuyUsedCar': DOCTYPE_EURODRIVE_BUY_USED_CAR
+
+        };
+
+        var documentType = actions[CommandProperties.SourceControlId];
+
+        if (documentType) {
+            openTradeinAgreement(documentType);
+        }
+        else {
+            commons.OpenAlertDialog('Button Unknown');
+        }
+    };
+
+    el_opportunity_tradein.Ribbon.AddFileRibbon = function (primaryControl) {
+        debugger;
+        if (!commons) {
+            commons = new elad_commons();
+            commons.SetFormContext(primaryControl);
+        }
+        
+        var name;
+        if (commons.GetFieldValue("name"))
+            name = commons.GetFieldValue("name");
+        else if (commons.GetFieldValue("el_name"))
+            name = commons.GetFieldValue("el_name");
+        else if (commons.GetFieldValue("title"))
+            name = commons.GetFieldValue("title");
+        else
+            name = commons.GetCurrentEntityName();
+
+        var pageInput = {
+            pageType: "entityrecord",
+            entityName: "el_doc",
+            formParameters: {
+                "pId": commons.GetCurrentEntityId(),
+                "pName": name,
+                "pType": commons.GetCurrentEntityName()
+            }
+        }
+
+        var navigationOptions = {
+            target: 2, // 2 opens the page as a modal dialog
+            position: 1 // 1 for center, 2 for side pane
+        };
+
+
+        //To Check
+        commons.NavigateTo(pageInput, navigationOptions);
+    }
+
+    
+
+
+        
+    el_opportunity_tradein.Ribbon.EnableRules = el_opportunity_tradein.Ribbon.EnableRules || {};
+
+    el_opportunity_tradein.Ribbon.EnableRules.showButtonEnableRule = async function (primaryControl) {
+        if (!commons) {
+            commons = new elad_commons();
+            commons.SetFormContext(primaryControl);
+        }
+
+        if (commons.GetAttribute("el_id_showroom")) {
+            showroomId = commons.GetLookupFieldValue("el_id_showroom").id;
+            var showroom = await commons.RetrieveRecord("el_showroom", showroomId, options);
+            if (showroom != null) {
+                if (showroom.el_s_showroom_cod == SHOWROOM_CODE_BMC_TLV)
+                    return true;
+                else
+                    return false;
+            }
+        }
+    };
+
+    el_opportunity_tradein.Ribbon.EnableRules.enableTradeInRibbon = function (primaryControl) {
+        return new Promise((resolve, reject) => {
+            try {
+                debugger;
+                if (!commons) {
+                    commons = new elad_commons();
+                    commons.SetFormContext(primaryControl);
+                }
+                var formState = commons.GetFormType();
+                if (formState != FORMSTATE_CREATE) {
+                    commons.UserHasRoleOrIsAdmin(OPEN_TRADEIN_SYSTEM_ROLE).then(
+                        function (hasRole) {
+                            resolve(hasRole);
+                        }
+                );
+                } else {
+                    resolve(false);
+                }
+    
+            } catch (error) {
+                commons.PageErrorHandler(error, "el_opportunity_tradein.enableTradeInRibbon");
+                resolve(false);
+            }
+        })
+    };
+
+})((window.el_opportunity_tradein = window.el_opportunity_tradein || {}))
