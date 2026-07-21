@@ -1,3 +1,49 @@
+//////////////////////                      CHECK LIST                     //////////////////////////
+
+
+/**
+ * 1. Handling errors on the forms (On Load, OnChange, OnSave)  => Done
+ *      1.1. el_account.onLoadEvents() - Done.
+ *      1.2. el_account.onChangeEvents() - Done.
+ *      1.3. el_account.onSaveEvents() - Done.
+ * 
+ * 2. Based on Template (from ...\WebResources\Global\template.js) need to change a functions signature to Ribbon's enable rules and actions el_account.Ribbon + el_account.Ribbon.EnableRuls => Done
+ *      2.1. Find all Actions Methods of ribbons and change a signiture to el_account.Ribbon.METHOD_NAME => Done
+ *      2.2. Find all Enable Rules Methods of ribbons and change a signiture to el_account.Ribbon.EnableRules.ENABLERULES_FUNCTION_NAME => Done
+ * 
+ * 3. CHANGE all functions names into Ribbon WorkBrench for Account ribbons + enable ruls  => Done
+ *      3.1. Pass a PrimaryControl parameter to all functions that are used in the ribbon workbench => Done
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ * ////                                        CONTINUE FROM HERE              //////
+ * 
+ * 
+ * 4. Handling exceptions for ribbons actions and ruls on form   => TO DO
+ *      4.1. Handle all exceptions\error on the ribbon actions and ruls functions (FormNotifications / PageErrorHandler / console) . => TO DO
+ *      4.1. Check if all enable ruls catched by debugger.  => Done
+ * 
+ *          
+*           {
+*             4.2. Check if all actions catched by debugger.  => TO DO
+ * 
+ *              4.2.1. Can't catch an Save And Close action on a Form   => TO DO FIX
+ *              4.2.2. Button still unchanged and not dissabled after clicking   => TO DO FIX
+ * 
+ *              4.2.3. The window opened by click on "כתובת" is incorrect window => TO DO : Change a way to open an window
+*           }
+ */
+
+
+
+//////////////////////                      CHECK LIST                     //////////////////////////
+
+
+
 (function (el_account) {
 
     var IS_DUPLICATION_CHECKED = false;
@@ -52,26 +98,15 @@
     }
 
     el_account.onChangeEvents = function () {
+
+        commons.AddOnChangeMultipleFields(["el_s_first_name", "el_s_last_name"], el_account.setNameFieldValue);
+        commons.AddOnChangeMultipleFields(["telephone1", "telephone2", "fax"], el_account.validateAccountPhonesFields);
+
         if (commons.GetAttribute("el_b_refusetoidentify"))
             commons.AddOnChange("el_b_refusetoidentify", el_account.setIdFieldsRequirementLevel);
 
         if (commons.GetAttribute("el_b_refuse_email"))
             commons.AddOnChange("el_b_refuse_email", el_account.setEmailFieldRequirementLevel);
-
-        if (commons.GetAttribute("el_s_first_name"))
-            commons.AddOnChange("el_s_first_name", el_account.setNameFieldValue);
-
-        if (commons.GetAttribute("el_s_last_name"))
-            commons.AddOnChange("el_s_last_name", el_account.setNameFieldValue);
-
-        if (commons.GetAttribute("telephone1"))
-            commons.AddOnChange("telephone1", el_account.validateAccountPhonesFields);
-
-        if (commons.GetAttribute("telephone2"))
-            commons.AddOnChange("telephone2", el_account.validateAccountPhonesFields);
-
-        if (commons.GetAttribute("fax"))
-            commons.AddOnChange("fax", el_account.validateAccountPhonesFields);
 
         if (commons.GetAttribute("el_s_idnumber_text"))
             commons.AddOnChange("el_s_idnumber_text", el_account.validateIdNumberField);
@@ -171,23 +206,6 @@
         }
     }
 
-    el_account.showDeactivateButtonForAdmin = function (primaryControl) {
-        if (!commons) {
-            commons = new elad_commons()
-            commons.SetFormContext(primaryControl)
-        }
-
-        commons.UserHasRoleOrIsAdmin()
-            .then(
-                function (hasRole) {
-                    if (hasRole) {
-                        return true;
-                    }
-                    return false;
-                }
-            )
-    }
-
     el_account.disableIdDetailsFields = function () {
         commons.PageClearMessages("OpenOrderNotification");
 
@@ -260,16 +278,16 @@
         try {
             var accountId = commons.GetCurrentEntityId();
             if (accountId) {
-
+                accountId = commons.StripGuid(accountId);
                 //sales opened order
-                var opts = commons.Query("opportunityid", "(_customerid_value eq " + accountId + " and (statuscode eq '" + Enum.opportunity.statuscode.OpenOrder + "' or statuscode eq '" + Enum.opportunity.statuscode.FinalPayment + "')) ");
+                var opts = commons.Query("opportunityid", "(_customerid_value eq '" + accountId + "' and (statuscode eq " + Enum.opportunity.statuscode.OpenOrder + " or statuscode eq " + Enum.opportunity.statuscode.FinalPayment + ")) ");
                 var oppsResults = await commons.RetrieveMultipleRecords("opportunity", opts, null, true)
                 if (oppsResults && oppsResults.length >= 1) {
                     return Const.Runtime.Account.AccountHasOpenedOrder;
                 }
 
                 //tradein opened order
-                opts = commons.Query("el_opportunity_tradeinid", "(_el_id_account_value eq '" + accountId + "' and (statuscode eq '" + Enum.el_opportunity_tradein.statuscode.OpenOrder + "' or statuscode eq " + Enum.el_opportunity_tradein.statuscode.WaitingForAFutureCar + "')) ")//"?$select=?$filter=";
+                opts = commons.Query("el_opportunity_tradeinid", "(_el_id_account_value eq '" + accountId + "' and (statuscode eq " + Enum.el_opportunity_tradein.statuscode.OpenOrder + " or statuscode eq " + Enum.el_opportunity_tradein.statuscode.WaitingForAFutureCar + ")) ")//"?$select=?$filter=";
                 var tradeinOpsResults = await commons.RetrieveMultipleRecords("el_opportunity_tradein", opts, null, true)
                 if (tradeinOpsResults && tradeinOpsResults.length >= 1) {
                     return Const.Runtime.Account.AccountHasOpenedOrder;
@@ -278,12 +296,12 @@
                 //sales order
                 opts = commons.Query("el_car_purchaseid", "_el_id_account_value eq '" + accountId + "'");
                 var carPurchaseResults = await commons.RetrieveMultipleRecords("el_car_purchase", opts, null, true)
-                if (results && results.length >= 1) {
+                if (carPurchaseResults && carPurchaseResults.length >= 1) {
                     return Const.Runtime.Account.AccountHasOrder;
                 }
 
                 //tradein order
-                opts = commons.Query("el_tradein_dealid", "(_el_id_account_seller_value eq " + accountId + " or _el_id_as400_account_buyer_value eq " + accountId + ")");
+                opts = commons.Query("el_tradein_dealid", "(_el_id_account_seller_value eq '" + accountId + "' or _el_id_as400_account_buyer_value eq '" + accountId + "')");
                 var tradeinDealsResults = await commons.RetrieveMultipleRecords("el_tradein_deal", opts, null, true)
                 if (tradeinDealsResults && tradeinDealsResults.length >= 1) {
                     return Const.Runtime.Account.AccountHasOrder;
@@ -365,13 +383,13 @@
     el_account.showConnectionsNotification = function () {
         commons.PageClearMessages('connMsg');
         var accountId = commons.GetCurrentEntityId();
-        var accountOpts = "?$select=accountid&$expand=account_connections1($select=connectionid,statecode)&$filter=(accountid eq '" + accountId + "' and (account_connections1/any(o1:(o1/connectionid ne null)))";
+        var accountOpts = "?$select=accountid&$expand=account_connections1($select=connectionid,statecode)&$filter=(accountid eq '" + accountId + "') and (account_connections1/any(o1:(o1/connectionid ne null)))";
         commons.RetrieveMultipleRecords("account", accountOpts, null, true)
             .then(
                 function (results) {
-                    if (results && results[0] && results[0].account_connections1 && results[0].account_connections1.results[0] && results[0].account_connections1.results[0].ConnectionId) {
-                        for (var i = 0; i < results[0].account_connections1.results.length; i++) {
-                            if (results[0].account_connections1.results[i].StateCode.Value == 0) {
+                    if (results && results[0] && results[0].account_connections1 && results[0].account_connections1[0] && results[0].account_connections1[0].connectionid) {
+                        for (var i = 0; i < results[0].account_connections1.length; i++) {
+                            if (results[0].account_connections1[i].statecode == 0) {
                                 commons.SetFormNotification(Const.Message.Hebrew.AccountHasConnectionsNote, commons.FormNotificationLevel.INFO, 'connMsg');
                                 break;
                             }
@@ -650,7 +668,8 @@
     el_account.setClubMemberSection = function () {
         if (commons.GetFieldValue("el_l_attribute") == Enum.account.el_l_attribute.AmitHeverMember) {
             commons.SetTabVisibility("tab_8", true);
-            commons.SetTabDisplayState("tab_8", 'expanded');
+            
+            //commons.SetTabDisplayState("tab_8", 'expanded');
 
             commons.SetRequiredLevel("el_l_member_relationship", "required");
             if (!commons.GetFieldValue("el_l_member_relationship"))
@@ -666,7 +685,7 @@
     }
 
     el_account.validateMemberIdNumber = function () {
-        var el_n_member_idnumber = comon.GetFieldValue("el_n_member_idnumber");
+        var el_n_member_idnumber = commons.GetFieldValue("el_n_member_idnumber");
         if (!commons.IsValidIsraeliId(el_n_member_idnumber)) {
             commons.OpenAlertDialog(Const.Message.Hebrew.PleaseEnterAValidID);
             // commons.OpenAlertDialog(Const.Message.Hebrew.PleaseEnterAValidID);
@@ -698,29 +717,12 @@
 
     // }
 
-    el_account.accountShowSaveAndCloseButton = function () {
-        var accountOpener = commons.GetOpenerEntityInfo();
-        if (accountOpener && (accountOpener.openerType == Const.EntityLogicalName.Opportunity || accountOpener.openerType == Const.EntityLogicalName.TradeInOpportunity)) {
-            return true;
-        }
-        return false;
-    }
-
     el_account.accountShowSaveAndCloseButtonS = function () {
         var accountOpener = commons.GetOpenerEntityInfo();
         if (accountOpener && accountOpener.openerType == Const.EntityLogicalName.Incident) {
             return true;
         }
         return false;
-    }
-
-    el_account.accountSaveAndCLose = function () {
-        if (!commons) { commons = new elad_commons() }
-
-        if (el_account.validateEmailField() && el_account.validateId()) {
-            el_account.updateAccountLookupOnOpportunityForm();
-            commons.SaveChenges().then(commons.ClosePage);
-        }
     }
 
     el_account.updateAccountLookupOnOpportunityForm = function () {
@@ -976,42 +978,6 @@
         }
     }
 
-    el_account.updateAccountSyncField = function () {
-        ///TFS Task 34
-        ///Called from Ribbon
-        var el_b_sync = commons.GetFieldValue("el_b_sync");
-        if (el_b_sync != true) {
-            commons.SetFieldValue("el_b_sync", true);
-        }
-    }
-
-    //To Check - if they open a in a correct way.
-    el_account.openAddress = function () {
-        var addressId = commons.GetLookupId("el_id_address");
-        var clientUrl = commons.GetClientUrl();
-        if (addressId) {
-            var parameters = clientUrl + "/main.aspx?";
-            parameters += "etc=" + Enum.EntityTypeCode.el_address;
-            parameters += "&extraqs=";
-            parameters += "&id=" + addressId;
-            parameters += "&newWindow=true&pagetype=entityrecord";
-            // window.open(parameters, "", "status=0,resizable=1,top=100,left=100,width=1000px,height=600px");
-
-            commons.openUrl(parameters, { height: 600, width: 1000 });
-
-        }
-        else {
-            var parameters = clientUrl + "/main.aspx?";
-            parameters += "etc=" + Enum.EntityTypeCode.el_address;
-            parameters += "&extraqs=%3f_CreateFromId%3d%26_CreateFromType%3d1%26_searchText%3d%26etc%3d";
-            parameters += Enum.EntityTypeCode.el_address;
-            parameters += "&newWindow=true&pagetype=entityrecord";
-            // window.open(parameters, "", "status=0,resizable=1,top=100,left=100,width=1000px,height=600px");
-
-            commons.openUrl(parameters, { height: 600, width: 1000 });
-        }
-        commons.SetSubmitMode("el_id_address", "always");
-    }
 
     // function el_account.setIdTypeDefaultValue() {
     //     if (commons.GetFormType() == Enum.FormType.Create) { //create form only
@@ -1038,47 +1004,27 @@
     //     }
     // }
 
-    //To Check -> Check if confirm button is working correct
-    el_account.enableIdDetailsForUpdateRibbon = function () {
-        commons.OpenConfirmDialog(Const.Message.Hebrew.EditAccountIdentificationConfirmation, "")
-            .then(
-                function (success) {
-                    if (success.confirmed) {
-                        commons.SetDisabled("el_s_last_name", false);
-                        commons.SetDisabled("el_s_first_name", false);
-                        commons.SetDisabled("el_id_type_code", false);
-                    }
-                }
-            )
-    }
-
-    el_account.enableIdDetailsForUpdateEnableRule = function () {
-        var formName = commons.GetCurrentItem().getLabel();
-        var isRefuse = commons.GetFieldValue("el_b_refusetoidentify");
-        var isEnabled = !el_account.hasActiveOpportunity() && formName == Const.account.formName.Account
-            && !isRefuse ? true : false;
-        return isEnabled;
-    }
-
     el_account.hasActiveOpportunity = function () {
-        var accountId = commons.GetCurrentEntityId();
+        var accountId = commons.StripGuid(commons.GetCurrentEntityId());
         if (accountId) {
-            var oppOpts = commons.Query("opportunityid", "(_customerid_value eq " + accountId + " and (statuscode eq " + Enum.opportunity.statuscode.OpenOrder + " or statuscode eq '" + Enum.opportunity.statuscode.FinalPayment + "')) ");
+            var oppOpts = commons.Query("opportunityid", "(_customerid_value eq " + accountId + " and (statuscode eq " + Enum.opportunity.statuscode.OpenOrder + " or statuscode eq " + Enum.opportunity.statuscode.FinalPayment + ")) ");
             commons.RetrieveMultipleRecords("opportunity", oppOpts, null, true)
                 .then(
                     function (results) {
                         if (results && results.length >= 1) {
                             return true;
                         }
+                        return false;
                     },
                     function (error) {
                         commons.SetFormNotification("Response is failed in commons.RetrieveMultipleRecords('opportunities'): " + error.message, commons.FormNotificationLevel.ERROR, 'Fault response from commons.RetrieveMultipleRecords("opportunities")');
+                        return false;
                     }
                 )
-                .catch(error =>
-                    commons.SetFormNotification("Error on retrieving an 'opportunities' into el_account.hasActiveOpportunity(): " + error.message, commons.FormNotificationLevel.ERROR, 'el_account.hasActiveOpportunity()')
-                )
-            return false;
+                .catch(error => {
+                    commons.SetFormNotification("Error on retrieving an 'opportunities' into el_account.hasActiveOpportunity(): " + error.message, commons.FormNotificationLevel.ERROR, 'el_account.hasActiveOpportunity()');
+                    return false;
+                });
         }
     }
 
@@ -1122,10 +1068,6 @@
                 }
             }
         }
-    }
-
-    el_account.confirmationMailingRibbon = function () {
-        el_account.openDigitalDocument();
     }
 
     el_account.openDigitalDocument = function () {
@@ -1177,4 +1119,144 @@
         }
     }
 
-})((window.el_account = window.el_account || {}))
+
+    el_account.Ribbon = el_account.Ribbon || {};
+
+    el_account.Ribbon.updateAccountSyncField = function (primaryControl) {
+        debugger;
+        if (!commons) {
+            commons = new elad_commons();
+            commons.SetFormContext(primaryControl);
+        }
+        ///TFS Task 3accountSaveAndCLose4
+        ///Called from Ribbon
+        var el_b_sync = commons.GetFieldValue("el_b_sync");
+        if (el_b_sync != true) {
+            commons.SetFieldValue("el_b_sync", true);
+        }
+    }
+
+    el_account.Ribbon.confirmationMailingRibbon = function (primaryControl) {
+        debugger;
+        if (!commons) {
+            commons = new elad_commons();
+            commons.SetFormContext(primaryControl);
+        }
+        el_account.openDigitalDocument();
+    }
+
+    //To Check -> Check if confirm button is working correct
+    el_account.Ribbon.enableIdDetailsForUpdateRibbon = function (primaryControl) {
+        debugger;
+        if (!commons) {
+            commons = new elad_commons();
+            commons.SetFormContext(primaryControl);
+        }
+
+        commons.OpenConfirmDialog(Const.Message.Hebrew.EditAccountIdentificationConfirmation, "")
+            .then(
+                function (success) {
+                    if (success.confirmed) {
+                        commons.SetDisabled("el_s_last_name", false);
+                        commons.SetDisabled("el_s_first_name", false);
+                        commons.SetDisabled("el_id_type_code", false);
+                    }
+                }
+            )
+    }
+
+    el_account.Ribbon.accountSaveAndCLose = function (primaryControl) {
+        debugger;
+        if (!commons) {
+            commons = new elad_commons();
+            commons.SetFormContext(primaryControl)
+        }
+
+        if (el_account.validateEmailField() && el_account.validateId()) {
+            el_account.updateAccountLookupOnOpportunityForm();
+            commons.SaveChenges().then(commons.ClosePage);
+        }
+    }
+
+    //To Check - if they open a in a correct way.
+    el_account.Ribbon.openAddress = function (primaryControl) {
+        debugger;
+        if (!commons) {
+            commons = new elad_commons();
+            commons.SetFormContext(primaryControl);
+        }
+        var addressId = commons.GetLookupId("el_id_address");
+        var clientUrl = commons.GetClientUrl();
+        if (addressId) {
+            var parameters = clientUrl + "/main.aspx?";
+            parameters += "etc=" + Enum.EntityTypeCode.el_address;
+            parameters += "&extraqs=";
+            parameters += "&id=" + addressId;
+            parameters += "&newWindow=true&pagetype=entityrecord";
+            // window.open(parameters, "", "status=0,resizable=1,top=100,left=100,width=1000px,height=600px");
+
+            commons.openUrl(parameters, { height: 600, width: 1000 });
+
+        }
+        else {
+            var parameters = clientUrl + "/main.aspx?";
+            parameters += "etc=" + Enum.EntityTypeCode.el_address;
+            parameters += "&extraqs=%3f_CreateFromId%3d%26_CreateFromType%3d1%26_searchText%3d%26etc%3d";
+            parameters += Enum.EntityTypeCode.el_address;
+            parameters += "&newWindow=true&pagetype=entityrecord";
+            // window.open(parameters, "", "status=0,resizable=1,top=100,left=100,width=1000px,height=600px");
+
+            commons.openUrl(parameters, { height: 600, width: 1000 });
+        }
+        commons.SetSubmitMode("el_id_address", "always");
+    }
+
+
+    el_account.Ribbon.EnableRules = el_account.Ribbon.EnableRules || {};
+
+    el_account.Ribbon.EnableRules.showDeactivateButtonForAdmin = function (primaryControl) {
+        if (!commons) {
+            commons = new elad_commons();
+            commons.SetFormContext(primaryControl);
+        }
+
+        return commons.UserHasRoleOrIsAdmin()
+            .then(
+                function (hasRole) {
+                    if (hasRole) {
+                        return true;
+                    }
+                    return false;
+                }
+            )
+    }
+
+    el_account.Ribbon.EnableRules.enableIdDetailsForUpdateEnableRule = function (primaryControl) {
+        if (!commons) {
+            commons = new elad_commons();
+            commons.SetFormContext(primaryControl);
+        }
+
+        var formName = commons.GetCurrentItem().getLabel();
+        var isRefuse = commons.GetFieldValue("el_b_refusetoidentify");
+        var isEnabled = !el_account.hasActiveOpportunity() && formName == Const.account.formName.Account
+            && !isRefuse ? true : false;
+        return isEnabled;
+    }
+
+    el_account.Ribbon.EnableRules.accountShowSaveAndCloseButton = function (primaryControl) {
+        if (!commons) {
+            commons = new elad_commons();
+            commons.SetFormContext(primaryControl);
+        }
+
+        var accountOpener = commons.GetOpenerEntityInfo();
+        if (accountOpener && (accountOpener.openerType == Const.EntityLogicalName.Opportunity || accountOpener.openerType == Const.EntityLogicalName.TradeInOpportunity)) {
+            return true;
+        }
+        return false;
+    }
+
+
+
+})(window.el_account = window.el_account || {})
