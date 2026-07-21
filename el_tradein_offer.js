@@ -810,7 +810,7 @@
                         } else
                             resolve(false);
                     },
-                    reject
+                    err => resolve(false)
                 )
         })
     }

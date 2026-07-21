@@ -465,7 +465,10 @@
 
 
     
-    el_tradein_deal.Ribbon.EnableRules = {};
+    el_tradein_deal.Ribbon = el_tradein_deal.Ribbon || {};
+
+    
+    el_tradein_deal.Ribbon.EnableRules = el_tradein_deal.Ribbon.EnableRules || {};
 
     el_tradein_deal.Ribbon.EnableRules.showCancelAdvanceRibbon = () => commons.GetFieldValue("el_s_as400t_statuscod_original") === TRADEIN_STATUS_ORDER;
 

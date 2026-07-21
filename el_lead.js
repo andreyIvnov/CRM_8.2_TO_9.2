@@ -30,6 +30,7 @@
     }
 
     el_lead.onLoadEvents = function () {
+
         el_lead.setReadonlyBehaviourByUserRole();
         el_lead.fillShowroom();
 
@@ -90,104 +91,11 @@
         }
     }
 
-    el_lead.disqualifyLead = function () {
-        if (!commons.GetLookupId("el_id_disqualify_primary_reason") || !commons.GetLookupId("el_id_disqualify_secondary_reason")) {
-            commons.SetTabVisibility("lead_disqualify_tab", true);
-            commons.SetFocus("lead_disqualify_tab");
-
-            var leadFilter =
-                "<filter type='and'>" +
-                "<condition attribute='el_l_disqualify_entity_type' operator='eq' value='1'/>" +  //1 for lead, 2 for opportunity
-                "</filter>";
-
-            commons.SetCustomFilterToLookupField("el_id_disqualify_primary_reason", "el_disqualify_primary_reason", leadFilter);
-
-            commons.OpenAlertDialog("חובה למלא סיבות פסילה בעת פסילת ליד");
-        }
-    }
-
     el_lead.setDisqualifyTab = function () {
         if (commons.GetLookupId("el_id_disqualify_primary_reason"))
             commons.SetTabVisibility("lead_disqualify_tab", true);
         else
             commons.SetTabVisibility("lead_disqualify_tab", false);
-    }
-
-    el_lead.reactiveLead = function () {
-        var entityData = {
-            "statecode": 0,
-            "statuscode": 1
-        };
-
-        //To Check
-        commons.updateRecord("lead", commons.StripGuid(commons.GetCurrentEntityId()), entityData)
-            .then(
-                function (result) {
-                    if (result) {
-                        commons.SetTabVisibility("lead_disqualify_tab", false);
-                        commons.SetRequiredLevel("el_id_disqualify_primary_reason", "none");
-                        commons.SetRequiredLevel("el_id_disqualify_secondary_reason", "none");
-                        commons.RefreshData(false);
-                    }
-                },
-                err => commons.OpenAlertDialog(err.message)
-            )
-
-
-        // var entity = {};
-        // entity.statuscode = 1;
-        // entity.statecode = 0;
-        // var leadId = commons.GetCurrentEntityId();
-        // leadId = leadId.slice(1, leadId.length - 1);
-        // var req = new XMLHttpRequest();
-        // //Xrm.Page.data.entity.save();
-        // req.open("PATCH", Xrm.Page.context.getClientUrl() + "/api/data/v8.1/leads(" + leadId + ")", true);
-        // req.setRequestHeader("OData-MaxVersion", "4.0");
-        // req.setRequestHeader("OData-Version", "4.0");
-        // req.setRequestHeader("Accept", "application/json");
-        // req.setRequestHeader("Content-Type", "application/json; charset=utf-8");
-        // req.onreadystatechange = function () {
-        //     if (this.readyState === 4) {
-        //         req.onreadystatechange = null;
-        //         if (this.status === 204) {
-
-        //             //Xrm.Page.data.save().then(successCallback(){Xrm.Page.data.refresh();}, errorCallback(err){});
-        //             Xrm.Page.ui.tabs.get("lead_disqualify_tab").setVisible(false);
-        //             Xrm.Page.getAttribute("el_id_disqualify_primary_reason").setRequiredLevel("none");
-        //             Xrm.Page.getAttribute("el_id_disqualify_secondary_reason").setRequiredLevel("none");
-        //             Xrm.Page.data.refresh(false);
-
-        //         }
-        //         else {
-        //             Xrm.Utility.alertDialog(this.statusText);
-        //         }
-        //     }
-        // };
-        // req.send(JSON.stringify(entity));
-    }
-
-    el_lead.showButtonReactiveLead = function () {
-        return new Promise((resolve, reject) => {
-            commons.UserHasRoleOrIsAdmin()
-                .then(
-                    function (result) {
-                        if (result === true) {
-                            resolve(true);
-                        } else {
-                            var modifiedon = commons.GetFieldValue("modifiedon");
-                            var statecode = commons.GetFieldValue("statecode");
-                            var minDate4Reopen = new Date();
-                            minDate4Reopen.setDate(minDate4Reopen.getDate() - Const.Value.DayRange4ReopenLead);
-                            resolve(statecode == Enum.Lead.statecode.Disqualified && modifiedon >= minDate4Reopen ? true : false)
-                        }
-                        resolve(false);
-                    },
-                    err => {
-                        console.error("Error on el_lead.showButtonReactiveLead(): " + err)
-                        resolve(false)
-                    }
-                )
-        })
     }
 
     el_lead.showroomOnChange = function () {
@@ -385,7 +293,6 @@
         }
     }
 
-
     //To Check
     el_lead.checkDuplicatesOnLoad = function () {
 
@@ -491,66 +398,36 @@
     }
 
     el_lead.filterManfFromShowRoom = async function () {
-        // commons = new elad_commons();
-
         var showroomId = commons.GetLookupId('el_id_showroom');
 
         if (showroomId) {
 
-            var showroomResult = await commons.RetrieveRecord("el_showroom", showroomId.replace(/[{}]/g, ""), "?$select=el_b_mixed_showroom,el_id_manufacturer")
-            if (showroomResult && showroomResult.el_b_mixed_showroom === true) {
+            try {
+                var showroomResult = await commons.RetrieveRecord("el_showroom", showroomId.replace(/[{}]/g, ""), "?$select=el_b_mixed_showroom,_el_id_manufacturer_value")
+                if (showroomResult && showroomResult.el_b_mixed_showroom === true) {
+                    var m_m_opts = commons.Query("el_manufacturerid", "el_showroomid eq " + showroomId)
+                    var showroomManufacturers_m_m = await commons.RetrieveMultipleRecords("el_showroom_el_manufacturers", m_m_opts)
+                    if (showroomManufacturers_m_m && showroomManufacturers_m_m.length > 0) {
 
-                var m_m_opts = commons.Query("el_manufacturerid", "el_showroomid eq " + showroomId)
-                var showroomManufacturers_m_m = await commons.RetrieveMultipleRecords("el_showroom_el_manufacturers", m_m_opts)
-                if (showroomManufacturers_m_m && showroomManufacturers_m_m.length > 0) {
+                        var manufacturerFilters = "<filter type='and'><filter type='or'>";
 
-                    var manufacturerFilters = "<filter type='and'><filter type='or'>";
+                        showroomManufacturers_m_m.map(m_m_connection => {
+                            manufacturerFilters += "<condition attribute='el_manufacturerid' operator='eq' value='" + m_m_connection.el_manufacturerid + "'/>";
+                        })
 
-                    showroomManufacturers_m_m.map(m_m_connection => {
-                        manufacturerFilters += "<condition attribute='el_manufacturerid' operator='eq' value='" + m_m_connection.el_manufacturerid + "'/>";
-                    })
+                        manufacturerFilters += "</filter></filter>";
 
-                    manufacturerFilters += "</filter></filter>";
-
-                    commons.SetCustomFilterToLookupField("el_id_manufacturer", "el_manufacturer", manufacturerFilters)
+                        commons.SetCustomFilterToLookupField("el_id_manufacturer", "el_manufacturer", manufacturerFilters)
+                    }
                 }
+            } catch (error) {
+                commons.SetFormNotification("Error on el_lead.filterManfFromShowRoom(): " + error.message, commons.FormNotificationLevel.ERROR, "el_lead.filterManfFromShowRoom");
+                console.error(error);
             }
-
-            // var url = "el_showroomSet?$select=el_b_mixed_showroom,el_id_manufacturer&$filter=el_showroomId eq guid'" + showroomId + "'"
-            // var showroomAfterRetrieve = odatautil.RetrieveDataByUrl("", url, null, null, true);
-            // if (showroomAfterRetrieve && showroomAfterRetrieve.results && showroomAfterRetrieve.results.length > 0) {
-            //     if (showroomAfterRetrieve.results[0].el_b_mixed_showroom == true) {
-
-            //         var urlGrid = "el_showroom_el_manufacturersSet?$filter=el_showroomid eq guid'" + showroomId + "'";
-            //         var gridMan = odatautil.RetrieveDataByUrl("", urlGrid, null, null, true);
-            //         if (gridMan && gridMan.results && gridMan.results.length > 0) {
-            //             try {
-            //                 var manufacturerFilters = "<filter type='and'><filter type='or'>";
-
-
-            //                 for (var i = 0; i < gridMan.results.length; i++) {
-            //                     var manufacturerId = gridMan.results[i].el_manufacturerid; // או השם המדויק של השדה
-            //                     manufacturerFilters += "<condition attribute='el_manufacturerid' operator='eq' value='" + manufacturerId + "'/>";
-            //                 }
-
-            //                 manufacturerFilters += "</filter></filter>";
-            //                 commonFromTheExternaJsFile.SetFilterOnLookupField("el_id_manufacturer", "el_manufacturer", manufacturerFilters)
-
-            //             } catch (e) {
-            //                 commonFromTheExternaJsFile.SetFormNotification("Error on FilterManfFromShowRoom(): " + error.message, "ERROR", "FilterManfFromShowRoom");
-            //                 console.error(error);
-            //             }
-
-            //         }
-            //     }
-            //     else {
-
-            //     }
         }
 
 
     }
-
 
     el_lead.saveOrExit = function (needToSave) {
         if (needToSave == true) {
@@ -582,48 +459,6 @@
 
     }
 
-    el_lead.AddFileRibbon = function () {
-        var name;
-        if (commons.GetFieldValue("name"))
-            name = commons.GetFieldValue("name");
-        else if (commons.GetFieldValue("el_name"))
-            name = commons.GetFieldValue("el_name");
-        else if (commons.GetFieldValue("title"))
-            name = commons.GetFieldValue("title");
-        else if (commons.GetFieldValue("subject"))
-            name = commons.GetFieldValue("subject");
-        else
-            name = commons.GetCurrentEntityName();
-
-        var pageInput = {
-            pageType: "entityrecord",
-            entityName: "el_doc",
-            formParameters: {
-                "pId": commons.GetCurrentEntityId(),
-                "pName": name,
-                "pType": commons.GetCurrentEntityName()
-            }
-        }
-
-        var navigationOptions = {
-            target: 2, // 2 opens the page as a modal dialog
-            position: 1 // 1 for center, 2 for side pane
-        };
-
-
-        //To Check
-        commons.NavigateTo(pageInput, navigationOptions);
-
-        // var extRaqs = "";
-        // var features = "location=no,menubar=no,status=no,toolbar=no,scrollbars=yes,resizable=yes";
-
-        // extRaqs += "pId=" + commons.GetCurrentEntityId();
-        // extRaqs += "&pName=" + name;
-        // extRaqs += "&pType=" + Xrm.Page.context.getQueryStringParameters().etc;
-        // window.open(Xrm.Page.context.prependOrgName("/main.aspx?etc=" + EL_DOC_TYPECODE + "&pagetype=entityrecord&extraqs=" + encodeURIComponent(extRaqs)), "_blank", features, false);
-
-    }
-
     el_lead.setServicePointSection = function () {
         if (commons.GetFieldValue("leadsourcecode") == LEAD_SOURCE_SERVICE_POINT) {
             commons.SetSectionVisibility("tab_2", "service_point_section", true)
@@ -645,26 +480,6 @@
         }
     }
 
-    el_lead.executeCreateEmailWorkFlow = function (CommandProperties) {
-
-        var guid = commons.GetCurrentEntityId();
-
-        if (guid != '' || guid != null)
-            el_lead.runWorkflow("063EFF49-0293-4FB0-8DB2-8ABBA48C366A", commons.GetCurrentEntityId());// ליד - צור סיכום שיחה בדוא"ל
-        setTimeout(el_lead.getEmailRegardingOpportunity, 1500);
-    }
-
-    el_lead.executeSendSmsDetailsOfShoowroom = function () {
-        var workflowId = 'CB11C0E6-FA6D-4071-810C-F87FF6A2A50C';
-        el_lead.runWorkflow(workflowId, commons.GetCurrentEntityId());// ליד - שלח פרטי אולם תצוגה
-        commons.OpenAlertDialog("נשלחה הודעה ללקוח");
-    }
-
-    el_lead.executeSendSmsLeadTriedToReach = function () {
-        var workflowId = '77D9EF6F-8B51-4600-8B95-22071C07BC8D';
-        el_lead.runWorkflow(workflowId, commons.GetCurrentEntityId());// ליד - ניסינו להשיגך
-        commons.OpenAlertDialog("נשלחה הודעה ללקוח");
-    }
 
     el_lead.showFieldCarModel = function () {
         var manfacturerId = commons.GetLookupId("el_id_manufacturer");
@@ -721,11 +536,11 @@
     }
 
     el_lead.runWorkflow = function (workflowId, entityId) {
-
+        commons.PageClearMessages("el_lead.runWorkflow")
         commons.ExecuteWorkflow(workflowId, entityId)
             .then(
                 null,
-                err => console.error(err)
+                err => commons.SetFormNotification("Error by executing workflow in el_lead.runWorkflow(): " + err.message, commons.FormNotificationLevel.ERROR, "el_lead.runWorkflow")
             );
 
         // var url = Xrm.Page.context.getClientUrl();
@@ -765,53 +580,8 @@
         // req.send(request);
     }
 
-    el_lead.enableRuleLeadStatus = function (rolename) {
-        return new Promise((resolve, reject) => {
-            commons.UserHasRoleOrIsAdmin("סימון ליד ביקורת")
-                .then(
-                    function (result) {
-                        commons.SetVisible("el_b_auditing_lead", true);
-                        resolve(result === true ? true : false);
-                    },
-                    err => {
-                        console.error("Error on el_lead.showButtonReactiveLead(): " + err)
-                        resolve(false)
-                    }
-                )
-        })
-    }
 
-    el_lead.updateLeadStatus = function (leadIds, selectedControl) {
-        var countOfUpdatedLeads = 0;
-        var unupdatedLeadsIds = "";
 
-        if (leadIds && leadIds.length > 0) {
-            leadIds.forEach(function (leadId) {
-                //For knowling of leads is unupdated OR update
-                if (el_lead.auditingLead(leadId) == true) {
-                    unupdatedLeadsIds += leadId.toString() + ";";
-                }
-                else {
-                    countOfUpdatedLeads++
-                }
-            });
-
-            //To Check
-            if (countOfUpdatedLeads > 0 && selectedControl && typeof selectedControl.refresh === "function") {
-                selectedControl.refresh();
-            }
-
-            var txtToShow = [unescape("%u200F%u200F"), "עודכנו: " + countOfUpdatedLeads.toString() + " מתוך " + leadIds.length.toString() + " לידים", unescape("%u200F")].join('');
-
-            Xrm.Navigation.openAlertDialog({ text: txtToShow })
-            // window.commons.OpenAlertDialog("עודכנו: " + countOfUpdatedLeads.toString() + " מתוך " + leadIds.length.toString() + " לידים") //TASK 1344
-
-            console.log("The unupdated leads id's: " + unupdatedLeadsIds)   //TASK 1344
-        } else {
-            var leadId = commons.GetCurrentEntityId();
-            el_lead.auditingLead(leadId);
-        }
-    }
 
     el_lead.auditingLead = function (leadId) {
         //Grid \ Views
@@ -907,49 +677,6 @@
         commons.OpenAlertDialog("נשלחה הודעה ללקוח");
         //window.setTimeout(Xrm.Utility.openEntityForm("el_asha_timetable_creation", id), 10000);
 
-    }
-
-    el_lead.showSendSMSRibbon = function () {
-        return new Promise((resolve, reject) => {
-            var SLA_TYPE_LEAD = "e4b46b72-3966-e311-80cc-00155d257801"; //doesn't supposed to changed, the db was redeployed
-            var SLA_TYPE_DRIVETEST_SCHEDULE = "286d3025-3766-e311-80cc-00155d257801";
-
-            var phoneCallsOpts = commons.Query("activityid,createdon,el_id_sla_type,el_b_auto_sms_sent", "_regardingobjectid_value eq '" + commons.GetCurrentEntityId() + "'");
-            commons.RetrieveMultipleRecords("phonecall", phoneCallsOpts, null, true)
-                .then(
-                    function (results) {
-                        results.map(phoneCall => {
-                            var slaTypeId = phoneCall._el_id_sla_type_value;
-                            var smsSent = phoneCall.el_b_auto_sms_sent;
-                            if (slaTypeId != null && !smsSent && (slaTypeId == SLA_TYPE_LEAD || slaTypeId == SLA_TYPE_DRIVETEST_SCHEDULE))
-                                resolve(true);
-                        })
-                        resolve(false);
-                    },
-                    err => {
-                        resolve(false);
-                    }
-                )
-
-            // var guid = commons.GetCurrentEntityId();
-            // var url = "PhoneCallSet?$select=ActivityId,CreatedOn,el_id_sla_type,el_b_auto_sms_sent&$filter=RegardingObjectId/Id eq (guid'" + guid + "')&$orderby=CreatedOn desc"
-            // var phonecalls = odataUtil.RetrieveDataByUrl("", url, null, null, true);
-            // if (phonecalls && phonecalls.results && phonecalls.results.length > 0) {
-            //     for (var i = 0; i < phonecalls.results.length; i++) {
-            //         var phoneCall = phonecalls.results[i];
-            //         try {
-            //             var slaType = phoneCall.el_id_sla_type;
-            //             var smsSent = phoneCall.el_b_auto_sms_sent;
-            //             if (slaType != null && !smsSent && (slaType.Id == SLA_TYPE_LEAD || slaType.Id == SLA_TYPE_DRIVETEST_SCHEDULE))
-            //                 return true;
-            //         }
-            //         catch (e) { }
-            //         return false;
-            //     }
-            // }
-            // else
-            //     return false;
-        })
     }
 
     /**
@@ -1067,16 +794,16 @@
     el_lead.onTradeInLeadTogel = function () {
         if (commons.GetFieldValue('el_b_is_tradein_lead')) {
             commons.SetRequiredLevel('el_id_family', 'none');
-            commons.SetFieldVisibility('qualifyingopportunityid', false);
-            commons.SetFieldVisibility('el_id_qualifying_tradein_opportunity', true);
+            commons.SetVisible('qualifyingopportunityid', false);
+            commons.SetVisible('el_id_qualifying_tradein_opportunity', true);
         }
         else {
             if (commons.GetFieldValue('statuscode') == LEAD_STATUS_FUTURE_MODEL)
                 el_lead.setFutureModelField()
             else
                 commons.SetRequiredLevel('el_id_family', 'required');
-            commons.SetFieldVisibility('qualifyingopportunityid', true);
-            commons.SetFieldVisibility('el_id_qualifying_tradein_opportunity', false);
+            commons.SetVisible('qualifyingopportunityid', true);
+            commons.SetVisible('el_id_qualifying_tradein_opportunity', false);
         }
         commons.RefreshRibbon(true);
     }
@@ -1124,36 +851,38 @@
     el_lead.isTradeInCampaignRelated = function () {
         commons.PageClearMessages("el_lead.isTradeInCampaignRelated");
 
-        var campaignId = commons.GetLookupId('campaignid');
-        if (campaignId) {
+        return new Promise((resolve, reject) => {
+            var campaignId = commons.GetLookupId('campaignid');
+            if (campaignId) {
 
-            commons.RetrieveRecord("campaign", campaignId, "?$select=el_b_trade_in_campaign")
-                .then(
-                    function success(result) {
-                        if (result.el_b_trade_in_campaign === true) {
-                            return true;
-                        } else
-                            return false;
-                    },
-                    err => {
-                        console.error(err);
-                        commons.SetFormNotification("Error on el_lead.isTradeInCampaignRelated: " + err.message, commons.FormNotificationLevel.ERROR, "el_lead.isTradeInCampaignRelated")
-                        return false;
-                    }
-                )
+                commons.RetrieveRecord("campaign", campaignId, "?$select=el_b_trade_in_campaign")
+                    .then(
+                        function success(result) {
+                            if (result.el_b_trade_in_campaign === true) {
+                                resolve(true);
+                            } else
+                                resolve(false);
+                        },
+                        err => {
+                            console.error(err);
+                            commons.SetFormNotification("Error on el_lead.isTradeInCampaignRelated: " + err.message, commons.FormNotificationLevel.ERROR, "el_lead.isTradeInCampaignRelated")
+                            reject(err);
+                        }
+                    )
 
-            // var OdataUtilObj = new OdataUtil();
-            // var select = "el_b_trade_in_campaign";
-            // var campaign = OdataUtilObj.RetrieveData("CampaignSet", campaignId, select, null, null, null, true);
-            // if (campaign != null && campaign.el_b_trade_in_campaign == true) {
-            //     return true;
-            // }
-            // else {
-            //     return false;
-            // }
-        }
-        else
-            return null;
+                // var OdataUtilObj = new OdataUtil();
+                // var select = "el_b_trade_in_campaign";
+                // var campaign = OdataUtilObj.RetrieveData("CampaignSet", campaignId, select, null, null, null, true);
+                // if (campaign != null && campaign.el_b_trade_in_campaign == true) {
+                //     return true;
+                // }
+                // else {
+                //     return false;
+                // }
+            }
+            else
+                resolve(null);
+        })
     }
 
     /**
@@ -1163,20 +892,17 @@
     el_lead.setTradeInLeadIfCampaignOrShowroomIsTardeIn = async function () {
         var isTradeInCampaign = await el_lead.isTradeInCampaignRelated();
         if (isTradeInCampaign == true) {
-            commons.SetFieldValue('el_b_is_tradein_lead', true);
-            commons.GetAttribute('el_b_is_tradein_lead').fireOnChange();
+            commons.SetFieldValue('el_b_is_tradein_lead', true, commons.OnChangeBehavior.IfChanged);
             return;
         }
         if (isTradeInCampaign != true) {
             var isTradeInShowroom = await el_lead.isTradeInShowroomRelated();
             if (isTradeInShowroom == true) {
-                commons.SetFieldValue('el_b_is_tradein_lead', true);
-                commons.GetAttribute('el_b_is_tradein_lead').fireOnChange();
+                commons.SetFieldValue('el_b_is_tradein_lead', true, commons.OnChangeBehavior.IfChanged);
                 return;
             }
             else {
-                commons.SetFieldValue('el_b_is_tradein_lead', false);
-                commons.GetAttribute('el_b_is_tradein_lead').fireOnChange();
+                commons.SetFieldValue('el_b_is_tradein_lead', false, commons.OnChangeBehavior.IfChanged);
                 return;
             }
         }
@@ -1268,16 +994,6 @@
         }
     }
 
-    el_lead.convertLeadQuick = function (gridControl, records, entityTypeCode) {
-        //Home page GRID of Leads
-        if (records && records.length > 0) {
-            el_lead.leadsGridDistributor(gridControl, records, entityTypeCode);
-        }
-        //Inside of record
-        else {
-            el_lead.qualifyTradeInLeadAction();
-        }
-    }
 
     el_lead.displayIconTooltipForStatus = function (rowData, userLCID) {
         var str = JSON.parse(rowData);
@@ -1320,54 +1036,6 @@
         return resultarray;
     }
 
-    /**
-     * Method check if the fields is validate
-     * Part of TASK 1582 -> Dialog about lenght of first name before qualifing
-     * Using into RibbonWorkbrench =>            Entity: Lead;              Commands: el.lead.QualifyTradeInLead.Command + Mscrm.Form.lead.ConvertQuick
-     * @param {Xrm.Page} context 
-     */
-    el_lead.fieldsValidation_BeforeQualify = function (context) {
-        if (!commons) {
-            commons = new elad_commons();
-            commons.SetFormContext(context);
-        }
-
-        const isTradeInLead = commons.GetFieldValue("el_b_is_tradein_lead");
-        const firstName = commons.GetFieldValue("firstname");
-        if (firstName.length > 15) {
-            console.log(Const.Message.Hebrew.Attention_MoreThan15CharsOnFirstName);
-            commons.OpenAlertDialog(Const.Message.Hebrew.Attention_MoreThan15CharsOnFirstName, null, null)
-        } else {
-            if (isTradeInLead === true) {
-                if (commons.GetIsDirty()) {
-                    commons.Save()
-                        .then(
-                            function success() {
-                                el_lead.convertLeadQuick();
-                            },
-                            err => console.error("Error on el_lead.fieldsValidation_BeforeQualify => Save: ", err)
-                        )
-                }
-                else
-                    el_lead.convertLeadQuick();
-            }
-            else {
-                //To Check -> qualifying of lead
-                // Mscrm.LeadCommandActions.qualifyLeadQuick();
-                if (commons.GetIsDirty()) {
-                    commons.Save()
-                        .then(
-                            function success() {
-                                el_lead.exqcuteQualification();
-                            },
-                            err => console.error("Error on el_lead.fieldsValidation_BeforeQualify => Save: ", err)
-                        )
-                }
-                else
-                    el_lead.exqcuteQualification();
-            }
-        }
-    }
 
     el_lead.exqcuteQualification = function () {
         commons.OpenProgressIndicator("אישור ליד ...");
@@ -1434,87 +1102,48 @@
             })
     }
 
-    //To Check -> check all retrievs (awaits)
     el_lead.fillShowroom = async function () {
         if (commons.GetFormType() === Enum.FormType.Create && !commons.GetLookupId("el_id_showroom")) //create form only AND No Showroom seted
         {
-            var currShowRoomLookupFieldId = commons.GetLookupId("el_id_showroom");
+            try {
+                var currShowRoomLookupFieldId = commons.GetLookupId("el_id_showroom");
+                var userResponse = await commons.RetrieveRecord("systemuser", commons.GetCurrentUserId(), "?$select=_businessunitid_value")
 
-            // var OdataUtilObj = new OdataUtil();
-            // var user = OdataUtilObj.RetrieveData("SystemUserSet", Xrm.Page.context.getUserId(), "BusinessUnitId", null, null, null, false);
-            var userResponse = await commons.RetrieveRecord("systemuser", commons.GetCurrentUserId(), "?$select=businessunitid")
+                if (userResponse && userResponse.businessunitid) {
+                    var options = "?$select=name&$expand=el_id_showroom($select=el_b_mixed_showroom,el_name,el_showroomid)&$filter=businessunitid eq " + userResponse.businessunitid.id;
+                    var businessUnitResponse = await commons.RetrieveMultipleRecords("businessunit", options)
+                    if (businessUnitResponse && businessUnitResponse.length > 0) {
+                        var showroomData = businessUnitResponse[0].el_id_showroom;
+                        if (showroomData && showroomData.el_name) {
 
-            if (userResponse && userResponse.businessunitid) {
-                var options = "?$select=name&$expand=el_el_showroom_businessunit($select=el_b_mixed_showroom,el_name,el_showroomId)&$filter=businessunitid eq " + userResponse.businessunitid;
-                var businessUnitResponse = await commons.RetrieveMultipleRecords("businessunit", options)
-                if (businessUnitResponse && businessUnitResponse.length > 0) {
-                    var showroomData = businessUnitResponse[0].el_el_showroom_businessunit;
-                    if (showroomData && showroomData.el_name) {
+                            if (currShowRoomLookupFieldId) {
+                                var newShowroomToSet = new RegExp(showroomData.el_showroomid, "i");
+                                if (!newShowroomToSet.test(currShowRoomLookupFieldId)) {
+                                    commons.SetLookupValue("el_id_showroom", showroomData.el_showroomid, showroomData.el_name, "el_showroom", commons.OnChangeBehavior.IfChanged);
+                                }
+                            }
+                            else {
+                                commons.SetLookupValue("el_id_showroom", showroomData.el_showroomid, showroomData.el_name, "el_showroom", commons.OnChangeBehavior.IfChanged);
+                            }
 
-                        if (currShowRoomLookupFieldId) {
-                            var newShowroomToSet = new RegExp(showroomData.el_showroomId, "i");
-                            if (!newShowroomToSet.test(currShowRoomLookupFieldId)) {
-                                commons.SetLookupValue("el_id_showroom", showroomData.el_showroomId, showroomData.el_name, "el_showroom");
-                                commons.GetAttribute("el_id_showroom").fireOnChange();
+                            if (commons.GetAttribute("el_b_mixed_showroom")) {
+                                if (showroom.results[0].el_id_showroom.el_b_mixed_showroom) {
+                                    commons.SetFieldValue("el_b_mixed_showroom", showroom.results[0].el_id_showroom.el_b_mixed_showroom);
+                                    commons.SetVisible("el_id_manufacturer", true);
+                                }
+                                else {
+                                    commons.SetVisible("el_id_manufacturer", false);
+                                }
                             }
                         }
                         else {
-                            commons.SetLookupValue("el_id_showroom", showroomData.el_showroomId, showroomData.el_name, "el_showroom");
-                            commons.GetAttribute("el_id_showroom").fireOnChange();
+                            commons.OpenAlertDialog("לא משויך אולם ליחידה העסקית שלך. פנה לתמיכה.");
                         }
-
-                        if (commons.GetAttribute("el_b_mixed_showroom")) {
-                            if (showroom.results[0].el_el_showroom_businessunit.el_b_mixed_showroom) {
-                                commons.SetFieldValue("el_b_mixed_showroom", showroom.results[0].el_el_showroom_businessunit.el_b_mixed_showroom);
-                                commons.SetVisible("el_id_manufacturer", true);
-                            }
-                            else {
-                                commons.SetVisible("el_id_manufacturer", false);
-                            }
-                        }
-                    }
-                    else {
-                        commons.OpenAlertDialog("לא משויך אולם ליחידה העסקית שלך. פנה לתמיכה.");
                     }
                 }
-                // var showroom = OdataUtilObj.RetrieveDataByUrl("BusinessUnitSet", "?$select=el_el_showroom_businessunit/el_b_mixed_showroom,el_el_showroom_businessunit/el_name,el_el_showroom_businessunit/el_showroomId&$expand=el_el_showroom_businessunit&$filter=BusinessUnitId eq guid'" + user.BusinessUnitId.Id + "'", null, null, false);
-
-                // if (showroom != null && showroom.results != null && showroom.results[0] && showroom.results[0].el_el_showroom_businessunit && showroom.results[0].el_el_showroom_businessunit.el_name) {
-                //     var lookupValue = new Array();
-                //     //lookupValue[0] = new LookupControlItem(showroom.results[0].el_el_showroom_businessunit.el_showroomId, SHOWROOM_TYPECODE, showroom.results[0].el_el_showroom_businessunit.el_name);
-                //     lookupValue[0] = new Object();
-                //     lookupValue[0].id = showroom.results[0].el_el_showroom_businessunit.el_showroomId;
-                //     lookupValue[0].name = showroom.results[0].el_el_showroom_businessunit.el_name;
-                //     lookupValue[0].entityType = "el_showroom";
-                //     lookupValue[0].type = SHOWROOM_TYPECODE;
-
-                //     if (currShowRoomLookupFieldId) {
-                //         var newValue = new RegExp(lookupValue[0].id, "i");
-                //         if (!newValue.test(currShowRoomLookupFieldId)) {
-                //             Xrm.Page.getAttribute("el_id_showroom").setValue(lookupValue);
-                //             Xrm.Page.getAttribute("el_id_showroom").fireOnChange();
-                //         }
-                //     }
-                //     else {
-                //         Xrm.Page.getAttribute("el_id_showroom").setValue(lookupValue);
-                //         Xrm.Page.getAttribute("el_id_showroom").fireOnChange();
-                //     }
-
-                //     if (Xrm.Page.getAttribute("el_b_mixed_showroom")) {
-                //         if (showroom.results[0].el_el_showroom_businessunit.el_b_mixed_showroom) {
-                //             Xrm.Page.getAttribute("el_b_mixed_showroom").setValue(showroom.results[0].el_el_showroom_businessunit.el_b_mixed_showroom);
-                //             Xrm.Page.getControl("el_id_manufacturer").setVisible(true);
-                //         }
-                //         else {
-                //             Xrm.Page.getControl("el_id_manufacturer").setVisible(false);
-                //         }
-                //     }
-                // }
-                // else {
-                //     commons.OpenAlertDialog("לא משויך אולם ליחידה העסקית שלך. פנה לתמיכה.");
-
-
-                // }
+            } catch (error) {
+                commons.SetFormNotification("Error on el_lead.fillShowroom: " + error.message, commons.FormNotificationLevel.ERROR, "el_lead.fillShowroom")
+                console.error("Error on el_lead.fillShowroom", error);
             }
         }
     }
@@ -1524,40 +1153,25 @@
 
         var showroomid = commons.GetLookupId("el_id_showroom");
         if (showroomid) {
-            // var OdataUtilObj = new OdataUtil();
-            // var showroom = OdataUtilObj.RetrieveData("el_showroomSet", showroomid, "el_id_manufacturer,el_b_mixed_showroom", null);
-            commons.RetrieveRecord("el_showroom", showroomid, "?$select=el_id_manufacturer,el_b_mixed_showroom")
-                .then(
-                    function success(retrievedShowroom) {
-                        if (retrievedShowroom && retrievedShowroom.el_id_manufacturer && !retrievedShowroom.el_b_mixed_showroom) {
-                            commons.SetLookupValue("el_id_manufacturer", retrievedShowroom.el_id_manufacturer.Id, retrievedShowroom.el_id_manufacturer.Name, "el_manufacturer");
-                            commons.GetAttribute("el_id_manufacturer").fireOnChange();
+            return new Promise((resolve, reject) => {
+                commons.RetrieveRecord("el_showroom", showroomid, "?$select=_el_id_manufacturer_value,el_b_mixed_showroom")
+                    .then(
+                        function success(retrievedShowroom) {
+                            if (retrievedShowroom && retrievedShowroom.el_id_manufacturer && !retrievedShowroom.el_b_mixed_showroom) {
+                                commons.SetLookupValue("el_id_manufacturer", retrievedShowroom.el_id_manufacturer.id, retrievedShowroom.el_id_manufacturer.entityname, retrievedShowroom.el_id_manufacturer.entitytype, commons.OnChangeBehavior.IfChanged);
+                            }
+                            resolve();
+                        },
+                        err => {
+                            console.error("Error on retrieve showroom into el_lead.fillManufacturer(): ", err);
+                            commons.SetFormNotification("Error on el_lead.fillManufacturer(): " + err.message, commons.FormNotificationLevel.ERROR, "el_lead.fillManufacturer()");
+                            reject();
                         }
-                    },
-                    err => {
-                        console.error("Error on retrieve showroom into el_lead.fillManufacturer(): ", err);
-                        commons.SetFormNotification("Error on el_lead.fillManufacturer(): " + err.message, commons.FormNotificationLevel.ERROR, "el_lead.fillManufacturer()");
-                    }
-                )
-
-            // if (showroom != null && showroom.el_id_manufacturer != null && !showroom.el_b_mixed_showroom) {
-            //     var lookupValue = new Array();
-            //     //lookupValue[0] = new LookupControlItem(showroom.el_id_manufacturer.Id, EL_MANUFACTURER_TYPECODE, showroom.el_id_manufacturer.Name);
-            //     lookupValue[0] = new Object();
-            //     lookupValue[0].id = showroom.el_id_manufacturer.Id;
-            //     lookupValue[0].name = showroom.el_id_manufacturer.Name;
-            //     lookupValue[0].entityType = "el_manufacturer";
-            //     lookupValue[0].type = EL_MANUFACTURER_TYPECODE;
-
-            //     Xrm.Page.getAttribute("el_id_manufacturer").setValue(lookupValue);
-            //     Xrm.Page.getAttribute("el_id_manufacturer").fireOnChange();
-
-            // }
+                    )
+            })
         }
     }
 
-
-    //To Check -> check if SetCustomFilterToLookupField set a family correctly
     el_lead.setManufacturerAndFamilyInLeadAndOpportunity = function () {
         commons.SetRequiredLevel("el_id_family", "required");
         commons.SetDisabled("el_id_family", true);
@@ -1588,21 +1202,6 @@
         // el_lead.applyFilterFamily();
     }
 
-    // el_lead.applyFilterFamily = function () {
-    //     Xrm.Page.getControl("el_id_family").addPreSearch(el_lead.filterFamilyByManufacturer);
-    // }
-
-    // el_lead.filterFamilyByManufacturer = function () {
-    //     var manufacturer = Xrm.Page.getAttribute("el_id_manufacturer");
-    //     if (manufacturer && manufacturer.getValue() && manufacturer.getValue()[0]) {
-    //         fetchXml = "<filter type='and'>" + "<condition attribute='el_id_manufacturer' operator='eq' value='" + manufacturer.getValue()[0].id + "' />"
-    //             + "</filter>";
-
-    //         Xrm.Page.getControl("el_id_family").addCustomFilter(fetchXml);
-    //     }
-
-    // }
-
     el_lead.validatePhoneNumber = function (fieldValue, pattern) {
         if (!fieldValue || !pattern)
             return true;
@@ -1612,4 +1211,354 @@
         return false;
     }
 
-})((window.el_lead = window.el_lead || {}))
+
+
+    el_lead.Ribbon = el_lead.Ribbon || {};
+
+    el_lead.Ribbon.addFileRibbon = function (primaryControl) {
+        debugger;
+        if (!commons) {
+            commons = new elad_commons();
+            commons.SetFormContext(primaryControl);
+        }
+
+        let name;
+        if (commons.GetFieldValue("name"))
+            name = commons.GetFieldValue("name");
+        else if (commons.GetFieldValue("el_name"))
+            name = commons.GetFieldValue("el_name");
+        else if (commons.GetFieldValue("title"))
+            name = commons.GetFieldValue("title");
+        else if (commons.GetFieldValue("subject"))
+            name = commons.GetFieldValue("subject");
+        else
+            name = commons.GetCurrentEntityName();
+
+        const pageInput = {
+            pageType: "entityrecord",
+            entityName: "el_doc",
+            formParameters: {
+                "pId": commons.GetCurrentEntityId(),
+                "pName": name,
+                "pType": commons.GetCurrentEntityName()
+            }
+        }
+
+        const navigationOptions = {
+            target: 2, // 2 opens the page as a modal dialog
+            position: 1 // 1 for center, 2 for side pane
+        };
+
+        commons.NavigateTo(pageInput, navigationOptions);
+    }
+
+    el_lead.Ribbon.executeCreateEmailWorkFlow = function (primaryControl) {
+        debugger;
+
+        if (!commons) {
+            commons = new elad_commons();
+            commons.SetFormContext(primaryControl);
+        }
+
+        var guid = commons.GetCurrentEntityId();
+
+        if (guid != '' || guid != null)
+            el_lead.runWorkflow("063EFF49-0293-4FB0-8DB2-8ABBA48C366A", commons.GetCurrentEntityId());// ליד - צור סיכום שיחה בדוא"ל
+        setTimeout(el_lead.getEmailRegardingOpportunity, 1500);
+    }
+
+    el_lead.Ribbon.disqualifyLead = function (primaryControl) {
+        debugger;
+
+        if (!commons) {
+            commons = new elad_commons();
+            commons.SetFormContext(primaryControl);
+        }
+
+        if (!commons.GetLookupId("el_id_disqualify_primary_reason") || !commons.GetLookupId("el_id_disqualify_secondary_reason")) {
+            commons.SetTabVisibility("lead_disqualify_tab", true);
+            commons.SetFocus("lead_disqualify_tab");
+
+            var leadFilter =
+                "<filter type='and'>" +
+                "<condition attribute='el_l_disqualify_entity_type' operator='eq' value='1'/>" +  //1 for lead, 2 for opportunity
+                "</filter>";
+
+            commons.SetCustomFilterToLookupField("el_id_disqualify_primary_reason", "el_disqualify_primary_reason", leadFilter);
+
+            commons.OpenAlertDialog("חובה למלא סיבות פסילה בעת פסילת ליד");
+        }
+    }
+
+    el_lead.Ribbon.updateLeadStatus = function (leadIds, selectedControl) {
+        debugger;
+        var countOfUpdatedLeads = 0;
+        var unupdatedLeadsIds = "";
+
+        if (leadIds && leadIds.length > 0) {
+            leadIds.forEach(function (leadId) {
+                //For knowling of leads is unupdated OR update
+                if (el_lead.auditingLead(leadId) == true) {
+                    unupdatedLeadsIds += leadId.toString() + ";";
+                }
+                else {
+                    countOfUpdatedLeads++
+                }
+            });
+
+            //To Check
+            if (countOfUpdatedLeads > 0 && selectedControl && typeof selectedControl.refresh === "function") {
+                debugger;
+                selectedControl.refresh();
+            }
+
+            var txtToShow = [unescape("%u200F%u200F"), "עודכנו: " + countOfUpdatedLeads.toString() + " מתוך " + leadIds.length.toString() + " לידים", unescape("%u200F")].join('');
+
+            Xrm.Navigation.openAlertDialog({ text: txtToShow })
+            // window.commons.OpenAlertDialog("עודכנו: " + countOfUpdatedLeads.toString() + " מתוך " + leadIds.length.toString() + " לידים") //TASK 1344
+
+            console.log("The unupdated leads id's: " + unupdatedLeadsIds)   //TASK 1344
+        } else {
+            if (!commons) {
+                commons = new elad_commons();
+                commons.SetFormContext(primaryControl);
+            }
+
+            var leadId = commons.GetCurrentEntityId();
+            el_lead.auditingLead(leadId);
+        }
+    }
+
+    /**
+     * Method check if the fields is validate
+     * Part of TASK 1582 -> Dialog about lenght of first name before qualifing
+     * Using into RibbonWorkbrench =>            Entity: Lead;              Commands: el.lead.QualifyTradeInLead.Command + Mscrm.Form.lead.ConvertQuick
+     * @param {_formContext} context 
+     */
+    el_lead.Ribbon.fieldsValidation_BeforeQualify = function (context) {
+        debugger;
+        if (!commons) {
+            commons = new elad_commons();
+            commons.SetFormContext(context);
+        }
+
+        const isTradeInLead = commons.GetFieldValue("el_b_is_tradein_lead");
+        const firstName = commons.GetFieldValue("firstname");
+        if (firstName.length > 15) {
+            console.log(Const.Message.Hebrew.Attention_MoreThan15CharsOnFirstName);
+            commons.OpenAlertDialog(Const.Message.Hebrew.Attention_MoreThan15CharsOnFirstName, null, null)
+        } else {
+            if (isTradeInLead === true) {
+                if (commons.GetIsDirty()) {
+                    commons.Save()
+                        .then(
+                            function success() {
+                                el_lead.convertLeadQuick();
+                            },
+                            err => console.error("Error on el_lead.Ribbon.fieldsValidation_BeforeQualify => Save: ", err)
+                        )
+                }
+                else
+                    el_lead.convertLeadQuick();
+            }
+            else {
+                //To Check -> qualifying of lead
+                // Mscrm.LeadCommandActions.qualifyLeadQuick();
+                if (commons.GetIsDirty()) {
+                    commons.Save()
+                        .then(
+                            function success() {
+                                el_lead.exqcuteQualification();
+                            },
+                            err => console.error("Error on el_lead.Ribbon.fieldsValidation_BeforeQualify => Save: ", err)
+                        )
+                }
+                else
+                    el_lead.exqcuteQualification();
+            }
+        }
+    }
+
+    el_lead.Ribbon.reactiveLead = function (primaryControl) {
+        debugger;
+        if (!commons) {
+            commons = new elad_commons();
+            commons.SetFormContext(primaryControl);
+        }
+
+        var entityData = {
+            "statecode": 0,
+            "statuscode": 1
+        };
+
+        //To Check
+        commons.updateRecord("lead", commons.StripGuid(commons.GetCurrentEntityId()), entityData)
+            .then(
+                function (result) {
+                    debugger;
+                    if (result) {
+                        commons.SetTabVisibility("lead_disqualify_tab", false);
+                        commons.SetRequiredLevel("el_id_disqualify_primary_reason", "none");
+                        commons.SetRequiredLevel("el_id_disqualify_secondary_reason", "none");
+                        commons.RefreshData(false);
+                    }
+                },
+                err => commons.OpenAlertDialog(err.message)
+            )
+
+
+        // var entity = {};
+        // entity.statuscode = 1;
+        // entity.statecode = 0;
+        // var leadId = commons.GetCurrentEntityId();
+        // leadId = leadId.slice(1, leadId.length - 1);
+        // var req = new XMLHttpRequest();
+        // //Xrm.Page.data.entity.save();
+        // req.open("PATCH", Xrm.Page.context.getClientUrl() + "/api/data/v8.1/leads(" + leadId + ")", true);
+        // req.setRequestHeader("OData-MaxVersion", "4.0");
+        // req.setRequestHeader("OData-Version", "4.0");
+        // req.setRequestHeader("Accept", "application/json");
+        // req.setRequestHeader("Content-Type", "application/json; charset=utf-8");
+        // req.onreadystatechange = function () {
+        //     if (this.readyState === 4) {
+        //         req.onreadystatechange = null;
+        //         if (this.status === 204) {
+
+        //             //Xrm.Page.data.save().then(successCallback(){Xrm.Page.data.refresh();}, errorCallback(err){});
+        //             Xrm.Page.ui.tabs.get("lead_disqualify_tab").setVisible(false);
+        //             Xrm.Page.getAttribute("el_id_disqualify_primary_reason").setRequiredLevel("none");
+        //             Xrm.Page.getAttribute("el_id_disqualify_secondary_reason").setRequiredLevel("none");
+        //             Xrm.Page.data.refresh(false);
+
+        //         }
+        //         else {
+        //             Xrm.Utility.alertDialog(this.statusText);
+        //         }
+        //     }
+        // };
+        // req.send(JSON.stringify(entity));
+    }
+
+    el_lead.Ribbon.executeSendSmsDetailsOfShoowroom = function (primaryControl) {
+        debugger;
+        if (!commons) {
+            commons = new elad_commons();
+            commons.SetFormContext(primaryControl);
+        }
+
+        const workflowId = 'CB11C0E6-FA6D-4071-810C-F87FF6A2A50C';
+        el_lead.runWorkflow(workflowId, commons.GetCurrentEntityId());// ליד - שלח פרטי אולם תצוגה
+        commons.OpenAlertDialog("נשלחה הודעה ללקוח");
+    }
+
+    el_lead.Ribbon.executeSendSmsLeadTriedToReach = function (primaryControl) {
+        debugger;
+        if (!commons) {
+            commons = new elad_commons();
+            commons.SetFormContext(primaryControl);
+        }
+
+        var workflowId = '77D9EF6F-8B51-4600-8B95-22071C07BC8D';
+        el_lead.runWorkflow(workflowId, commons.GetCurrentEntityId());// ליד - ניסינו להשיגך
+        commons.OpenAlertDialog("נשלחה הודעה ללקוח");
+    }
+
+    el_lead.Ribbon.convertLeadQuick = function (gridControl, records, entityTypeCode) {
+        //Home page GRID of Leads
+        if (records && records.length > 0) {
+            el_lead.leadsGridDistributor(gridControl, records, entityTypeCode);
+        }
+        //Inside of record
+        else {
+            el_lead.qualifyTradeInLeadAction();
+        }
+    }
+
+
+
+
+    el_lead.Ribbon.EnableRules = el_lead.Ribbon.EnableRules || {};
+
+    el_lead.Ribbon.EnableRules.showButtonReactiveLead = function (primaryControl) {
+        return new Promise((resolve, reject) => {
+            if (!commons) {
+                commons = new elad_commons();
+                commons.SetFormContext(primaryControl);
+            }
+
+            commons.UserHasRoleOrIsAdmin()
+                .then(
+                    function (result) {
+
+                        if (result === true) {
+                            resolve(true);
+                        } else {
+                            const modifiedon = commons.GetFieldValue("modifiedon");
+                            const statecode = commons.GetFieldValue("statecode");
+                            let minDate4Reopen = new Date();
+                            minDate4Reopen.setDate(minDate4Reopen.getDate() - Const.Value.DayRange4ReopenLead);
+                            resolve(statecode == Enum.Lead.statecode.Disqualified && modifiedon >= minDate4Reopen ? true : false)
+                        }
+                        resolve(false);
+                    },
+                    err => {
+                        console.error("Error on el_lead.showButtonReactiveLead(): " + err)
+                        resolve(false)
+                    }
+                )
+        })
+    }
+
+    el_lead.Ribbon.EnableRules.showSendSMSRibbon = function (primaryControl) {
+        return new Promise((resolve, reject) => {
+            if (!commons) {
+                commons = new elad_commons();
+                commons.SetFormContext(primaryControl);
+            }
+
+
+            const SLA_TYPE_LEAD = "e4b46b72-3966-e311-80cc-00155d257801"; //doesn't supposed to changed, the db was redeployed
+            const SLA_TYPE_DRIVETEST_SCHEDULE = "286d3025-3766-e311-80cc-00155d257801";
+
+            const phoneCallsOpts = commons.Query("activityid,createdon,_el_id_sla_type_value,el_b_auto_sms_sent", "_regardingobjectid_value eq '" + commons.GetCurrentEntityId() + "'");
+            commons.RetrieveMultipleRecords("phonecall", phoneCallsOpts, null, true)
+                .then(
+                    function (results) {
+
+                        results.map(phoneCall => {
+                            const slaTypeId = phoneCall._el_id_sla_type_value;
+                            const smsSent = phoneCall.el_b_auto_sms_sent;
+                            if (slaTypeId != null && !smsSent && (slaTypeId == SLA_TYPE_LEAD || slaTypeId == SLA_TYPE_DRIVETEST_SCHEDULE))
+                                resolve(true);
+                        })
+                        resolve(false);
+                    },
+                    err => {
+                        resolve(false);
+                    }
+                )
+        })
+    }
+
+    el_lead.Ribbon.EnableRules.enableRuleLeadStatus = function (rolename, primaryControl) {
+        return new Promise((resolve, reject) => {
+            if (!commons) {
+                commons = new elad_commons();
+                commons.SetFormContext(primaryControl);
+            }
+
+            commons.UserHasRoleOrIsAdmin("סימון ליד ביקורת")
+                .then(
+                    function (result) {
+                        commons.SetVisible("el_b_auditing_lead", true);
+                        resolve(result === true ? true : false);
+                    },
+                    err => {
+                        console.error("Error on el_lead.showButtonReactiveLead(): " + err)
+                        resolve(false)
+                    }
+                )
+        })
+    }
+
+})(window.el_lead = window.el_lead || {})

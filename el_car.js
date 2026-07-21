@@ -45,28 +45,31 @@
             "Fax," +
             "Telephone1," +
             "Telephone2," +
-            "Name" +
+            "Name," +
+            "_el_id_type_code_value" +
 
-            "&$expand=" +
-            "el_el_address_account($select=" +
-            "el_s_city_text," +
-            "el_id_city," +
-            "el_id_pob_city," +
-            "el_id_street_synonym," +
-            "el_s_street_text," +
-            "el_n_house_number," +
-            "el_n_zip," +
-            "el_n_pob_zip," +
-            "el_s_entrance," +
-            "el_n_pob" +
+            //TODO: Add address reference (el_address isn't exist into CRM)
 
-            "$expand=" +
-            "el_id_city($select=Name)," +
-            "el_id_pob_city($select=Name)," +
-            "el_id_street_synonym($select=Name)" +
+            // "&$expand=" +
+            // "el_el_address_account($select=" +
+            // "el_s_city_text," +
+            // "el_id_city," +
+            // "el_id_pob_city," +
+            // "el_id_street_synonym," +
+            // "el_s_street_text," +
+            // "el_n_house_number," +
+            // "el_n_zip," +
+            // "el_n_pob_zip," +
+            // "el_s_entrance," +
+            // "el_n_pob" +
 
-            ")," +
-            "el_id_type_account($select=el_n_id_type_code)";
+            // "$expand=" +
+            // "el_id_city($select=Name)," +
+            // "el_id_pob_city($select=Name)," +
+            // "el_id_street_synonym($select=Name)" +
+
+            // ")," +
+            "?$expand=el_id_type_code($select=el_n_id_type_code)";
 
         var account = await common.RetrieveRecord("account", accountid, options);
         account = account != null ? account : null;
@@ -75,7 +78,7 @@
             parameters += "cpd.shemPrati=" + common.notNullParam(account.el_s_first_name).trim() + "&";
             parameters += "cpd.shemMishpaha=" + common.notNullParam(account.el_s_last_name).trim() + "&";
             parameters += "cpd.taarihLeda=" + common.GetOdataDate(account.el_dt_date_of_birth) + "&";
-            parameters += "cmd.sugLakoah=" + common.getTypeId(account.el_id_type_account) + "&";
+            parameters += "cmd.sugLakoah=" + common.getTypeId(account.el_id_type_code) + "&";
             parameters += "cpd.misparZeutHevra=" + common.notNullParam(account.el_s_idnumber_text).trim() + "&";
             parameters += "tel.telephoneCelolari=" + common.notNullParam(account.Telephone1).trim() + "&";
             parameters += "tel.misparTelephoneA=" + common.notNullParam(account.Telephone2).trim() + "&";
@@ -123,26 +126,28 @@
             "Telephone2," +
             "Name" +
 
-            "&$expand=" +
-            "el_el_address_account($select=" +
-            "el_s_city_text," +
-            "el_id_city," +
-            "el_id_pob_city," +
-            "el_id_street_synonym," +
-            "el_s_street_text," +
-            "el_n_house_number," +
-            "el_n_zip," +
-            "el_n_pob_zip," +
-            "el_s_entrance," +
-            "el_n_pob" +
+            //TODO: Add address reference (el_address isn't exist into CRM)
 
-            "$expand=" +
-            "el_id_city($select=Name)," +
-            "el_id_pob_city($select=Name)," +
-            "el_id_street_synonym($select=Name)" +
+            // "&$expand=" +
+            // "el_el_address_account($select=" +
+            // "el_s_city_text," +
+            // "el_id_city," +
+            // "el_id_pob_city," +
+            // "el_id_street_synonym," +
+            // "el_s_street_text," +
+            // "el_n_house_number," +
+            // "el_n_zip," +
+            // "el_n_pob_zip," +
+            // "el_s_entrance," +
+            // "el_n_pob" +
 
-            ")," +
-            "el_id_type_account($select=el_n_id_type_code)";
+            // "$expand=" +
+            // "el_id_city($select=Name)," +
+            // "el_id_pob_city($select=Name)," +
+            // "el_id_street_synonym($select=Name)" +
+
+            // ")," +
+            "&$expand=el_id_type_code($select=el_n_id_type_code)";
 
         var account = await common.RetrieveRecord("account", accountid, options);
         account = account != null ? account : null;
@@ -221,8 +226,8 @@
         return parameters;
     }
 
-    el_car.showOpenLegacyRibbon = function (field, customerfieldname, actionType, as400code) {
-        if (window.top.opener) {
+    el_car.showOpenLegacyRibbon = async function (field, customerfieldname, actionType, as400code) {
+        if (common.GetOpenerEntityInfo()) {
             common.OpenAlertDialog("לא ניתן לבצע פעולה זו מתוך חלון מוקפץ.\nיש לחזור לחלון הראשי ולנסות שנית");
             return;
         }
@@ -236,7 +241,7 @@
         var addOpportunityNum = false;
         var addPurchaseNum = false;
         var addOrderParams = false;
-        var url = common.GetGlobalParameterValueByName(field) + "?";
+        var url = await common.GetGlobalParameterValueByName(field) + "?";
 
         var accountid = customerfieldname && common.GetFieldValue(customerfieldname) != null ? common.GetLookupId(customerfieldname) : "00000000-0000-0000-0000-000000000000";
 
@@ -283,17 +288,17 @@
             url += "license=" + carLicense;
         }
         if (addIncidentGuidAndID) {
-            var customerIdentification = el_car.getCustomerIdentification(accountid);
+            var customerIdentification = await el_car.getCustomerIdentification(accountid);
             var IncidentID = common.NotNullParam(common.GetCurrentEntityId().replace(/[{}]/g, ''));
             var incidentNumber = common.GetFieldValue("el_s_incident_number");
             url += "&tz=" + customerIdentification + "&guid=" + IncidentID + "&asmachta=" + incidentNumber;
         }
         if (addAccountParams)
-            url = url + addOpenLegacyParameters(accountid);
+            url = url + await el_car.addOpenLegacyParameters(accountid);
         if (addTradeinAccountParams)
-            url = url + addOpenLegacyTradeinParameters(accountid, Xrm.Page.data.entity.getId(), as400code);
+            url = url + await el_car.addOpenLegacyTradeinParameters(accountid, common.GetCurrentEntityId(), as400code);
         if (addTradeinQuotAccountParams) {
-            url = url + addOpenLegacyTradeinQuotParameters(accountid, Xrm.Page.data.entity.getId());
+            url = url + await el_car.addOpenLegacyTradeinQuotParameters(accountid, common.GetCurrentEntityId());
         }
         if (addOpportunityNum)
             url += "&cmd.misparIzdamnut=" + common.NotNullParam(common.GetCurrentEntityId().replace("{", "").replace("}", ""));
@@ -317,14 +322,17 @@
 
     }
 
-    el_car.getCustomerIdentification = function (accountID) {
-        var url = "AccountSet?$select=el_s_idnumber_text&$filter=AccountId eq guid'" + accountID + "'";
-        var odatautil = new OdataUtil();
-        var customer = odatautil.RetrieveDataByUrl("", url, null, null, true);
-        if (customer && customer.results && customer.results[0] && customer.results[0].el_s_idnumber_text) {
-            return customer.results[0].el_s_idnumber_text;
+    el_car.getCustomerIdentification = async function (accountID) {
+        try {
+            if (!accountID) return "";
+            var customer = await common.RetrieveRecord("account", common.StripGuid(accountID), "?$select=el_s_idnumber_text");
+            if (customer != null && customer.el_s_idnumber_text) return customer.el_s_idnumber_text;
+            return "";
+
+        } catch (error) {
+            common.PageErrorHandler(error, "el_car.getCustomerIdentification");
+            return "";
         }
-        return "";
     }
 
     el_car.ShowDocuments = function () {

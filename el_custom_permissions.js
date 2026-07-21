@@ -13,7 +13,7 @@
             hebrow = Const.Message.Hebrew;
 
             el_custom_permissions.onLoadEvents();
-            el_custom_permissions.OnChangeEvents();
+            el_custom_permissions.onChangeEvents();
             el_custom_permissions.onSaveEvents();
 
         } catch (error) {
@@ -23,9 +23,20 @@
 
     el_custom_permissions.onLoadEvents = function () {
         el_custom_permissions.setRequiredAries();
-        el_custom_permissions.setAllowedEmails();
         el_custom_permissions.setSystemUserLookupData();
     }
+
+
+
+
+
+
+
+
+
+    ///                 Continue Point          ///////////////
+
+
 
     el_custom_permissions.onChangeEvents = function () {
         commons.AddOnChange('el_id_systemuser', el_custom_permissions.setBusinessUnitOfUser);
@@ -36,14 +47,15 @@
     }
 
     el_custom_permissions.setBusinessUnitOfUser = function () {
-        var systemUserId = commons.GetLookupId("el_id_systemuser");
+        const systemUserId = commons.GetLookupId("el_id_systemuser");
         if (systemUserId) {
-            el_custom_permissions.getSystemUser("BusinessUnitId,InternalEMailAddress", systemUserId)
+            el_custom_permissions.getSystemUser("_businessunitid_value,internalemailaddress", systemUserId)
                 .then(
                     function (result) {
                         if (result) {
-                            var businessUnitOfSelectedUser = result.BusinessUnitId;
-                            userEmail = result.InternalEMailAddress;
+                            debugger;
+                            const businessUnitOfSelectedUser = result.BusinessUnitId;
+                            userEmail = result.internalemailaddress;
 
                             if (allowedEmailsFromCrm && userEmail && !allowedEmailsFromCrm.includes(userEmail)) {
                                 commons.OpenAlertDialog(hebrow.UserIsntIncludesInAllowedUsers, null, { height: 120, width: 260 }, null);
@@ -53,13 +65,13 @@
                             commons.SetLookupValue("el_id_businessunit", businessUnitOfSelectedUser.Id, businessUnitOfSelectedUser.Name, businessUnitOfSelectedUser.LogicalName);
 
                             //To Check: If a retrieved data is based on options
-                            var userRolesOpts = "?$select=&$filter=_SystemUserId_value eq '" + commons.StripGuid(systemUserId) + "'";
+                            const userRolesOpts = "?$select=&$filter=_systemuserid_value eq '" + commons.StripGuid(systemUserId) + "'";
 
-                            commons.RetrieveMultipleRecords("SystemUserRoles", userRolesOpts, null, true)
+                            commons.RetrieveMultipleRecords("systemuserroles", userRolesOpts, null, true)
                                 .then(
                                     function (results) {
                                         if (results && results.length > 0) {
-                                            var valueToSet = "";
+                                            const valueToSet = "";
                                             results.forEach(function (element) {
                                                 valueToSet += element.RoleId + ";";
                                             });
@@ -92,24 +104,25 @@
     }
 
     el_custom_permissions.setAllowedEmails = function () {
-        var generalSystemParamName = 'Manage_Custom_Permissions_As_Default_Security_Role';
-
-        var options = "?$select=el_s_value&$filter=el_name eq '" + generalSystemParamName + "'";
-
-        commons.RetrieveMultipleRecords("el_general_system_parameter", options, null, true)
-            .then(
-                function (results) {
-                    if (results && results.length > 0) {
-                        allowedEmailsFromCrm = results[0].el_s_value;
+        return new Promise((resolve, reject) => {
+            commons.GetGlobalParameterValueByName("Manage_Custom_Permissions_As_Default_Security_Role")
+                .then(
+                    function (result) {
+                        if (result) {
+                            allowedEmailsFromCrm = result;
+                        }
+                        resolve();
+                    },
+                    err => {
+                        commons.SetFormNotification("Error on retrieving an 'el_general_system_parameter' into el_custom_permissions.setAllowedEmails(): " + error.message, commons.FormNotificationLevel.ERROR, 'el_custom_permissions.setAllowedEmails');
+                        reject();
                     }
-                })
-            .catch(error => {
-                commons.SetFormNotification("Error on retrieving an 'el_general_system_parameter' into el_custom_permissions.setAllowedEmails(): " + error.message, commons.FormNotificationLevel.ERROR, 'el_custom_permissions.setAllowedEmails');
-            })
+                )
+        })
     }
 
     el_custom_permissions.onSaveActions = function (executionContext) {
-        var eventArgs = executionContext.getEventArgs();
+        const eventArgs = executionContext.getEventArgs();
         if ((eventArgs.getSaveMode() == 70 || eventArgs.getSaveMode() == 2 || eventArgs.getSaveMode() == 1) &&
             (allowedEmailsFromCrm && userEmail && !allowedEmailsFromCrm.includes(userEmail))) {
             eventArgs.preventDefault();
@@ -120,11 +133,11 @@
         }
     }
 
-    el_custom_permissions.setSystemUserLookupData = function () {
+    el_custom_permissions.setSystemUserLookupData = async function () {
         try {
+            await el_custom_permissions.setAllowedEmails();
             if (allowedEmailsFromCrm) {
-                //To Check: Chack if a preSearch working currect
-                commons.AddPreSearch("el_id_systemuser", el_custom_permissions.fileredUsersCallback);
+                commons.AddPreSearch("el_id_systemuser", el_custom_permissions.setFilteredUsers);
             }
         } catch (error) {
             commons.SetFormNotification("Error on SetSystemUserLookupData(): " + error.message, commons.FormNotificationLevel.ERROR, "setSystemUserLookupData");
@@ -132,16 +145,16 @@
         }
     }
 
-    el_custom_permissions.getSystemUser = function (fieldsToGet, userId) { return commons.RetrieveRecord("SystemUser", userId, "?$select=" + fieldsToGet) }
+    el_custom_permissions.getSystemUser = function (fieldsToGet, userId) { return commons.RetrieveRecord("systemuser", userId, "?$select=" + fieldsToGet) }
 
-    el_custom_permissions.fileredUsersCallback = function (executionContext) {
+    el_custom_permissions.setFilteredUsers = function (executionContext) {
 
         allowedEmailsFromCrm = allowedEmailsFromCrm.length - 1 === ';' ? allowedEmailsFromCrm.substring(0, allowedEmailsFromCrm.length - 1) : allowedEmailsFromCrm;
-        var allowedEmailsArray = allowedEmailsFromCrm.split(';');
+        const allowedEmailsArray = allowedEmailsFromCrm.split(';');
 
-        var control = executionContext.getEventSource();
+        let control = executionContext.getEventSource();
 
-        var allowedEmailsFilters = "<filter type='and'><filter type='or'>";
+        let allowedEmailsFilters = "<filter type='and'><filter type='or'>";
         allowedEmailsArray.forEach(function (email) {
             allowedEmailsFilters += "<condition attribute='internalemailaddress' operator='eq' value='" + email + "'/>";
         })
@@ -150,4 +163,4 @@
         control.addCustomFilter(allowedEmailsFilters);
     }
 
-})((window.el_custom_permissions = window.el_custom_permissions || {}));
+})(window.el_custom_permissions = window.el_custom_permissions || {});

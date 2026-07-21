@@ -51,9 +51,11 @@
 
 
 
-    el_contact.Ribbon = {};
+    el_contact.Ribbon = el_contact.Ribbon || {};
 
     el_contact.Ribbon.contactSaveAndCLose = function (primaryControl) {
+        debugger;
+
         if (!commons) {
             commons = new elad_commons();
             commons.SetFormContext(primaryControl);
@@ -69,15 +71,16 @@
             });
     }
 
+    el_contact.Ribbon.EnableRules = el_contact.Ribbon.EnableRules || {};
+
     el_contact.Ribbon.EnableRules.contactShowSaveAndCloseButton = function (primaryControl) {
         if (!commons) {
             commons = new elad_commons();
             commons.SetFormContext(primaryControl);
         }
 
-        debugger;
-        const contactOpener = commons.GetOpenerEntityInfo();
-        if (contactOpener.openerType === "incident") {
+        const openerInfo = commons.GetOpenerEntityInfo();
+        if (openerInfo.openerType === "incident") {
             return true;
         }
         return false;
