@@ -23,7 +23,6 @@
             el_lead.onChangeEvents();
 
             el_lead.onSaveEvents();
-
         } catch (error) {
             commons.PageErrorHandler(error, "el_lead.onLoad");
         }
@@ -64,6 +63,7 @@
         commons.AddOnChange('el_b_is_tradein_lead', el_lead.onTradeInLeadTogel);
         commons.AddOnChange('campaignid', el_lead.setTradeInLeadIfCampaignOrShowroomIsTardeIn);
         commons.AddOnChange('el_id_showroom', el_lead.filterManfFromShowRoom);
+        commons.AddOnChange('el_id_disqualify_primary_reason', el_lead.showAdditionalDetailsFieldAfterFillingMainReason);
     }
 
     el_lead.onSaveEvents = function () {
@@ -97,6 +97,23 @@
         else
             commons.SetTabVisibility("lead_disqualify_tab", false);
     }
+
+    el_lead.showAdditionalDetailsFieldAfterFillingMainReason = async function () {
+        debugger;
+        if (commons.GetLookupId("el_id_disqualify_primary_reason") != null) {
+            var primary_reason = commons.GetLookupId("el_id_disqualify_primary_reason");
+            var primary_reasonAfterRetrieve = await commons.RetrieveRecord("el_disqualify_primary_reason", primary_reason.replace(/[{}]/g, ""), "?$select=el_name")
+            if (primary_reasonAfterRetrieve != null) {
+                if (primary_reasonAfterRetrieve.el_name == "אחר") {
+                    common.SetRequiredLevel("el_s_disqualify_notes", "required")
+                }
+                else {
+                    common.SetRequiredLevel("el_s_disqualify_notes", "none")
+                }
+            }
+        }
+    }
+
 
     el_lead.showroomOnChange = function () {
         if (commons.GetLookupId("el_id_showroom")) {
