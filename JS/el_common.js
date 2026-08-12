@@ -2,6 +2,43 @@ var CommonsRibbonCrmActionParameters = window.CommonsRibbonCrmActionParameters |
 
 };
 
+var CommonsCrmActionParameters = window.CommonsRibbonCrmActionParameters || {  };
+CommonsCrmActionParameters.CheckForDuplicates = function ( duplicateType, targetId, userId, fromTime, untilTime) {
+
+    this.DuplicateType = duplicateType;
+    this.TargetId = targetId;
+    this.UserId = userId;
+    this.FromTime = fromTime;
+    this.UntilTime = untilTime;
+};
+
+CommonsCrmActionParameters.CheckForDuplicates.prototype.getMetadata = function () {
+    return {
+        boundParameter: null,
+        operationType: 0,      // Action
+        operationName: "el_action_duplicate_detection_records",
+        parameterTypes: {
+            DuplicateType: {
+                typeName: "Edm.Int32",
+                structuralProperty: 1
+            },
+            TargetId: {
+                typeName: "Edm.Guid",
+                structuralProperty: 1
+            },
+            UserId: {
+                typeName: "Edm.Guid",
+                structuralProperty: 1
+            },
+           
+            recordColumns: {
+                typeName: "Edm.String",
+                structuralProperty: 1
+            }
+        }
+    };
+};
+
 (function (elad_commons_obj) {
     //Public parameters
     elad_commons_obj._formContext = elad_commons_obj._formContext || null;
@@ -53,6 +90,12 @@ var CommonsRibbonCrmActionParameters = window.CommonsRibbonCrmActionParameters |
         None: 0,
         IfChanged: 1,
         Always: 2
+    };
+    elad_commons_obj.FormFactor = {
+        Unknown: 0,
+        Desktop: 1,
+        Tablet: 2,
+        Phone: 3
     };
 
     //elad_commons_obj.LogLevel = {
@@ -143,6 +186,11 @@ var CommonsRibbonCrmActionParameters = window.CommonsRibbonCrmActionParameters |
     };
 
     elad_commons_obj.GetCurrentUserId = function () {
+        if (elad_commons_obj._formContext)
+            return elad_commons_obj._formContext.context.getUserId();
+        return null;
+    };
+    elad_commons_obj.GetUserId = function () {
         if (elad_commons_obj._formContext)
             return elad_commons_obj._formContext.context.getUserId();
         return null;
@@ -341,13 +389,13 @@ var CommonsRibbonCrmActionParameters = window.CommonsRibbonCrmActionParameters |
         });
     };
 
-    elad_commons_obj.IsDuplicateRecordExist = function (DuplicateType, TargetId, UserId, FromTime, UntilTime) {
+    elad_commons_obj.IsDuplicateRecordExist = function (DuplicateType, TargetId, UserId, recordColumns) { //recordColumnsrecordColumns
         //Each error message is different, to separate the steps that could cause an error.
         return new Promise(function (resolve, reject) {
             try {
                 var errorObj = {};
 
-                var checkForDuplicates = new CommonsRibbonCrmActionParameters.CheckForDuplicates(DuplicateType, TargetId, UserId, FromTime, UntilTime);
+                var checkForDuplicates = new CommonsCrmActionParameters.CheckForDuplicates(DuplicateType, TargetId, UserId, recordColumns);
                 Xrm.WebApi.online.execute(checkForDuplicates).then(function (result) {
                     if (result.ok) {
                         result.json().then(
@@ -476,6 +524,14 @@ var CommonsRibbonCrmActionParameters = window.CommonsRibbonCrmActionParameters |
         return null;
     };
 
+    elad_commons_obj.GetSelectedOption = function (fieldName) {
+        var attr = elad_commons_obj.GetAttribute(fieldName);
+        if (!attr) {
+            return null;
+        }
+        return attr.getSelectedOption();
+    };
+
     elad_commons_obj.GetParameterValue = function (paramName) {
         var attr = null;
         var attrs = elad_commons_obj._formContext ? elad_commons_obj._formContext.data.attributes : null; //only in unified interface
@@ -532,6 +588,8 @@ var CommonsRibbonCrmActionParameters = window.CommonsRibbonCrmActionParameters |
         }
         return attr.getValue();
     };
+
+
     elad_commons_obj.GetLookupField = function (id, name, type) {
         return [{
             id: id,
@@ -847,7 +905,7 @@ var CommonsRibbonCrmActionParameters = window.CommonsRibbonCrmActionParameters |
         }
         return false;
     };
-    
+
     elad_commons_obj.SetRequiredLevel = function (fieldName, requirementLevel) {
         var attr = elad_commons_obj.GetAttribute(fieldName);
         if (attr != null) {
@@ -2255,6 +2313,22 @@ var CommonsRibbonCrmActionParameters = window.CommonsRibbonCrmActionParameters |
                 )
         })
     }
+    elad_commons_obj.UserHasRole = function (roleName) {
+        return new Promise(function (resolve, reject) {
+            elad_commons_obj.GetCurrentUserSecurityRoles()
+                .then(
+                    function (userRoles) {
+                        Object.keys(userRoles).forEach(rName => {
+                            if (rName === roleName ) {
+                                resolve(true);
+                            }
+                        });
+                        resolve(false);
+                    },
+                    err => reject(err)
+                )
+        })
+    }
 
     /**
      * Method return an Opener information
@@ -2286,9 +2360,11 @@ var CommonsRibbonCrmActionParameters = window.CommonsRibbonCrmActionParameters |
     elad_commons_obj.NavigateTo = function (pageInput, navigationOptions) {
         var entityType = elad_commons_obj.GetCurrentEntityName();
         var id = elad_commons_obj.GetCurrentEntityId();
+        var name = elad_commons_obj.GetCurrentRecordName();
         pageInput.createFromEntity = {
             entityType: entityType,
             id: id,
+            name: name
         }
         return new Promise((resolve, reject) => {
             try {
@@ -2302,12 +2378,26 @@ var CommonsRibbonCrmActionParameters = window.CommonsRibbonCrmActionParameters |
         })
     }
 
+    elad_commons_obj.GetCurrentRecordName = function () {
+        var name;
+        if (elad_commons_obj.GetFieldValue("name"))
+            name = elad_commons_obj.GetFieldValue("name");
+        else if (elad_commons_obj.GetFieldValue("el_name"))
+            name = elad_commons_obj.GetFieldValue("el_name");
+        else if (elad_commons_obj.GetFieldValue("title"))
+            name = elad_commons_obj.GetFieldValue("title");
+        else
+            name = elad_commons_obj.GetCurrentEntityName();
+
+        return name;
+    }
+
     /**
      * Method set an table as collapsed or expanded
      * @param {String} tabName
      * @param {String} state "expanded" OR "collapsed"
      */
-    elad_commons_obj.SetTabDisplayState = function (tabName, state) {
+    /*elad_commons_obj.SetTabDisplayState = function (tabName, state) {
         var formContext = elad_commons_obj.GetFormContext();
         if (formContext) {
             var tab = formContext.ui.tabs.get(tabName);
@@ -2315,7 +2405,7 @@ var CommonsRibbonCrmActionParameters = window.CommonsRibbonCrmActionParameters |
                 tab.setDisplayState(state)
             }
         }
-    }
+    }*/
 
     /**
      * Method set 1 callback for many fields
@@ -2537,7 +2627,7 @@ var CommonsRibbonCrmActionParameters = window.CommonsRibbonCrmActionParameters |
             return "";
         }
     };
-    
+
     elad_commons_obj.GetCityCode4Params = function (address, addressType) {
         try {
             if (!address || ((!address.el_id_city || !address.el_id_city.Id) && (!address.el_id_pob_city || !address.el_id_pob_city.Id))) {
@@ -2590,7 +2680,7 @@ var CommonsRibbonCrmActionParameters = window.CommonsRibbonCrmActionParameters |
             var txtChannel = "\nלא נמצא ערוץ\n";
             var txtChatBrand = "\nלא קיים מותג צ'אט\n";
             var txtAction = "\nהפעולה התקבלה\n";
-            var incidentId = elad_commons_obj.GetRecordId();
+            var incidentId = elad_commons_obj.GetCurrentEntityId();
 
             var customer = elad_commons_obj.GetLookupFieldValue("customerid");
 
@@ -2707,7 +2797,7 @@ var CommonsRibbonCrmActionParameters = window.CommonsRibbonCrmActionParameters |
             //TODO: Add address reference (el_address isn't exist into CRM)
             // var account = await elad_commons_obj.RetrieveRecord("account", elad_commons_obj.StripGuid(accountid),
             //     "?$select=el_s_first_name,donotbulkemail,el_s_last_name,el_dt_date_of_birth,el_s_idnumber_text,telephone1,telephone2,fax,emailaddress1&$expand=el_id_type_code($select=el_n_id_type_code),el_el_address_account($select=el_s_city_text,el_s_street_text,el_n_house_number,el_s_entrance,el_n_zip,el_n_pob_zip,el_n_pob)");
-           
+
             var account = await elad_commons_obj.RetrieveRecord("account", elad_commons_obj.StripGuid(accountid), "?$select=el_s_first_name,donotbulkemail,el_s_last_name,el_dt_date_of_birth,el_s_idnumber_text,telephone1,telephone2,fax,emailaddress1&$expand=el_id_type_code($select=el_n_id_type_code)");
 
             var parameters = "";
@@ -2929,7 +3019,7 @@ var CommonsRibbonCrmActionParameters = window.CommonsRibbonCrmActionParameters |
     };
     elad_commons_obj.SetFieldAsVisibleAndRequired = function (fieldName) {
         try {
-            elad_commons_obj.SetFieldVisibility(fieldName, true);
+            elad_commons_obj.SetVisible(fieldName, true);
             elad_commons_obj.SetRequiredLevel(fieldName, "required");
         } catch (error) {
             elad_commons_obj.PageErrorHandler(error, "elad_commons_obj.SetFieldAsVisibleAndRequired");
@@ -2937,12 +3027,52 @@ var CommonsRibbonCrmActionParameters = window.CommonsRibbonCrmActionParameters |
     };
     elad_commons_obj.SetFieldAsUNvisibleAndNONrequired = function (fieldName) {
         try {
-            elad_commons_obj.SetFieldVisibility(fieldName, false);
+            elad_commons_obj.SetVisible(fieldName, false);
             elad_commons_obj.SetRequiredLevel(fieldName, "none");
         } catch (error) {
             elad_commons_obj.PageErrorHandler(error, "elad_commons_obj.SetFieldAsUNvisibleAndNONrequired");
         }
     };
+
+    elad_commons_obj.GetGuidOfTheDefaultLookupDialogView = function (lookupFieldName) {
+        var control = elad_commons_obj.GetControl(lookupFieldName);
+        if (control)
+            return control.getDefaultView();
+        return null;
+    }
+
+    elad_commons_obj.SetDefaultLookupDialogView = function (lookupFieldName, viewGuidToSetWithBraces) {
+        var control = elad_commons_obj.GetControl(lookupFieldName);
+        try {
+            if (control) {
+                if (viewGuidToSetWithBraces) {
+                    control.setDefaultView(viewGuidToSetWithBraces)
+                }
+                else {
+                    control.setDefaultView(elad_commons_obj.GetGuidOfTheDefaultLookupDialogView(lookupFieldName))
+                }
+            }
+
+        } catch (error) {
+            console.error(error);
+        }
+    }
+
+    elad_commons_obj.IsDigitsOnly = function (value) {
+        return /^\d+$/.test(value);
+    }
+
+    elad_commons_obj.SetFireOnChange = function (attributeSchemname) {
+        var attribute = elad_commons_obj.GetAttribute(attributeSchemname);
+        if (!attribute) {
+            console.log("common => elad_commons_obj.SetFireOnChange: Attribute is Incurrect OR isn't exist")
+            return;
+        }
+        else {
+            attribute.fireOnChange();
+        }
+    }
+
     // el_opportunity
     elad_commons_obj.FillShowRoom = async function () {
         try {
@@ -2956,13 +3086,13 @@ var CommonsRibbonCrmActionParameters = window.CommonsRibbonCrmActionParameters |
 
             var currShowRoomLookupValue = elad_commons_obj.GetLookupFieldValue("el_id_showroom");
 
-            var user = await elad_commons_obj.RetrieveRecord("systemuser", elad_commons_obj.GetUserId(), "?$select=_businessunitid_value");
+            var user = await elad_commons_obj.RetrieveRecord("systemuser", elad_commons_obj.GetCurrentUserId(), "?$select=_businessunitid_value");
 
             if (user == null || user._businessunitid_value == null) {
                 return;
             }
-
-            var showroomResult = await elad_commons_obj.RetrieveMultipleRecords("businessunit", "?$select=businessunitid&$expand=el_el_showroom_businessunit($select=el_b_mixed_showroom,el_name,el_showroomid)&$filter=businessunitid eq " + user._businessunitid_value);
+            //AYA
+            var showroomResult = await elad_commons_obj.RetrieveMultipleRecords("businessunit", "?$select=businessunitid&$expand=el_id_showroom($select=el_b_mixed_showroom,el_name,el_showroomid)&$filter=businessunitid eq " + user._businessunitid_value);
 
             if (showroomResult && showroomResult.length > 0 && showroomResult[0].el_el_showroom_businessunit && showroomResult[0].el_el_showroom_businessunit.el_name) {
                 var showroom = showroomResult[0].el_el_showroom_businessunit;
@@ -2991,7 +3121,7 @@ var CommonsRibbonCrmActionParameters = window.CommonsRibbonCrmActionParameters |
                     elad_commons_obj.SetFieldValue("el_b_mixed_showroom", showroom.el_b_mixed_showroom);
 
                     if (elad_commons_obj.GetControl("el_id_manufacturer")) {
-                        elad_commons_obj.SetFieldVisibility("el_id_manufacturer", showroom.el_b_mixed_showroom === true);
+                        elad_commons_obj.SetVisible("el_id_manufacturer", showroom.el_b_mixed_showroom === true);
                     }
                 }
 
@@ -3014,14 +3144,14 @@ var CommonsRibbonCrmActionParameters = window.CommonsRibbonCrmActionParameters |
             var showroomRecord = await elad_commons_obj.RetrieveRecord("el_showroom", elad_commons_obj.StripGuid(showroom.id), "?$select=el_b_mixed_showroom&$expand=el_id_manufacturer($select=el_manufacturerid,el_name)");
 
             if (showroomRecord != null && showroomRecord.el_id_manufacturer != null && !showroomRecord.el_b_mixed_showroom) {
-                var lookupValue = [{
-                    id: showroomRecord.el_id_manufacturer.el_manufacturerid,
-                    name: showroomRecord.el_id_manufacturer.el_name,
-                    entityType: "el_manufacturer",
-                    type: EL_MANUFACTURER_TYPECODE
-                }];
+                //var lookupValue = [{
+                //    id: showroomRecord.el_id_manufacturer.el_manufacturerid,
+                //    name: showroomRecord.el_id_manufacturer.el_name,
+                //    entityType: "el_manufacturer",
+                //    //type: EL_MANUFACTURER_TYPECODE
+                //}];
 
-                elad_commons_obj.SetLookupValue("el_id_manufacturer", lookupValue);
+                elad_commons_obj.SetLookupValue("el_id_manufacturer", showroomRecord.el_id_manufacturer.el_manufacturerid, showroomRecord.el_id_manufacturer.el_name, "el_manufacturer" );
                 elad_commons_obj.SetFireOnChange("el_id_manufacturer");
             }
 
@@ -3047,6 +3177,7 @@ var CommonsRibbonCrmActionParameters = window.CommonsRibbonCrmActionParameters |
     };
     elad_commons_obj.RefreshForm = async function (save) {
         try {
+            debugger; //AYA
             if (elad_commons_obj._formContext && elad_commons_obj._formContext.data) {
                 await elad_commons_obj._formContext.data.refresh(save === true);
             }
@@ -3054,7 +3185,7 @@ var CommonsRibbonCrmActionParameters = window.CommonsRibbonCrmActionParameters |
             elad_commons_obj.PageErrorHandler(error, "commons.RefreshForm");
         }
     };
-   
+
     elad_commons_obj.yyyymmdd = function (dateIn, utcMatchNeeded) {
         try {
             var yyyy = dateIn.getFullYear();
@@ -3168,6 +3299,17 @@ var CommonsRibbonCrmActionParameters = window.CommonsRibbonCrmActionParameters |
             elad_commons_obj.PageErrorHandler(error, "commons.SetRequiredLevels");
         }
     }
+
+    elad_commons_obj.IsRequiredField = function (fieldName) {
+        var attribute = elad_commons_obj.GetAttribute(fieldName)
+
+        if (attribute) {
+            var level = attribute.getRequiredLevel();
+            return level == "required" ? true : false;
+        }
+        return null;
+    }
+
     elad_commons_obj.SetVisibleArray = function (fieldsNameArray, visible, isControlCollection) {
         try {
             if (!fieldsNameArray || fieldsNameArray.length === 0) {
@@ -3182,7 +3324,129 @@ var CommonsRibbonCrmActionParameters = window.CommonsRibbonCrmActionParameters |
             elad_commons_obj.PageErrorHandler(error, "elad_commons_obj.SetVisibleArray");
         }
     };
-     
+    //---Ribbon---
+    elad_commons_obj.CreateOutgoingWhatsappConversationByChannel = async function (channelName, entityName) {
+        try {
+
+            var recordId = elad_commons_obj.GetCurrentEntityId();
+
+            var actionName = "el_CreateOutgoingWhatsappByChannelFor" + entityName;
+
+            var channels = await commons.RetrieveMultipleRecords(
+                "el_text_server_configuration",
+                "?$select=el_text_server_configurationid,el_s_name" +
+                "&$filter=el_s_whatsapp_btn_name eq '" + channelName + "'" +
+                " and statecode eq 0" +
+                " and el_p_server_type eq 15"
+            );
+
+            if (!channels || channels.length == 0) {
+                elad_commons_obj.OpenAlertDialog("ערוץ וואטספ לא קיים.");
+                return;
+            }
+
+            var channelId = channels[0].el_text_server_configurationid;
+
+            var accountConversations = await elad_commons_obj.RetrieveMultipleRecords(
+                "el_text_conversation",
+                "?$select=subject" +
+                "&$filter=_el_l_account_value eq " + elad_commons_obj.StripGuid(recordId) +
+                " and statecode eq 0" +
+                " and _el_l_text_server_value eq " + elad_commons_obj.StripGuid(channelId)
+            );
+
+            if (accountConversations && accountConversations.length > 0) {
+                elad_commons_obj.OpenAlertDialog("ללקוח זה קיימת שיחה פתוחה בערוץ הנבחר");
+                return;
+            }
+
+            var regardingConversations = await elad_commons_obj.RetrieveMultipleRecords(
+                "el_text_conversation",
+                "?$select=subject" +
+                "&$filter=_regardingobjectid_value eq " + elad_commons_obj.StripGuid(recordId) +
+                " and statecode eq 0" +
+                " and _el_l_text_server_value eq " + elad_commons_obj.StripGuid(channelId)
+            );
+
+            if (regardingConversations && regardingConversations.length > 0) {
+                elad_commons_obj.OpenAlertDialog("ללקוח זה קיימת שיחה פתוחה בערוץ הנבחר");
+                return;
+            }
+
+            var request = {
+                entity: {
+                    "@odata.type": "Microsoft.Dynamics.CRM." + entityName.toLowerCase()
+                },
+                ChannelId: {
+                    el_text_server_configurationid: channelId,
+                    "@odata.type": "Microsoft.Dynamics.CRM.el_text_server_configuration"
+                },
+                getMetadata: function () {
+                    return {
+                        boundParameter: "entity",
+                        operationType: 0,
+                        operationName: actionName,
+                        parameterTypes: {
+                            entity: {
+                                typeName: "mscrm." + entityName.toLowerCase(),
+                                structuralProperty: 5
+                            },
+                            ChannelId: {
+                                typeName: "mscrm.el_text_server_configuration",
+                                structuralProperty: 5
+                            }
+                        }
+                    };
+                }
+            };
+
+            request.entity[entityName.toLowerCase() + "id"] = elad_commons_obj.StripGuid(recordId);
+
+            var response = await Xrm.WebApi.online.execute(request);
+
+            if (response.ok) {
+                elad_commons_obj.OpenAlertDialog("שיחת וואטספ נוצרה בהצלחה");
+            }
+
+        } catch (error) {
+            elad_commons_obj.PageErrorHandler(error, "elad_commons_obj.CreateOutgoingWhatsappConversationByChannel");
+        }
+    };
+    //CRMCommon.SetFilterOnLookupField = function (filtredFieldName, filtredEntityLogicalName, filter) {
+    //    if (!filtredFieldName || !filtredEntityLogicalName || !filter) {
+    //        console.log("el_common.js => SetFilterOnLookupField(): one of parameters is NULL or Undefined");
+    //        return null;
+    //    }
+
+    //    var control = CRMCommon.GetControl(filtredFieldName);
+
+    //    if (!control) {
+    //        console.log("el_common.js => SetFilterOnLookupField(): No control with name: " + filtredFieldName);
+    //        return null;
+    //    }
+
+    //    control.addPreSearch(function () { control.addCustomFilter(filter, filtredEntityLogicalName) });
+    //}
+
+    elad_commons_obj.SetFilterOnLookupField = function (filteredFieldName, filteredEntityLogicalName, filter) {
+        if (!filteredFieldName || !filteredEntityLogicalName || !filter) {
+            console.log("el_common.js => SetFilterOnLookupField(): one of parameters is NULL or Undefined");
+            return null;
+        }
+
+        var control = elad_commons_obj.GetControl(filteredFieldName);
+
+        if (!control) {
+            console.log("el_common.js => SetFilterOnLookupField(): No control with name: " + filteredFieldName);
+            return null;
+        }
+
+        control.addPreSearch(function () {
+            control.addCustomFilter(filter, filteredEntityLogicalName);
+        });
+
+        return true;
+    };
     //--- AYA END ---
 })(window.elad_commons_obj = window.elad_commons_obj || {});
 

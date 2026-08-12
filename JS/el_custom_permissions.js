@@ -26,18 +26,6 @@
         el_custom_permissions.setSystemUserLookupData();
     }
 
-
-
-
-
-
-
-
-
-    ///                 Continue Point          ///////////////
-
-
-
     el_custom_permissions.onChangeEvents = function () {
         commons.AddOnChange('el_id_systemuser', el_custom_permissions.setBusinessUnitOfUser);
     }
@@ -47,14 +35,13 @@
     }
 
     el_custom_permissions.setBusinessUnitOfUser = function () {
-        const systemUserId = commons.GetLookupId("el_id_systemuser");
+        let systemUserId = commons.GetLookupId("el_id_systemuser");
         if (systemUserId) {
             el_custom_permissions.getSystemUser("_businessunitid_value,internalemailaddress", systemUserId)
                 .then(
                     function (result) {
                         if (result) {
-                            debugger;
-                            const businessUnitOfSelectedUser = result.BusinessUnitId;
+                            const businessUnitOfSelectedUser = result.businessunitid;
                             userEmail = result.internalemailaddress;
 
                             if (allowedEmailsFromCrm && userEmail && !allowedEmailsFromCrm.includes(userEmail)) {
@@ -62,18 +49,18 @@
                             }
 
                             //To Check: If a value seted currect
-                            commons.SetLookupValue("el_id_businessunit", businessUnitOfSelectedUser.Id, businessUnitOfSelectedUser.Name, businessUnitOfSelectedUser.LogicalName);
+                            commons.SetLookupValue("el_id_businessunit", businessUnitOfSelectedUser.id, businessUnitOfSelectedUser.entityname, businessUnitOfSelectedUser.entitytype);
 
                             //To Check: If a retrieved data is based on options
-                            const userRolesOpts = "?$select=&$filter=_systemuserid_value eq '" + commons.StripGuid(systemUserId) + "'";
+                            const userRolesOpts = "?$select=systemuserroleid&$filter=systemuserid eq '" + commons.StripGuid(systemUserId) + "'";
 
                             commons.RetrieveMultipleRecords("systemuserroles", userRolesOpts, null, true)
                                 .then(
                                     function (results) {
                                         if (results && results.length > 0) {
-                                            const valueToSet = "";
+                                            let valueToSet = "";
                                             results.forEach(function (element) {
-                                                valueToSet += element.RoleId + ";";
+                                                valueToSet += element.systemuserroleid + ";";
                                             });
 
                                             commons.SetFieldValue("el_s_selected_guids", valueToSet);
@@ -145,7 +132,7 @@
         }
     }
 
-    el_custom_permissions.getSystemUser = function (fieldsToGet, userId) { return commons.RetrieveRecord("systemuser", userId, "?$select=" + fieldsToGet) }
+    el_custom_permissions.getSystemUser = (fieldsToGet, userId) => commons.RetrieveRecord("systemuser", userId, "?$select=" + fieldsToGet);
 
     el_custom_permissions.setFilteredUsers = function (executionContext) {
 
