@@ -4797,6 +4797,21 @@ namespace Delek.DynamicsCRM.Model
 			}
 		}
 		
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("el_owneronpremise")]
+		public string el_owneronpremise
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("el_owneronpremise");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("el_owneronpremise", value);
+			}
+		}
+		
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("el_s_address")]
 		public string el_s_address
 		{
@@ -12501,6 +12516,20 @@ namespace Delek.DynamicsCRM.Model
 		}
 		
 		/// <summary>
+		/// N:1 activitypointer_sendermailboxid_mailbox
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("sendermailboxid")]
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("activitypointer_sendermailboxid_mailbox")]
+		public Delek.DynamicsCRM.Model.Mailbox activitypointer_sendermailboxid_mailbox
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntity<Delek.DynamicsCRM.Model.Mailbox>("activitypointer_sendermailboxid_mailbox", null);
+			}
+		}
+		
+		/// <summary>
 		/// N:1 business_unit_activitypointer
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("owningbusinessunit")]
@@ -15118,6 +15147,25 @@ namespace Delek.DynamicsCRM.Model
 			set
 			{
 				this.SetRelatedEntity<Delek.DynamicsCRM.Model.SystemUser>("lk_annotationbase_modifiedonbehalfby", null, value);
+			}
+		}
+		
+		/// <summary>
+		/// N:1 Mailbox_Annotation
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("objectid")]
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("Mailbox_Annotation")]
+		public Delek.DynamicsCRM.Model.Mailbox Mailbox_Annotation
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntity<Delek.DynamicsCRM.Model.Mailbox>("Mailbox_Annotation", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetRelatedEntity<Delek.DynamicsCRM.Model.Mailbox>("Mailbox_Annotation", null, value);
 			}
 		}
 		
@@ -23152,6 +23200,24 @@ namespace Delek.DynamicsCRM.Model
 		}
 		
 		/// <summary>
+		/// 1:N business_unit_mailbox
+		/// </summary>
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("business_unit_mailbox")]
+		public System.Collections.Generic.IEnumerable<Delek.DynamicsCRM.Model.Mailbox> business_unit_mailbox
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntities<Delek.DynamicsCRM.Model.Mailbox>("business_unit_mailbox", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetRelatedEntities<Delek.DynamicsCRM.Model.Mailbox>("business_unit_mailbox", null, value);
+			}
+		}
+		
+		/// <summary>
 		/// 1:N business_unit_opportunities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("business_unit_opportunities")]
@@ -29238,6 +29304,20 @@ namespace Delek.DynamicsCRM.Model
 			set
 			{
 				this.SetRelatedEntity<Delek.DynamicsCRM.Model.el_sms>("CampaignResponse_el_smses", null, value);
+			}
+		}
+		
+		/// <summary>
+		/// N:1 campaignresponse_mailbox_sendermailboxid
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("sendermailboxid")]
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("campaignresponse_mailbox_sendermailboxid")]
+		public Delek.DynamicsCRM.Model.Mailbox campaignresponse_mailbox_sendermailboxid
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntity<Delek.DynamicsCRM.Model.Mailbox>("campaignresponse_mailbox_sendermailboxid", null);
 			}
 		}
 		
@@ -82205,6 +82285,20 @@ namespace Delek.DynamicsCRM.Model
 		}
 		
 		/// <summary>
+		/// N:1 el_chat_bot_mailbox_sendermailboxid
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("sendermailboxid")]
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("el_chat_bot_mailbox_sendermailboxid")]
+		public Delek.DynamicsCRM.Model.Mailbox el_chat_bot_mailbox_sendermailboxid
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntity<Delek.DynamicsCRM.Model.Mailbox>("el_chat_bot_mailbox_sendermailboxid", null);
+			}
+		}
+		
+		/// <summary>
 		/// N:1 el_chat_bot_systemuser_createdby
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdby")]
@@ -97408,6 +97502,20 @@ namespace Delek.DynamicsCRM.Model
 		}
 		
 		/// <summary>
+		/// N:1 el_digital_doc_mailbox_sendermailboxid
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("sendermailboxid")]
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("el_digital_doc_mailbox_sendermailboxid")]
+		public Delek.DynamicsCRM.Model.Mailbox el_digital_doc_mailbox_sendermailboxid
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntity<Delek.DynamicsCRM.Model.Mailbox>("el_digital_doc_mailbox_sendermailboxid", null);
+			}
+		}
+		
+		/// <summary>
 		/// N:1 el_digital_doc_systemuser_createdby
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdby")]
@@ -106983,6 +107091,20 @@ namespace Delek.DynamicsCRM.Model
 			get
 			{
 				return this.GetRelatedEntity<Delek.DynamicsCRM.Model.BusinessUnit>("el_doc_businessunit_owningbusinessunit", null);
+			}
+		}
+		
+		/// <summary>
+		/// N:1 el_doc_mailbox_sendermailboxid
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("sendermailboxid")]
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("el_doc_mailbox_sendermailboxid")]
+		public Delek.DynamicsCRM.Model.Mailbox el_doc_mailbox_sendermailboxid
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntity<Delek.DynamicsCRM.Model.Mailbox>("el_doc_mailbox_sendermailboxid", null);
 			}
 		}
 		
@@ -143318,6 +143440,20 @@ namespace Delek.DynamicsCRM.Model
 			get
 			{
 				return this.GetRelatedEntity<Delek.DynamicsCRM.Model.BusinessUnit>("el_mailing_interaction_businessunit_owningbusinessunit", null);
+			}
+		}
+		
+		/// <summary>
+		/// N:1 el_mailing_interaction_mailbox_sendermailboxid
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("sendermailboxid")]
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("el_mailing_interaction_mailbox_sendermailboxid")]
+		public Delek.DynamicsCRM.Model.Mailbox el_mailing_interaction_mailbox_sendermailboxid
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntity<Delek.DynamicsCRM.Model.Mailbox>("el_mailing_interaction_mailbox_sendermailboxid", null);
 			}
 		}
 		
@@ -180959,6 +181095,20 @@ namespace Delek.DynamicsCRM.Model
 		}
 		
 		/// <summary>
+		/// N:1 el_sms_mailbox_sendermailboxid
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("sendermailboxid")]
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("el_sms_mailbox_sendermailboxid")]
+		public Delek.DynamicsCRM.Model.Mailbox el_sms_mailbox_sendermailboxid
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntity<Delek.DynamicsCRM.Model.Mailbox>("el_sms_mailbox_sendermailboxid", null);
+			}
+		}
+		
+		/// <summary>
 		/// N:1 el_sms_systemuser_createdby
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdby")]
@@ -203629,6 +203779,20 @@ namespace Delek.DynamicsCRM.Model
 		}
 		
 		/// <summary>
+		/// N:1 email_sendermailboxid_mailbox
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("sendermailboxid")]
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("email_sendermailboxid_mailbox")]
+		public Delek.DynamicsCRM.Model.Mailbox email_sendermailboxid_mailbox
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntity<Delek.DynamicsCRM.Model.Mailbox>("email_sendermailboxid_mailbox", null);
+			}
+		}
+		
+		/// <summary>
 		/// N:1 Incident_Emails
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
@@ -203743,6 +203907,25 @@ namespace Delek.DynamicsCRM.Model
 			set
 			{
 				this.SetRelatedEntity<Delek.DynamicsCRM.Model.SystemUser>("lk_email_modifiedonbehalfby", null, value);
+			}
+		}
+		
+		/// <summary>
+		/// N:1 mailbox_email_ReceivingMailboxId
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("receivingmailboxid")]
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("mailbox_email_ReceivingMailboxId")]
+		public Delek.DynamicsCRM.Model.Mailbox mailbox_email_ReceivingMailboxId
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntity<Delek.DynamicsCRM.Model.Mailbox>("mailbox_email_ReceivingMailboxId", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetRelatedEntity<Delek.DynamicsCRM.Model.Mailbox>("mailbox_email_ReceivingMailboxId", null, value);
 			}
 		}
 		
@@ -217897,6 +218080,21 @@ namespace Delek.DynamicsCRM.Model
 			}
 		}
 		
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("el_owneronpremise")]
+		public string el_owneronpremise
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("el_owneronpremise");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("el_owneronpremise", value);
+			}
+		}
+		
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("el_s_address")]
 		public string el_s_address
 		{
@@ -224592,6 +224790,3207 @@ namespace Delek.DynamicsCRM.Model
 		}
 	}
 	
+	[System.Runtime.Serialization.DataContractAttribute()]
+	[Microsoft.Xrm.Sdk.Client.EntityLogicalNameAttribute("mailbox")]
+	public partial class Mailbox : Microsoft.Xrm.Sdk.Entity
+	{
+		
+		/// <summary>
+		/// Default Constructor.
+		/// </summary>
+		[System.Diagnostics.DebuggerNonUserCode()]
+		public Mailbox() : 
+				base(EntityLogicalName)
+		{
+		}
+		
+		public const string EntityLogicalName = "mailbox";
+		
+		public const string PrimaryIdAttribute = "mailboxid";
+		
+		public const string PrimaryNameAttribute = "name";
+		
+		public const string EntitySchemaName = "Mailbox";
+		
+		public const string EntityLogicalCollectionName = "mailboxes";
+		
+		public const string EntitySetName = "mailboxes";
+		
+		public const int EntityTypeCode = 9606;
+		
+		/// <summary>
+		/// קובע אם יש להפעיל את שילוב ACS לזמין עבור סינכרון דואר אלקטרוני יוצא.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("acsenabledforoutgoingemail")]
+		public System.Nullable<bool> ACSEnabledForOutgoingEmail
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("acsenabledforoutgoingemail");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("acsenabledforoutgoingemail", value);
+			}
+		}
+		
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("acsenabledforoutgoingemailname")]
+		public string acsenabledforoutgoingemailName
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				if (this.FormattedValues.Contains("acsenabledforoutgoingemail"))
+				{
+					return this.FormattedValues["acsenabledforoutgoingemail"];
+				}
+				else
+				{
+					return default(string);
+				}
+			}
+		}
+		
+		/// <summary>
+		/// ‏לשימוש פנימי בלבד.‬
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("acsmailfromcreated")]
+		public System.Nullable<bool> ACSMailFromCreated
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("acsmailfromcreated");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("acsmailfromcreated", value);
+			}
+		}
+		
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("acsmailfromcreatedname")]
+		public string acsmailfromcreatedName
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				if (this.FormattedValues.Contains("acsmailfromcreated"))
+				{
+					return this.FormattedValues["acsmailfromcreated"];
+				}
+				else
+				{
+					return default(string);
+				}
+			}
+		}
+		
+		/// <summary>
+		/// המצב של סינכרון הודעות דואר אלקטרוני יוצאות של ACS.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("acsoutgoingemailstatus")]
+		public virtual Microsoft.Xrm.Sdk.OptionSetValue ACSOutgoingEmailStatus
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.OptionSetValue>("acsoutgoingemailstatus");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("acsoutgoingemailstatus", value);
+			}
+		}
+		
+		/// <summary>
+		/// המצב של סינכרון הודעות דואר אלקטרוני יוצאות של ACS.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("acsoutgoingemailstatus")]
+		public virtual Mailbox_ACSOutgoingEmailStatus? ACSOutgoingEmailStatusEnum
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return ((Mailbox_ACSOutgoingEmailStatus?)(EntityOptionSetEnum.GetEnum(this, "acsoutgoingemailstatus")));
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("acsoutgoingemailstatus", value.HasValue ? new Microsoft.Xrm.Sdk.OptionSetValue((int)value) : null);
+			}
+		}
+		
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("acsoutgoingemailstatusname")]
+		public string acsoutgoingemailstatusName
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				if (this.FormattedValues.Contains("acsoutgoingemailstatus"))
+				{
+					return this.FormattedValues["acsoutgoingemailstatus"];
+				}
+				else
+				{
+					return default(string);
+				}
+			}
+		}
+		
+		/// <summary>
+		/// בחר את שיטת המסירה של פגישות, אנשי קשר ומשימות עבור תיבת הדואר.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("actdeliverymethod")]
+		public virtual Microsoft.Xrm.Sdk.OptionSetValue ACTDeliveryMethod
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.OptionSetValue>("actdeliverymethod");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("actdeliverymethod", value);
+			}
+		}
+		
+		/// <summary>
+		/// בחר את שיטת המסירה של פגישות, אנשי קשר ומשימות עבור תיבת הדואר.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("actdeliverymethod")]
+		public virtual Mailbox_ACTDeliveryMethod? ACTDeliveryMethodEnum
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return ((Mailbox_ACTDeliveryMethod?)(EntityOptionSetEnum.GetEnum(this, "actdeliverymethod")));
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("actdeliverymethod", value.HasValue ? new Microsoft.Xrm.Sdk.OptionSetValue((int)value) : null);
+			}
+		}
+		
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("actdeliverymethodname")]
+		public string ACTDeliveryMethodName
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				if (this.FormattedValues.Contains("actdeliverymethod"))
+				{
+					return this.FormattedValues["actdeliverymethod"];
+				}
+				else
+				{
+					return default(string);
+				}
+			}
+		}
+		
+		/// <summary>
+		/// מצב הפגישות, אנשי הקשר והמשימות.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("actstatus")]
+		public virtual Microsoft.Xrm.Sdk.OptionSetValue ACTStatus
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.OptionSetValue>("actstatus");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("actstatus", value);
+			}
+		}
+		
+		/// <summary>
+		/// מצב הפגישות, אנשי הקשר והמשימות.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("actstatus")]
+		public virtual Mailbox_ACTStatus? ACTStatusEnum
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return ((Mailbox_ACTStatus?)(EntityOptionSetEnum.GetEnum(this, "actstatus")));
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("actstatus", value.HasValue ? new Microsoft.Xrm.Sdk.OptionSetValue((int)value) : null);
+			}
+		}
+		
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("actstatusname")]
+		public string ACTStatusName
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				if (this.FormattedValues.Contains("actstatus"))
+				{
+					return this.FormattedValues["actstatus"];
+				}
+				else
+				{
+					return default(string);
+				}
+			}
+		}
+		
+		/// <summary>
+		/// בחר אם לאפשר למחבר הדואר האלקטרוני להשתמש באישורים.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("allowemailconnectortousecredentials")]
+		public System.Nullable<bool> AllowEmailConnectorToUseCredentials
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("allowemailconnectortousecredentials");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("allowemailconnectortousecredentials", value);
+			}
+		}
+		
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("allowemailconnectortousecredentialsname")]
+		public string AllowEmailConnectorToUseCredentialsName
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				if (this.FormattedValues.Contains("allowemailconnectortousecredentials"))
+				{
+					return this.FormattedValues["allowemailconnectortousecredentials"];
+				}
+				else
+				{
+					return default(string);
+				}
+			}
+		}
+		
+		/// <summary>
+		/// משך כולל של תיבת דואר בממוצע
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("averagetotalduration")]
+		public System.Nullable<int> AverageTotalDuration
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<int>>("averagetotalduration");
+			}
+		}
+		
+		/// <summary>
+		/// מראה מי יצר את הרשומה.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdby")]
+		public Microsoft.Xrm.Sdk.EntityReference CreatedBy
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("createdby");
+			}
+		}
+		
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdbyname")]
+		public string CreatedByName
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				if (this.FormattedValues.Contains("createdby"))
+				{
+					return this.FormattedValues["createdby"];
+				}
+				else
+				{
+					return default(string);
+				}
+			}
+		}
+		
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdbyyominame")]
+		public string CreatedByYomiName
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				if (this.FormattedValues.Contains("createdby"))
+				{
+					return this.FormattedValues["createdby"];
+				}
+				else
+				{
+					return default(string);
+				}
+			}
+		}
+		
+		/// <summary>
+		/// מציג את התאריך והשעה שבהם נוצרה הרשומה. התאריך והשעה מוצגים באזור הזמן שנבחר באפשרויות Microsoft Dynamics 365.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdon")]
+		public System.Nullable<System.DateTime> CreatedOn
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<System.DateTime>>("createdon");
+			}
+		}
+		
+		/// <summary>
+		/// מראה מי יצר את הרשומה בשמו של משתמש אחר.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdonbehalfby")]
+		public Microsoft.Xrm.Sdk.EntityReference CreatedOnBehalfBy
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("createdonbehalfby");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("createdonbehalfby", value);
+			}
+		}
+		
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdonbehalfbyname")]
+		public string CreatedOnBehalfByName
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				if (this.FormattedValues.Contains("createdonbehalfby"))
+				{
+					return this.FormattedValues["createdonbehalfby"];
+				}
+				else
+				{
+					return default(string);
+				}
+			}
+		}
+		
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdonbehalfbyyominame")]
+		public string CreatedOnBehalfByYomiName
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				if (this.FormattedValues.Contains("createdonbehalfby"))
+				{
+					return this.FormattedValues["createdonbehalfby"];
+				}
+				else
+				{
+					return default(string);
+				}
+			}
+		}
+		
+		/// <summary>
+		/// הקלד את כתובת הדואר האלקטרוני של תיבת הדואר.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("emailaddress")]
+		public string EmailAddress
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("emailaddress");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("emailaddress", value);
+			}
+		}
+		
+		/// <summary>
+		/// המשתמש שאישר את כתובת הדואר האלקטרוני לסינכרון.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("emailaddressapprovedby")]
+		public Microsoft.Xrm.Sdk.EntityReference EmailAddressApprovedBy
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("emailaddressapprovedby");
+			}
+		}
+		
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("emailaddressapprovedbyname")]
+		public string emailaddressapprovedbyName
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				if (this.FormattedValues.Contains("emailaddressapprovedby"))
+				{
+					return this.FormattedValues["emailaddressapprovedby"];
+				}
+				else
+				{
+					return default(string);
+				}
+			}
+		}
+		
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("emailaddressapprovedbyyominame")]
+		public string emailaddressapprovedbyYomiName
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				if (this.FormattedValues.Contains("emailaddressapprovedby"))
+				{
+					return this.FormattedValues["emailaddressapprovedby"];
+				}
+				else
+				{
+					return default(string);
+				}
+			}
+		}
+		
+		/// <summary>
+		/// התאריך והשעה שבהם אושרה כתובת הדואר האלקטרוני של תיבת דואר זן.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("emailaddressapprovedon")]
+		public System.Nullable<System.DateTime> EmailAddressApprovedOn
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<System.DateTime>>("emailaddressapprovedon");
+			}
+		}
+		
+		/// <summary>
+		/// מציג את המצב של כתובת הדואר האלקטרוני.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("emailrouteraccessapproval")]
+		public virtual Microsoft.Xrm.Sdk.OptionSetValue EmailRouterAccessApproval
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.OptionSetValue>("emailrouteraccessapproval");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("emailrouteraccessapproval", value);
+			}
+		}
+		
+		/// <summary>
+		/// מציג את המצב של כתובת הדואר האלקטרוני.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("emailrouteraccessapproval")]
+		public virtual Mailbox_EmailRouterAccessApproval? EmailRouterAccessApprovalEnum
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return ((Mailbox_EmailRouterAccessApproval?)(EntityOptionSetEnum.GetEnum(this, "emailrouteraccessapproval")));
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("emailrouteraccessapproval", value.HasValue ? new Microsoft.Xrm.Sdk.OptionSetValue((int)value) : null);
+			}
+		}
+		
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("emailrouteraccessapprovalname")]
+		public string EmailRouterAccessApprovalName
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				if (this.FormattedValues.Contains("emailrouteraccessapproval"))
+				{
+					return this.FormattedValues["emailrouteraccessapproval"];
+				}
+				else
+				{
+					return default(string);
+				}
+			}
+		}
+		
+		/// <summary>
+		/// בחר את פרופיל שרת הדואר האלקטרוני של תיבת הדואר.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("emailserverprofile")]
+		public Microsoft.Xrm.Sdk.EntityReference EmailServerProfile
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("emailserverprofile");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("emailserverprofile", value);
+			}
+		}
+		
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("emailserverprofilename")]
+		public string EmailServerProfileName
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				if (this.FormattedValues.Contains("emailserverprofile"))
+				{
+					return this.FormattedValues["emailserverprofile"];
+				}
+				else
+				{
+					return default(string);
+				}
+			}
+		}
+		
+		/// <summary>
+		/// מציין אם תיבת הדואר זמינה עבור פגישות, אנשי קשר ומשימות.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("enabledforact")]
+		public System.Nullable<bool> EnabledForACT
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("enabledforact");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("enabledforact", value);
+			}
+		}
+		
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("enabledforactname")]
+		public string EnabledForACTName
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				if (this.FormattedValues.Contains("enabledforact"))
+				{
+					return this.FormattedValues["enabledforact"];
+				}
+				else
+				{
+					return default(string);
+				}
+			}
+		}
+		
+		/// <summary>
+		/// בחר אם תיבת הדואר זמינה עבור קבלת דואר אלקטרוני.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("enabledforincomingemail")]
+		public System.Nullable<bool> EnabledForIncomingEmail
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("enabledforincomingemail");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("enabledforincomingemail", value);
+			}
+		}
+		
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("enabledforincomingemailname")]
+		public string EnabledForIncomingEmailName
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				if (this.FormattedValues.Contains("enabledforincomingemail"))
+				{
+					return this.FormattedValues["enabledforincomingemail"];
+				}
+				else
+				{
+					return default(string);
+				}
+			}
+		}
+		
+		/// <summary>
+		/// בחר אם תיבת הדואר זמינה עבור שליחת דואר אלקטרוני.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("enabledforoutgoingemail")]
+		public System.Nullable<bool> EnabledForOutgoingEmail
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("enabledforoutgoingemail");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("enabledforoutgoingemail", value);
+			}
+		}
+		
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("enabledforoutgoingemailname")]
+		public string EnabledForOutgoingEmailName
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				if (this.FormattedValues.Contains("enabledforoutgoingemail"))
+				{
+					return this.FormattedValues["enabledforoutgoingemail"];
+				}
+				else
+				{
+					return default(string);
+				}
+			}
+		}
+		
+		/// <summary>
+		/// תמונת ברירת המחדל עבור הישות.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("entityimage")]
+		public byte[] EntityImage
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<byte[]>("entityimage");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("entityimage", value);
+			}
+		}
+		
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("entityimage_timestamp")]
+		public System.Nullable<long> EntityImage_Timestamp
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<long>>("entityimage_timestamp");
+			}
+		}
+		
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("entityimage_url")]
+		public string EntityImage_URL
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("entityimage_url");
+			}
+		}
+		
+		/// <summary>
+		/// לשימוש פנימי בלבד.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("entityimageid")]
+		public System.Nullable<System.Guid> EntityImageId
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<System.Guid>>("entityimageid");
+			}
+		}
+		
+		/// <summary>
+		/// כתובת URL של נקודת קצה של שירותי אינטרנט של Exchange עבור תיבת הדואר.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("ewsurl")]
+		public string EWSURL
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("ewsurl");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("ewsurl", value);
+			}
+		}
+		
+		/// <summary>
+		/// התאריך והשעה שבהם הושלם הייבוא האחרון של אנשי קשר של Exchange עבור רשומת תיבת דואר.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("exchangecontactsimportcompletedon")]
+		public System.Nullable<System.DateTime> ExchangeContactsImportCompletedOn
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<System.DateTime>>("exchangecontactsimportcompletedon");
+			}
+		}
+		
+		/// <summary>
+		/// מציין את מצב הייבוא של אנשי קשר של Exchange עבור רשומת תיבת דואר.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("exchangecontactsimportstatus")]
+		public virtual Microsoft.Xrm.Sdk.OptionSetValue ExchangeContactsImportStatus
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.OptionSetValue>("exchangecontactsimportstatus");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("exchangecontactsimportstatus", value);
+			}
+		}
+		
+		/// <summary>
+		/// מציין את מצב הייבוא של אנשי קשר של Exchange עבור רשומת תיבת דואר.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("exchangecontactsimportstatus")]
+		public virtual Mailbox_ExchangeContactsImportStatus? ExchangeContactsImportStatusEnum
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return ((Mailbox_ExchangeContactsImportStatus?)(EntityOptionSetEnum.GetEnum(this, "exchangecontactsimportstatus")));
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("exchangecontactsimportstatus", value.HasValue ? new Microsoft.Xrm.Sdk.OptionSetValue((int)value) : null);
+			}
+		}
+		
+		/// <summary>
+		/// מכיל את מצב הסינכרון של Exchange בתבנית XML.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("exchangesyncstatexml")]
+		public string ExchangeSyncStateXml
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("exchangesyncstatexml");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("exchangesyncstatexml", value);
+			}
+		}
+		
+		/// <summary>
+		/// הפניה לקובץ ExchangeSyncStateXml ב- Azure.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("exchangesyncstatexmlfileref")]
+		public System.Nullable<System.Guid> ExchangeSyncStateXmlFileRef
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<System.Guid>>("exchangesyncstatexmlfileref");
+			}
+		}
+		
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("exchangesyncstatexmlfileref_name")]
+		public string ExchangeSyncStateXmlFileRef_Name
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("exchangesyncstatexmlfileref_name");
+			}
+		}
+		
+		/// <summary>
+		/// מכיל את הירארכיית התיקיות תחת תיבת הדואר הנכנס בתבנית XML.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("folderhierarchy")]
+		public string FolderHierarchy
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("folderhierarchy");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("folderhierarchy", value);
+			}
+		}
+		
+		/// <summary>
+		/// לשימוש פנימי בלבד
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("forcedunlockcount")]
+		public System.Nullable<int> ForcedUnlockCount
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<int>>("forcedunlockcount");
+			}
+		}
+		
+		/// <summary>
+		/// מזהה ייחודי של המארח האסינכרוני המעבד תיבת דואר זו.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("hostid")]
+		public string HostId
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("hostid");
+			}
+		}
+		
+		/// <summary>
+		/// בחר כיצד דואר אלקטרוני נכנס יימסר לתיבת הדואר.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("incomingemaildeliverymethod")]
+		public virtual Microsoft.Xrm.Sdk.OptionSetValue IncomingEmailDeliveryMethod
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.OptionSetValue>("incomingemaildeliverymethod");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("incomingemaildeliverymethod", value);
+			}
+		}
+		
+		/// <summary>
+		/// בחר כיצד דואר אלקטרוני נכנס יימסר לתיבת הדואר.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("incomingemaildeliverymethod")]
+		public virtual Mailbox_IncomingEmailDeliveryMethod? IncomingEmailDeliveryMethodEnum
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return ((Mailbox_IncomingEmailDeliveryMethod?)(EntityOptionSetEnum.GetEnum(this, "incomingemaildeliverymethod")));
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("incomingemaildeliverymethod", value.HasValue ? new Microsoft.Xrm.Sdk.OptionSetValue((int)value) : null);
+			}
+		}
+		
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("incomingemaildeliverymethodname")]
+		public string IncomingEmailDeliveryMethodName
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				if (this.FormattedValues.Contains("incomingemaildeliverymethod"))
+				{
+					return this.FormattedValues["incomingemaildeliverymethod"];
+				}
+				else
+				{
+					return default(string);
+				}
+			}
+		}
+		
+		/// <summary>
+		/// בחר את המצב שיוקצה להודעות דואר אלקטרוני נכנסות.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("incomingemailstatus")]
+		public virtual Microsoft.Xrm.Sdk.OptionSetValue IncomingEmailStatus
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.OptionSetValue>("incomingemailstatus");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("incomingemailstatus", value);
+			}
+		}
+		
+		/// <summary>
+		/// בחר את המצב שיוקצה להודעות דואר אלקטרוני נכנסות.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("incomingemailstatus")]
+		public virtual Mailbox_IncomingEmailStatus? IncomingEmailStatusEnum
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return ((Mailbox_IncomingEmailStatus?)(EntityOptionSetEnum.GetEnum(this, "incomingemailstatus")));
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("incomingemailstatus", value.HasValue ? new Microsoft.Xrm.Sdk.OptionSetValue((int)value) : null);
+			}
+		}
+		
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("incomingemailstatusname")]
+		public string IncomingEmailStatusName
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				if (this.FormattedValues.Contains("incomingemailstatus"))
+				{
+					return this.FormattedValues["incomingemailstatus"];
+				}
+				else
+				{
+					return default(string);
+				}
+			}
+		}
+		
+		/// <summary>
+		/// הגדר את הארגון הנוכחי כארגון לסינכרון.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("isactsyncorgflagset")]
+		public System.Nullable<bool> IsACTSyncOrgFlagSet
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("isactsyncorgflagset");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("isactsyncorgflagset", value);
+			}
+		}
+		
+		/// <summary>
+		/// מציג את מצב האישור של כתובת הדואר האלקטרוני על-ידי מנהל O365.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("isemailaddressapprovedbyo365admin")]
+		public System.Nullable<bool> IsEmailAddressApprovedByO365Admin
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("isemailaddressapprovedbyo365admin");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("isemailaddressapprovedbyo365admin", value);
+			}
+		}
+		
+		/// <summary>
+		/// האם תוזמן ייבוא של אנשי הקשר של Exchange.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("isexchangecontactsimportscheduled")]
+		public System.Nullable<bool> IsExchangeContactsImportScheduled
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("isexchangecontactsimportscheduled");
+			}
+		}
+		
+		/// <summary>
+		/// בחר אם תיבת הדואר היא תיבת דואר להעברה.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("isforwardmailbox")]
+		public System.Nullable<bool> IsForwardMailbox
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("isforwardmailbox");
+			}
+		}
+		
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("isforwardmailboxname")]
+		public string IsForwardMailboxName
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				if (this.FormattedValues.Contains("isforwardmailbox"))
+				{
+					return this.FormattedValues["isforwardmailbox"];
+				}
+				else
+				{
+					return default(string);
+				}
+			}
+		}
+		
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("isoauthaccesstokenset")]
+		public System.Nullable<bool> IsOauthAccessTokenSet
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("isoauthaccesstokenset");
+			}
+		}
+		
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("isoauthrefreshtokenset")]
+		public System.Nullable<bool> IsOauthRefreshTokenSet
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("isoauthrefreshtokenset");
+			}
+		}
+		
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("ispasswordset")]
+		public System.Nullable<bool> IsPasswordSet
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("ispasswordset");
+			}
+		}
+		
+		/// <summary>
+		/// בחר אם תיבת הדואר מתאימה לאחד מחשבונות השירות.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("isserviceaccount")]
+		public System.Nullable<bool> IsServiceAccount
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("isserviceaccount");
+			}
+		}
+		
+		/// <summary>
+		/// לשימוש פנימי בלבד.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("itemsfailedforlastsync")]
+		public System.Nullable<int> ItemsFailedForLastSync
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<int>>("itemsfailedforlastsync");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("itemsfailedforlastsync", value);
+			}
+		}
+		
+		/// <summary>
+		/// לשימוש פנימי בלבד.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("itemsprocessedforlastsync")]
+		public System.Nullable<int> ItemsProcessedForLastSync
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<int>>("itemsprocessedforlastsync");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("itemsprocessedforlastsync", value);
+			}
+		}
+		
+		/// <summary>
+		/// מציג את התאריך והשעה שבהם כתובת ה- URL של שירותי האינטרנט של Exchange התגלתה לאחרונה באמצעות שירות הגילוי האוטומטי.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("lastautodiscoveredon")]
+		public System.Nullable<System.DateTime> LastAutoDiscoveredOn
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<System.DateTime>>("lastautodiscoveredon");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("lastautodiscoveredon", value);
+			}
+		}
+		
+		/// <summary>
+		/// משך אחרון של תיבת הדואר
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("lastduration")]
+		public System.Nullable<int> LastDuration
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<int>>("lastduration");
+			}
+		}
+		
+		/// <summary>
+		/// חותמת הזמן שבה התבקשה הקבוצה האחרונה של הודעות דואר נכנסות משרת דואר חיצוני. לשימוש פנימי בלבד.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("lastincomingemailsrequestedfromemailserveron")]
+		public System.Nullable<System.DateTime> LastIncomingEmailsRequestedFromEmailServerOn
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<System.DateTime>>("lastincomingemailsrequestedfromemailserveron");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("lastincomingemailsrequestedfromemailserveron", value);
+			}
+		}
+		
+		/// <summary>
+		/// לשימוש פנימי בלבד.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("lastmailboxforcedunlockoccurredon")]
+		public System.Nullable<System.DateTime> LastMailboxForcedUnlockOccurredOn
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<System.DateTime>>("lastmailboxforcedunlockoccurredon");
+			}
+		}
+		
+		/// <summary>
+		/// מזהה ייחודי של ההודעה האחרונה.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("lastmessageid")]
+		public string LastMessageId
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("lastmessageid");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("lastmessageid", value);
+			}
+		}
+		
+		/// <summary>
+		/// שעת סינכרון מוצלח אחרון
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("lastsuccessfulsynccompletedon")]
+		public System.Nullable<System.DateTime> LastSuccessfulSyncCompletedOn
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<System.DateTime>>("lastsuccessfulsynccompletedon");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("lastsuccessfulsynccompletedon", value);
+			}
+		}
+		
+		/// <summary>
+		/// לשימוש פנימי בלבד.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("lastsyncerror")]
+		public string LastSyncError
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("lastsyncerror");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("lastsyncerror", value);
+			}
+		}
+		
+		/// <summary>
+		/// לשימוש פנימי בלבד.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("lastsyncerrorcode")]
+		public System.Nullable<int> LastSyncErrorCode
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<int>>("lastsyncerrorcode");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("lastsyncerrorcode", value);
+			}
+		}
+		
+		/// <summary>
+		/// לשימוש פנימי בלבד
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("lastsyncerrorcount")]
+		public System.Nullable<int> LastSyncErrorCount
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<int>>("lastsyncerrorcount");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("lastsyncerrorcount", value);
+			}
+		}
+		
+		/// <summary>
+		/// לשימוש פנימי בלבד.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("lastsyncerrormachinename")]
+		public string LastSyncErrorMachineName
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("lastsyncerrormachinename");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("lastsyncerrormachinename", value);
+			}
+		}
+		
+		/// <summary>
+		/// לשימוש פנימי בלבד.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("lastsyncerroroccurredon")]
+		public System.Nullable<System.DateTime> LastSyncErrorOccurredOn
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<System.DateTime>>("lastsyncerroroccurredon");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("lastsyncerroroccurredon", value);
+			}
+		}
+		
+		/// <summary>
+		/// שעת התחלה של סינכרון אחרון
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("lastsyncstartedon")]
+		public System.Nullable<System.DateTime> LastSyncStartedOn
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<System.DateTime>>("lastsyncstartedon");
+			}
+		}
+		
+		/// <summary>
+		/// מזהה את חותמת הזמן כשהתיוג הושלם לאחרונה. לשימוש פנימי בלבד.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("lasttagcompletedon")]
+		public System.Nullable<System.DateTime> LastTagCompletedOn
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<System.DateTime>>("lasttagcompletedon");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("lasttagcompletedon", value);
+			}
+		}
+		
+		/// <summary>
+		/// מזהה את ה- MessageId האחרון שעובד לצורך תיוג במערכת המרוחקת.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("lasttaggedmessageid")]
+		public string LastTaggedMessageId
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("lasttaggedmessageid");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("lasttaggedmessageid", value);
+			}
+		}
+		
+		/// <summary>
+		/// מציין אם מחזור התיוג האחרון שעיבד את המספר המרבי של פריטים. לשימוש פנימי בלבד.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("lasttagprocessedmaxitems")]
+		public System.Nullable<bool> LastTagProcessedMaxItems
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("lasttagprocessedmaxitems");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("lasttagprocessedmaxitems", value);
+			}
+		}
+		
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("lasttagprocessedmaxitemsname")]
+		public string lasttagprocessedmaxitemsName
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				if (this.FormattedValues.Contains("lasttagprocessedmaxitems"))
+				{
+					return this.FormattedValues["lasttagprocessedmaxitems"];
+				}
+				else
+				{
+					return default(string);
+				}
+			}
+		}
+		
+		/// <summary>
+		/// המזהה הייחודי של תיבת הדואר.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("mailboxid")]
+		public System.Nullable<System.Guid> MailboxId
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<System.Guid>>("mailboxid");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("mailboxid", value);
+				if (value.HasValue)
+				{
+					base.Id = value.Value;
+				}
+				else
+				{
+					base.Id = System.Guid.Empty;
+				}
+			}
+		}
+		
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("mailboxid")]
+		public override System.Guid Id
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return base.Id;
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.MailboxId = value;
+			}
+		}
+		
+		/// <summary>
+		/// לשימוש פנימי בלבד.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("mailboxprocessingcontext")]
+		public System.Nullable<int> MailboxProcessingContext
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<int>>("mailboxprocessingcontext");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("mailboxprocessingcontext", value);
+			}
+		}
+		
+		/// <summary>
+		/// מצב הסינכרון האחרון עבור 'יוצא', 'נכנס' ותיקי לקוחות, פגישות ומשימות באופן כולל.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("mailboxstatus")]
+		public virtual Microsoft.Xrm.Sdk.OptionSetValue MailboxStatus
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.OptionSetValue>("mailboxstatus");
+			}
+		}
+		
+		/// <summary>
+		/// מצב הסינכרון האחרון עבור 'יוצא', 'נכנס' ותיקי לקוחות, פגישות ומשימות באופן כולל.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("mailboxstatus")]
+		public virtual Mailbox_MailboxStatus? MailboxStatusEnum
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return ((Mailbox_MailboxStatus?)(EntityOptionSetEnum.GetEnum(this, "mailboxstatus")));
+			}
+		}
+		
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("mailboxstatusname")]
+		public string MailboxStatusName
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				if (this.FormattedValues.Contains("mailboxstatus"))
+				{
+					return this.FormattedValues["mailboxstatus"];
+				}
+				else
+				{
+					return default(string);
+				}
+			}
+		}
+		
+		/// <summary>
+		/// מראה מי עדכן לאחרונה את הרשומה.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedby")]
+		public Microsoft.Xrm.Sdk.EntityReference ModifiedBy
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("modifiedby");
+			}
+		}
+		
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedbyname")]
+		public string ModifiedByName
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				if (this.FormattedValues.Contains("modifiedby"))
+				{
+					return this.FormattedValues["modifiedby"];
+				}
+				else
+				{
+					return default(string);
+				}
+			}
+		}
+		
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedbyyominame")]
+		public string ModifiedByYomiName
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				if (this.FormattedValues.Contains("modifiedby"))
+				{
+					return this.FormattedValues["modifiedby"];
+				}
+				else
+				{
+					return default(string);
+				}
+			}
+		}
+		
+		/// <summary>
+		/// מציג את התאריך והשעה שבהם הרשומה עודכנה לאחרונה. התאריך והשעה מוצגים באזור הזמן שנבחר באפשרויות Microsoft Dynamics 365.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedon")]
+		public System.Nullable<System.DateTime> ModifiedOn
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<System.DateTime>>("modifiedon");
+			}
+		}
+		
+		/// <summary>
+		/// מראה מי עדכן לאחרונה את הרשומה בשמו של משתמש אחר.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedonbehalfby")]
+		public Microsoft.Xrm.Sdk.EntityReference ModifiedOnBehalfBy
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("modifiedonbehalfby");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("modifiedonbehalfby", value);
+			}
+		}
+		
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedonbehalfbyname")]
+		public string ModifiedOnBehalfByName
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				if (this.FormattedValues.Contains("modifiedonbehalfby"))
+				{
+					return this.FormattedValues["modifiedonbehalfby"];
+				}
+				else
+				{
+					return default(string);
+				}
+			}
+		}
+		
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedonbehalfbyyominame")]
+		public string ModifiedOnBehalfByYomiName
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				if (this.FormattedValues.Contains("modifiedonbehalfby"))
+				{
+					return this.FormattedValues["modifiedonbehalfby"];
+				}
+				else
+				{
+					return default(string);
+				}
+			}
+		}
+		
+		/// <summary>
+		/// הקלד את שם תיבת הדואר.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("name")]
+		public string Name
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("name");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("name", value);
+			}
+		}
+		
+		/// <summary>
+		/// עיכוב בסינכרון ACT המתוזמן הבא, בשניות, שיש להחיל על תיבת הדואר.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("nextscheduledactsyncinseconds")]
+		public System.Nullable<int> NextScheduledACTSyncInSeconds
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<int>>("nextscheduledactsyncinseconds");
+			}
+		}
+		
+		/// <summary>
+		/// לשימוש פנימי בלבד.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("noactcount")]
+		public System.Nullable<int> NoACTCount
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<int>>("noactcount");
+			}
+		}
+		
+		/// <summary>
+		/// לשימוש פנימי בלבד.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("noemailcount")]
+		public System.Nullable<int> NoEmailCount
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<int>>("noemailcount");
+			}
+		}
+		
+		/// <summary>
+		/// הקלד את אסימון הגישה של Oauth עבור תיבת הדואר.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("oauthaccesstoken")]
+		public string OauthAccessToken
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("oauthaccesstoken");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("oauthaccesstoken", value);
+			}
+		}
+		
+		/// <summary>
+		/// הקלד את אסימון הרענון של Oauth עבור תיבת הדואר.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("oauthrefreshtoken")]
+		public string OauthRefreshToken
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("oauthrefreshtoken");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("oauthrefreshtoken", value);
+			}
+		}
+		
+		/// <summary>
+		/// התאריך והשעה שבהם תוקף אסימון Oauth יפוג.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("oauthtokenexpireson")]
+		public System.Nullable<System.DateTime> OauthTokenExpiresOn
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<System.DateTime>>("oauthtokenexpireson");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("oauthtokenexpireson", value);
+			}
+		}
+		
+		/// <summary>
+		/// התאריך והשעה שבהם הושלמה פריסת יישומי Office האחרונה עבור רשומת תיבת דואר.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("officeappsdeploymentcompleteon")]
+		public System.Nullable<System.DateTime> OfficeAppsDeploymentCompleteOn
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<System.DateTime>>("officeappsdeploymentcompleteon");
+			}
+		}
+		
+		/// <summary>
+		/// השגיאה בפריסת יישומי Office.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("officeappsdeploymenterror")]
+		public string OfficeAppsDeploymentError
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("officeappsdeploymenterror");
+			}
+		}
+		
+		/// <summary>
+		/// מציין אם פריסת יישומי Office תוזמנה עבור רשומת תיבת דואר.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("officeappsdeploymentscheduled")]
+		public System.Nullable<bool> OfficeAppsDeploymentScheduled
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("officeappsdeploymentscheduled");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("officeappsdeploymentscheduled", value);
+			}
+		}
+		
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("officeappsdeploymentscheduledname")]
+		public string OfficeAppsDeploymentScheduledName
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				if (this.FormattedValues.Contains("officeappsdeploymentscheduled"))
+				{
+					return this.FormattedValues["officeappsdeploymentscheduled"];
+				}
+				else
+				{
+					return default(string);
+				}
+			}
+		}
+		
+		/// <summary>
+		/// מציין את הסוג של פריסת יישומי Office עבור רשומת תיבת דואר.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("officeappsdeploymentstatus")]
+		public virtual Microsoft.Xrm.Sdk.OptionSetValue OfficeAppsDeploymentStatus
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.OptionSetValue>("officeappsdeploymentstatus");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("officeappsdeploymentstatus", value);
+			}
+		}
+		
+		/// <summary>
+		/// מציין את הסוג של פריסת יישומי Office עבור רשומת תיבת דואר.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("officeappsdeploymentstatus")]
+		public virtual Mailbox_OfficeAppsDeploymentStatus? OfficeAppsDeploymentStatusEnum
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return ((Mailbox_OfficeAppsDeploymentStatus?)(EntityOptionSetEnum.GetEnum(this, "officeappsdeploymentstatus")));
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("officeappsdeploymentstatus", value.HasValue ? new Microsoft.Xrm.Sdk.OptionSetValue((int)value) : null);
+			}
+		}
+		
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("officeappsdeploymentstatusname")]
+		public string OfficeAppsDeploymentStatusName
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				if (this.FormattedValues.Contains("officeappsdeploymentstatus"))
+				{
+					return this.FormattedValues["officeappsdeploymentstatus"];
+				}
+				else
+				{
+					return default(string);
+				}
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("officeappsdeploymentstatusname", value);
+			}
+		}
+		
+		/// <summary>
+		/// המזהה הייחודי של הארגון המשויך לרשומה.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("organizationid")]
+		public Microsoft.Xrm.Sdk.EntityReference OrganizationId
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("organizationid");
+			}
+		}
+		
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("organizationidname")]
+		public string OrganizationIdName
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				if (this.FormattedValues.Contains("organizationid"))
+				{
+					return this.FormattedValues["organizationid"];
+				}
+				else
+				{
+					return default(string);
+				}
+			}
+		}
+		
+		/// <summary>
+		/// מציין אם יש לסמן את ארגון Crm כארגון הראשי לסינכרון עבור רשומת תיבת הדואר.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("orgmarkedasprimaryforexchangesync")]
+		public System.Nullable<bool> OrgMarkedAsPrimaryForExchangeSync
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("orgmarkedasprimaryforexchangesync");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("orgmarkedasprimaryforexchangesync", value);
+			}
+		}
+		
+		/// <summary>
+		/// בחר כיצד דואר אלקטרוני יוצא יישלח מתיבת הדואר.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("outgoingemaildeliverymethod")]
+		public virtual Microsoft.Xrm.Sdk.OptionSetValue OutgoingEmailDeliveryMethod
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.OptionSetValue>("outgoingemaildeliverymethod");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("outgoingemaildeliverymethod", value);
+			}
+		}
+		
+		/// <summary>
+		/// בחר כיצד דואר אלקטרוני יוצא יישלח מתיבת הדואר.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("outgoingemaildeliverymethod")]
+		public virtual Mailbox_OutgoingEmailDeliveryMethod? OutgoingEmailDeliveryMethodEnum
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return ((Mailbox_OutgoingEmailDeliveryMethod?)(EntityOptionSetEnum.GetEnum(this, "outgoingemaildeliverymethod")));
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("outgoingemaildeliverymethod", value.HasValue ? new Microsoft.Xrm.Sdk.OptionSetValue((int)value) : null);
+			}
+		}
+		
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("outgoingemaildeliverymethodname")]
+		public string OutgoingEmailDeliveryMethodName
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				if (this.FormattedValues.Contains("outgoingemaildeliverymethod"))
+				{
+					return this.FormattedValues["outgoingemaildeliverymethod"];
+				}
+				else
+				{
+					return default(string);
+				}
+			}
+		}
+		
+		/// <summary>
+		/// בחר את המצב של הודעות דואר אלקטרוני יוצאות.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("outgoingemailstatus")]
+		public virtual Microsoft.Xrm.Sdk.OptionSetValue OutgoingEmailStatus
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.OptionSetValue>("outgoingemailstatus");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("outgoingemailstatus", value);
+			}
+		}
+		
+		/// <summary>
+		/// בחר את המצב של הודעות דואר אלקטרוני יוצאות.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("outgoingemailstatus")]
+		public virtual Mailbox_OutgoingEmailStatus? OutgoingEmailStatusEnum
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return ((Mailbox_OutgoingEmailStatus?)(EntityOptionSetEnum.GetEnum(this, "outgoingemailstatus")));
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("outgoingemailstatus", value.HasValue ? new Microsoft.Xrm.Sdk.OptionSetValue((int)value) : null);
+			}
+		}
+		
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("outgoingemailstatusname")]
+		public string OutgoingEmailStatusName
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				if (this.FormattedValues.Contains("outgoingemailstatus"))
+				{
+					return this.FormattedValues["outgoingemailstatus"];
+				}
+				else
+				{
+					return default(string);
+				}
+			}
+		}
+		
+		/// <summary>
+		/// הזן את המשתמש או הצוות שהוקצה לניהול הרשומה. שדה זה מעודכן בכל פעם שהרשומה מוקצית למשתמש אחר.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("ownerid")]
+		public Microsoft.Xrm.Sdk.EntityReference OwnerId
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("ownerid");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("ownerid", value);
+			}
+		}
+		
+		/// <summary>
+		/// שם הבעלים
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("owneridname")]
+		public string OwnerIdName
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				if (this.FormattedValues.Contains("ownerid"))
+				{
+					return this.FormattedValues["ownerid"];
+				}
+				else
+				{
+					return default(string);
+				}
+			}
+		}
+		
+		/// <summary>
+		/// היגוי השם של הבעלים
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("owneridyominame")]
+		public string OwnerIdYomiName
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				if (this.FormattedValues.Contains("ownerid"))
+				{
+					return this.FormattedValues["ownerid"];
+				}
+				else
+				{
+					return default(string);
+				}
+			}
+		}
+		
+		/// <summary>
+		/// בחר את היחידה העסקית שהרשומה נמצאת בבעלותה.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("owningbusinessunit")]
+		public Microsoft.Xrm.Sdk.EntityReference OwningBusinessUnit
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("owningbusinessunit");
+			}
+		}
+		
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("owningbusinessunitname")]
+		public string OwningBusinessUnitName
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				if (this.FormattedValues.Contains("owningbusinessunit"))
+				{
+					return this.FormattedValues["owningbusinessunit"];
+				}
+				else
+				{
+					return default(string);
+				}
+			}
+		}
+		
+		/// <summary>
+		/// ‏‏מזהה ייחודי עבור הצוות המהווה בעלים של הרשומה.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("owningteam")]
+		public Microsoft.Xrm.Sdk.EntityReference OwningTeam
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("owningteam");
+			}
+		}
+		
+		/// <summary>
+		/// המזהה הייחודי של המשתמש שהרשומה נמצאת בבעלותו.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("owninguser")]
+		public Microsoft.Xrm.Sdk.EntityReference OwningUser
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("owninguser");
+			}
+		}
+		
+		/// <summary>
+		/// הקלד את סיסמת תיבת הדואר.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("password")]
+		public string Password
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("password");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("password", value);
+			}
+		}
+		
+		/// <summary>
+		/// מציג את התאריך והשעה שבהם יתחיל העיבוד בתיבת דואר זו.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("postponemailboxprocessinguntil")]
+		public System.Nullable<System.DateTime> PostponeMailboxProcessingUntil
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<System.DateTime>>("postponemailboxprocessinguntil");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("postponemailboxprocessinguntil", value);
+			}
+		}
+		
+		/// <summary>
+		/// מציג את התאריך והשעה שבהם תופעל ההתקנה הבאה של יישום הדואר של Outlook עבור רשומת תיבת דואר.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("postponeofficeappsdeploymentuntil")]
+		public System.Nullable<System.DateTime> PostponeOfficeAppsDeploymentUntil
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<System.DateTime>>("postponeofficeappsdeploymentuntil");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("postponeofficeappsdeploymentuntil", value);
+			}
+		}
+		
+		/// <summary>
+		/// מציג את התאריך והשעה שבהם תיבת הדואר יכולה להתחיל לשלוח הודעות דואר אלקטרוני.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("postponesendinguntil")]
+		public System.Nullable<System.DateTime> PostponeSendingUntil
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<System.DateTime>>("postponesendinguntil");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("postponesendinguntil", value);
+			}
+		}
+		
+		/// <summary>
+		/// מציג את התאריך והשעה שבהם תופעל בדיקת התצורה הבאה של הדואר האלקטרוני עבור רשומת תיבת דואר.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("postponetestemailconfigurationuntil")]
+		public System.Nullable<System.DateTime> PostponeTestEmailConfigurationUntil
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<System.DateTime>>("postponetestemailconfigurationuntil");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("postponetestemailconfigurationuntil", value);
+			}
+		}
+		
+		/// <summary>
+		/// בחר אם למחוק הודעות דואר אלקטרוני מתיבת הדואר לאחר העיבוד.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("processanddeleteemails")]
+		public System.Nullable<bool> ProcessAndDeleteEmails
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("processanddeleteemails");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("processanddeleteemails", value);
+			}
+		}
+		
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("processanddeleteemailsname")]
+		public string ProcessAndDeleteEmailsName
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				if (this.FormattedValues.Contains("processanddeleteemails"))
+				{
+					return this.FormattedValues["processanddeleteemails"];
+				}
+				else
+				{
+					return default(string);
+				}
+			}
+		}
+		
+		/// <summary>
+		/// מספר הפעמים שתיבת דואר עובדה
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("processedtimes")]
+		public System.Nullable<int> ProcessedTimes
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<int>>("processedtimes");
+			}
+		}
+		
+		/// <summary>
+		/// מציג את התאריך והשעה לתחילת העיבוד של דואר אלקטרוני שהתקבל על-ידי תיבת הדואר.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("processemailreceivedafter")]
+		public System.Nullable<System.DateTime> ProcessEmailReceivedAfter
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<System.DateTime>>("processemailreceivedafter");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("processemailreceivedafter", value);
+			}
+		}
+		
+		/// <summary>
+		/// התאריך והשעה שבהם עיבוד תיבת הדואר נוסה לאחרונה.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("processinglastattemptedon")]
+		public System.Nullable<System.DateTime> ProcessingLastAttemptedOn
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<System.DateTime>>("processinglastattemptedon");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("processinglastattemptedon", value);
+			}
+		}
+		
+		/// <summary>
+		/// מידע שמציין אם יתבצע עיבוד של הדואר האלקטרוני עבור תיבת הדואר.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("processingstatecode")]
+		public System.Nullable<int> ProcessingStateCode
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<int>>("processingstatecode");
+			}
+		}
+		
+		/// <summary>
+		/// לשימוש פנימי בלבד.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("receivingpostponeduntil")]
+		public System.Nullable<System.DateTime> ReceivingPostponedUntil
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<System.DateTime>>("receivingpostponeduntil");
+			}
+		}
+		
+		/// <summary>
+		/// לשימוש פנימי בלבד.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("receivingpostponeduntilforact")]
+		public System.Nullable<System.DateTime> ReceivingPostponedUntilForACT
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<System.DateTime>>("receivingpostponeduntilforact");
+			}
+		}
+		
+		/// <summary>
+		/// בחר את המשתמש המשויך לתיבת הדואר.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
+		public Microsoft.Xrm.Sdk.EntityReference RegardingObjectId
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("regardingobjectid");
+			}
+		}
+		
+		/// <summary>
+		/// שם המשתמש המשויך לתיבת הדואר.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectidname")]
+		public string RegardingObjectIdName
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				if (this.FormattedValues.Contains("regardingobjectid"))
+				{
+					return this.FormattedValues["regardingobjectid"];
+				}
+				else
+				{
+					return default(string);
+				}
+			}
+		}
+		
+		/// <summary>
+		/// מראה אם תיבת הדואר פעילה או לא פעילה.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("statecode")]
+		public virtual Microsoft.Xrm.Sdk.OptionSetValue StateCode
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.OptionSetValue>("statecode");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("statecode", value);
+			}
+		}
+		
+		/// <summary>
+		/// מראה אם תיבת הדואר פעילה או לא פעילה.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("statecode")]
+		public virtual mailbox_statecode? StateCodeEnum
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return ((mailbox_statecode?)(EntityOptionSetEnum.GetEnum(this, "statecode")));
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("statecode", value.HasValue ? new Microsoft.Xrm.Sdk.OptionSetValue((int)value) : null);
+			}
+		}
+		
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("statecodename")]
+		public string StateCodeName
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				if (this.FormattedValues.Contains("statecode"))
+				{
+					return this.FormattedValues["statecode"];
+				}
+				else
+				{
+					return default(string);
+				}
+			}
+		}
+		
+		/// <summary>
+		/// בחר את מצב תיבת הדואר.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("statuscode")]
+		public virtual Microsoft.Xrm.Sdk.OptionSetValue StatusCode
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.OptionSetValue>("statuscode");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("statuscode", value);
+			}
+		}
+		
+		/// <summary>
+		/// בחר את מצב תיבת הדואר.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("statuscode")]
+		public virtual Mailbox_StatusCode? StatusCodeEnum
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return ((Mailbox_StatusCode?)(EntityOptionSetEnum.GetEnum(this, "statuscode")));
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("statuscode", value.HasValue ? new Microsoft.Xrm.Sdk.OptionSetValue((int)value) : null);
+			}
+		}
+		
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("statuscodename")]
+		public string StatusCodeName
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				if (this.FormattedValues.Contains("statuscode"))
+				{
+					return this.FormattedValues["statuscode"];
+				}
+				else
+				{
+					return default(string);
+				}
+			}
+		}
+		
+		/// <summary>
+		/// מזהה את חותמת הזמן שלאחריה יש לתייג הודעות דואר אלקטרוני במערכת המרוחקת.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("tagemailsafter")]
+		public System.Nullable<System.DateTime> TagEmailsAfter
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<System.DateTime>>("tagemailsafter");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("tagemailsafter", value);
+			}
+		}
+		
+		/// <summary>
+		/// המשתמש שניסה לאחרונה לבדוק ולהפעיל את תיבת הדואר.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("testandenablelastattemptedby")]
+		public Microsoft.Xrm.Sdk.EntityReference TestAndEnableLastAttemptedBy
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("testandenablelastattemptedby");
+			}
+		}
+		
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("testandenablelastattemptedbyname")]
+		public string testandenablelastattemptedbyName
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				if (this.FormattedValues.Contains("testandenablelastattemptedby"))
+				{
+					return this.FormattedValues["testandenablelastattemptedby"];
+				}
+				else
+				{
+					return default(string);
+				}
+			}
+		}
+		
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("testandenablelastattemptedbyyominame")]
+		public string testandenablelastattemptedbyYomiName
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				if (this.FormattedValues.Contains("testandenablelastattemptedby"))
+				{
+					return this.FormattedValues["testandenablelastattemptedby"];
+				}
+				else
+				{
+					return default(string);
+				}
+			}
+		}
+		
+		/// <summary>
+		/// התאריך והשעה של הבדיקה האחרונה וניסיון ההפעלה.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("testandenablelastattemptedon")]
+		public System.Nullable<System.DateTime> TestAndEnableLastAttemptedOn
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<System.DateTime>>("testandenablelastattemptedon");
+			}
+		}
+		
+		/// <summary>
+		/// מציג את מספר הפעמים שבו התבצעה בדיקת תצורה של דואר אלקטרוני.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("testemailconfigurationretrycount")]
+		public System.Nullable<int> TestEmailConfigurationRetryCount
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<int>>("testemailconfigurationretrycount");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("testemailconfigurationretrycount", value);
+			}
+		}
+		
+		/// <summary>
+		/// מציין אם בדיקת התצורה של תיבת הדואר תוזמנה עבור רשומת תיבת דואר.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("testemailconfigurationscheduled")]
+		public System.Nullable<bool> TestEmailConfigurationScheduled
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("testemailconfigurationscheduled");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("testemailconfigurationscheduled", value);
+			}
+		}
+		
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("testemailconfigurationscheduledname")]
+		public string TestEmailConfigurationScheduledName
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				if (this.FormattedValues.Contains("testemailconfigurationscheduled"))
+				{
+					return this.FormattedValues["testemailconfigurationscheduled"];
+				}
+				else
+				{
+					return default(string);
+				}
+			}
+		}
+		
+		/// <summary>
+		/// תאריך ושעה שבהם הושלמה בדיקת התצורה האחרונה של הדואר האלקטרוני עבור רשומת תיבת דואר.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("testmailboxaccesscompletedon")]
+		public System.Nullable<System.DateTime> TestMailboxAccessCompletedOn
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<System.DateTime>>("testmailboxaccesscompletedon");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("testmailboxaccesscompletedon", value);
+			}
+		}
+		
+		/// <summary>
+		/// לשימוש פנימי בלבד.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("timezoneruleversionnumber")]
+		public System.Nullable<int> TimeZoneRuleVersionNumber
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<int>>("timezoneruleversionnumber");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("timezoneruleversionnumber", value);
+			}
+		}
+		
+		/// <summary>
+		/// שרשור של ספירות כשלים ארעיים של כל פעולות תיבת הדואר.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("transientfailurecount")]
+		public System.Nullable<int> TransientFailureCount
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<int>>("transientfailurecount");
+			}
+		}
+		
+		/// <summary>
+		/// מציג את המזהה של התיקיה 'לא ניתן למסירה' בתיבת הדואר המנוהלת על-ידי Microsoft Exchange.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("undeliverablefolder")]
+		public string UndeliverableFolder
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("undeliverablefolder");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("undeliverablefolder", value);
+			}
+		}
+		
+		/// <summary>
+		/// הקלד שם משתמש המשמש לאימות תיבת דואר.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("username")]
+		public string Username
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("username");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("username", value);
+			}
+		}
+		
+		/// <summary>
+		/// קוד אזור הזמן שהיה בשימוש בעת יצירת הרשומה.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("utcconversiontimezonecode")]
+		public System.Nullable<int> UTCConversionTimeZoneCode
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<int>>("utcconversiontimezonecode");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("utcconversiontimezonecode", value);
+			}
+		}
+		
+		/// <summary>
+		/// מציין אם יש להפוך מעקב מילולי לזמין עבור תיבת דואר זו.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("verboseloggingenabled")]
+		public System.Nullable<int> VerboseLoggingEnabled
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<int>>("verboseloggingenabled");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("verboseloggingenabled", value);
+			}
+		}
+		
+		/// <summary>
+		/// מספר גירסה של תיבת הדואר.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("versionnumber")]
+		public System.Nullable<long> VersionNumber
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<long>>("versionnumber");
+			}
+		}
+		
+		/// <summary>
+		/// 1:N activitypointer_sendermailboxid_mailbox
+		/// </summary>
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("activitypointer_sendermailboxid_mailbox")]
+		public System.Collections.Generic.IEnumerable<Delek.DynamicsCRM.Model.ActivityPointer> activitypointer_sendermailboxid_mailbox
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntities<Delek.DynamicsCRM.Model.ActivityPointer>("activitypointer_sendermailboxid_mailbox", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetRelatedEntities<Delek.DynamicsCRM.Model.ActivityPointer>("activitypointer_sendermailboxid_mailbox", null, value);
+			}
+		}
+		
+		/// <summary>
+		/// 1:N campaignresponse_mailbox_sendermailboxid
+		/// </summary>
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("campaignresponse_mailbox_sendermailboxid")]
+		public System.Collections.Generic.IEnumerable<Delek.DynamicsCRM.Model.CampaignResponse> campaignresponse_mailbox_sendermailboxid
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntities<Delek.DynamicsCRM.Model.CampaignResponse>("campaignresponse_mailbox_sendermailboxid", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetRelatedEntities<Delek.DynamicsCRM.Model.CampaignResponse>("campaignresponse_mailbox_sendermailboxid", null, value);
+			}
+		}
+		
+		/// <summary>
+		/// 1:N el_chat_bot_mailbox_sendermailboxid
+		/// </summary>
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("el_chat_bot_mailbox_sendermailboxid")]
+		public System.Collections.Generic.IEnumerable<Delek.DynamicsCRM.Model.el_chat_bot> el_chat_bot_mailbox_sendermailboxid
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntities<Delek.DynamicsCRM.Model.el_chat_bot>("el_chat_bot_mailbox_sendermailboxid", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetRelatedEntities<Delek.DynamicsCRM.Model.el_chat_bot>("el_chat_bot_mailbox_sendermailboxid", null, value);
+			}
+		}
+		
+		/// <summary>
+		/// 1:N el_digital_doc_mailbox_sendermailboxid
+		/// </summary>
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("el_digital_doc_mailbox_sendermailboxid")]
+		public System.Collections.Generic.IEnumerable<Delek.DynamicsCRM.Model.el_digital_doc> el_digital_doc_mailbox_sendermailboxid
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntities<Delek.DynamicsCRM.Model.el_digital_doc>("el_digital_doc_mailbox_sendermailboxid", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetRelatedEntities<Delek.DynamicsCRM.Model.el_digital_doc>("el_digital_doc_mailbox_sendermailboxid", null, value);
+			}
+		}
+		
+		/// <summary>
+		/// 1:N el_doc_mailbox_sendermailboxid
+		/// </summary>
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("el_doc_mailbox_sendermailboxid")]
+		public System.Collections.Generic.IEnumerable<Delek.DynamicsCRM.Model.el_doc> el_doc_mailbox_sendermailboxid
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntities<Delek.DynamicsCRM.Model.el_doc>("el_doc_mailbox_sendermailboxid", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetRelatedEntities<Delek.DynamicsCRM.Model.el_doc>("el_doc_mailbox_sendermailboxid", null, value);
+			}
+		}
+		
+		/// <summary>
+		/// 1:N el_mailing_interaction_mailbox_sendermailboxid
+		/// </summary>
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("el_mailing_interaction_mailbox_sendermailboxid")]
+		public System.Collections.Generic.IEnumerable<Delek.DynamicsCRM.Model.el_mailing_interaction> el_mailing_interaction_mailbox_sendermailboxid
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntities<Delek.DynamicsCRM.Model.el_mailing_interaction>("el_mailing_interaction_mailbox_sendermailboxid", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetRelatedEntities<Delek.DynamicsCRM.Model.el_mailing_interaction>("el_mailing_interaction_mailbox_sendermailboxid", null, value);
+			}
+		}
+		
+		/// <summary>
+		/// 1:N el_sms_mailbox_sendermailboxid
+		/// </summary>
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("el_sms_mailbox_sendermailboxid")]
+		public System.Collections.Generic.IEnumerable<Delek.DynamicsCRM.Model.el_sms> el_sms_mailbox_sendermailboxid
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntities<Delek.DynamicsCRM.Model.el_sms>("el_sms_mailbox_sendermailboxid", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetRelatedEntities<Delek.DynamicsCRM.Model.el_sms>("el_sms_mailbox_sendermailboxid", null, value);
+			}
+		}
+		
+		/// <summary>
+		/// 1:N email_sendermailboxid_mailbox
+		/// </summary>
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("email_sendermailboxid_mailbox")]
+		public System.Collections.Generic.IEnumerable<Delek.DynamicsCRM.Model.Email> email_sendermailboxid_mailbox
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntities<Delek.DynamicsCRM.Model.Email>("email_sendermailboxid_mailbox", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetRelatedEntities<Delek.DynamicsCRM.Model.Email>("email_sendermailboxid_mailbox", null, value);
+			}
+		}
+		
+		/// <summary>
+		/// 1:N Mailbox_Annotation
+		/// </summary>
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("Mailbox_Annotation")]
+		public System.Collections.Generic.IEnumerable<Delek.DynamicsCRM.Model.Annotation> Mailbox_Annotation
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntities<Delek.DynamicsCRM.Model.Annotation>("Mailbox_Annotation", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetRelatedEntities<Delek.DynamicsCRM.Model.Annotation>("Mailbox_Annotation", null, value);
+			}
+		}
+		
+		/// <summary>
+		/// 1:N mailbox_email_ReceivingMailboxId
+		/// </summary>
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("mailbox_email_ReceivingMailboxId")]
+		public System.Collections.Generic.IEnumerable<Delek.DynamicsCRM.Model.Email> mailbox_email_ReceivingMailboxId
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntities<Delek.DynamicsCRM.Model.Email>("mailbox_email_ReceivingMailboxId", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetRelatedEntities<Delek.DynamicsCRM.Model.Email>("mailbox_email_ReceivingMailboxId", null, value);
+			}
+		}
+		
+		/// <summary>
+		/// 1:N mailbox_processsessions
+		/// </summary>
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("mailbox_processsessions")]
+		public System.Collections.Generic.IEnumerable<Delek.DynamicsCRM.Model.ProcessSession> mailbox_processsessions
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntities<Delek.DynamicsCRM.Model.ProcessSession>("mailbox_processsessions", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetRelatedEntities<Delek.DynamicsCRM.Model.ProcessSession>("mailbox_processsessions", null, value);
+			}
+		}
+		
+		/// <summary>
+		/// 1:N opportunityclose_mailbox_sendermailboxid
+		/// </summary>
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("opportunityclose_mailbox_sendermailboxid")]
+		public System.Collections.Generic.IEnumerable<Delek.DynamicsCRM.Model.OpportunityClose> opportunityclose_mailbox_sendermailboxid
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntities<Delek.DynamicsCRM.Model.OpportunityClose>("opportunityclose_mailbox_sendermailboxid", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetRelatedEntities<Delek.DynamicsCRM.Model.OpportunityClose>("opportunityclose_mailbox_sendermailboxid", null, value);
+			}
+		}
+		
+		/// <summary>
+		/// 1:N serviceappointment_mailbox_sendermailboxid
+		/// </summary>
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("serviceappointment_mailbox_sendermailboxid")]
+		public System.Collections.Generic.IEnumerable<Delek.DynamicsCRM.Model.ServiceAppointment> serviceappointment_mailbox_sendermailboxid
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntities<Delek.DynamicsCRM.Model.ServiceAppointment>("serviceappointment_mailbox_sendermailboxid", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetRelatedEntities<Delek.DynamicsCRM.Model.ServiceAppointment>("serviceappointment_mailbox_sendermailboxid", null, value);
+			}
+		}
+		
+		/// <summary>
+		/// 1:N systemuser_defaultmailbox_mailbox
+		/// </summary>
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("systemuser_defaultmailbox_mailbox")]
+		public System.Collections.Generic.IEnumerable<Delek.DynamicsCRM.Model.SystemUser> systemuser_defaultmailbox_mailbox
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntities<Delek.DynamicsCRM.Model.SystemUser>("systemuser_defaultmailbox_mailbox", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetRelatedEntities<Delek.DynamicsCRM.Model.SystemUser>("systemuser_defaultmailbox_mailbox", null, value);
+			}
+		}
+		
+		/// <summary>
+		/// N:1 business_unit_mailbox
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("owningbusinessunit")]
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("business_unit_mailbox")]
+		public Delek.DynamicsCRM.Model.BusinessUnit business_unit_mailbox
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntity<Delek.DynamicsCRM.Model.BusinessUnit>("business_unit_mailbox", null);
+			}
+		}
+		
+		/// <summary>
+		/// N:1 lk_mailbox_createdby
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdby")]
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_mailbox_createdby")]
+		public Delek.DynamicsCRM.Model.SystemUser lk_mailbox_createdby
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntity<Delek.DynamicsCRM.Model.SystemUser>("lk_mailbox_createdby", null);
+			}
+		}
+		
+		/// <summary>
+		/// N:1 lk_mailbox_createdonbehalfby
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdonbehalfby")]
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_mailbox_createdonbehalfby")]
+		public Delek.DynamicsCRM.Model.SystemUser lk_mailbox_createdonbehalfby
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntity<Delek.DynamicsCRM.Model.SystemUser>("lk_mailbox_createdonbehalfby", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetRelatedEntity<Delek.DynamicsCRM.Model.SystemUser>("lk_mailbox_createdonbehalfby", null, value);
+			}
+		}
+		
+		/// <summary>
+		/// N:1 lk_mailbox_modifiedby
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedby")]
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_mailbox_modifiedby")]
+		public Delek.DynamicsCRM.Model.SystemUser lk_mailbox_modifiedby
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntity<Delek.DynamicsCRM.Model.SystemUser>("lk_mailbox_modifiedby", null);
+			}
+		}
+		
+		/// <summary>
+		/// N:1 lk_mailbox_modifiedonbehalfby
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedonbehalfby")]
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_mailbox_modifiedonbehalfby")]
+		public Delek.DynamicsCRM.Model.SystemUser lk_mailbox_modifiedonbehalfby
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntity<Delek.DynamicsCRM.Model.SystemUser>("lk_mailbox_modifiedonbehalfby", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetRelatedEntity<Delek.DynamicsCRM.Model.SystemUser>("lk_mailbox_modifiedonbehalfby", null, value);
+			}
+		}
+		
+		/// <summary>
+		/// N:1 mailbox_emailaddressapprovedby_systemuser
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("emailaddressapprovedby")]
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("mailbox_emailaddressapprovedby_systemuser")]
+		public Delek.DynamicsCRM.Model.SystemUser mailbox_emailaddressapprovedby_systemuser
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntity<Delek.DynamicsCRM.Model.SystemUser>("mailbox_emailaddressapprovedby_systemuser", null);
+			}
+		}
+		
+		/// <summary>
+		/// N:1 mailbox_regarding_systemuser
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("mailbox_regarding_systemuser")]
+		public Delek.DynamicsCRM.Model.SystemUser mailbox_regarding_systemuser
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntity<Delek.DynamicsCRM.Model.SystemUser>("mailbox_regarding_systemuser", null);
+			}
+		}
+		
+		/// <summary>
+		/// N:1 mailbox_testandenablelastattemptedby_systemuser
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("testandenablelastattemptedby")]
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("mailbox_testandenablelastattemptedby_systemuser")]
+		public Delek.DynamicsCRM.Model.SystemUser mailbox_testandenablelastattemptedby_systemuser
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntity<Delek.DynamicsCRM.Model.SystemUser>("mailbox_testandenablelastattemptedby_systemuser", null);
+			}
+		}
+		
+		/// <summary>
+		/// N:1 team_mailbox
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("owningteam")]
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("team_mailbox")]
+		public Delek.DynamicsCRM.Model.Team team_mailbox
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntity<Delek.DynamicsCRM.Model.Team>("team_mailbox", null);
+			}
+		}
+		
+		/// <summary>
+		/// N:1 user_mailbox
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("owninguser")]
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("user_mailbox")]
+		public Delek.DynamicsCRM.Model.SystemUser user_mailbox
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntity<Delek.DynamicsCRM.Model.SystemUser>("user_mailbox", null);
+			}
+		}
+		
+		/// <summary>
+		/// Constructor for populating via LINQ queries given a LINQ anonymous type
+		/// <param name="anonymousType">LINQ anonymous type.</param>
+		/// </summary>
+		[System.Diagnostics.DebuggerNonUserCode()]
+		public Mailbox(object anonymousType) : 
+				this()
+		{
+            foreach (var p in anonymousType.GetType().GetProperties())
+            {
+                var value = p.GetValue(anonymousType, null);
+                var name = p.Name.ToLower();
+            
+                if (value != null && name.EndsWith("enum") && value.GetType().BaseType == typeof(System.Enum))
+                {
+                    value = new Microsoft.Xrm.Sdk.OptionSetValue((int) value);
+                    name = name.Remove(name.Length - "enum".Length);
+                }
+            
+                switch (name)
+                {
+                    case "id":
+                        base.Id = (System.Guid)value;
+                        Attributes["mailboxid"] = base.Id;
+                        break;
+                    case "mailboxid":
+                        var id = (System.Nullable<System.Guid>) value;
+                        if(id == null){ continue; }
+                        base.Id = id.Value;
+                        Attributes[name] = base.Id;
+                        break;
+                    case "formattedvalues":
+                        // Add Support for FormattedValues
+                        FormattedValues.AddRange((Microsoft.Xrm.Sdk.FormattedValueCollection)value);
+                        break;
+                    default:
+                        Attributes[name] = value;
+                        break;
+                }
+            }
+		}
+	}
+	
 	/// <summary>
 	/// ישות מובנית בה מנוהלים תהליכי מכירה למכירת רכבים מול לקוחות דלק מוטורס ולנהל את תהליך המכירה על להשלמתו
 	/// </summary>
@@ -227806,6 +231205,21 @@ namespace Delek.DynamicsCRM.Model
 			}
 		}
 		
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("el_migratedon")]
+		public System.Nullable<System.DateTime> el_migratedon
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<System.DateTime>>("el_migratedon");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("el_migratedon", value);
+			}
+		}
+		
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("el_n_car_amount")]
 		public System.Nullable<int> el_n_car_amount
 		{
@@ -227881,6 +231295,21 @@ namespace Delek.DynamicsCRM.Model
 			set
 			{
 				this.SetAttributeValue("el_n_tradein_agreement", value);
+			}
+		}
+		
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("el_owneronpremise")]
+		public string el_owneronpremise
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("el_owneronpremise");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("el_owneronpremise", value);
 			}
 		}
 		
@@ -235108,6 +238537,20 @@ namespace Delek.DynamicsCRM.Model
 		}
 		
 		/// <summary>
+		/// N:1 opportunityclose_mailbox_sendermailboxid
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("sendermailboxid")]
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("opportunityclose_mailbox_sendermailboxid")]
+		public Delek.DynamicsCRM.Model.Mailbox opportunityclose_mailbox_sendermailboxid
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntity<Delek.DynamicsCRM.Model.Mailbox>("opportunityclose_mailbox_sendermailboxid", null);
+			}
+		}
+		
+		/// <summary>
 		/// N:1 site_OpportunityCloses
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
@@ -236035,6 +239478,36 @@ namespace Delek.DynamicsCRM.Model
 			set
 			{
 				this.SetAttributeValue("el_n_repeated_calls", value);
+			}
+		}
+		
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("el_s_bulkoperation_id")]
+		public string el_s_bulkoperation_id
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("el_s_bulkoperation_id");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("el_s_bulkoperation_id", value);
+			}
+		}
+		
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("el_s_bulkoperation_name")]
+		public string el_s_bulkoperation_name
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("el_s_bulkoperation_name");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("el_s_bulkoperation_name", value);
 			}
 		}
 		
@@ -242070,6 +245543,25 @@ namespace Delek.DynamicsCRM.Model
 			set
 			{
 				this.SetRelatedEntity<Delek.DynamicsCRM.Model.SystemUser>("lk_processsessionbase_modifiedonbehalfby", null, value);
+			}
+		}
+		
+		/// <summary>
+		/// N:1 mailbox_processsessions
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("mailbox_processsessions")]
+		public Delek.DynamicsCRM.Model.Mailbox mailbox_processsessions
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntity<Delek.DynamicsCRM.Model.Mailbox>("mailbox_processsessions", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetRelatedEntity<Delek.DynamicsCRM.Model.Mailbox>("mailbox_processsessions", null, value);
 			}
 		}
 		
@@ -256247,6 +259739,20 @@ namespace Delek.DynamicsCRM.Model
 			set
 			{
 				this.SetRelatedEntity<Delek.DynamicsCRM.Model.SalesOrder>("SalesOrder_ServiceAppointments", null, value);
+			}
+		}
+		
+		/// <summary>
+		/// N:1 serviceappointment_mailbox_sendermailboxid
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("sendermailboxid")]
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("serviceappointment_mailbox_sendermailboxid")]
+		public Delek.DynamicsCRM.Model.Mailbox serviceappointment_mailbox_sendermailboxid
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntity<Delek.DynamicsCRM.Model.Mailbox>("serviceappointment_mailbox_sendermailboxid", null);
 			}
 		}
 		
@@ -275327,6 +278833,78 @@ namespace Delek.DynamicsCRM.Model
 		}
 		
 		/// <summary>
+		/// 1:N lk_mailbox_createdby
+		/// </summary>
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_mailbox_createdby")]
+		public System.Collections.Generic.IEnumerable<Delek.DynamicsCRM.Model.Mailbox> lk_mailbox_createdby
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntities<Delek.DynamicsCRM.Model.Mailbox>("lk_mailbox_createdby", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetRelatedEntities<Delek.DynamicsCRM.Model.Mailbox>("lk_mailbox_createdby", null, value);
+			}
+		}
+		
+		/// <summary>
+		/// 1:N lk_mailbox_createdonbehalfby
+		/// </summary>
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_mailbox_createdonbehalfby")]
+		public System.Collections.Generic.IEnumerable<Delek.DynamicsCRM.Model.Mailbox> lk_mailbox_createdonbehalfby
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntities<Delek.DynamicsCRM.Model.Mailbox>("lk_mailbox_createdonbehalfby", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetRelatedEntities<Delek.DynamicsCRM.Model.Mailbox>("lk_mailbox_createdonbehalfby", null, value);
+			}
+		}
+		
+		/// <summary>
+		/// 1:N lk_mailbox_modifiedby
+		/// </summary>
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_mailbox_modifiedby")]
+		public System.Collections.Generic.IEnumerable<Delek.DynamicsCRM.Model.Mailbox> lk_mailbox_modifiedby
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntities<Delek.DynamicsCRM.Model.Mailbox>("lk_mailbox_modifiedby", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetRelatedEntities<Delek.DynamicsCRM.Model.Mailbox>("lk_mailbox_modifiedby", null, value);
+			}
+		}
+		
+		/// <summary>
+		/// 1:N lk_mailbox_modifiedonbehalfby
+		/// </summary>
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_mailbox_modifiedonbehalfby")]
+		public System.Collections.Generic.IEnumerable<Delek.DynamicsCRM.Model.Mailbox> lk_mailbox_modifiedonbehalfby
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntities<Delek.DynamicsCRM.Model.Mailbox>("lk_mailbox_modifiedonbehalfby", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetRelatedEntities<Delek.DynamicsCRM.Model.Mailbox>("lk_mailbox_modifiedonbehalfby", null, value);
+			}
+		}
+		
+		/// <summary>
 		/// 1:N lk_opportunity_createdonbehalfby
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_opportunity_createdonbehalfby")]
@@ -276983,6 +280561,60 @@ namespace Delek.DynamicsCRM.Model
 		}
 		
 		/// <summary>
+		/// 1:N mailbox_emailaddressapprovedby_systemuser
+		/// </summary>
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("mailbox_emailaddressapprovedby_systemuser")]
+		public System.Collections.Generic.IEnumerable<Delek.DynamicsCRM.Model.Mailbox> mailbox_emailaddressapprovedby_systemuser
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntities<Delek.DynamicsCRM.Model.Mailbox>("mailbox_emailaddressapprovedby_systemuser", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetRelatedEntities<Delek.DynamicsCRM.Model.Mailbox>("mailbox_emailaddressapprovedby_systemuser", null, value);
+			}
+		}
+		
+		/// <summary>
+		/// 1:N mailbox_regarding_systemuser
+		/// </summary>
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("mailbox_regarding_systemuser")]
+		public System.Collections.Generic.IEnumerable<Delek.DynamicsCRM.Model.Mailbox> mailbox_regarding_systemuser
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntities<Delek.DynamicsCRM.Model.Mailbox>("mailbox_regarding_systemuser", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetRelatedEntities<Delek.DynamicsCRM.Model.Mailbox>("mailbox_regarding_systemuser", null, value);
+			}
+		}
+		
+		/// <summary>
+		/// 1:N mailbox_testandenablelastattemptedby_systemuser
+		/// </summary>
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("mailbox_testandenablelastattemptedby_systemuser")]
+		public System.Collections.Generic.IEnumerable<Delek.DynamicsCRM.Model.Mailbox> mailbox_testandenablelastattemptedby_systemuser
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntities<Delek.DynamicsCRM.Model.Mailbox>("mailbox_testandenablelastattemptedby_systemuser", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetRelatedEntities<Delek.DynamicsCRM.Model.Mailbox>("mailbox_testandenablelastattemptedby_systemuser", null, value);
+			}
+		}
+		
+		/// <summary>
 		/// 1:N modifiedby_connection
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("modifiedby_connection")]
@@ -278531,6 +282163,24 @@ namespace Delek.DynamicsCRM.Model
 		}
 		
 		/// <summary>
+		/// 1:N user_mailbox
+		/// </summary>
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("user_mailbox")]
+		public System.Collections.Generic.IEnumerable<Delek.DynamicsCRM.Model.Mailbox> user_mailbox
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntities<Delek.DynamicsCRM.Model.Mailbox>("user_mailbox", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetRelatedEntities<Delek.DynamicsCRM.Model.Mailbox>("user_mailbox", null, value);
+			}
+		}
+		
+		/// <summary>
 		/// 1:N user_opportunityclose
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("user_opportunityclose")]
@@ -278973,6 +282623,20 @@ namespace Delek.DynamicsCRM.Model
 			set
 			{
 				this.SetRelatedEntity<Delek.DynamicsCRM.Model.Site>("site_system_users", null, value);
+			}
+		}
+		
+		/// <summary>
+		/// N:1 systemuser_defaultmailbox_mailbox
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("defaultmailbox")]
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("systemuser_defaultmailbox_mailbox")]
+		public Delek.DynamicsCRM.Model.Mailbox systemuser_defaultmailbox_mailbox
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntity<Delek.DynamicsCRM.Model.Mailbox>("systemuser_defaultmailbox_mailbox", null);
 			}
 		}
 		
@@ -285172,6 +288836,24 @@ namespace Delek.DynamicsCRM.Model
 			set
 			{
 				this.SetRelatedEntities<Delek.DynamicsCRM.Model.Letter>("team_letter", null, value);
+			}
+		}
+		
+		/// <summary>
+		/// 1:N team_mailbox
+		/// </summary>
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("team_mailbox")]
+		public System.Collections.Generic.IEnumerable<Delek.DynamicsCRM.Model.Mailbox> team_mailbox
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntities<Delek.DynamicsCRM.Model.Mailbox>("team_mailbox", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetRelatedEntities<Delek.DynamicsCRM.Model.Mailbox>("team_mailbox", null, value);
 			}
 		}
 		
