@@ -7609,6 +7609,24 @@ namespace Delek.DynamicsCRM.Model
 		}
 		
 		/// <summary>
+		/// 1:N account_BulkOperations
+		/// </summary>
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("account_BulkOperations")]
+		public System.Collections.Generic.IEnumerable<Delek.DynamicsCRM.Model.BulkOperation> account_BulkOperations
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntities<Delek.DynamicsCRM.Model.BulkOperation>("account_BulkOperations", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetRelatedEntities<Delek.DynamicsCRM.Model.BulkOperation>("account_BulkOperations", null, value);
+			}
+		}
+		
+		/// <summary>
 		/// 1:N account_CampaignResponses
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("account_CampaignResponses")]
@@ -8905,6 +8923,24 @@ namespace Delek.DynamicsCRM.Model
 		}
 		
 		/// <summary>
+		/// N:N BulkOperation_Accounts
+		/// </summary>
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("BulkOperation_Accounts")]
+		public System.Collections.Generic.IEnumerable<Delek.DynamicsCRM.Model.BulkOperation> BulkOperation_Accounts
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntities<Delek.DynamicsCRM.Model.BulkOperation>("BulkOperation_Accounts", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetRelatedEntities<Delek.DynamicsCRM.Model.BulkOperation>("BulkOperation_Accounts", null, value);
+			}
+		}
+		
+		/// <summary>
 		/// N:N el_account_el_event
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("el_account_el_event")]
@@ -9972,6 +10008,25 @@ namespace Delek.DynamicsCRM.Model
 			set
 			{
 				this.SetRelatedEntity<Delek.DynamicsCRM.Model.Appointment>("appointment_activity_parties", null, value);
+			}
+		}
+		
+		/// <summary>
+		/// N:1 bulkoperation_activity_parties
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("partyid")]
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("bulkoperation_activity_parties")]
+		public Delek.DynamicsCRM.Model.BulkOperation bulkoperation_activity_parties
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntity<Delek.DynamicsCRM.Model.BulkOperation>("bulkoperation_activity_parties", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetRelatedEntity<Delek.DynamicsCRM.Model.BulkOperation>("bulkoperation_activity_parties", null, value);
 			}
 		}
 		
@@ -12155,6 +12210,24 @@ namespace Delek.DynamicsCRM.Model
 		}
 		
 		/// <summary>
+		/// 1:N activity_pointer_BulkOperation
+		/// </summary>
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("activity_pointer_BulkOperation")]
+		public System.Collections.Generic.IEnumerable<Delek.DynamicsCRM.Model.BulkOperation> activity_pointer_BulkOperation
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntities<Delek.DynamicsCRM.Model.BulkOperation>("activity_pointer_BulkOperation", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetRelatedEntities<Delek.DynamicsCRM.Model.BulkOperation>("activity_pointer_BulkOperation", null, value);
+			}
+		}
+		
+		/// <summary>
 		/// 1:N activity_pointer_campaignresponse
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("activity_pointer_campaignresponse")]
@@ -12526,6 +12599,25 @@ namespace Delek.DynamicsCRM.Model
 			get
 			{
 				return this.GetRelatedEntity<Delek.DynamicsCRM.Model.Mailbox>("activitypointer_sendermailboxid_mailbox", null);
+			}
+		}
+		
+		/// <summary>
+		/// N:1 BulkOperation_ActivityPointers
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("BulkOperation_ActivityPointers")]
+		public Delek.DynamicsCRM.Model.BulkOperation BulkOperation_ActivityPointers
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntity<Delek.DynamicsCRM.Model.BulkOperation>("BulkOperation_ActivityPointers", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetRelatedEntity<Delek.DynamicsCRM.Model.BulkOperation>("BulkOperation_ActivityPointers", null, value);
 			}
 		}
 		
@@ -14212,6 +14304,25 @@ namespace Delek.DynamicsCRM.Model
 			set
 			{
 				this.SetRelatedEntity<Delek.DynamicsCRM.Model.Appointment>("Appointment_Annotation", null, value);
+			}
+		}
+		
+		/// <summary>
+		/// N:1 bulkoperation_Annotations
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("objectid")]
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("bulkoperation_Annotations")]
+		public Delek.DynamicsCRM.Model.BulkOperation bulkoperation_Annotations
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntity<Delek.DynamicsCRM.Model.BulkOperation>("bulkoperation_Annotations", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetRelatedEntity<Delek.DynamicsCRM.Model.BulkOperation>("bulkoperation_Annotations", null, value);
 			}
 		}
 		
@@ -18958,6 +19069,25 @@ namespace Delek.DynamicsCRM.Model
 		}
 		
 		/// <summary>
+		/// N:1 BulkOperation_Appointment
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("BulkOperation_Appointment")]
+		public Delek.DynamicsCRM.Model.BulkOperation BulkOperation_Appointment
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntity<Delek.DynamicsCRM.Model.BulkOperation>("BulkOperation_Appointment", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetRelatedEntity<Delek.DynamicsCRM.Model.BulkOperation>("BulkOperation_Appointment", null, value);
+			}
+		}
+		
+		/// <summary>
 		/// N:1 business_unit_appointment_activities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("owningbusinessunit")]
@@ -20073,6 +20203,2837 @@ namespace Delek.DynamicsCRM.Model
 		/// </summary>
 		[System.Diagnostics.DebuggerNonUserCode()]
 		public Appointment(object anonymousType) : 
+				this()
+		{
+            foreach (var p in anonymousType.GetType().GetProperties())
+            {
+                var value = p.GetValue(anonymousType, null);
+                var name = p.Name.ToLower();
+            
+                if (value != null && name.EndsWith("enum") && value.GetType().BaseType == typeof(System.Enum))
+                {
+                    value = new Microsoft.Xrm.Sdk.OptionSetValue((int) value);
+                    name = name.Remove(name.Length - "enum".Length);
+                }
+            
+                switch (name)
+                {
+                    case "id":
+                        base.Id = (System.Guid)value;
+                        Attributes["activityid"] = base.Id;
+                        break;
+                    case "activityid":
+                        var id = (System.Nullable<System.Guid>) value;
+                        if(id == null){ continue; }
+                        base.Id = id.Value;
+                        Attributes[name] = base.Id;
+                        break;
+                    case "formattedvalues":
+                        // Add Support for FormattedValues
+                        FormattedValues.AddRange((Microsoft.Xrm.Sdk.FormattedValueCollection)value);
+                        break;
+                    default:
+                        Attributes[name] = value;
+                        break;
+                }
+            }
+		}
+	}
+	
+	/// <summary>
+	/// פעולת מערכת המשמשת לביצוע פעולות ארוכות ואסינכרוניות בערכות נתונים גדולות, כגון הפצת פעילות קמפיין או קמפיין מהיר.
+	/// </summary>
+	[System.Runtime.Serialization.DataContractAttribute()]
+	[Microsoft.Xrm.Sdk.Client.EntityLogicalNameAttribute("bulkoperation")]
+	public partial class BulkOperation : Microsoft.Xrm.Sdk.Entity
+	{
+		
+		/// <summary>
+		/// Default Constructor.
+		/// </summary>
+		[System.Diagnostics.DebuggerNonUserCode()]
+		public BulkOperation() : 
+				base(EntityLogicalName)
+		{
+		}
+		
+		public const string EntityLogicalName = "bulkoperation";
+		
+		public const string PrimaryIdAttribute = "activityid";
+		
+		public const string PrimaryNameAttribute = "subject";
+		
+		public const string EntitySchemaName = "BulkOperation";
+		
+		public const string EntityLogicalCollectionName = "bulkoperations";
+		
+		public const string EntitySetName = "bulkoperations";
+		
+		public const int EntityTypeCode = 4406;
+		
+		/// <summary>
+		/// מידע נוסף סופק על-ידי יישום חיצוני כ- JSON. לשימוש פנימי בלבד.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("activityadditionalparams")]
+		public string ActivityAdditionalParams
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("activityadditionalparams");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("activityadditionalparams", value);
+			}
+		}
+		
+		/// <summary>
+		/// המזהה הייחודי של הפעולה בצובר.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("activityid")]
+		public System.Nullable<System.Guid> ActivityId
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<System.Guid>>("activityid");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("activityid", value);
+				if (value.HasValue)
+				{
+					base.Id = value.Value;
+				}
+				else
+				{
+					base.Id = System.Guid.Empty;
+				}
+			}
+		}
+		
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("activityid")]
+		public override System.Guid Id
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return base.Id;
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.ActivityId = value;
+			}
+		}
+		
+		/// <summary>
+		/// סוג פעילות.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("activitytypecode")]
+		public string ActivityTypeCode
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("activitytypecode");
+			}
+		}
+		
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("activitytypecodename")]
+		public string ActivityTypeCodeName
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				if (this.FormattedValues.Contains("activitytypecode"))
+				{
+					return this.FormattedValues["activitytypecode"];
+				}
+				else
+				{
+					return default(string);
+				}
+			}
+		}
+		
+		/// <summary>
+		/// משך הזמן בפועל של הפעולה בצובר בדקות.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("actualdurationminutes")]
+		public System.Nullable<int> ActualDurationMinutes
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<int>>("actualdurationminutes");
+			}
+		}
+		
+		/// <summary>
+		/// מציג את התאריך והשעה שבהם הקמפיין המהיר הושלם או בוטל.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("actualend")]
+		public System.Nullable<System.DateTime> ActualEnd
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<System.DateTime>>("actualend");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("actualend", value);
+			}
+		}
+		
+		/// <summary>
+		/// מציג את התאריך והשעה שבהם הפעילות החלה או נוצרה.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("actualstart")]
+		public System.Nullable<System.DateTime> ActualStart
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<System.DateTime>>("actualstart");
+			}
+		}
+		
+		/// <summary>
+		/// Blind Carbon-copy (bcc) recipients of the activity.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("bcc")]
+		public System.Collections.Generic.IEnumerable<Delek.DynamicsCRM.Model.ActivityParty> Bcc
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				Microsoft.Xrm.Sdk.EntityCollection collection = this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityCollection>("bcc");
+				if (((collection != null) 
+							&& (collection.Entities != null)))
+				{
+					return System.Linq.Enumerable.Select<Microsoft.Xrm.Sdk.Entity, Delek.DynamicsCRM.Model.ActivityParty>(collection.Entities, e => e.ToEntity<Delek.DynamicsCRM.Model.ActivityParty>());
+				}
+				else
+				{
+					return null;
+				}
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				if ((value == null))
+				{
+					this.SetAttributeValue("bcc", value);
+				}
+				else
+				{
+					this.SetAttributeValue("bcc", new Microsoft.Xrm.Sdk.EntityCollection(new System.Collections.Generic.List<Microsoft.Xrm.Sdk.Entity>(value)));
+				}
+			}
+		}
+		
+		/// <summary>
+		/// מציג את המספר של רשומת הקמפיין המהיר, המשמש לזיהוי הקמפיין המהיר.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("bulkoperationnumber")]
+		public string BulkOperationNumber
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("bulkoperationnumber");
+			}
+		}
+		
+		/// <summary>
+		/// Carbon-copy (cc) recipients of the activity.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("cc")]
+		public System.Collections.Generic.IEnumerable<Delek.DynamicsCRM.Model.ActivityParty> Cc
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				Microsoft.Xrm.Sdk.EntityCollection collection = this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityCollection>("cc");
+				if (((collection != null) 
+							&& (collection.Entities != null)))
+				{
+					return System.Linq.Enumerable.Select<Microsoft.Xrm.Sdk.Entity, Delek.DynamicsCRM.Model.ActivityParty>(collection.Entities, e => e.ToEntity<Delek.DynamicsCRM.Model.ActivityParty>());
+				}
+				else
+				{
+					return null;
+				}
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				if ((value == null))
+				{
+					this.SetAttributeValue("cc", value);
+				}
+				else
+				{
+					this.SetAttributeValue("cc", new Microsoft.Xrm.Sdk.EntityCollection(new System.Collections.Generic.List<Microsoft.Xrm.Sdk.Entity>(value)));
+				}
+			}
+		}
+		
+		/// <summary>
+		/// מראה כיצד נוצר קשר לגבי הפעילות החברתית, כגון Twitter או Facebook. שדה זה מוגדר לקריאה בלבד.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("community")]
+		public virtual Microsoft.Xrm.Sdk.OptionSetValue Community
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.OptionSetValue>("community");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("community", value);
+			}
+		}
+		
+		/// <summary>
+		/// מראה כיצד נוצר קשר לגבי הפעילות החברתית, כגון Twitter או Facebook. שדה זה מוגדר לקריאה בלבד.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("community")]
+		public virtual SocialProfile_Community? CommunityEnum
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return ((SocialProfile_Community?)(EntityOptionSetEnum.GetEnum(this, "community")));
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("community", value.HasValue ? new Microsoft.Xrm.Sdk.OptionSetValue((int)value) : null);
+			}
+		}
+		
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("communityname")]
+		public string CommunityName
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				if (this.FormattedValues.Contains("community"))
+				{
+					return this.FormattedValues["community"];
+				}
+				else
+				{
+					return default(string);
+				}
+			}
+		}
+		
+		/// <summary>
+		/// מראה מי יצר את הרשומה.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdby")]
+		public Microsoft.Xrm.Sdk.EntityReference CreatedBy
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("createdby");
+			}
+		}
+		
+		/// <summary>
+		/// Name of the user who created the bulk operation.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdbyname")]
+		public string CreatedByName
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				if (this.FormattedValues.Contains("createdby"))
+				{
+					return this.FormattedValues["createdby"];
+				}
+				else
+				{
+					return default(string);
+				}
+			}
+		}
+		
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdbyyominame")]
+		public string CreatedByYomiName
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				if (this.FormattedValues.Contains("createdby"))
+				{
+					return this.FormattedValues["createdby"];
+				}
+				else
+				{
+					return default(string);
+				}
+			}
+		}
+		
+		/// <summary>
+		/// מציג את התאריך והשעה שבהם הרשומה נוצרה. התאריך והשעה מוצגים באזור הזמן שנבחר באפשרויות Microsoft Dynamics 365.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdon")]
+		public System.Nullable<System.DateTime> CreatedOn
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<System.DateTime>>("createdon");
+			}
+		}
+		
+		/// <summary>
+		/// מזהה ייחודי עבור המשתמש הנציג שיצר את הפעולה בצובר.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdonbehalfby")]
+		public Microsoft.Xrm.Sdk.EntityReference CreatedOnBehalfBy
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("createdonbehalfby");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("createdonbehalfby", value);
+			}
+		}
+		
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdonbehalfbyname")]
+		public string CreatedOnBehalfByName
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				if (this.FormattedValues.Contains("createdonbehalfby"))
+				{
+					return this.FormattedValues["createdonbehalfby"];
+				}
+				else
+				{
+					return default(string);
+				}
+			}
+		}
+		
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdonbehalfbyyominame")]
+		public string CreatedOnBehalfByYomiName
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				if (this.FormattedValues.Contains("createdonbehalfby"))
+				{
+					return this.FormattedValues["createdonbehalfby"];
+				}
+				else
+				{
+					return default(string);
+				}
+			}
+		}
+		
+		/// <summary>
+		/// בחר את הפעילות שיש ליצור, אשר תקבע כיצד לפנות לאנשי קשר פוטנציאליים או לקוחות המהווים יעד בקמפיין מהיר זה.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdrecordtypecode")]
+		public virtual Microsoft.Xrm.Sdk.OptionSetValue CreatedRecordTypeCode
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.OptionSetValue>("createdrecordtypecode");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("createdrecordtypecode", value);
+			}
+		}
+		
+		/// <summary>
+		/// בחר את הפעילות שיש ליצור, אשר תקבע כיצד לפנות לאנשי קשר פוטנציאליים או לקוחות המהווים יעד בקמפיין מהיר זה.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdrecordtypecode")]
+		public virtual BulkOperation_CreatedRecordTypeCode? CreatedRecordTypeCodeEnum
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return ((BulkOperation_CreatedRecordTypeCode?)(EntityOptionSetEnum.GetEnum(this, "createdrecordtypecode")));
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("createdrecordtypecode", value.HasValue ? new Microsoft.Xrm.Sdk.OptionSetValue((int)value) : null);
+			}
+		}
+		
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdrecordtypecodename")]
+		public string CreatedRecordTypeCodeName
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				if (this.FormattedValues.Contains("createdrecordtypecode"))
+				{
+					return this.FormattedValues["createdrecordtypecode"];
+				}
+				else
+				{
+					return default(string);
+				}
+			}
+		}
+		
+		/// <summary>
+		/// Customer with which the activity is associated.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("customers")]
+		public System.Collections.Generic.IEnumerable<Delek.DynamicsCRM.Model.ActivityParty> Customers
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				Microsoft.Xrm.Sdk.EntityCollection collection = this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityCollection>("customers");
+				if (((collection != null) 
+							&& (collection.Entities != null)))
+				{
+					return System.Linq.Enumerable.Select<Microsoft.Xrm.Sdk.Entity, Delek.DynamicsCRM.Model.ActivityParty>(collection.Entities, e => e.ToEntity<Delek.DynamicsCRM.Model.ActivityParty>());
+				}
+				else
+				{
+					return null;
+				}
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				if ((value == null))
+				{
+					this.SetAttributeValue("customers", value);
+				}
+				else
+				{
+					this.SetAttributeValue("customers", new Microsoft.Xrm.Sdk.EntityCollection(new System.Collections.Generic.List<Microsoft.Xrm.Sdk.Entity>(value)));
+				}
+			}
+		}
+		
+		/// <summary>
+		/// תאריך ושעה שבהם מסירת הפעילות נוסתה לאחרונה.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("deliverylastattemptedon")]
+		public System.Nullable<System.DateTime> DeliveryLastAttemptedOn
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<System.DateTime>>("deliverylastattemptedon");
+			}
+		}
+		
+		/// <summary>
+		/// עדיפות מסירה של הפעילות לשרת הדואר האלקטרוני.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("deliveryprioritycode")]
+		public virtual Microsoft.Xrm.Sdk.OptionSetValue DeliveryPriorityCode
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.OptionSetValue>("deliveryprioritycode");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("deliveryprioritycode", value);
+			}
+		}
+		
+		/// <summary>
+		/// עדיפות מסירה של הפעילות לשרת הדואר האלקטרוני.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("deliveryprioritycode")]
+		public virtual activitypointer_DeliveryPriorityCode? DeliveryPriorityCodeEnum
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return ((activitypointer_DeliveryPriorityCode?)(EntityOptionSetEnum.GetEnum(this, "deliveryprioritycode")));
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("deliveryprioritycode", value.HasValue ? new Microsoft.Xrm.Sdk.OptionSetValue((int)value) : null);
+			}
+		}
+		
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("deliveryprioritycodename")]
+		public string DeliveryPriorityCodeName
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				if (this.FormattedValues.Contains("deliveryprioritycode"))
+				{
+					return this.FormattedValues["deliveryprioritycode"];
+				}
+				else
+				{
+					return default(string);
+				}
+			}
+		}
+		
+		/// <summary>
+		/// הקלד מידע נוסף כדי לתאר את הקמפיין המהיר, כגון המוצרים או השירותים המוצעים.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("description")]
+		public string Description
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("description");
+			}
+		}
+		
+		/// <summary>
+		/// מציג את קוד השגיאה המשמש לפתרון בעיות בקמפיין המהיר.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("errornumber")]
+		public System.Nullable<int> ErrorNumber
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<int>>("errornumber");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("errornumber", value);
+			}
+		}
+		
+		/// <summary>
+		/// מזהה ההודעה של פעילות המוחזר מ- Exchange Server.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("exchangeitemid")]
+		public string ExchangeItemId
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("exchangeitemid");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("exchangeitemid", value);
+			}
+		}
+		
+		/// <summary>
+		/// שער חליפין עבור המטבע המשויך למצביע הפעילות ביחס למטבע הבסיס.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("exchangerate")]
+		public System.Nullable<decimal> ExchangeRate
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<decimal>>("exchangerate");
+			}
+		}
+		
+		/// <summary>
+		/// מציג את קישור האינטרנט של פעילות מסוג דואר אלקטרוני.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("exchangeweblink")]
+		public string ExchangeWebLink
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("exchangeweblink");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("exchangeweblink", value);
+			}
+		}
+		
+		/// <summary>
+		/// מספר הרשומות שנכשלו בפעולה בצובר.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("failurecount")]
+		public System.Nullable<int> FailureCount
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<int>>("failurecount");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("failurecount", value);
+			}
+		}
+		
+		/// <summary>
+		/// Person who the activity is from.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("from")]
+		public System.Collections.Generic.IEnumerable<Delek.DynamicsCRM.Model.ActivityParty> From
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				Microsoft.Xrm.Sdk.EntityCollection collection = this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityCollection>("from");
+				if (((collection != null) 
+							&& (collection.Entities != null)))
+				{
+					return System.Linq.Enumerable.Select<Microsoft.Xrm.Sdk.Entity, Delek.DynamicsCRM.Model.ActivityParty>(collection.Entities, e => e.ToEntity<Delek.DynamicsCRM.Model.ActivityParty>());
+				}
+				else
+				{
+					return null;
+				}
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				if ((value == null))
+				{
+					this.SetAttributeValue("from", value);
+				}
+				else
+				{
+					this.SetAttributeValue("from", new Microsoft.Xrm.Sdk.EntityCollection(new System.Collections.Generic.List<Microsoft.Xrm.Sdk.Entity>(value)));
+				}
+			}
+		}
+		
+		/// <summary>
+		/// Sequence number of the import that created this record.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("importsequencenumber")]
+		public System.Nullable<int> ImportSequenceNumber
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<int>>("importsequencenumber");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("importsequencenumber", value);
+			}
+		}
+		
+		/// <summary>
+		/// סוג מופע של סידרה חוזרת.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("instancetypecode")]
+		public virtual Microsoft.Xrm.Sdk.OptionSetValue InstanceTypeCode
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.OptionSetValue>("instancetypecode");
+			}
+		}
+		
+		/// <summary>
+		/// סוג מופע של סידרה חוזרת.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("instancetypecode")]
+		public virtual BulkOperation_InstanceTypeCode? InstanceTypeCodeEnum
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return ((BulkOperation_InstanceTypeCode?)(EntityOptionSetEnum.GetEnum(this, "instancetypecode")));
+			}
+		}
+		
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("instancetypecodename")]
+		public string InstanceTypeCodeName
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				if (this.FormattedValues.Contains("instancetypecode"))
+				{
+					return this.FormattedValues["instancetypecode"];
+				}
+				else
+				{
+					return default(string);
+				}
+			}
+		}
+		
+		/// <summary>
+		/// ‏‏לשימוש פנימי בלבד.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("isbilled")]
+		public System.Nullable<bool> IsBilled
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("isbilled");
+			}
+		}
+		
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("isbilledname")]
+		public string IsBilledName
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				if (this.FormattedValues.Contains("isbilled"))
+				{
+					return this.FormattedValues["isbilled"];
+				}
+				else
+				{
+					return default(string);
+				}
+			}
+		}
+		
+		/// <summary>
+		/// לשימוש פנימי בלבד.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("ismapiprivate")]
+		public System.Nullable<bool> IsMapiPrivate
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("ismapiprivate");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("ismapiprivate", value);
+			}
+		}
+		
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("ismapiprivatename")]
+		public string IsMapiPrivateName
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				if (this.FormattedValues.Contains("ismapiprivate"))
+				{
+					return this.FormattedValues["ismapiprivate"];
+				}
+				else
+				{
+					return default(string);
+				}
+			}
+		}
+		
+		/// <summary>
+		/// מידע המציין אם הפעילות היא מסוג פעילות רגילה או מסוג אירוע.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("isregularactivity")]
+		public System.Nullable<bool> IsRegularActivity
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("isregularactivity");
+			}
+		}
+		
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("isregularactivityname")]
+		public string IsRegularActivityName
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				if (this.FormattedValues.Contains("isregularactivity"))
+				{
+					return this.FormattedValues["isregularactivity"];
+				}
+				else
+				{
+					return default(string);
+				}
+			}
+		}
+		
+		/// <summary>
+		/// מציין אם הפעולה בצובר נוצרה מכלל זרימת עבודה.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("isworkflowcreated")]
+		public System.Nullable<bool> IsWorkflowCreated
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("isworkflowcreated");
+			}
+		}
+		
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("isworkflowcreatedname")]
+		public string IsWorkflowCreatedName
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				if (this.FormattedValues.Contains("isworkflowcreated"))
+				{
+					return this.FormattedValues["isworkflowcreated"];
+				}
+				else
+				{
+					return default(string);
+				}
+			}
+		}
+		
+		/// <summary>
+		/// מכיל את חותמת התאריך והשעה של זמן ההמתנה האחרון.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("lastonholdtime")]
+		public System.Nullable<System.DateTime> LastOnHoldTime
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<System.DateTime>>("lastonholdtime");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("lastonholdtime", value);
+			}
+		}
+		
+		/// <summary>
+		/// השאיר את הדואר הקולי
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("leftvoicemail")]
+		public System.Nullable<bool> LeftVoiceMail
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("leftvoicemail");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("leftvoicemail", value);
+			}
+		}
+		
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("leftvoicemailname")]
+		public string LeftVoiceMailName
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				if (this.FormattedValues.Contains("leftvoicemail"))
+				{
+					return this.FormattedValues["leftvoicemail"];
+				}
+				else
+				{
+					return default(string);
+				}
+			}
+		}
+		
+		/// <summary>
+		/// מראה מי עדכן לאחרונה את הרשומה.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedby")]
+		public Microsoft.Xrm.Sdk.EntityReference ModifiedBy
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("modifiedby");
+			}
+		}
+		
+		/// <summary>
+		/// Name of the user who modified the bulk operation.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedbyname")]
+		public string ModifiedByName
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				if (this.FormattedValues.Contains("modifiedby"))
+				{
+					return this.FormattedValues["modifiedby"];
+				}
+				else
+				{
+					return default(string);
+				}
+			}
+		}
+		
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedbyyominame")]
+		public string ModifiedByYomiName
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				if (this.FormattedValues.Contains("modifiedby"))
+				{
+					return this.FormattedValues["modifiedby"];
+				}
+				else
+				{
+					return default(string);
+				}
+			}
+		}
+		
+		/// <summary>
+		/// התאריך והשעה שבהם הפעולה בצובר השתנתה לאחרונה.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedon")]
+		public System.Nullable<System.DateTime> ModifiedOn
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<System.DateTime>>("modifiedon");
+			}
+		}
+		
+		/// <summary>
+		/// המזהה הייחודי של המשתמש הנציג שהיה האחרון שביצע שינויים בפעולה בצובר.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedonbehalfby")]
+		public Microsoft.Xrm.Sdk.EntityReference ModifiedOnBehalfBy
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("modifiedonbehalfby");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("modifiedonbehalfby", value);
+			}
+		}
+		
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedonbehalfbyname")]
+		public string ModifiedOnBehalfByName
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				if (this.FormattedValues.Contains("modifiedonbehalfby"))
+				{
+					return this.FormattedValues["modifiedonbehalfby"];
+				}
+				else
+				{
+					return default(string);
+				}
+			}
+		}
+		
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedonbehalfbyyominame")]
+		public string ModifiedOnBehalfByYomiName
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				if (this.FormattedValues.Contains("modifiedonbehalfby"))
+				{
+					return this.FormattedValues["modifiedonbehalfby"];
+				}
+				else
+				{
+					return default(string);
+				}
+			}
+		}
+		
+		/// <summary>
+		/// מראה את זמן ההמתנה של הרשומה, בדקות.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("onholdtime")]
+		public System.Nullable<int> OnHoldTime
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<int>>("onholdtime");
+			}
+		}
+		
+		/// <summary>
+		/// בחר את סוג תהליך הפעולה בצובר, כגון הפצת פעילות קמפיין או קמפיין מהיר.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("operationtypecode")]
+		public virtual Microsoft.Xrm.Sdk.OptionSetValue OperationTypeCode
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.OptionSetValue>("operationtypecode");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("operationtypecode", value);
+			}
+		}
+		
+		/// <summary>
+		/// בחר את סוג תהליך הפעולה בצובר, כגון הפצת פעילות קמפיין או קמפיין מהיר.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("operationtypecode")]
+		public virtual BulkOperation_OperationTypeCode? OperationTypeCodeEnum
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return ((BulkOperation_OperationTypeCode?)(EntityOptionSetEnum.GetEnum(this, "operationtypecode")));
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("operationtypecode", value.HasValue ? new Microsoft.Xrm.Sdk.OptionSetValue((int)value) : null);
+			}
+		}
+		
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("operationtypecodename")]
+		public string OperationTypeCodeName
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				if (this.FormattedValues.Contains("operationtypecode"))
+				{
+					return this.FormattedValues["operationtypecode"];
+				}
+				else
+				{
+					return default(string);
+				}
+			}
+		}
+		
+		/// <summary>
+		/// List of optional attendees for the activity.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("optionalattendees")]
+		public System.Collections.Generic.IEnumerable<Delek.DynamicsCRM.Model.ActivityParty> OptionalAttendees
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				Microsoft.Xrm.Sdk.EntityCollection collection = this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityCollection>("optionalattendees");
+				if (((collection != null) 
+							&& (collection.Entities != null)))
+				{
+					return System.Linq.Enumerable.Select<Microsoft.Xrm.Sdk.Entity, Delek.DynamicsCRM.Model.ActivityParty>(collection.Entities, e => e.ToEntity<Delek.DynamicsCRM.Model.ActivityParty>());
+				}
+				else
+				{
+					return null;
+				}
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				if ((value == null))
+				{
+					this.SetAttributeValue("optionalattendees", value);
+				}
+				else
+				{
+					this.SetAttributeValue("optionalattendees", new Microsoft.Xrm.Sdk.EntityCollection(new System.Collections.Generic.List<Microsoft.Xrm.Sdk.Entity>(value)));
+				}
+			}
+		}
+		
+		/// <summary>
+		/// Person who organized the activity.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("organizer")]
+		public System.Collections.Generic.IEnumerable<Delek.DynamicsCRM.Model.ActivityParty> Organizer
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				Microsoft.Xrm.Sdk.EntityCollection collection = this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityCollection>("organizer");
+				if (((collection != null) 
+							&& (collection.Entities != null)))
+				{
+					return System.Linq.Enumerable.Select<Microsoft.Xrm.Sdk.Entity, Delek.DynamicsCRM.Model.ActivityParty>(collection.Entities, e => e.ToEntity<Delek.DynamicsCRM.Model.ActivityParty>());
+				}
+				else
+				{
+					return null;
+				}
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				if ((value == null))
+				{
+					this.SetAttributeValue("organizer", value);
+				}
+				else
+				{
+					this.SetAttributeValue("organizer", new Microsoft.Xrm.Sdk.EntityCollection(new System.Collections.Generic.List<Microsoft.Xrm.Sdk.Entity>(value)));
+				}
+			}
+		}
+		
+		/// <summary>
+		/// Date and time that the record was migrated.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("overriddencreatedon")]
+		public System.Nullable<System.DateTime> OverriddenCreatedOn
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<System.DateTime>>("overriddencreatedon");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("overriddencreatedon", value);
+			}
+		}
+		
+		/// <summary>
+		/// המזהה הייחודי של המשתמש או הצוות שהפעילות נמצאת בבעלותו.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("ownerid")]
+		public Microsoft.Xrm.Sdk.EntityReference OwnerId
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("ownerid");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("ownerid", value);
+			}
+		}
+		
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("owneridname")]
+		public string OwnerIdName
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				if (this.FormattedValues.Contains("ownerid"))
+				{
+					return this.FormattedValues["ownerid"];
+				}
+				else
+				{
+					return default(string);
+				}
+			}
+		}
+		
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("owneridyominame")]
+		public string OwnerIdYomiName
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				if (this.FormattedValues.Contains("ownerid"))
+				{
+					return this.FormattedValues["ownerid"];
+				}
+				else
+				{
+					return default(string);
+				}
+			}
+		}
+		
+		/// <summary>
+		/// המזהה הייחודי של היחידה העסקית שהפעילות נמצאת בבעלותה.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("owningbusinessunit")]
+		public Microsoft.Xrm.Sdk.EntityReference OwningBusinessUnit
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("owningbusinessunit");
+			}
+		}
+		
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("owningbusinessunitname")]
+		public string OwningBusinessUnitName
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				if (this.FormattedValues.Contains("owningbusinessunit"))
+				{
+					return this.FormattedValues["owningbusinessunit"];
+				}
+				else
+				{
+					return default(string);
+				}
+			}
+		}
+		
+		/// <summary>
+		/// המזהה הייחודי של הצוות המוגדר כבעלים של הפעילות.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("owningteam")]
+		public Microsoft.Xrm.Sdk.EntityReference OwningTeam
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("owningteam");
+			}
+		}
+		
+		/// <summary>
+		/// המזהה הייחודי של המשתמש המוגדר כבעלים של הפעילות.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("owninguser")]
+		public Microsoft.Xrm.Sdk.EntityReference OwningUser
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("owninguser");
+			}
+		}
+		
+		/// <summary>
+		/// מחרוזת XML המכילה את הפרמטרים של הפעולה בצובר.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("parameters")]
+		public string Parameters
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("parameters");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("parameters", value);
+			}
+		}
+		
+		/// <summary>
+		/// XML string field that contains the parameters to the bulk operation.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("parametersv2")]
+		public string ParametersV2
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("parametersv2");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("parametersv2", value);
+			}
+		}
+		
+		/// <summary>
+		/// Outsource vendor with which activity is associated.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("partners")]
+		public System.Collections.Generic.IEnumerable<Delek.DynamicsCRM.Model.ActivityParty> Partners
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				Microsoft.Xrm.Sdk.EntityCollection collection = this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityCollection>("partners");
+				if (((collection != null) 
+							&& (collection.Entities != null)))
+				{
+					return System.Linq.Enumerable.Select<Microsoft.Xrm.Sdk.Entity, Delek.DynamicsCRM.Model.ActivityParty>(collection.Entities, e => e.ToEntity<Delek.DynamicsCRM.Model.ActivityParty>());
+				}
+				else
+				{
+					return null;
+				}
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				if ((value == null))
+				{
+					this.SetAttributeValue("partners", value);
+				}
+				else
+				{
+					this.SetAttributeValue("partners", new Microsoft.Xrm.Sdk.EntityCollection(new System.Collections.Generic.List<Microsoft.Xrm.Sdk.Entity>(value)));
+				}
+			}
+		}
+		
+		/// <summary>
+		/// לשימוש פנימי בלבד.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("postponeactivityprocessinguntil")]
+		public System.Nullable<System.DateTime> PostponeActivityProcessingUntil
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<System.DateTime>>("postponeactivityprocessinguntil");
+			}
+		}
+		
+		/// <summary>
+		/// עדיפות הפעילות.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("prioritycode")]
+		public virtual Microsoft.Xrm.Sdk.OptionSetValue PriorityCode
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.OptionSetValue>("prioritycode");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("prioritycode", value);
+			}
+		}
+		
+		/// <summary>
+		/// עדיפות הפעילות.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("prioritycode")]
+		public virtual BulkOperation_PriorityCode? PriorityCodeEnum
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return ((BulkOperation_PriorityCode?)(EntityOptionSetEnum.GetEnum(this, "prioritycode")));
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("prioritycode", value.HasValue ? new Microsoft.Xrm.Sdk.OptionSetValue((int)value) : null);
+			}
+		}
+		
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("prioritycodename")]
+		public string PriorityCodeName
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				if (this.FormattedValues.Contains("prioritycode"))
+				{
+					return this.FormattedValues["prioritycode"];
+				}
+				else
+				{
+					return default(string);
+				}
+			}
+		}
+		
+		/// <summary>
+		/// המזהה הייחודי של התהליך.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("processid")]
+		public System.Nullable<System.Guid> ProcessId
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<System.Guid>>("processid");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("processid", value);
+			}
+		}
+		
+		/// <summary>
+		/// בחר את הקמפיין שממנו פעילויות הקמפיין הופצו בצובר.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
+		public Microsoft.Xrm.Sdk.EntityReference RegardingObjectId
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("regardingobjectid");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("regardingobjectid", value);
+			}
+		}
+		
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectidname")]
+		public string RegardingObjectIdName
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				if (this.FormattedValues.Contains("regardingobjectid"))
+				{
+					return this.FormattedValues["regardingobjectid"];
+				}
+				else
+				{
+					return default(string);
+				}
+			}
+		}
+		
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectidyominame")]
+		public string RegardingObjectIdYomiName
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				if (this.FormattedValues.Contains("regardingobjectid"))
+				{
+					return this.FormattedValues["regardingobjectid"];
+				}
+				else
+				{
+					return default(string);
+				}
+			}
+		}
+		
+		/// <summary>
+		/// List of required attendees for the activity.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("requiredattendees")]
+		public System.Collections.Generic.IEnumerable<Delek.DynamicsCRM.Model.ActivityParty> RequiredAttendees
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				Microsoft.Xrm.Sdk.EntityCollection collection = this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityCollection>("requiredattendees");
+				if (((collection != null) 
+							&& (collection.Entities != null)))
+				{
+					return System.Linq.Enumerable.Select<Microsoft.Xrm.Sdk.Entity, Delek.DynamicsCRM.Model.ActivityParty>(collection.Entities, e => e.ToEntity<Delek.DynamicsCRM.Model.ActivityParty>());
+				}
+				else
+				{
+					return null;
+				}
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				if ((value == null))
+				{
+					this.SetAttributeValue("requiredattendees", value);
+				}
+				else
+				{
+					this.SetAttributeValue("requiredattendees", new Microsoft.Xrm.Sdk.EntityCollection(new System.Collections.Generic.List<Microsoft.Xrm.Sdk.Entity>(value)));
+				}
+			}
+		}
+		
+		/// <summary>
+		/// Users or facility/equipment that are required for the activity.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("resources")]
+		public System.Collections.Generic.IEnumerable<Delek.DynamicsCRM.Model.ActivityParty> Resources
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				Microsoft.Xrm.Sdk.EntityCollection collection = this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityCollection>("resources");
+				if (((collection != null) 
+							&& (collection.Entities != null)))
+				{
+					return System.Linq.Enumerable.Select<Microsoft.Xrm.Sdk.Entity, Delek.DynamicsCRM.Model.ActivityParty>(collection.Entities, e => e.ToEntity<Delek.DynamicsCRM.Model.ActivityParty>());
+				}
+				else
+				{
+					return null;
+				}
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				if ((value == null))
+				{
+					this.SetAttributeValue("resources", value);
+				}
+				else
+				{
+					this.SetAttributeValue("resources", new Microsoft.Xrm.Sdk.EntityCollection(new System.Collections.Generic.List<Microsoft.Xrm.Sdk.Entity>(value)));
+				}
+			}
+		}
+		
+		/// <summary>
+		/// משך הזמן המתוזמן של הפעולה בצובר, מצוין בדקות.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("scheduleddurationminutes")]
+		public System.Nullable<int> ScheduledDurationMinutes
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<int>>("scheduleddurationminutes");
+			}
+		}
+		
+		/// <summary>
+		/// התאריך והשעה המתוזמנים של סיום הפעולה בצובר.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("scheduledend")]
+		public System.Nullable<System.DateTime> ScheduledEnd
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<System.DateTime>>("scheduledend");
+			}
+		}
+		
+		/// <summary>
+		/// התאריך והשעה המתוזמנים של התחלת הפעולה בצובר.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("scheduledstart")]
+		public System.Nullable<System.DateTime> ScheduledStart
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<System.DateTime>>("scheduledstart");
+			}
+		}
+		
+		/// <summary>
+		/// מזהה ייחודי של תיבת הדואר המשויכת לשולח של הודעת הדואר האלקטרוני.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("sendermailboxid")]
+		public Microsoft.Xrm.Sdk.EntityReference SenderMailboxId
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("sendermailboxid");
+			}
+		}
+		
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("sendermailboxidname")]
+		public string SenderMailboxIdName
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				if (this.FormattedValues.Contains("sendermailboxid"))
+				{
+					return this.FormattedValues["sendermailboxid"];
+				}
+				else
+				{
+					return default(string);
+				}
+			}
+		}
+		
+		/// <summary>
+		/// תאריך ושעה של שליחת הפעילות.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("senton")]
+		public System.Nullable<System.DateTime> SentOn
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<System.DateTime>>("senton");
+			}
+		}
+		
+		/// <summary>
+		/// ערך Uniqueidentifier המציין את המזהה של סידרה חוזרת של מופע.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("seriesid")]
+		public System.Nullable<System.Guid> SeriesId
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<System.Guid>>("seriesid");
+			}
+		}
+		
+		/// <summary>
+		/// המזהה הייחודי של שירות משויך.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("serviceid")]
+		public Microsoft.Xrm.Sdk.EntityReference ServiceId
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("serviceid");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("serviceid", value);
+			}
+		}
+		
+		/// <summary>
+		/// בחר את הסכם רמת השירות (SLA) שברצונך להחיל על רשומת האירוע.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("slaid")]
+		public Microsoft.Xrm.Sdk.EntityReference SLAId
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("slaid");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("slaid", value);
+			}
+		}
+		
+		/// <summary>
+		/// ה- SLA האחרון שהוחל על אירוע זה. שדה זה מיועד לשימוש פנימי בלבד.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("slainvokedid")]
+		public Microsoft.Xrm.Sdk.EntityReference SLAInvokedId
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("slainvokedid");
+			}
+		}
+		
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("slainvokedidname")]
+		public string SLAInvokedIdName
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				if (this.FormattedValues.Contains("slainvokedid"))
+				{
+					return this.FormattedValues["slainvokedid"];
+				}
+				else
+				{
+					return default(string);
+				}
+			}
+		}
+		
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("slaname")]
+		public string SLAName
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				if (this.FormattedValues.Contains("slaid"))
+				{
+					return this.FormattedValues["slaid"];
+				}
+				else
+				{
+					return default(string);
+				}
+			}
+		}
+		
+		/// <summary>
+		/// מציג את התאריך והשעה שלפיהם הפעילויות ממוינות.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("sortdate")]
+		public System.Nullable<System.DateTime> SortDate
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<System.DateTime>>("sortdate");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("sortdate", value);
+			}
+		}
+		
+		/// <summary>
+		/// המזהה הייחודי של השלב.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("stageid")]
+		public System.Nullable<System.Guid> StageId
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<System.Guid>>("stageid");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("stageid", value);
+			}
+		}
+		
+		/// <summary>
+		/// מראה אם הקמפיין המהיר פתוח, סגור או מבוטל. קמפיינים מהירים סגורים או מבוטלים מוגדרים לקריאה בלבד ולא ניתן לערוך אותם.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("statecode")]
+		public virtual Microsoft.Xrm.Sdk.OptionSetValue StateCode
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.OptionSetValue>("statecode");
+			}
+		}
+		
+		/// <summary>
+		/// מראה אם הקמפיין המהיר פתוח, סגור או מבוטל. קמפיינים מהירים סגורים או מבוטלים מוגדרים לקריאה בלבד ולא ניתן לערוך אותם.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("statecode")]
+		public virtual bulkoperation_statecode? StateCodeEnum
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return ((bulkoperation_statecode?)(EntityOptionSetEnum.GetEnum(this, "statecode")));
+			}
+		}
+		
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("statecodename")]
+		public string StateCodeName
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				if (this.FormattedValues.Contains("statecode"))
+				{
+					return this.FormattedValues["statecode"];
+				}
+				else
+				{
+					return default(string);
+				}
+			}
+		}
+		
+		/// <summary>
+		/// בחר את מצב הקמפיין המהיר.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("statuscode")]
+		public virtual Microsoft.Xrm.Sdk.OptionSetValue StatusCode
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.OptionSetValue>("statuscode");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("statuscode", value);
+			}
+		}
+		
+		/// <summary>
+		/// בחר את מצב הקמפיין המהיר.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("statuscode")]
+		public virtual BulkOperation_StatusCode? StatusCodeEnum
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return ((BulkOperation_StatusCode?)(EntityOptionSetEnum.GetEnum(this, "statuscode")));
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("statuscode", value.HasValue ? new Microsoft.Xrm.Sdk.OptionSetValue((int)value) : null);
+			}
+		}
+		
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("statuscodename")]
+		public string StatusCodeName
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				if (this.FormattedValues.Contains("statuscode"))
+				{
+					return this.FormattedValues["statuscode"];
+				}
+				else
+				{
+					return default(string);
+				}
+			}
+		}
+		
+		/// <summary>
+		/// הקלד תיאור קצר של היעד או הנושא המרכזי של הקמפיין המהיר.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("subject")]
+		public string Subject
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("subject");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("subject", value);
+			}
+		}
+		
+		/// <summary>
+		/// מספר הרשומות שהצליחו בפעולה בצובר.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("successcount")]
+		public System.Nullable<int> SuccessCount
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<int>>("successcount");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("successcount", value);
+			}
+		}
+		
+		/// <summary>
+		/// בחר את סוג הרשומות המהוות יעד בקמפיין המהיר כדי לזהות את קהל היעד.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("targetedrecordtypecode")]
+		public virtual Microsoft.Xrm.Sdk.OptionSetValue TargetedRecordTypeCode
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.OptionSetValue>("targetedrecordtypecode");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("targetedrecordtypecode", value);
+			}
+		}
+		
+		/// <summary>
+		/// בחר את סוג הרשומות המהוות יעד בקמפיין המהיר כדי לזהות את קהל היעד.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("targetedrecordtypecode")]
+		public virtual BulkOperation_TargetedRecordTypeCode? TargetedRecordTypeCodeEnum
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return ((BulkOperation_TargetedRecordTypeCode?)(EntityOptionSetEnum.GetEnum(this, "targetedrecordtypecode")));
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("targetedrecordtypecode", value.HasValue ? new Microsoft.Xrm.Sdk.OptionSetValue((int)value) : null);
+			}
+		}
+		
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("targetedrecordtypecodename")]
+		public string TargetedRecordTypeCodeName
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				if (this.FormattedValues.Contains("targetedrecordtypecode"))
+				{
+					return this.FormattedValues["targetedrecordtypecode"];
+				}
+				else
+				{
+					return default(string);
+				}
+			}
+		}
+		
+		/// <summary>
+		/// מספר החברים שיהוו יעד.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("targetmemberscount")]
+		public System.Nullable<int> TargetMembersCount
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<int>>("targetmemberscount");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("targetmemberscount", value);
+			}
+		}
+		
+		/// <summary>
+		/// לשימוש פנימי בלבד.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("timezoneruleversionnumber")]
+		public System.Nullable<int> TimeZoneRuleVersionNumber
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<int>>("timezoneruleversionnumber");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("timezoneruleversionnumber", value);
+			}
+		}
+		
+		/// <summary>
+		/// Person who is the receiver of the activity.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("to")]
+		public System.Collections.Generic.IEnumerable<Delek.DynamicsCRM.Model.ActivityParty> To
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				Microsoft.Xrm.Sdk.EntityCollection collection = this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityCollection>("to");
+				if (((collection != null) 
+							&& (collection.Entities != null)))
+				{
+					return System.Linq.Enumerable.Select<Microsoft.Xrm.Sdk.Entity, Delek.DynamicsCRM.Model.ActivityParty>(collection.Entities, e => e.ToEntity<Delek.DynamicsCRM.Model.ActivityParty>());
+				}
+				else
+				{
+					return null;
+				}
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				if ((value == null))
+				{
+					this.SetAttributeValue("to", value);
+				}
+				else
+				{
+					this.SetAttributeValue("to", new Microsoft.Xrm.Sdk.EntityCollection(new System.Collections.Generic.List<Microsoft.Xrm.Sdk.Entity>(value)));
+				}
+			}
+		}
+		
+		/// <summary>
+		/// המזהה הייחודי של המטבע המשויך ל- activitypointer.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("transactioncurrencyid")]
+		public Microsoft.Xrm.Sdk.EntityReference TransactionCurrencyId
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("transactioncurrencyid");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("transactioncurrencyid", value);
+			}
+		}
+		
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("transactioncurrencyidname")]
+		public string TransactionCurrencyIdName
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				if (this.FormattedValues.Contains("transactioncurrencyid"))
+				{
+					return this.FormattedValues["transactioncurrencyid"];
+				}
+				else
+				{
+					return default(string);
+				}
+			}
+		}
+		
+		/// <summary>
+		/// לשימוש פנימי בלבד.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("traversedpath")]
+		public string TraversedPath
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("traversedpath");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("traversedpath", value);
+			}
+		}
+		
+		/// <summary>
+		/// קוד אזור הזמן שהיה בשימוש בעת יצירת הרשומה.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("utcconversiontimezonecode")]
+		public System.Nullable<int> UTCConversionTimeZoneCode
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<int>>("utcconversiontimezonecode");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("utcconversiontimezonecode", value);
+			}
+		}
+		
+		/// <summary>
+		/// מספר גירסה של הפעילות.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("versionnumber")]
+		public System.Nullable<long> VersionNumber
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<long>>("versionnumber");
+			}
+		}
+		
+		/// <summary>
+		/// מידע עבור זרימת עבודה של פעולה בצובר.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("workflowinfo")]
+		public string WorkflowInfo
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("workflowinfo");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("workflowinfo", value);
+			}
+		}
+		
+		/// <summary>
+		/// 1:N bulkoperation_activity_parties
+		/// </summary>
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("bulkoperation_activity_parties")]
+		public System.Collections.Generic.IEnumerable<Delek.DynamicsCRM.Model.ActivityParty> bulkoperation_activity_parties
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntities<Delek.DynamicsCRM.Model.ActivityParty>("bulkoperation_activity_parties", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetRelatedEntities<Delek.DynamicsCRM.Model.ActivityParty>("bulkoperation_activity_parties", null, value);
+			}
+		}
+		
+		/// <summary>
+		/// 1:N BulkOperation_ActivityPointers
+		/// </summary>
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("BulkOperation_ActivityPointers")]
+		public System.Collections.Generic.IEnumerable<Delek.DynamicsCRM.Model.ActivityPointer> BulkOperation_ActivityPointers
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntities<Delek.DynamicsCRM.Model.ActivityPointer>("BulkOperation_ActivityPointers", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetRelatedEntities<Delek.DynamicsCRM.Model.ActivityPointer>("BulkOperation_ActivityPointers", null, value);
+			}
+		}
+		
+		/// <summary>
+		/// 1:N bulkoperation_Annotations
+		/// </summary>
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("bulkoperation_Annotations")]
+		public System.Collections.Generic.IEnumerable<Delek.DynamicsCRM.Model.Annotation> bulkoperation_Annotations
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntities<Delek.DynamicsCRM.Model.Annotation>("bulkoperation_Annotations", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetRelatedEntities<Delek.DynamicsCRM.Model.Annotation>("bulkoperation_Annotations", null, value);
+			}
+		}
+		
+		/// <summary>
+		/// 1:N BulkOperation_Appointment
+		/// </summary>
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("BulkOperation_Appointment")]
+		public System.Collections.Generic.IEnumerable<Delek.DynamicsCRM.Model.Appointment> BulkOperation_Appointment
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntities<Delek.DynamicsCRM.Model.Appointment>("BulkOperation_Appointment", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetRelatedEntities<Delek.DynamicsCRM.Model.Appointment>("BulkOperation_Appointment", null, value);
+			}
+		}
+		
+		/// <summary>
+		/// 1:N BulkOperation_CampaignResponse
+		/// </summary>
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("BulkOperation_CampaignResponse")]
+		public System.Collections.Generic.IEnumerable<Delek.DynamicsCRM.Model.CampaignResponse> BulkOperation_CampaignResponse
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntities<Delek.DynamicsCRM.Model.CampaignResponse>("BulkOperation_CampaignResponse", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetRelatedEntities<Delek.DynamicsCRM.Model.CampaignResponse>("BulkOperation_CampaignResponse", null, value);
+			}
+		}
+		
+		/// <summary>
+		/// 1:N bulkoperation_el_chat_bots
+		/// </summary>
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("bulkoperation_el_chat_bots")]
+		public System.Collections.Generic.IEnumerable<Delek.DynamicsCRM.Model.el_chat_bot> bulkoperation_el_chat_bots
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntities<Delek.DynamicsCRM.Model.el_chat_bot>("bulkoperation_el_chat_bots", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetRelatedEntities<Delek.DynamicsCRM.Model.el_chat_bot>("bulkoperation_el_chat_bots", null, value);
+			}
+		}
+		
+		/// <summary>
+		/// 1:N bulkoperation_el_digital_docs
+		/// </summary>
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("bulkoperation_el_digital_docs")]
+		public System.Collections.Generic.IEnumerable<Delek.DynamicsCRM.Model.el_digital_doc> bulkoperation_el_digital_docs
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntities<Delek.DynamicsCRM.Model.el_digital_doc>("bulkoperation_el_digital_docs", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetRelatedEntities<Delek.DynamicsCRM.Model.el_digital_doc>("bulkoperation_el_digital_docs", null, value);
+			}
+		}
+		
+		/// <summary>
+		/// 1:N bulkoperation_el_docs
+		/// </summary>
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("bulkoperation_el_docs")]
+		public System.Collections.Generic.IEnumerable<Delek.DynamicsCRM.Model.el_doc> bulkoperation_el_docs
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntities<Delek.DynamicsCRM.Model.el_doc>("bulkoperation_el_docs", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetRelatedEntities<Delek.DynamicsCRM.Model.el_doc>("bulkoperation_el_docs", null, value);
+			}
+		}
+		
+		/// <summary>
+		/// 1:N bulkoperation_el_mailing_interactions
+		/// </summary>
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("bulkoperation_el_mailing_interactions")]
+		public System.Collections.Generic.IEnumerable<Delek.DynamicsCRM.Model.el_mailing_interaction> bulkoperation_el_mailing_interactions
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntities<Delek.DynamicsCRM.Model.el_mailing_interaction>("bulkoperation_el_mailing_interactions", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetRelatedEntities<Delek.DynamicsCRM.Model.el_mailing_interaction>("bulkoperation_el_mailing_interactions", null, value);
+			}
+		}
+		
+		/// <summary>
+		/// 1:N bulkoperation_el_smses
+		/// </summary>
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("bulkoperation_el_smses")]
+		public System.Collections.Generic.IEnumerable<Delek.DynamicsCRM.Model.el_sms> bulkoperation_el_smses
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntities<Delek.DynamicsCRM.Model.el_sms>("bulkoperation_el_smses", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetRelatedEntities<Delek.DynamicsCRM.Model.el_sms>("bulkoperation_el_smses", null, value);
+			}
+		}
+		
+		/// <summary>
+		/// 1:N BulkOperation_Email
+		/// </summary>
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("BulkOperation_Email")]
+		public System.Collections.Generic.IEnumerable<Delek.DynamicsCRM.Model.Email> BulkOperation_Email
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntities<Delek.DynamicsCRM.Model.Email>("BulkOperation_Email", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetRelatedEntities<Delek.DynamicsCRM.Model.Email>("BulkOperation_Email", null, value);
+			}
+		}
+		
+		/// <summary>
+		/// 1:N BulkOperation_Faxes
+		/// </summary>
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("BulkOperation_Faxes")]
+		public System.Collections.Generic.IEnumerable<Delek.DynamicsCRM.Model.Fax> BulkOperation_Faxes
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntities<Delek.DynamicsCRM.Model.Fax>("BulkOperation_Faxes", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetRelatedEntities<Delek.DynamicsCRM.Model.Fax>("BulkOperation_Faxes", null, value);
+			}
+		}
+		
+		/// <summary>
+		/// 1:N BulkOperation_Letter
+		/// </summary>
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("BulkOperation_Letter")]
+		public System.Collections.Generic.IEnumerable<Delek.DynamicsCRM.Model.Letter> BulkOperation_Letter
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntities<Delek.DynamicsCRM.Model.Letter>("BulkOperation_Letter", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetRelatedEntities<Delek.DynamicsCRM.Model.Letter>("BulkOperation_Letter", null, value);
+			}
+		}
+		
+		/// <summary>
+		/// 1:N bulkoperation_OpportunityCloses
+		/// </summary>
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("bulkoperation_OpportunityCloses")]
+		public System.Collections.Generic.IEnumerable<Delek.DynamicsCRM.Model.OpportunityClose> bulkoperation_OpportunityCloses
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntities<Delek.DynamicsCRM.Model.OpportunityClose>("bulkoperation_OpportunityCloses", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetRelatedEntities<Delek.DynamicsCRM.Model.OpportunityClose>("bulkoperation_OpportunityCloses", null, value);
+			}
+		}
+		
+		/// <summary>
+		/// 1:N BulkOperation_Phonecall
+		/// </summary>
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("BulkOperation_Phonecall")]
+		public System.Collections.Generic.IEnumerable<Delek.DynamicsCRM.Model.PhoneCall> BulkOperation_Phonecall
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntities<Delek.DynamicsCRM.Model.PhoneCall>("BulkOperation_Phonecall", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetRelatedEntities<Delek.DynamicsCRM.Model.PhoneCall>("BulkOperation_Phonecall", null, value);
+			}
+		}
+		
+		/// <summary>
+		/// 1:N BulkOperation_QueueItem
+		/// </summary>
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("BulkOperation_QueueItem")]
+		public System.Collections.Generic.IEnumerable<Delek.DynamicsCRM.Model.QueueItem> BulkOperation_QueueItem
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntities<Delek.DynamicsCRM.Model.QueueItem>("BulkOperation_QueueItem", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetRelatedEntities<Delek.DynamicsCRM.Model.QueueItem>("BulkOperation_QueueItem", null, value);
+			}
+		}
+		
+		/// <summary>
+		/// 1:N BulkOperation_RecurringAppointmentMaster
+		/// </summary>
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("BulkOperation_RecurringAppointmentMaster")]
+		public System.Collections.Generic.IEnumerable<Delek.DynamicsCRM.Model.RecurringAppointmentMaster> BulkOperation_RecurringAppointmentMaster
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntities<Delek.DynamicsCRM.Model.RecurringAppointmentMaster>("BulkOperation_RecurringAppointmentMaster", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetRelatedEntities<Delek.DynamicsCRM.Model.RecurringAppointmentMaster>("BulkOperation_RecurringAppointmentMaster", null, value);
+			}
+		}
+		
+		/// <summary>
+		/// 1:N bulkoperation_ServiceAppointments
+		/// </summary>
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("bulkoperation_ServiceAppointments")]
+		public System.Collections.Generic.IEnumerable<Delek.DynamicsCRM.Model.ServiceAppointment> bulkoperation_ServiceAppointments
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntities<Delek.DynamicsCRM.Model.ServiceAppointment>("bulkoperation_ServiceAppointments", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetRelatedEntities<Delek.DynamicsCRM.Model.ServiceAppointment>("bulkoperation_ServiceAppointments", null, value);
+			}
+		}
+		
+		/// <summary>
+		/// 1:N BulkOperation_SocialActivity
+		/// </summary>
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("BulkOperation_SocialActivity")]
+		public System.Collections.Generic.IEnumerable<Delek.DynamicsCRM.Model.SocialActivity> BulkOperation_SocialActivity
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntities<Delek.DynamicsCRM.Model.SocialActivity>("BulkOperation_SocialActivity", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetRelatedEntities<Delek.DynamicsCRM.Model.SocialActivity>("BulkOperation_SocialActivity", null, value);
+			}
+		}
+		
+		/// <summary>
+		/// 1:N bulkoperation_Tasks
+		/// </summary>
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("bulkoperation_Tasks")]
+		public System.Collections.Generic.IEnumerable<Delek.DynamicsCRM.Model.Task> bulkoperation_Tasks
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntities<Delek.DynamicsCRM.Model.Task>("bulkoperation_Tasks", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetRelatedEntities<Delek.DynamicsCRM.Model.Task>("bulkoperation_Tasks", null, value);
+			}
+		}
+		
+		/// <summary>
+		/// N:N BulkOperation_Accounts
+		/// </summary>
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("BulkOperation_Accounts")]
+		public System.Collections.Generic.IEnumerable<Delek.DynamicsCRM.Model.Account> BulkOperation_Accounts
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntities<Delek.DynamicsCRM.Model.Account>("BulkOperation_Accounts", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetRelatedEntities<Delek.DynamicsCRM.Model.Account>("BulkOperation_Accounts", null, value);
+			}
+		}
+		
+		/// <summary>
+		/// N:N BulkOperation_Contacts
+		/// </summary>
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("BulkOperation_Contacts")]
+		public System.Collections.Generic.IEnumerable<Delek.DynamicsCRM.Model.Contact> BulkOperation_Contacts
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntities<Delek.DynamicsCRM.Model.Contact>("BulkOperation_Contacts", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetRelatedEntities<Delek.DynamicsCRM.Model.Contact>("BulkOperation_Contacts", null, value);
+			}
+		}
+		
+		/// <summary>
+		/// N:N BulkOperation_Leads
+		/// </summary>
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("BulkOperation_Leads")]
+		public System.Collections.Generic.IEnumerable<Delek.DynamicsCRM.Model.Lead> BulkOperation_Leads
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntities<Delek.DynamicsCRM.Model.Lead>("BulkOperation_Leads", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetRelatedEntities<Delek.DynamicsCRM.Model.Lead>("BulkOperation_Leads", null, value);
+			}
+		}
+		
+		/// <summary>
+		/// N:1 account_BulkOperations
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("account_BulkOperations")]
+		public Delek.DynamicsCRM.Model.Account account_BulkOperations
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntity<Delek.DynamicsCRM.Model.Account>("account_BulkOperations", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetRelatedEntity<Delek.DynamicsCRM.Model.Account>("account_BulkOperations", null, value);
+			}
+		}
+		
+		/// <summary>
+		/// N:1 activity_pointer_BulkOperation
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("activityid")]
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("activity_pointer_BulkOperation")]
+		public Delek.DynamicsCRM.Model.ActivityPointer activity_pointer_BulkOperation
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntity<Delek.DynamicsCRM.Model.ActivityPointer>("activity_pointer_BulkOperation", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetRelatedEntity<Delek.DynamicsCRM.Model.ActivityPointer>("activity_pointer_BulkOperation", null, value);
+			}
+		}
+		
+		/// <summary>
+		/// N:1 bulkoperation_mailbox_sendermailboxid
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("sendermailboxid")]
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("bulkoperation_mailbox_sendermailboxid")]
+		public Delek.DynamicsCRM.Model.Mailbox bulkoperation_mailbox_sendermailboxid
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntity<Delek.DynamicsCRM.Model.Mailbox>("bulkoperation_mailbox_sendermailboxid", null);
+			}
+		}
+		
+		/// <summary>
+		/// N:1 bulkoperation_transactioncurrency_transactioncurrencyid
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("transactioncurrencyid")]
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("bulkoperation_transactioncurrency_transactioncurrencyid")]
+		public Delek.DynamicsCRM.Model.TransactionCurrency bulkoperation_transactioncurrency_transactioncurrencyid
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntity<Delek.DynamicsCRM.Model.TransactionCurrency>("bulkoperation_transactioncurrency_transactioncurrencyid", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetRelatedEntity<Delek.DynamicsCRM.Model.TransactionCurrency>("bulkoperation_transactioncurrency_transactioncurrencyid", null, value);
+			}
+		}
+		
+		/// <summary>
+		/// N:1 business_unit_BulkOperation_activities
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("owningbusinessunit")]
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("business_unit_BulkOperation_activities")]
+		public Delek.DynamicsCRM.Model.BusinessUnit business_unit_BulkOperation_activities
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntity<Delek.DynamicsCRM.Model.BusinessUnit>("business_unit_BulkOperation_activities", null);
+			}
+		}
+		
+		/// <summary>
+		/// N:1 contact_BulkOperations
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("contact_BulkOperations")]
+		public Delek.DynamicsCRM.Model.Contact contact_BulkOperations
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntity<Delek.DynamicsCRM.Model.Contact>("contact_BulkOperations", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetRelatedEntity<Delek.DynamicsCRM.Model.Contact>("contact_BulkOperations", null, value);
+			}
+		}
+		
+		/// <summary>
+		/// N:1 lead_BulkOperations
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lead_BulkOperations")]
+		public Delek.DynamicsCRM.Model.Lead lead_BulkOperations
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntity<Delek.DynamicsCRM.Model.Lead>("lead_BulkOperations", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetRelatedEntity<Delek.DynamicsCRM.Model.Lead>("lead_BulkOperations", null, value);
+			}
+		}
+		
+		/// <summary>
+		/// N:1 lk_BulkOperation_createdby
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdby")]
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_BulkOperation_createdby")]
+		public Delek.DynamicsCRM.Model.SystemUser lk_BulkOperation_createdby
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntity<Delek.DynamicsCRM.Model.SystemUser>("lk_BulkOperation_createdby", null);
+			}
+		}
+		
+		/// <summary>
+		/// N:1 lk_BulkOperation_createdonbehalfby
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdonbehalfby")]
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_BulkOperation_createdonbehalfby")]
+		public Delek.DynamicsCRM.Model.SystemUser lk_BulkOperation_createdonbehalfby
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntity<Delek.DynamicsCRM.Model.SystemUser>("lk_BulkOperation_createdonbehalfby", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetRelatedEntity<Delek.DynamicsCRM.Model.SystemUser>("lk_BulkOperation_createdonbehalfby", null, value);
+			}
+		}
+		
+		/// <summary>
+		/// N:1 lk_BulkOperation_modifiedby
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedby")]
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_BulkOperation_modifiedby")]
+		public Delek.DynamicsCRM.Model.SystemUser lk_BulkOperation_modifiedby
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntity<Delek.DynamicsCRM.Model.SystemUser>("lk_BulkOperation_modifiedby", null);
+			}
+		}
+		
+		/// <summary>
+		/// N:1 lk_BulkOperation_modifiedonbehalfby
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedonbehalfby")]
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_BulkOperation_modifiedonbehalfby")]
+		public Delek.DynamicsCRM.Model.SystemUser lk_BulkOperation_modifiedonbehalfby
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntity<Delek.DynamicsCRM.Model.SystemUser>("lk_BulkOperation_modifiedonbehalfby", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetRelatedEntity<Delek.DynamicsCRM.Model.SystemUser>("lk_BulkOperation_modifiedonbehalfby", null, value);
+			}
+		}
+		
+		/// <summary>
+		/// N:1 team_BulkOperation
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("owningteam")]
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("team_BulkOperation")]
+		public Delek.DynamicsCRM.Model.Team team_BulkOperation
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntity<Delek.DynamicsCRM.Model.Team>("team_BulkOperation", null);
+			}
+		}
+		
+		/// <summary>
+		/// N:1 user_BulkOperation
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("owninguser")]
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("user_BulkOperation")]
+		public Delek.DynamicsCRM.Model.SystemUser user_BulkOperation
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntity<Delek.DynamicsCRM.Model.SystemUser>("user_BulkOperation", null);
+			}
+		}
+		
+		/// <summary>
+		/// Constructor for populating via LINQ queries given a LINQ anonymous type
+		/// <param name="anonymousType">LINQ anonymous type.</param>
+		/// </summary>
+		[System.Diagnostics.DebuggerNonUserCode()]
+		public BulkOperation(object anonymousType) : 
 				this()
 		{
             foreach (var p in anonymousType.GetType().GetProperties())
@@ -21918,6 +24879,24 @@ namespace Delek.DynamicsCRM.Model
 			set
 			{
 				this.SetRelatedEntities<Delek.DynamicsCRM.Model.Appointment>("business_unit_appointment_activities", null, value);
+			}
+		}
+		
+		/// <summary>
+		/// 1:N business_unit_BulkOperation_activities
+		/// </summary>
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("business_unit_BulkOperation_activities")]
+		public System.Collections.Generic.IEnumerable<Delek.DynamicsCRM.Model.BulkOperation> business_unit_BulkOperation_activities
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntities<Delek.DynamicsCRM.Model.BulkOperation>("business_unit_BulkOperation_activities", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetRelatedEntities<Delek.DynamicsCRM.Model.BulkOperation>("business_unit_BulkOperation_activities", null, value);
 			}
 		}
 		
@@ -29176,6 +32155,25 @@ namespace Delek.DynamicsCRM.Model
 			set
 			{
 				this.SetRelatedEntity<Delek.DynamicsCRM.Model.Appointment>("appointment_campaignresponse", null, value);
+			}
+		}
+		
+		/// <summary>
+		/// N:1 BulkOperation_CampaignResponse
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("BulkOperation_CampaignResponse")]
+		public Delek.DynamicsCRM.Model.BulkOperation BulkOperation_CampaignResponse
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntity<Delek.DynamicsCRM.Model.BulkOperation>("BulkOperation_CampaignResponse", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetRelatedEntity<Delek.DynamicsCRM.Model.BulkOperation>("BulkOperation_CampaignResponse", null, value);
 			}
 		}
 		
@@ -41364,6 +44362,24 @@ namespace Delek.DynamicsCRM.Model
 		}
 		
 		/// <summary>
+		/// 1:N contact_BulkOperations
+		/// </summary>
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("contact_BulkOperations")]
+		public System.Collections.Generic.IEnumerable<Delek.DynamicsCRM.Model.BulkOperation> contact_BulkOperations
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntities<Delek.DynamicsCRM.Model.BulkOperation>("contact_BulkOperations", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetRelatedEntities<Delek.DynamicsCRM.Model.BulkOperation>("contact_BulkOperations", null, value);
+			}
+		}
+		
+		/// <summary>
 		/// 1:N contact_CampaignResponses
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("contact_CampaignResponses")]
@@ -41990,6 +45006,24 @@ namespace Delek.DynamicsCRM.Model
 			set
 			{
 				this.SetRelatedEntities<Delek.DynamicsCRM.Model.SocialActivity>("socialactivity_postauthoraccount_contacts", null, value);
+			}
+		}
+		
+		/// <summary>
+		/// N:N BulkOperation_Contacts
+		/// </summary>
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("BulkOperation_Contacts")]
+		public System.Collections.Generic.IEnumerable<Delek.DynamicsCRM.Model.BulkOperation> BulkOperation_Contacts
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntities<Delek.DynamicsCRM.Model.BulkOperation>("BulkOperation_Contacts", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetRelatedEntities<Delek.DynamicsCRM.Model.BulkOperation>("BulkOperation_Contacts", null, value);
 			}
 		}
 		
@@ -82043,6 +85077,25 @@ namespace Delek.DynamicsCRM.Model
 		}
 		
 		/// <summary>
+		/// N:1 bulkoperation_el_chat_bots
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("bulkoperation_el_chat_bots")]
+		public Delek.DynamicsCRM.Model.BulkOperation bulkoperation_el_chat_bots
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntity<Delek.DynamicsCRM.Model.BulkOperation>("bulkoperation_el_chat_bots", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetRelatedEntity<Delek.DynamicsCRM.Model.BulkOperation>("bulkoperation_el_chat_bots", null, value);
+			}
+		}
+		
+		/// <summary>
 		/// N:1 campaign_el_chat_bots
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
@@ -97203,6 +100256,25 @@ namespace Delek.DynamicsCRM.Model
 		}
 		
 		/// <summary>
+		/// N:1 bulkoperation_el_digital_docs
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("bulkoperation_el_digital_docs")]
+		public Delek.DynamicsCRM.Model.BulkOperation bulkoperation_el_digital_docs
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntity<Delek.DynamicsCRM.Model.BulkOperation>("bulkoperation_el_digital_docs", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetRelatedEntity<Delek.DynamicsCRM.Model.BulkOperation>("bulkoperation_el_digital_docs", null, value);
+			}
+		}
+		
+		/// <summary>
 		/// N:1 campaign_el_digital_docs
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
@@ -106735,6 +109807,25 @@ namespace Delek.DynamicsCRM.Model
 			set
 			{
 				this.SetRelatedEntity<Delek.DynamicsCRM.Model.ActivityPointer>("activity_pointer_el_doc", null, value);
+			}
+		}
+		
+		/// <summary>
+		/// N:1 bulkoperation_el_docs
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("bulkoperation_el_docs")]
+		public Delek.DynamicsCRM.Model.BulkOperation bulkoperation_el_docs
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntity<Delek.DynamicsCRM.Model.BulkOperation>("bulkoperation_el_docs", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetRelatedEntity<Delek.DynamicsCRM.Model.BulkOperation>("bulkoperation_el_docs", null, value);
 			}
 		}
 		
@@ -142970,6 +146061,25 @@ namespace Delek.DynamicsCRM.Model
 			set
 			{
 				this.SetRelatedEntity<Delek.DynamicsCRM.Model.ActivityPointer>("activity_pointer_el_mailing_interaction", null, value);
+			}
+		}
+		
+		/// <summary>
+		/// N:1 bulkoperation_el_mailing_interactions
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("bulkoperation_el_mailing_interactions")]
+		public Delek.DynamicsCRM.Model.BulkOperation bulkoperation_el_mailing_interactions
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntity<Delek.DynamicsCRM.Model.BulkOperation>("bulkoperation_el_mailing_interactions", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetRelatedEntity<Delek.DynamicsCRM.Model.BulkOperation>("bulkoperation_el_mailing_interactions", null, value);
 			}
 		}
 		
@@ -180302,6 +183412,25 @@ namespace Delek.DynamicsCRM.Model
 		}
 		
 		/// <summary>
+		/// N:1 bulkoperation_el_smses
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("bulkoperation_el_smses")]
+		public Delek.DynamicsCRM.Model.BulkOperation bulkoperation_el_smses
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntity<Delek.DynamicsCRM.Model.BulkOperation>("bulkoperation_el_smses", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetRelatedEntity<Delek.DynamicsCRM.Model.BulkOperation>("bulkoperation_el_smses", null, value);
+			}
+		}
+		
+		/// <summary>
 		/// N:1 campaign_el_smses
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
@@ -203067,6 +206196,25 @@ namespace Delek.DynamicsCRM.Model
 		}
 		
 		/// <summary>
+		/// N:1 BulkOperation_Email
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("BulkOperation_Email")]
+		public Delek.DynamicsCRM.Model.BulkOperation BulkOperation_Email
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntity<Delek.DynamicsCRM.Model.BulkOperation>("BulkOperation_Email", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetRelatedEntity<Delek.DynamicsCRM.Model.BulkOperation>("BulkOperation_Email", null, value);
+			}
+		}
+		
+		/// <summary>
 		/// N:1 business_unit_email_activities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("owningbusinessunit")]
@@ -205752,6 +208900,25 @@ namespace Delek.DynamicsCRM.Model
 			set
 			{
 				this.SetRelatedEntity<Delek.DynamicsCRM.Model.ActivityPointer>("activity_pointer_fax", null, value);
+			}
+		}
+		
+		/// <summary>
+		/// N:1 BulkOperation_Faxes
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("BulkOperation_Faxes")]
+		public Delek.DynamicsCRM.Model.BulkOperation BulkOperation_Faxes
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntity<Delek.DynamicsCRM.Model.BulkOperation>("BulkOperation_Faxes", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetRelatedEntity<Delek.DynamicsCRM.Model.BulkOperation>("BulkOperation_Faxes", null, value);
 			}
 		}
 		
@@ -221242,6 +224409,24 @@ namespace Delek.DynamicsCRM.Model
 		}
 		
 		/// <summary>
+		/// 1:N lead_BulkOperations
+		/// </summary>
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lead_BulkOperations")]
+		public System.Collections.Generic.IEnumerable<Delek.DynamicsCRM.Model.BulkOperation> lead_BulkOperations
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntities<Delek.DynamicsCRM.Model.BulkOperation>("lead_BulkOperations", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetRelatedEntities<Delek.DynamicsCRM.Model.BulkOperation>("lead_BulkOperations", null, value);
+			}
+		}
+		
+		/// <summary>
 		/// 1:N lead_CampaignResponses
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lead_CampaignResponses")]
@@ -221634,6 +224819,24 @@ namespace Delek.DynamicsCRM.Model
 			set
 			{
 				this.SetRelatedEntities<Delek.DynamicsCRM.Model.Account>("accountleads_association", null, value);
+			}
+		}
+		
+		/// <summary>
+		/// N:N BulkOperation_Leads
+		/// </summary>
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("BulkOperation_Leads")]
+		public System.Collections.Generic.IEnumerable<Delek.DynamicsCRM.Model.BulkOperation> BulkOperation_Leads
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntities<Delek.DynamicsCRM.Model.BulkOperation>("BulkOperation_Leads", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetRelatedEntities<Delek.DynamicsCRM.Model.BulkOperation>("BulkOperation_Leads", null, value);
 			}
 		}
 		
@@ -223933,6 +227136,25 @@ namespace Delek.DynamicsCRM.Model
 			set
 			{
 				this.SetRelatedEntity<Delek.DynamicsCRM.Model.ActivityPointer>("activity_pointer_letter", null, value);
+			}
+		}
+		
+		/// <summary>
+		/// N:1 BulkOperation_Letter
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("BulkOperation_Letter")]
+		public Delek.DynamicsCRM.Model.BulkOperation BulkOperation_Letter
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntity<Delek.DynamicsCRM.Model.BulkOperation>("BulkOperation_Letter", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetRelatedEntity<Delek.DynamicsCRM.Model.BulkOperation>("BulkOperation_Letter", null, value);
 			}
 		}
 		
@@ -227561,6 +230783,24 @@ namespace Delek.DynamicsCRM.Model
 			set
 			{
 				this.SetRelatedEntities<Delek.DynamicsCRM.Model.ActivityPointer>("activitypointer_sendermailboxid_mailbox", null, value);
+			}
+		}
+		
+		/// <summary>
+		/// 1:N bulkoperation_mailbox_sendermailboxid
+		/// </summary>
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("bulkoperation_mailbox_sendermailboxid")]
+		public System.Collections.Generic.IEnumerable<Delek.DynamicsCRM.Model.BulkOperation> bulkoperation_mailbox_sendermailboxid
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntities<Delek.DynamicsCRM.Model.BulkOperation>("bulkoperation_mailbox_sendermailboxid", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetRelatedEntities<Delek.DynamicsCRM.Model.BulkOperation>("bulkoperation_mailbox_sendermailboxid", null, value);
 			}
 		}
 		
@@ -238343,6 +241583,25 @@ namespace Delek.DynamicsCRM.Model
 		}
 		
 		/// <summary>
+		/// N:1 bulkoperation_OpportunityCloses
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("bulkoperation_OpportunityCloses")]
+		public Delek.DynamicsCRM.Model.BulkOperation bulkoperation_OpportunityCloses
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntity<Delek.DynamicsCRM.Model.BulkOperation>("bulkoperation_OpportunityCloses", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetRelatedEntity<Delek.DynamicsCRM.Model.BulkOperation>("bulkoperation_OpportunityCloses", null, value);
+			}
+		}
+		
+		/// <summary>
 		/// N:1 business_unit_opportunity_close_activities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("owningbusinessunit")]
@@ -240848,6 +244107,25 @@ namespace Delek.DynamicsCRM.Model
 			set
 			{
 				this.SetRelatedEntity<Delek.DynamicsCRM.Model.ActivityPointer>("activity_pointer_phonecall", null, value);
+			}
+		}
+		
+		/// <summary>
+		/// N:1 BulkOperation_Phonecall
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("BulkOperation_Phonecall")]
+		public Delek.DynamicsCRM.Model.BulkOperation BulkOperation_Phonecall
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntity<Delek.DynamicsCRM.Model.BulkOperation>("BulkOperation_Phonecall", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetRelatedEntity<Delek.DynamicsCRM.Model.BulkOperation>("BulkOperation_Phonecall", null, value);
 			}
 		}
 		
@@ -247142,6 +250420,25 @@ namespace Delek.DynamicsCRM.Model
 		}
 		
 		/// <summary>
+		/// N:1 BulkOperation_QueueItem
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("objectid")]
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("BulkOperation_QueueItem")]
+		public Delek.DynamicsCRM.Model.BulkOperation BulkOperation_QueueItem
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntity<Delek.DynamicsCRM.Model.BulkOperation>("BulkOperation_QueueItem", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetRelatedEntity<Delek.DynamicsCRM.Model.BulkOperation>("BulkOperation_QueueItem", null, value);
+			}
+		}
+		
+		/// <summary>
 		/// N:1 CampaignResponse_QueueItem
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("objectid")]
@@ -250038,6 +253335,25 @@ namespace Delek.DynamicsCRM.Model
 			set
 			{
 				this.SetRelatedEntity<Delek.DynamicsCRM.Model.ActivityPointer>("activity_pointer_recurringappointmentmaster", null, value);
+			}
+		}
+		
+		/// <summary>
+		/// N:1 BulkOperation_RecurringAppointmentMaster
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("BulkOperation_RecurringAppointmentMaster")]
+		public Delek.DynamicsCRM.Model.BulkOperation BulkOperation_RecurringAppointmentMaster
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntity<Delek.DynamicsCRM.Model.BulkOperation>("BulkOperation_RecurringAppointmentMaster", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetRelatedEntity<Delek.DynamicsCRM.Model.BulkOperation>("BulkOperation_RecurringAppointmentMaster", null, value);
 			}
 		}
 		
@@ -258998,6 +262314,25 @@ namespace Delek.DynamicsCRM.Model
 		}
 		
 		/// <summary>
+		/// N:1 bulkoperation_ServiceAppointments
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("bulkoperation_ServiceAppointments")]
+		public Delek.DynamicsCRM.Model.BulkOperation bulkoperation_ServiceAppointments
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntity<Delek.DynamicsCRM.Model.BulkOperation>("bulkoperation_ServiceAppointments", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetRelatedEntity<Delek.DynamicsCRM.Model.BulkOperation>("bulkoperation_ServiceAppointments", null, value);
+			}
+		}
+		
+		/// <summary>
 		/// N:1 business_unit_service_appointments
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("owningbusinessunit")]
@@ -263596,6 +266931,25 @@ namespace Delek.DynamicsCRM.Model
 			set
 			{
 				this.SetRelatedEntity<Delek.DynamicsCRM.Model.ActivityPointer>("activity_pointer_socialactivity", null, value);
+			}
+		}
+		
+		/// <summary>
+		/// N:1 BulkOperation_SocialActivity
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("BulkOperation_SocialActivity")]
+		public Delek.DynamicsCRM.Model.BulkOperation BulkOperation_SocialActivity
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntity<Delek.DynamicsCRM.Model.BulkOperation>("BulkOperation_SocialActivity", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetRelatedEntity<Delek.DynamicsCRM.Model.BulkOperation>("BulkOperation_SocialActivity", null, value);
 			}
 		}
 		
@@ -270657,6 +274011,78 @@ namespace Delek.DynamicsCRM.Model
 			set
 			{
 				this.SetRelatedEntities<Delek.DynamicsCRM.Model.Appointment>("lk_appointment_modifiedonbehalfby", null, value);
+			}
+		}
+		
+		/// <summary>
+		/// 1:N lk_BulkOperation_createdby
+		/// </summary>
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_BulkOperation_createdby")]
+		public System.Collections.Generic.IEnumerable<Delek.DynamicsCRM.Model.BulkOperation> lk_BulkOperation_createdby
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntities<Delek.DynamicsCRM.Model.BulkOperation>("lk_BulkOperation_createdby", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetRelatedEntities<Delek.DynamicsCRM.Model.BulkOperation>("lk_BulkOperation_createdby", null, value);
+			}
+		}
+		
+		/// <summary>
+		/// 1:N lk_BulkOperation_createdonbehalfby
+		/// </summary>
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_BulkOperation_createdonbehalfby")]
+		public System.Collections.Generic.IEnumerable<Delek.DynamicsCRM.Model.BulkOperation> lk_BulkOperation_createdonbehalfby
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntities<Delek.DynamicsCRM.Model.BulkOperation>("lk_BulkOperation_createdonbehalfby", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetRelatedEntities<Delek.DynamicsCRM.Model.BulkOperation>("lk_BulkOperation_createdonbehalfby", null, value);
+			}
+		}
+		
+		/// <summary>
+		/// 1:N lk_BulkOperation_modifiedby
+		/// </summary>
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_BulkOperation_modifiedby")]
+		public System.Collections.Generic.IEnumerable<Delek.DynamicsCRM.Model.BulkOperation> lk_BulkOperation_modifiedby
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntities<Delek.DynamicsCRM.Model.BulkOperation>("lk_BulkOperation_modifiedby", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetRelatedEntities<Delek.DynamicsCRM.Model.BulkOperation>("lk_BulkOperation_modifiedby", null, value);
+			}
+		}
+		
+		/// <summary>
+		/// 1:N lk_BulkOperation_modifiedonbehalfby
+		/// </summary>
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_BulkOperation_modifiedonbehalfby")]
+		public System.Collections.Generic.IEnumerable<Delek.DynamicsCRM.Model.BulkOperation> lk_BulkOperation_modifiedonbehalfby
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntities<Delek.DynamicsCRM.Model.BulkOperation>("lk_BulkOperation_modifiedonbehalfby", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetRelatedEntities<Delek.DynamicsCRM.Model.BulkOperation>("lk_BulkOperation_modifiedonbehalfby", null, value);
 			}
 		}
 		
@@ -280957,6 +284383,24 @@ namespace Delek.DynamicsCRM.Model
 		}
 		
 		/// <summary>
+		/// 1:N user_BulkOperation
+		/// </summary>
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("user_BulkOperation")]
+		public System.Collections.Generic.IEnumerable<Delek.DynamicsCRM.Model.BulkOperation> user_BulkOperation
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntities<Delek.DynamicsCRM.Model.BulkOperation>("user_BulkOperation", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetRelatedEntities<Delek.DynamicsCRM.Model.BulkOperation>("user_BulkOperation", null, value);
+			}
+		}
+		
+		/// <summary>
 		/// 1:N user_campaignresponse
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("user_campaignresponse")]
@@ -284534,6 +287978,25 @@ namespace Delek.DynamicsCRM.Model
 		}
 		
 		/// <summary>
+		/// N:1 bulkoperation_Tasks
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("bulkoperation_Tasks")]
+		public Delek.DynamicsCRM.Model.BulkOperation bulkoperation_Tasks
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntity<Delek.DynamicsCRM.Model.BulkOperation>("bulkoperation_Tasks", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetRelatedEntity<Delek.DynamicsCRM.Model.BulkOperation>("bulkoperation_Tasks", null, value);
+			}
+		}
+		
+		/// <summary>
 		/// N:1 business_unit_task_activities
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("owningbusinessunit")]
@@ -287522,6 +290985,24 @@ namespace Delek.DynamicsCRM.Model
 			set
 			{
 				this.SetRelatedEntities<Delek.DynamicsCRM.Model.Appointment>("team_appointment", null, value);
+			}
+		}
+		
+		/// <summary>
+		/// 1:N team_BulkOperation
+		/// </summary>
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("team_BulkOperation")]
+		public System.Collections.Generic.IEnumerable<Delek.DynamicsCRM.Model.BulkOperation> team_BulkOperation
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntities<Delek.DynamicsCRM.Model.BulkOperation>("team_BulkOperation", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetRelatedEntities<Delek.DynamicsCRM.Model.BulkOperation>("team_BulkOperation", null, value);
 			}
 		}
 		
@@ -292281,6 +295762,24 @@ namespace Delek.DynamicsCRM.Model
 			get
 			{
 				return this.GetAttributeValue<System.Nullable<long>>("versionnumber");
+			}
+		}
+		
+		/// <summary>
+		/// 1:N bulkoperation_transactioncurrency_transactioncurrencyid
+		/// </summary>
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("bulkoperation_transactioncurrency_transactioncurrencyid")]
+		public System.Collections.Generic.IEnumerable<Delek.DynamicsCRM.Model.BulkOperation> bulkoperation_transactioncurrency_transactioncurrencyid
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntities<Delek.DynamicsCRM.Model.BulkOperation>("bulkoperation_transactioncurrency_transactioncurrencyid", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetRelatedEntities<Delek.DynamicsCRM.Model.BulkOperation>("bulkoperation_transactioncurrency_transactioncurrencyid", null, value);
 			}
 		}
 		
