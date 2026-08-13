@@ -1,11 +1,11 @@
 ﻿(function (el_digital_doc) {
     var commons;
-    el_digital_doc.Ribbon = el_appointment.Ribbon || {};
     el_digital_doc.OnLoad = function (executionContext) {
         try {
-            formContext = executionContext.getFormContext();
-            commons = new elad_commons(executionContext.getFormContext());
-            commons.SetFormContext(formContext);
+            debugger;
+            commons = new elad_commons();
+            commons.SetFormContext(executionContext.getFormContext());
+            
             el_digital_doc.setRequiredField("none");
             el_digital_doc.ShowTab();
             el_digital_doc.setupBasicEvents();
@@ -81,7 +81,7 @@
                     if (tabName == "general_tab") {
                         return;
                     }
-                    var tab = formContext.ui.tabs.get(tabName);
+                    var tab = commons.GetFormContext().ui.tabs.get(tabName);
 
                     if (tab) {
                         tab.setVisible(true);
@@ -290,7 +290,7 @@
                     var incidentCreatedDate = retrievedValues[3];
 
                     if (customerDetails && carDetails) {
-                        el_digital_doc.sendAndOpenForm(new FormData(), formContext.data.entity.attributes.get("el_id_document_type"),
+                        el_digital_doc.sendAndOpenForm(new FormData(), commons.GetFormContext().data.entity.attributes.get("el_id_document_type"),
                             customerDetails, carDetails, incidentNumber, incidentCreatedDate);
                     }
                 }
@@ -302,7 +302,7 @@
     };
     el_digital_doc.setRequiredField = function (requiredLevel) {
         try {
-            commons.SetRequiredLevelToArray(
+            el_digital_doc.SetRequiredLevelToArray(
                 [
                     "el_s_order_number",
                     "el_n_credit_amount",
@@ -323,7 +323,7 @@
     };
     el_digital_doc.setRequiredFieldReplacementCar = function (requiredLevel) {
         try {
-            commons.SetRequiredLevelToArray(
+            el_digital_doc.SetRequiredLevelToArray(
                 [
                     "el_n_replacement_license_number",
                     "el_n_starting_km",
@@ -370,7 +370,7 @@
                 formData.append("user_permission", "2");
             }
 
-            var formId = formContext.data.entity.getId();
+            var formId = commons.GetFormContext().data.entity.getId();
 
             var family = carDetails.family ? carDetails.family.Name : null;
             var reference = incidentNumber ? incidentNumber : null;
@@ -557,7 +557,7 @@
                 }
             }
 
-            var ownerName = formContext.data.entity.attributes.get("ownerid").getValue() ? formContext.data.entity.attributes.get("ownerid").getValue()[0].name : null;
+            var ownerName = commons.GetFormContext().data.entity.attributes.get("ownerid").getValue() ? commons.GetFormContext().data.entity.attributes.get("ownerid").getValue()[0].name : null;
             var userName = customerDetails.firstname + " " + customerDetails.lastname;
             var userId = customerDetails.idnumber;
             var phone = customerDetails.mobilephone ? customerDetails.mobilephone : null;
@@ -608,7 +608,7 @@
         try {
             var generalTab = null;
 
-            formContext.ui.tabs.getAll().forEach(function (tab) {
+            commons.GetFormContext().ui.tabs.getAll().forEach(function (tab) {
 
                 if (!tab || !tab.getLabel) {
                     return;
@@ -660,6 +660,14 @@
 
         } catch (error) {
             commons.PageErrorHandler(error,"el_digital_doc.initialChecks");
+        }
+    };
+
+    el_digital_doc.SetRequiredLevelToArray = function (fieldsArr, requiredLevel) {
+        if(fieldsArr && fieldsArr.length > 0) {
+            fieldsArr.forEach(function (fieldName) {
+                commons.SetRequiredLevel(fieldName, requiredLevel);
+            });
         }
     };
    

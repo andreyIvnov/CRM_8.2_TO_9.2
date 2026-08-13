@@ -63,21 +63,24 @@
     el_email.assignToMyself = async function () {
         try {
             var entityId = commons.GetCurrentEntityId();
-            //check if the email related to  queue item that wasn't assign
-            var message = "האם ברצונך לעבוד על פריט זה?"
-            var workflowId = 'E406BEEA-2596-46A1-BF70-1DBB0A77B841';
+            debugger;
+            if (entityId) {
+                //check if the email related to  queue item that wasn't assign
+                var message = "האם ברצונך לעבוד על פריט זה?"
+                var workflowId = 'E406BEEA-2596-46A1-BF70-1DBB0A77B841';
 
-            var options = "?$select=_ownerid_value,Email_QueueItem/WorkerId&$expand=Email_QueueItem";
-            var emailResult = await commons.RetrieveRecord("email", entityId, options);
-            if (emailResult && emailResult._ownerid_value && emailResult._ownerid_value && emailResult.Email_QueueItem && emailResult.Email_QueueItem.WorkerId) {
-                if (commons.GetCurrentUserId() !== emailResult._ownerid_value) {
-                    var confirmResult = await commons.OpenConfirmDialog(message)
-                    if (confirmResult && confirmResult.confirmed) {
-                        el_email.runWorkflow(workflowId, entityId, el_email.assignResponse, el_email.assignResponse);
+                var options = "?$select=_ownerid_value,Email_QueueItem&$expand=Email_QueueItem($select=_workerid_value)";
+                var emailResult = await commons.RetrieveRecord("email", entityId, options);
+                if (emailResult && emailResult._ownerid_value && emailResult.Email_QueueItem && emailResult.Email_QueueItem.length > 0) {
+                    debugger;
+                    if (commons.GetCurrentUserId() !== emailResult.ownerid_email.id) {
+                        var confirmResult = await commons.OpenConfirmDialog(message)
+                        if (confirmResult && confirmResult.confirmed) {
+                            el_email.runWorkflow(workflowId, entityId, el_email.assignResponse, el_email.assignResponse);
+                        }
                     }
                 }
             }
-
         } catch (error) {
             console.error(error);
             commons.SetFormNotification("ERROR on el_email.assignToMyself(): " + error.message, commons.FormNotificationLevel.ERROR, "el_email.assignToMyself");
@@ -271,4 +274,4 @@
         }
     }
 
-})((window.el_email = window.el_email || {}))
+})(window.el_email = window.el_email || {})
