@@ -193,7 +193,7 @@
         }
 
         var eventArgs = Context.getEventArgs();
-        if (eventArgs.getSaveMode() === Enum.SaveMode.Save || eventArgs.getSaveMode() === Enum.SaveMode.SaveAndClose || eventArgs.getSaveMode() === Enum.SaveMode.SaveAndNew || eventArgs.getSaveMode() === Enum.SaveMode.AutoSave && !Xrm.Page.ui.tabs.get("lead_disqualify_tab").getVisible()) {
+        if (eventArgs.getSaveMode() === Enum.SaveMode.Save || eventArgs.getSaveMode() === Enum.SaveMode.SaveAndClose || eventArgs.getSaveMode() === Enum.SaveMode.SaveAndNew || eventArgs.getSaveMode() === Enum.SaveMode.AutoSave && !commons.GetTab("lead_disqualify_tab").getVisible()) {
             if (IS_DUPLICATION_CHECKING == false && IS_DUPLICATION_CHECKED == false) {
                 IS_DUPLICATION_CHECKING = true;
                 IS_DUPLICATION_CHECKED = true;
@@ -1370,13 +1370,13 @@
                     commons.Save()
                         .then(
                             function success() {
-                                el_lead.convertLeadQuick();
+                                el_lead.Ribbon.convertLeadQuick();
                             },
                             err => console.error("Error on el_lead.Ribbon.fieldsValidation_BeforeQualify => Save: ", err)
                         )
                 }
                 else
-                    el_lead.convertLeadQuick();
+                    el_lead.Ribbon.convertLeadQuick();
             }
             else {
                 //To Check -> qualifying of lead
