@@ -44,17 +44,15 @@
         manufacturerid: ""
     }
 
-    var SERVICE = motors.Services.XrmService.V81;
-
     //-------------------FUNCTIONS---------------------------
     var Central_Garage = false;
-    var common;
+    var Common;
 
     el_sms.el_sms_onLoad = function (executionContext) {
         try{
             debugger;
-            var Common = new elad_commons();
-            Common.SetFormContext(executionContext);
+            Common = new elad_commons();
+            Common.SetFormContext(executionContext.getFormContext());
     
             el_sms.clearPickListOptions();
             el_sms.showTabs();
@@ -64,20 +62,21 @@
         }
     }
 
-    el_sms.el_smsAssignEventActions = function () {
+
+    el_sms.el_smsAssignEventActions = function() {
         Common.AddOnChange("el_l_msg_type", el_sms.msgTypeChanged);
         //Xrm.Page.getAttribute("el_id_template_sms").addOnChange(msgTypeChanged);
         Common.AddOnChange("el_s_telephone_num", el_sms.validatePhoneField);
         Common.AddOnChange("el_id_template_sms", el_sms.updateSubjectText);
         Common.AddOnChange("el_id_template_sms", el_sms.checkSendSmsNow);
-        Common.AddOnSave(el_sms_onSave);
+        Common.AddOnSave(el_sms.el_sms_onSave);
     }
 
-    el_sms.checkSendSmsNow = function () {
+    el_sms.checkSendSmsNow = function() {
         Common.SetFieldValue("el_b_send_now", true);
     }
 
-    el_sms.clearPickListOptions = function () {
+    el_sms.clearPickListOptions = function() {
 
         var el_l_msg_type = Common.GetControl("el_l_msg_type");
         if (Common.UserHasRoleOrIsAdmin("דלק מוטורס - נציג שירות מוסך מרכזי")) {
@@ -100,7 +99,7 @@
         }
     }
 
-    el_sms.showTabs = function () {
+    el_sms.showTabs = function() {
         debugger;
         /// <summary>
         /// show or hides form tabs: if manual SMS from incident, shows service_tab
@@ -152,7 +151,7 @@
         }
     }
 
-    el_sms.fieldSetVisible = function (fieldsArr, falseTrue) {
+    el_sms.fieldSetVisible = function(fieldsArr, falseTrue) {
         fieldsArr.forEach(function (field) {
             if (Common.GetControl(field) != null) {
                 Common.SetVisible(field, falseTrue);
@@ -160,7 +159,7 @@
         })
     }
 
-    el_sms.tabSelector = function () {
+    el_sms.tabSelector = function() {
         debugger;
 
         if (Common.GetFieldValue("el_id_service_point") != null) {
@@ -199,7 +198,7 @@
         }
     }
 
-    el_sms.validatePhoneField = function () {
+    el_sms.validatePhoneField = function() {
         try {
             if (!el_sms.validatePhoneNumber(Common.GetFieldValue("el_s_telephone_num"), CELLPHONE_PATTERN)) {
                 Common.OpenAlertDialog(CELLPHONE_PATTERN_MESSAGE);
@@ -212,7 +211,7 @@
         }
     }
 
-    el_sms.validatePhoneNumber = function (fieldValue, pattern) {
+    el_sms.validatePhoneNumber = function(fieldValue, pattern) {
         if (!fieldValue || !pattern)
             return true;
         debugger
@@ -222,7 +221,7 @@
     }
 
 
-    el_sms.msgTypeChanged = function () {
+    el_sms.msgTypeChanged = function() {
         debugger;
         /// <summary>
         /// shows and hides fields related to el_l_msg_type (el_s_tracking_number, el_s_tracking_link, el_s_email)
@@ -448,7 +447,7 @@
         }
     }*/
 
-    el_sms.updateAccountDetailsLead = function () {
+    el_sms.updateAccountDetailsLead = function() {
         var regarding = Common.GetFieldValue("regardingobjectid");
 
         if (!regarding || !regarding[0] || !regarding[0].id) {
@@ -514,7 +513,7 @@
         }
     }*/
 
-    el_sms.updateAccountDetailsOpp = function () {
+    el_sms.updateAccountDetailsOpp = function() {
         var regarding = Common.GetFieldValue("regardingobjectid");
 
         if (!regarding || !regarding[0] || !regarding[0].id) {
@@ -564,7 +563,7 @@
         }
     }*/
 
-    el_sms.setShowroomDetails = function (showroomId) {
+    el_sms.setShowroomDetails = function(showroomId) {
 
         if (!showroomId) {
             return;
@@ -613,7 +612,7 @@
         }
     }*/
 
-    el_sms.getAccountName = function (accountId) {
+    el_sms.getAccountName = function(accountId) {
         if (!accountId) {
             console.log("el_sms,getAccountName - accountId EMPTY");
             return Promise.resolve("");
@@ -666,7 +665,7 @@
         }
     }*/
 
-    el_sms.setManufacturer = function (familyId) {
+    el_sms.setManufacturer = function(familyId) {
 
         if (!familyId) {
             return;
@@ -693,7 +692,7 @@
         );
     }
 
-    el_sms.el_sms_onSave = function (eContext) {
+    el_sms.el_sms_onSave = function(eContext) {
         debugger;
         var regardingObject = Common.GetFieldValue("regardingobjectid");
         var msgType = Common.GetFieldValue("el_l_msg_type");
@@ -708,7 +707,7 @@
             //messageTextFromTemplate(SMS_FROM_ENUM.OPPORTUNITY);
             el_sms.updateTemplateSms(msgType);
         }
-        if (!validatePhoneField()) {
+        if (!el_sms.validatePhoneField()) {
             eContext.getEventArgs().preventDefault();
         }
     }
@@ -918,7 +917,7 @@
     //    Xrm.Page.getAttribute("el_b_send_now").setValue(true);
     //}
 
-    el_sms.setSmsTemplateByFilter = function (filter, setSubject) {
+    el_sms.setSmsTemplateByFilter = function(filter, setSubject) {
         return Xrm.WebApi.online.retrieveMultipleRecords("el_sms_template", `?$select=el_l_entity,el_name,el_l_msg_type,el_sms_templateid&$filter=${filter}`).then(
             function success(results) {
                 if (!results || !results.entities || results.entities.length < 1) {
@@ -1034,7 +1033,7 @@
         Common.SetFieldValue("el_b_send_now", true);
     };
 
-    el_sms.updateMessageText = function () {
+    el_sms.updateMessageText = function() {
         //var msgtype = Xrm.Page.getAttribute("el_l_msg_type") ? Xrm.Page.getAttribute("el_l_msg_type").getValue() : null;
         //var el_s_tracking_numberAttr = Xrm.Page.getAttribute("el_s_tracking_number");
         //var el_s_part_info = Xrm.Page.getAttribute("el_s_part_info");
@@ -1171,7 +1170,7 @@
         return null;
     }*/
 
-    el_sms.getIncidentOwner = function () {
+    el_sms.getIncidentOwner = function() {
         var incident = Common.GetFieldValue("regardingobjectid");
 
         if (!incident || !incident[0] || !incident[0].id) {
@@ -1195,7 +1194,7 @@
         );
     }
 
-    el_sms.getDate = function (date) {
+    el_sms.getDate = function(date) {
         if (!date) {
             date = new Date();
         }
@@ -1206,7 +1205,7 @@
         return dd + '/' + mm + '/' + yyyy;
     }
 
-    el_sms.getTime = function (date) {
+    el_sms.getTime = function(date) {
         if (!date) {
             date = new Date();
         }
