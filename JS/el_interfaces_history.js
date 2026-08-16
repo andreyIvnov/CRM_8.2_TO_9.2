@@ -47,4 +47,4 @@
         return resultarray;
     }
 
-})((window.el_interfaces_history = window.el_interfaces_history || {}));
+})(window.el_interfaces_history = window.el_interfaces_history || {});
