@@ -10,35 +10,6 @@
         Common.SetFormContext(executionContext.getFormContext());
     }
 
-    el_service_point.dialServicePoint = function() {
-
-        var phoneNumber = Common.GetFieldValue("el_s_phone");
-
-        if (phoneNumber != null) {
-
-            var extension = el_service_point.getUserExtension();
-
-            if (!extension) {
-                Common.OpenAlertDialog('לא קיימת שלוחה למשתמש. פנה למנהל מערכת');
-                return;
-            }
-
-            var url = el_service_point.getGlobalParameter(CLICK_TO_DIAL_URL);
-            url += "clid=" + phoneNumber + "&ext=" + extension;
-            //representativeHasExtension = true;
-
-            /*var win = top.window.open(url, "Aspire"); //tbd
-            win.focus();*/
-            Common.openUrl(url);
-
-            setTimeout(win.close(), 2000);
-        }
-
-        else {
-            Common.OpenAlertDialog('למרכז שירות זה אין מספר טלפון ראשי, לא ניתן לחייג');
-        }
-    }
-
     /*el_service_point.getGlobalParameter = function(name) {
         var OdataUtilObj = new OdataUtil();
         var filter = OdataUtilObj.formatODataFilterParameter("el_name", name, "string");
@@ -105,8 +76,47 @@
     }
 
 
-    el_service_point.openSmsForm = function() {
-        debugger;
+    el_service_point.Ribbon = el_service_point.Ribbon || {};
+
+    el_service_point.Ribbon.dialServicePoint = function (primaryControl) {
+
+        if (!Common) {
+            Common = new elad_commons();
+            Common.SetFormContext(primaryControl);
+        }
+
+        var phoneNumber = Common.GetFieldValue("el_s_phone");
+
+        if (phoneNumber != null) {
+
+            var extension = el_service_point.getUserExtension();
+
+            if (!extension) {
+                Common.OpenAlertDialog('לא קיימת שלוחה למשתמש. פנה למנהל מערכת');
+                return;
+            }
+
+            var url = el_service_point.getGlobalParameter(CLICK_TO_DIAL_URL);
+            url += "clid=" + phoneNumber + "&ext=" + extension;
+            //representativeHasExtension = true;
+
+            /*var win = top.window.open(url, "Aspire"); //tbd
+            win.focus();*/
+            Common.openUrl(url);
+
+            setTimeout(win.close(), 2000);
+        }
+
+        else {
+            Common.OpenAlertDialog('למרכז שירות זה אין מספר טלפון ראשי, לא ניתן לחייג');
+        }
+    }
+
+    el_service_point.Ribbon.openSmsForm = function () {
+        if (!Common) {
+            Common = new elad_commons();
+            Common.SetFormContext(primaryControl);
+        }
 
         var entityFormOptions = {
             entityName: "el_sms",
@@ -128,6 +138,9 @@
         extRaqs += "&subject=" + 'SMS עם פרטי מרכז שירות';
         window.open(Xrm.Page.context.prependOrgName("/main.aspx?etn=el_sms&pagetype=entityrecord&extraqs=" + encodeURIComponent(extRaqs)), "_blank", features, false); //tbd*/
     }
+
+
+
 })(window.el_service_point = window.el_service_point || {})
 
 
