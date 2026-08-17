@@ -46,6 +46,7 @@
     };
 
     el_company_rep.OnLoad = function (executionContext) {
+        debugger;
         formContext = executionContext.getFormContext();
         commons = new elad_commons();
         commons.SetFormContext(formContext);
@@ -157,51 +158,7 @@
             commons.PageErrorHandler(error, "el_company_rep.setContactCategoryListValues");
         }
     };
-    el_company_rep.DynamicMenuBid = function (commandProperties) {
-        try {
-            if (commons.GetContext().client.getClient() != "Mobile") {
-                var menuXml = "<Menu Id=\"Bid.DynamicMenu\">" +
-                    "<MenuSection Id=\"Bid.Dynamic.MenuSection\" Sequence=\"10\">" +
-                    "<Controls Id=\"Bid.Dynamic.Controls\">";
 
-                menuXml += "<Button Id=\"Bid.Dynamic.Button1\" Command=\"el.el_company_rep.dynamic.SearchCommand\" Sequence=\"20\" LabelText=\"הצעה מתבנית\" Alt=\"הצעה מתבנית\" Image16by16=\"/_imgs/ribbon/entity16_1084.png\" />";
-                menuXml += "</Controls>" +
-                    "</MenuSection>" +
-                    "</Menu>";
-
-                commandProperties.PopulationXML = menuXml;
-            }
-
-        } catch (error) {
-            commons.PageErrorHandler(error, "el_company_rep.DynamicMenuBid");
-        }
-    };
-    el_company_rep.SearchBid = function (commandProperties) {
-        try {
-            if (commons.GetContext().client.getClient() != "Mobile") {
-                var controlId = commandProperties.SourceControlId;
-
-                switch (controlId) {
-                    case "Bid.Dynamic.Button1":
-                        el_company_rep.CreateBidRibbon();
-                        break;
-                    case "Bid.Dynamic.Button2":
-                        commons.showOpenLegacyRibbon(STOCK_ORDER_URL, "customerid", "quote");
-                        break;
-
-                    case "Bid.Dynamic.Button3":
-                        commons.showOpenLegacyRibbon(SPECIAL_QUOTE_URL, "customerid");
-                        break;
-                    default:
-                        commons.OpenAlertDialog("Button Unknown");
-                        break;
-                }
-            }
-
-        } catch (error) {
-            commons.PageErrorHandler(error, "el_company_rep.SearchBid");
-        }
-    };
     
     el_company_rep.CreateBidRibbon = function () {
         try {
@@ -241,34 +198,127 @@
         }
     };
    
-    el_company_rep.AddFileRibbon = function () {
+    
+    
+    el_company_rep.Ribbon = el_company_rep.Ribbon || {};
+
+    el_company_rep.Ribbon.AddFileRibbon = function (primaryControl) {
         try {
+            if(!commons){
+                commons = new elad_commons();
+                formContext = primaryControl;
+                commons.SetFormContext(formContext);
+            }
+            
             var name = commons.GetFieldValue("name") ||
                 commons.GetFieldValue("el_name") ||
                 commons.GetFieldValue("title") ||
                 commons.GetCurrentEntityName();
 
-            var extRaqs = "";
-            var features = "location=no,menubar=no,status=no,toolbar=no,scrollbars=yes,resizable=yes";
+            // var extRaqs = "";
+            // var features = "location=no,menubar=no,status=no,toolbar=no,scrollbars=yes,resizable=yes";
 
-            extRaqs += "pId=" + commons.GetCurrentEntityId();
-            extRaqs += "&pName=" + name;
-            extRaqs += "&pType=" + commons.GetParameterValue("etc");
+            // extRaqs += "pId=" + commons.GetCurrentEntityId();
+            // extRaqs += "&pName=" + name;
+            // extRaqs += "&pType=" + commons.GetParameterValue("etc");
 
-            var url = commons.GetClientUrl() +
-                "/main.aspx?etc=" +
-                EL_DOC_TYPECODE +
-                "&pagetype=entityrecord&extraqs=" +
-                encodeURIComponent(extRaqs);
+            // var url = commons.GetClientUrl() +
+            //     "/main.aspx?etc=" +
+            //     EL_DOC_TYPECODE +
+            //     "&pagetype=entityrecord&extraqs=" +
+            //     encodeURIComponent(extRaqs);
 
-            var win = elad_commons_obj.openUr(url,  features);
+            // var win = elad_commons_obj.openUr(url,  features);
 
-            if (win) {
-                win.focus();
+            // if (win) {
+            //     win.focus();
+            // }
+
+
+            const pageInput = {
+                pageType: "entityrecord",
+                entityName: "el_doc",
+                formParameters: {
+                    "pId": commons.GetCurrentEntityId(),
+                    "pName": name,
+                    "pType": commons.GetCurrentEntityName()
+                }
             }
+
+            const navigationOptions = {
+                target: 2, // 2 opens the page as a modal dialog
+                position: 1 // 1 for center, 2 for side pane
+            };
+
+            commons.NavigateTo(pageInput, navigationOptions);
+
 
         } catch (error) {
             commons.PageErrorHandler(error, "el_company_rep.AddFileRibbon");
         }
     };
+
+    el_company_rep.Ribbon.DynamicMenuBid = function (primaryControl, commandProperties) {
+        try {
+            if (!commons) {
+                commons = new elad_commons();
+                formContext = primaryControl;
+                commons.SetFormContext(formContext);
+            }
+
+            if (commons.GetContext().client.getClient() != "Mobile") {
+                var menuXml = "<Menu Id=\"Bid.DynamicMenu\">" +
+                    "<MenuSection Id=\"Bid.Dynamic.MenuSection\" Sequence=\"10\">" +
+                    "<Controls Id=\"Bid.Dynamic.Controls\">";
+
+                menuXml += "<Button Id=\"Bid.Dynamic.Button1\" Command=\"el.el_company_rep.dynamic.SearchCommand\" Sequence=\"20\" LabelText=\"הצעה מתבנית\" Alt=\"הצעה מתבנית\" Image16by16=\"/_imgs/ribbon/entity16_1084.png\" />";
+                menuXml += "</Controls>" +
+                    "</MenuSection>" +
+                    "</Menu>";
+
+                commandProperties.PopulationXML = menuXml;
+            }
+
+        } catch (error) {
+            commons.PageErrorHandler(error, "el_company_rep.DynamicMenuBid");
+        }
+    };
+
+    /**
+     * Method NOT IN USE - Ribbon button isn't exist
+     */
+    // el_company_rep.Ribbon.SearchBid = function (primaryControl, commandProperties) {
+    //     try {
+    //         if (!commons) {
+    //             commons = new elad_commons();
+    //             formContext = primaryControl;
+    //             commons.SetFormContext(formContext);
+    //         }
+
+    //         if (commons.GetContext().client.getClient() != "Mobile") {
+    //             var controlId = commandProperties.SourceControlId;
+
+    //             switch (controlId) {
+    //                 case "Bid.Dynamic.Button1":
+    //                     el_company_rep.CreateBidRibbon();
+    //                     break;
+    //                 case "Bid.Dynamic.Button2":
+    //                     commons.showOpenLegacyRibbon(STOCK_ORDER_URL, "customerid", "quote");
+    //                     break;
+
+    //                 case "Bid.Dynamic.Button3":
+    //                     commons.showOpenLegacyRibbon(SPECIAL_QUOTE_URL, "customerid");
+    //                     break;
+    //                 default:
+    //                     commons.OpenAlertDialog("Button Unknown");
+    //                     break;
+    //             }
+    //         }
+
+    //     } catch (error) {
+    //         commons.PageErrorHandler(error, "el_company_rep.SearchBid");
+    //     }
+    // };
+
+
 })((window.el_company_rep = window.el_company_rep || {}))
