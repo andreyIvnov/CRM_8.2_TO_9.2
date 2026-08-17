@@ -26805,6 +26805,20 @@ namespace Delek.DynamicsCRM.Model
 		}
 		
 		/// <summary>
+		/// N:1 organization_business_units
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("organizationid")]
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("organization_business_units")]
+		public Delek.DynamicsCRM.Model.Organization organization_business_units
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntity<Delek.DynamicsCRM.Model.Organization>("organization_business_units", null);
+			}
+		}
+		
+		/// <summary>
 		/// N:1 TransactionCurrency_BusinessUnit
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("transactioncurrencyid")]
@@ -34833,6 +34847,20 @@ namespace Delek.DynamicsCRM.Model
 		}
 		
 		/// <summary>
+		/// N:1 organization_competitors
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("organizationid")]
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("organization_competitors")]
+		public Delek.DynamicsCRM.Model.Organization organization_competitors
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntity<Delek.DynamicsCRM.Model.Organization>("organization_competitors", null);
+			}
+		}
+		
+		/// <summary>
 		/// N:1 transactioncurrency_competitor
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("transactioncurrencyid")]
@@ -41369,6 +41397,36 @@ namespace Delek.DynamicsCRM.Model
 			}
 		}
 		
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("el_migratedon")]
+		public System.Nullable<System.DateTime> el_migratedon
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<System.DateTime>>("el_migratedon");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("el_migratedon", value);
+			}
+		}
+		
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("el_owner_onpremise")]
+		public string el_owner_onpremise
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("el_owner_onpremise");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("el_owner_onpremise", value);
+			}
+		}
+		
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("el_s_company")]
 		public string el_s_company
 		{
@@ -47723,6 +47781,20 @@ namespace Delek.DynamicsCRM.Model
 		}
 		
 		/// <summary>
+		/// N:1 organization_el_agent
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("organizationid")]
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("organization_el_agent")]
+		public Delek.DynamicsCRM.Model.Organization organization_el_agent
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntity<Delek.DynamicsCRM.Model.Organization>("organization_el_agent", null);
+			}
+		}
+		
+		/// <summary>
 		/// Constructor for populating via LINQ queries given a LINQ anonymous type
 		/// <param name="anonymousType">LINQ anonymous type.</param>
 		/// </summary>
@@ -53810,6 +53882,20 @@ namespace Delek.DynamicsCRM.Model
 		}
 		
 		/// <summary>
+		/// N:1 organization_el_asha_duty
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("organizationid")]
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("organization_el_asha_duty")]
+		public Delek.DynamicsCRM.Model.Organization organization_el_asha_duty
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntity<Delek.DynamicsCRM.Model.Organization>("organization_el_asha_duty", null);
+			}
+		}
+		
+		/// <summary>
 		/// Constructor for populating via LINQ queries given a LINQ anonymous type
 		/// <param name="anonymousType">LINQ anonymous type.</param>
 		/// </summary>
@@ -54795,6 +54881,20 @@ namespace Delek.DynamicsCRM.Model
 		}
 		
 		/// <summary>
+		/// N:1 organization_el_asha_log
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("organizationid")]
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("organization_el_asha_log")]
+		public Delek.DynamicsCRM.Model.Organization organization_el_asha_log
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntity<Delek.DynamicsCRM.Model.Organization>("organization_el_asha_log", null);
+			}
+		}
+		
+		/// <summary>
 		/// Constructor for populating via LINQ queries given a LINQ anonymous type
 		/// <param name="anonymousType">LINQ anonymous type.</param>
 		/// </summary>
@@ -55531,6 +55631,20 @@ namespace Delek.DynamicsCRM.Model
 			set
 			{
 				this.SetRelatedEntity<Delek.DynamicsCRM.Model.SystemUser>("lk_el_asha_schedule_report_modifiedonbehalfby", null, value);
+			}
+		}
+		
+		/// <summary>
+		/// N:1 organization_el_asha_schedule_report
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("organizationid")]
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("organization_el_asha_schedule_report")]
+		public Delek.DynamicsCRM.Model.Organization organization_el_asha_schedule_report
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntity<Delek.DynamicsCRM.Model.Organization>("organization_el_asha_schedule_report", null);
 			}
 		}
 		
@@ -58042,6 +58156,20 @@ namespace Delek.DynamicsCRM.Model
 		}
 		
 		/// <summary>
+		/// N:1 organization_el_asha_task_type
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("organizationid")]
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("organization_el_asha_task_type")]
+		public Delek.DynamicsCRM.Model.Organization organization_el_asha_task_type
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntity<Delek.DynamicsCRM.Model.Organization>("organization_el_asha_task_type", null);
+			}
+		}
+		
+		/// <summary>
 		/// Constructor for populating via LINQ queries given a LINQ anonymous type
 		/// <param name="anonymousType">LINQ anonymous type.</param>
 		/// </summary>
@@ -59498,6 +59626,20 @@ namespace Delek.DynamicsCRM.Model
 			set
 			{
 				this.SetRelatedEntity<Delek.DynamicsCRM.Model.SystemUser>("lk_el_asha_timetabe_setting_modifiedonbehalfby", null, value);
+			}
+		}
+		
+		/// <summary>
+		/// N:1 organization_el_asha_timetabe_setting
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("organizationid")]
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("organization_el_asha_timetabe_setting")]
+		public Delek.DynamicsCRM.Model.Organization organization_el_asha_timetabe_setting
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntity<Delek.DynamicsCRM.Model.Organization>("organization_el_asha_timetabe_setting", null);
 			}
 		}
 		
@@ -62464,6 +62606,20 @@ namespace Delek.DynamicsCRM.Model
 			set
 			{
 				this.SetRelatedEntity<Delek.DynamicsCRM.Model.SystemUser>("lk_el_autonumbering_modifiedonbehalfby", null, value);
+			}
+		}
+		
+		/// <summary>
+		/// N:1 organization_el_autonumbering
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("organizationid")]
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("organization_el_autonumbering")]
+		public Delek.DynamicsCRM.Model.Organization organization_el_autonumbering
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntity<Delek.DynamicsCRM.Model.Organization>("organization_el_autonumbering", null);
 			}
 		}
 		
@@ -73306,6 +73462,20 @@ namespace Delek.DynamicsCRM.Model
 			set
 			{
 				this.SetRelatedEntity<Delek.DynamicsCRM.Model.SystemUser>("lk_el_car_fleet_modifiedonbehalfby", null, value);
+			}
+		}
+		
+		/// <summary>
+		/// N:1 organization_el_car_fleet
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("organizationid")]
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("organization_el_car_fleet")]
+		public Delek.DynamicsCRM.Model.Organization organization_el_car_fleet
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntity<Delek.DynamicsCRM.Model.Organization>("organization_el_car_fleet", null);
 			}
 		}
 		
@@ -87730,6 +87900,20 @@ namespace Delek.DynamicsCRM.Model
 		}
 		
 		/// <summary>
+		/// N:1 organization_el_color
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("organizationid")]
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("organization_el_color")]
+		public Delek.DynamicsCRM.Model.Organization organization_el_color
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntity<Delek.DynamicsCRM.Model.Organization>("organization_el_color", null);
+			}
+		}
+		
+		/// <summary>
 		/// Constructor for populating via LINQ queries given a LINQ anonymous type
 		/// <param name="anonymousType">LINQ anonymous type.</param>
 		/// </summary>
@@ -88786,6 +88970,20 @@ namespace Delek.DynamicsCRM.Model
 			set
 			{
 				this.SetRelatedEntity<Delek.DynamicsCRM.Model.SystemUser>("lk_el_commitment_type_modifiedonbehalfby", null, value);
+			}
+		}
+		
+		/// <summary>
+		/// N:1 organization_el_commitment_type
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("organizationid")]
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("organization_el_commitment_type")]
+		public Delek.DynamicsCRM.Model.Organization organization_el_commitment_type
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntity<Delek.DynamicsCRM.Model.Organization>("organization_el_commitment_type", null);
 			}
 		}
 		
@@ -95462,6 +95660,20 @@ namespace Delek.DynamicsCRM.Model
 			set
 			{
 				this.SetRelatedEntity<Delek.DynamicsCRM.Model.SystemUser>("lk_el_contractor_modifiedonbehalfby", null, value);
+			}
+		}
+		
+		/// <summary>
+		/// N:1 organization_el_contractor
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("organizationid")]
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("organization_el_contractor")]
+		public Delek.DynamicsCRM.Model.Organization organization_el_contractor
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntity<Delek.DynamicsCRM.Model.Organization>("organization_el_contractor", null);
 			}
 		}
 		
@@ -104849,6 +105061,20 @@ namespace Delek.DynamicsCRM.Model
 		}
 		
 		/// <summary>
+		/// N:1 organization_el_disqualify_primary_reason
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("organizationid")]
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("organization_el_disqualify_primary_reason")]
+		public Delek.DynamicsCRM.Model.Organization organization_el_disqualify_primary_reason
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntity<Delek.DynamicsCRM.Model.Organization>("organization_el_disqualify_primary_reason", null);
+			}
+		}
+		
+		/// <summary>
 		/// Constructor for populating via LINQ queries given a LINQ anonymous type
 		/// <param name="anonymousType">LINQ anonymous type.</param>
 		/// </summary>
@@ -105660,6 +105886,20 @@ namespace Delek.DynamicsCRM.Model
 		}
 		
 		/// <summary>
+		/// N:1 organization_el_disqualify_secondary_reason
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("organizationid")]
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("organization_el_disqualify_secondary_reason")]
+		public Delek.DynamicsCRM.Model.Organization organization_el_disqualify_secondary_reason
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntity<Delek.DynamicsCRM.Model.Organization>("organization_el_disqualify_secondary_reason", null);
+			}
+		}
+		
+		/// <summary>
 		/// Constructor for populating via LINQ queries given a LINQ anonymous type
 		/// <param name="anonymousType">LINQ anonymous type.</param>
 		/// </summary>
@@ -106394,6 +106634,20 @@ namespace Delek.DynamicsCRM.Model
 			set
 			{
 				this.SetRelatedEntity<Delek.DynamicsCRM.Model.SystemUser>("lk_el_do_not_call_me_results_modifiedonbehalfby", null, value);
+			}
+		}
+		
+		/// <summary>
+		/// N:1 organization_el_do_not_call_me_results
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("organizationid")]
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("organization_el_do_not_call_me_results")]
+		public Delek.DynamicsCRM.Model.Organization organization_el_do_not_call_me_results
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntity<Delek.DynamicsCRM.Model.Organization>("organization_el_do_not_call_me_results", null);
 			}
 		}
 		
@@ -111687,6 +111941,20 @@ namespace Delek.DynamicsCRM.Model
 		}
 		
 		/// <summary>
+		/// N:1 organization_el_doc_fields
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("organizationid")]
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("organization_el_doc_fields")]
+		public Delek.DynamicsCRM.Model.Organization organization_el_doc_fields
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntity<Delek.DynamicsCRM.Model.Organization>("organization_el_doc_fields", null);
+			}
+		}
+		
+		/// <summary>
 		/// Constructor for populating via LINQ queries given a LINQ anonymous type
 		/// <param name="anonymousType">LINQ anonymous type.</param>
 		/// </summary>
@@ -112921,6 +113189,20 @@ namespace Delek.DynamicsCRM.Model
 			set
 			{
 				this.SetRelatedEntity<Delek.DynamicsCRM.Model.SystemUser>("lk_el_doc_template_modifiedonbehalfby", null, value);
+			}
+		}
+		
+		/// <summary>
+		/// N:1 organization_el_doc_template
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("organizationid")]
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("organization_el_doc_template")]
+		public Delek.DynamicsCRM.Model.Organization organization_el_doc_template
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntity<Delek.DynamicsCRM.Model.Organization>("organization_el_doc_template", null);
 			}
 		}
 		
@@ -116951,6 +117233,20 @@ namespace Delek.DynamicsCRM.Model
 			set
 			{
 				this.SetRelatedEntity<Delek.DynamicsCRM.Model.SystemUser>("lk_el_event_day_settings_modifiedonbehalfby", null, value);
+			}
+		}
+		
+		/// <summary>
+		/// N:1 organization_el_event_day_settings
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("organizationid")]
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("organization_el_event_day_settings")]
+		public Delek.DynamicsCRM.Model.Organization organization_el_event_day_settings
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntity<Delek.DynamicsCRM.Model.Organization>("organization_el_event_day_settings", null);
 			}
 		}
 		
@@ -121815,6 +122111,20 @@ namespace Delek.DynamicsCRM.Model
 		}
 		
 		/// <summary>
+		/// N:1 organization_el_family_discount
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("organizationid")]
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("organization_el_family_discount")]
+		public Delek.DynamicsCRM.Model.Organization organization_el_family_discount
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntity<Delek.DynamicsCRM.Model.Organization>("organization_el_family_discount", null);
+			}
+		}
+		
+		/// <summary>
 		/// Constructor for populating via LINQ queries given a LINQ anonymous type
 		/// <param name="anonymousType">LINQ anonymous type.</param>
 		/// </summary>
@@ -122488,6 +122798,20 @@ namespace Delek.DynamicsCRM.Model
 			set
 			{
 				this.SetRelatedEntity<Delek.DynamicsCRM.Model.SystemUser>("lk_el_family_model_modifiedonbehalfby", null, value);
+			}
+		}
+		
+		/// <summary>
+		/// N:1 organization_el_family_model
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("organizationid")]
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("organization_el_family_model")]
+		public Delek.DynamicsCRM.Model.Organization organization_el_family_model
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntity<Delek.DynamicsCRM.Model.Organization>("organization_el_family_model", null);
 			}
 		}
 		
@@ -124071,6 +124395,20 @@ namespace Delek.DynamicsCRM.Model
 			set
 			{
 				this.SetRelatedEntity<Delek.DynamicsCRM.Model.SystemUser>("lk_el_general_system_parameter_modifiedonbehalfby", null, value);
+			}
+		}
+		
+		/// <summary>
+		/// N:1 organization_el_general_system_parameter
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("organizationid")]
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("organization_el_general_system_parameter")]
+		public Delek.DynamicsCRM.Model.Organization organization_el_general_system_parameter
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntity<Delek.DynamicsCRM.Model.Organization>("organization_el_general_system_parameter", null);
 			}
 		}
 		
@@ -125988,6 +126326,20 @@ namespace Delek.DynamicsCRM.Model
 		}
 		
 		/// <summary>
+		/// N:1 organization_el_global_family
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("organizationid")]
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("organization_el_global_family")]
+		public Delek.DynamicsCRM.Model.Organization organization_el_global_family
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntity<Delek.DynamicsCRM.Model.Organization>("organization_el_global_family", null);
+			}
+		}
+		
+		/// <summary>
 		/// Constructor for populating via LINQ queries given a LINQ anonymous type
 		/// <param name="anonymousType">LINQ anonymous type.</param>
 		/// </summary>
@@ -126837,6 +127189,20 @@ namespace Delek.DynamicsCRM.Model
 			set
 			{
 				this.SetRelatedEntity<Delek.DynamicsCRM.Model.SystemUser>("lk_el_global_model_modifiedonbehalfby", null, value);
+			}
+		}
+		
+		/// <summary>
+		/// N:1 organization_el_global_model
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("organizationid")]
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("organization_el_global_model")]
+		public Delek.DynamicsCRM.Model.Organization organization_el_global_model
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntity<Delek.DynamicsCRM.Model.Organization>("organization_el_global_model", null);
 			}
 		}
 		
@@ -131890,6 +132256,20 @@ namespace Delek.DynamicsCRM.Model
 			set
 			{
 				this.SetRelatedEntity<Delek.DynamicsCRM.Model.SystemUser>("lk_el_id_type_modifiedonbehalfby", null, value);
+			}
+		}
+		
+		/// <summary>
+		/// N:1 organization_el_id_type
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("organizationid")]
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("organization_el_id_type")]
+		public Delek.DynamicsCRM.Model.Organization organization_el_id_type
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntity<Delek.DynamicsCRM.Model.Organization>("organization_el_id_type", null);
 			}
 		}
 		
@@ -147660,6 +148040,20 @@ namespace Delek.DynamicsCRM.Model
 		}
 		
 		/// <summary>
+		/// N:1 organization_el_main_subject
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("organizationid")]
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("organization_el_main_subject")]
+		public Delek.DynamicsCRM.Model.Organization organization_el_main_subject
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntity<Delek.DynamicsCRM.Model.Organization>("organization_el_main_subject", null);
+			}
+		}
+		
+		/// <summary>
 		/// Constructor for populating via LINQ queries given a LINQ anonymous type
 		/// <param name="anonymousType">LINQ anonymous type.</param>
 		/// </summary>
@@ -151761,6 +152155,20 @@ namespace Delek.DynamicsCRM.Model
 			set
 			{
 				this.SetRelatedEntity<Delek.DynamicsCRM.Model.SystemUser>("lk_el_model_modifiedonbehalfby", null, value);
+			}
+		}
+		
+		/// <summary>
+		/// N:1 organization_el_model
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("organizationid")]
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("organization_el_model")]
+		public Delek.DynamicsCRM.Model.Organization organization_el_model
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntity<Delek.DynamicsCRM.Model.Organization>("organization_el_model", null);
 			}
 		}
 		
@@ -160596,6 +161004,20 @@ namespace Delek.DynamicsCRM.Model
 		}
 		
 		/// <summary>
+		/// N:1 organization_el_primary_area
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("organizationid")]
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("organization_el_primary_area")]
+		public Delek.DynamicsCRM.Model.Organization organization_el_primary_area
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntity<Delek.DynamicsCRM.Model.Organization>("organization_el_primary_area", null);
+			}
+		}
+		
+		/// <summary>
 		/// Constructor for populating via LINQ queries given a LINQ anonymous type
 		/// <param name="anonymousType">LINQ anonymous type.</param>
 		/// </summary>
@@ -161287,6 +161709,20 @@ namespace Delek.DynamicsCRM.Model
 			set
 			{
 				this.SetRelatedEntity<Delek.DynamicsCRM.Model.SystemUser>("lk_el_primary_channel_modifiedonbehalfby", null, value);
+			}
+		}
+		
+		/// <summary>
+		/// N:1 organization_el_primary_channel
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("organizationid")]
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("organization_el_primary_channel")]
+		public Delek.DynamicsCRM.Model.Organization organization_el_primary_channel
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntity<Delek.DynamicsCRM.Model.Organization>("organization_el_primary_channel", null);
 			}
 		}
 		
@@ -167552,6 +167988,20 @@ namespace Delek.DynamicsCRM.Model
 		}
 		
 		/// <summary>
+		/// N:1 organization_el_recording
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("organizationid")]
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("organization_el_recording")]
+		public Delek.DynamicsCRM.Model.Organization organization_el_recording
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntity<Delek.DynamicsCRM.Model.Organization>("organization_el_recording", null);
+			}
+		}
+		
+		/// <summary>
 		/// Constructor for populating via LINQ queries given a LINQ anonymous type
 		/// <param name="anonymousType">LINQ anonymous type.</param>
 		/// </summary>
@@ -171529,6 +171979,20 @@ namespace Delek.DynamicsCRM.Model
 		}
 		
 		/// <summary>
+		/// N:1 organization_el_sales_campaign
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("organizationid")]
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("organization_el_sales_campaign")]
+		public Delek.DynamicsCRM.Model.Organization organization_el_sales_campaign
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntity<Delek.DynamicsCRM.Model.Organization>("organization_el_sales_campaign", null);
+			}
+		}
+		
+		/// <summary>
 		/// Constructor for populating via LINQ queries given a LINQ anonymous type
 		/// <param name="anonymousType">LINQ anonymous type.</param>
 		/// </summary>
@@ -172358,6 +172822,20 @@ namespace Delek.DynamicsCRM.Model
 		}
 		
 		/// <summary>
+		/// N:1 organization_el_secondary_area
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("organizationid")]
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("organization_el_secondary_area")]
+		public Delek.DynamicsCRM.Model.Organization organization_el_secondary_area
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntity<Delek.DynamicsCRM.Model.Organization>("organization_el_secondary_area", null);
+			}
+		}
+		
+		/// <summary>
 		/// Constructor for populating via LINQ queries given a LINQ anonymous type
 		/// <param name="anonymousType">LINQ anonymous type.</param>
 		/// </summary>
@@ -173049,6 +173527,20 @@ namespace Delek.DynamicsCRM.Model
 			set
 			{
 				this.SetRelatedEntity<Delek.DynamicsCRM.Model.SystemUser>("lk_el_secondary_channel_modifiedonbehalfby", null, value);
+			}
+		}
+		
+		/// <summary>
+		/// N:1 organization_el_secondary_channel
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("organizationid")]
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("organization_el_secondary_channel")]
+		public Delek.DynamicsCRM.Model.Organization organization_el_secondary_channel
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntity<Delek.DynamicsCRM.Model.Organization>("organization_el_secondary_channel", null);
 			}
 		}
 		
@@ -173810,6 +174302,20 @@ namespace Delek.DynamicsCRM.Model
 			set
 			{
 				this.SetRelatedEntity<Delek.DynamicsCRM.Model.SystemUser>("lk_el_secondary_subject_modifiedonbehalfby", null, value);
+			}
+		}
+		
+		/// <summary>
+		/// N:1 organization_el_secondary_subject
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("organizationid")]
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("organization_el_secondary_subject")]
+		public Delek.DynamicsCRM.Model.Organization organization_el_secondary_subject
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntity<Delek.DynamicsCRM.Model.Organization>("organization_el_secondary_subject", null);
 			}
 		}
 		
@@ -175376,6 +175882,20 @@ namespace Delek.DynamicsCRM.Model
 			set
 			{
 				this.SetRelatedEntity<Delek.DynamicsCRM.Model.SystemUser>("lk_el_service_point_modifiedonbehalfby", null, value);
+			}
+		}
+		
+		/// <summary>
+		/// N:1 organization_el_service_point
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("organizationid")]
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("organization_el_service_point")]
+		public Delek.DynamicsCRM.Model.Organization organization_el_service_point
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntity<Delek.DynamicsCRM.Model.Organization>("organization_el_service_point", null);
 			}
 		}
 		
@@ -179646,6 +180166,20 @@ namespace Delek.DynamicsCRM.Model
 		}
 		
 		/// <summary>
+		/// N:1 organization_el_sla
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("organizationid")]
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("organization_el_sla")]
+		public Delek.DynamicsCRM.Model.Organization organization_el_sla
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntity<Delek.DynamicsCRM.Model.Organization>("organization_el_sla", null);
+			}
+		}
+		
+		/// <summary>
 		/// Constructor for populating via LINQ queries given a LINQ anonymous type
 		/// <param name="anonymousType">LINQ anonymous type.</param>
 		/// </summary>
@@ -180401,6 +180935,20 @@ namespace Delek.DynamicsCRM.Model
 			set
 			{
 				this.SetRelatedEntity<Delek.DynamicsCRM.Model.SystemUser>("lk_el_sla_type_modifiedonbehalfby", null, value);
+			}
+		}
+		
+		/// <summary>
+		/// N:1 organization_el_sla_type
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("organizationid")]
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("organization_el_sla_type")]
+		public Delek.DynamicsCRM.Model.Organization organization_el_sla_type
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntity<Delek.DynamicsCRM.Model.Organization>("organization_el_sla_type", null);
 			}
 		}
 		
@@ -185742,6 +186290,20 @@ namespace Delek.DynamicsCRM.Model
 			set
 			{
 				this.SetRelatedEntity<Delek.DynamicsCRM.Model.SystemUser>("lk_el_sms_template_modifiedonbehalfby", null, value);
+			}
+		}
+		
+		/// <summary>
+		/// N:1 organization_el_sms_template
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("organizationid")]
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("organization_el_sms_template")]
+		public Delek.DynamicsCRM.Model.Organization organization_el_sms_template
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntity<Delek.DynamicsCRM.Model.Organization>("organization_el_sms_template", null);
 			}
 		}
 		
@@ -193330,6 +193892,20 @@ namespace Delek.DynamicsCRM.Model
 		}
 		
 		/// <summary>
+		/// N:1 organization_el_test_driver
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("organizationid")]
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("organization_el_test_driver")]
+		public Delek.DynamicsCRM.Model.Organization organization_el_test_driver
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntity<Delek.DynamicsCRM.Model.Organization>("organization_el_test_driver", null);
+			}
+		}
+		
+		/// <summary>
 		/// Constructor for populating via LINQ queries given a LINQ anonymous type
 		/// <param name="anonymousType">LINQ anonymous type.</param>
 		/// </summary>
@@ -196981,6 +197557,20 @@ namespace Delek.DynamicsCRM.Model
 		}
 		
 		/// <summary>
+		/// N:1 organization_el_tradein_manufacturer
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("organizationid")]
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("organization_el_tradein_manufacturer")]
+		public Delek.DynamicsCRM.Model.Organization organization_el_tradein_manufacturer
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntity<Delek.DynamicsCRM.Model.Organization>("organization_el_tradein_manufacturer", null);
+			}
+		}
+		
+		/// <summary>
 		/// Constructor for populating via LINQ queries given a LINQ anonymous type
 		/// <param name="anonymousType">LINQ anonymous type.</param>
 		/// </summary>
@@ -197942,6 +198532,20 @@ namespace Delek.DynamicsCRM.Model
 			set
 			{
 				this.SetRelatedEntity<Delek.DynamicsCRM.Model.SystemUser>("lk_el_tradein_model_modifiedonbehalfby", null, value);
+			}
+		}
+		
+		/// <summary>
+		/// N:1 organization_el_tradein_model
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("organizationid")]
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("organization_el_tradein_model")]
+		public Delek.DynamicsCRM.Model.Organization organization_el_tradein_model
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntity<Delek.DynamicsCRM.Model.Organization>("organization_el_tradein_model", null);
 			}
 		}
 		
@@ -201703,6 +202307,20 @@ namespace Delek.DynamicsCRM.Model
 			set
 			{
 				this.SetRelatedEntity<Delek.DynamicsCRM.Model.SystemUser>("lk_el_tutorial_video_modifiedonbehalfby", null, value);
+			}
+		}
+		
+		/// <summary>
+		/// N:1 organization_el_tutorial_video
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("organizationid")]
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("organization_el_tutorial_video")]
+		public Delek.DynamicsCRM.Model.Organization organization_el_tutorial_video
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntity<Delek.DynamicsCRM.Model.Organization>("organization_el_tutorial_video", null);
 			}
 		}
 		
@@ -213526,6 +214144,21 @@ namespace Delek.DynamicsCRM.Model
 			set
 			{
 				this.SetAttributeValue("el_manufacturer_supplier", value);
+			}
+		}
+		
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("el_migratedon")]
+		public System.Nullable<System.DateTime> el_migratedon
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<System.DateTime>>("el_migratedon");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("el_migratedon", value);
 			}
 		}
 		
@@ -231161,6 +231794,20 @@ namespace Delek.DynamicsCRM.Model
 		}
 		
 		/// <summary>
+		/// N:1 organization_mailbox
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("organizationid")]
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("organization_mailbox")]
+		public Delek.DynamicsCRM.Model.Organization organization_mailbox
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntity<Delek.DynamicsCRM.Model.Organization>("organization_mailbox", null);
+			}
+		}
+		
+		/// <summary>
 		/// N:1 team_mailbox
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("owningteam")]
@@ -241919,6 +242566,13337 @@ namespace Delek.DynamicsCRM.Model
 	}
 	
 	/// <summary>
+	/// הרמה העליונה של ההירארכיה העסקית של Microsoft Dynamics 365. הארגון יכול להיות עסק, חברת אחזקות או תאגיד ספציפי.
+	/// </summary>
+	[System.Runtime.Serialization.DataContractAttribute()]
+	[Microsoft.Xrm.Sdk.Client.EntityLogicalNameAttribute("organization")]
+	public partial class Organization : Microsoft.Xrm.Sdk.Entity
+	{
+		
+		/// <summary>
+		/// Default Constructor.
+		/// </summary>
+		[System.Diagnostics.DebuggerNonUserCode()]
+		public Organization() : 
+				base(EntityLogicalName)
+		{
+		}
+		
+		public const string EntityLogicalName = "organization";
+		
+		public const string PrimaryIdAttribute = "organizationid";
+		
+		public const string PrimaryNameAttribute = "name";
+		
+		public const string EntitySchemaName = "Organization";
+		
+		public const string EntityLogicalCollectionName = "organizations";
+		
+		public const string EntitySetName = "organizations";
+		
+		public const int EntityTypeCode = 1019;
+		
+		/// <summary>
+		/// כתובת URL של נקודת קצה באינטרנט של ACI.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("aciwebendpointurl")]
+		public string ACIWebEndpointUrl
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("aciwebendpointurl");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("aciwebendpointurl", value);
+			}
+		}
+		
+		/// <summary>
+		/// המזהה הייחודי של התבנית המשמשת לאישור כשמשתמש מבטל מנוי.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("acknowledgementtemplateid")]
+		public Microsoft.Xrm.Sdk.EntityReference AcknowledgementTemplateId
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("acknowledgementtemplateid");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("acknowledgementtemplateid", value);
+			}
+		}
+		
+		/// <summary>
+		/// שם התבנית המשמשת לאישור של ביטול מנוי.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("acknowledgementtemplateidname")]
+		public string AcknowledgementTemplateIdName
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				if (this.FormattedValues.Contains("acknowledgementtemplateid"))
+				{
+					return this.FormattedValues["acknowledgementtemplateid"];
+				}
+				else
+				{
+					return default(string);
+				}
+			}
+		}
+		
+		/// <summary>
+		/// מידע המציין אם פעילות סינון מבוססת על ישות ביישום.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("activitytypefilter")]
+		public System.Nullable<bool> ActivityTypeFilter
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("activitytypefilter");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("activitytypefilter", value);
+			}
+		}
+		
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("activitytypefiltername")]
+		public string activitytypefilterName
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				if (this.FormattedValues.Contains("activitytypefilter"))
+				{
+					return this.FormattedValues["activitytypefilter"];
+				}
+				else
+				{
+					return default(string);
+				}
+			}
+		}
+		
+		/// <summary>
+		/// האם להציג רק פעילויות שהתצורה שלהן נקבעה באפליקציה זו או את כל הפעילויות בלחצן 'פעילות חדשה'.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("activitytypefilterv2")]
+		public System.Nullable<bool> ActivityTypeFilterV2
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("activitytypefilterv2");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("activitytypefilterv2", value);
+			}
+		}
+		
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("activitytypefilterv2name")]
+		public string activitytypefilterv2Name
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				if (this.FormattedValues.Contains("activitytypefilterv2"))
+				{
+					return this.FormattedValues["activitytypefilterv2"];
+				}
+				else
+				{
+					return default(string);
+				}
+			}
+		}
+		
+		/// <summary>
+		/// סמן כדי לציין אם אפשרויות עמודת התצוגה מופעלות בתצוגה ביישומים מונחי-דגמים
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("advancedcolumneditorenabled")]
+		public System.Nullable<bool> AdvancedColumnEditorEnabled
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("advancedcolumneditorenabled");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("advancedcolumneditorenabled", value);
+			}
+		}
+		
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("advancedcolumneditorenabledname")]
+		public string advancedcolumneditorenabledName
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				if (this.FormattedValues.Contains("advancedcolumneditorenabled"))
+				{
+					return this.FormattedValues["advancedcolumneditorenabled"];
+				}
+				else
+				{
+					return default(string);
+				}
+			}
+		}
+		
+		/// <summary>
+		/// סמן כדי לציין אם סינון עמודות מתקדם מופעל בתצוגה ביישומים מונחי-דגמים
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("advancedcolumnfilteringenabled")]
+		public System.Nullable<bool> AdvancedColumnFilteringEnabled
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("advancedcolumnfilteringenabled");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("advancedcolumnfilteringenabled", value);
+			}
+		}
+		
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("advancedcolumnfilteringenabledname")]
+		public string advancedcolumnfilteringenabledName
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				if (this.FormattedValues.Contains("advancedcolumnfilteringenabled"))
+				{
+					return this.FormattedValues["advancedcolumnfilteringenabled"];
+				}
+				else
+				{
+					return default(string);
+				}
+			}
+		}
+		
+		/// <summary>
+		/// סמן כדי לציין אם סינון מתקדם מופעל בכל הטבלאות ביישום מונחה-דגמים
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("advancedfilteringenabled")]
+		public System.Nullable<bool> AdvancedFilteringEnabled
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("advancedfilteringenabled");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("advancedfilteringenabled", value);
+			}
+		}
+		
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("advancedfilteringenabledname")]
+		public string advancedfilteringenabledName
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				if (this.FormattedValues.Contains("advancedfilteringenabled"))
+				{
+					return this.FormattedValues["advancedfilteringenabled"];
+				}
+				else
+				{
+					return default(string);
+				}
+			}
+		}
+		
+		/// <summary>
+		/// סמן כדי לציין אם התכונה 'בדיקת מידע מתקדם' מופעלת עבור פקדי חיפוש
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("advancedlookupenabled")]
+		public System.Nullable<bool> AdvancedLookupEnabled
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("advancedlookupenabled");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("advancedlookupenabled", value);
+			}
+		}
+		
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("advancedlookupenabledname")]
+		public string advancedlookupenabledName
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				if (this.FormattedValues.Contains("advancedlookupenabled"))
+				{
+					return this.FormattedValues["advancedlookupenabled"];
+				}
+				else
+				{
+					return default(string);
+				}
+			}
+		}
+		
+		/// <summary>
+		/// הופך בדיקת מידע מתקדמת לזמינה בלוח עריכת המסנן ברשת
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("advancedlookupineditfilter")]
+		public System.Nullable<int> AdvancedLookupInEditFilter
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<int>>("advancedlookupineditfilter");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("advancedlookupineditfilter", value);
+			}
+		}
+		
+		/// <summary>
+		/// Indicates whether AI Builder features are blocked from using Copilot Credits.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("aibuildercreditsonlyenabled")]
+		public System.Nullable<bool> AiBuilderCreditsOnlyEnabled
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("aibuildercreditsonlyenabled");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("aibuildercreditsonlyenabled", value);
+			}
+		}
+		
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("aibuildercreditsonlyenabledname")]
+		public string aibuildercreditsonlyenabledName
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				if (this.FormattedValues.Contains("aibuildercreditsonlyenabled"))
+				{
+					return this.FormattedValues["aibuildercreditsonlyenabled"];
+				}
+				else
+				{
+					return default(string);
+				}
+			}
+		}
+		
+		/// <summary>
+		/// Indicates whether Azure AI Foundry model types for AI Prompts are enabled.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("aipromptsazureaifoundrymodeltypesenabled")]
+		public System.Nullable<bool> AiPromptsAzureAIFoundryModelTypesEnabled
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("aipromptsazureaifoundrymodeltypesenabled");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("aipromptsazureaifoundrymodeltypesenabled", value);
+			}
+		}
+		
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("aipromptsazureaifoundrymodeltypesenabledname")]
+		public string aipromptsazureaifoundrymodeltypesenabledName
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				if (this.FormattedValues.Contains("aipromptsazureaifoundrymodeltypesenabled"))
+				{
+					return this.FormattedValues["aipromptsazureaifoundrymodeltypesenabled"];
+				}
+				else
+				{
+					return default(string);
+				}
+			}
+		}
+		
+		/// <summary>
+		/// Indicates whether Basic model types for AI Prompts are enabled.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("aipromptsbasicmodeltypesenabled")]
+		public System.Nullable<bool> AiPromptsBasicModelTypesEnabled
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("aipromptsbasicmodeltypesenabled");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("aipromptsbasicmodeltypesenabled", value);
+			}
+		}
+		
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("aipromptsbasicmodeltypesenabledname")]
+		public string aipromptsbasicmodeltypesenabledName
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				if (this.FormattedValues.Contains("aipromptsbasicmodeltypesenabled"))
+				{
+					return this.FormattedValues["aipromptsbasicmodeltypesenabled"];
+				}
+				else
+				{
+					return default(string);
+				}
+			}
+		}
+		
+		/// <summary>
+		/// Indicates whether AI Prompts feature is enabled.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("aipromptsenabled")]
+		public System.Nullable<bool> AiPromptsEnabled
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("aipromptsenabled");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("aipromptsenabled", value);
+			}
+		}
+		
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("aipromptsenabledname")]
+		public string aipromptsenabledName
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				if (this.FormattedValues.Contains("aipromptsenabled"))
+				{
+					return this.FormattedValues["aipromptsenabled"];
+				}
+				else
+				{
+					return default(string);
+				}
+			}
+		}
+		
+		/// <summary>
+		/// Indicates whether Premium model types for AI Prompts are enabled.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("aipromptspremiummodeltypesenabled")]
+		public System.Nullable<bool> AiPromptsPremiumModelTypesEnabled
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("aipromptspremiummodeltypesenabled");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("aipromptspremiummodeltypesenabled", value);
+			}
+		}
+		
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("aipromptspremiummodeltypesenabledname")]
+		public string aipromptspremiummodeltypesenabledName
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				if (this.FormattedValues.Contains("aipromptspremiummodeltypesenabled"))
+				{
+					return this.FormattedValues["aipromptspremiummodeltypesenabled"];
+				}
+				else
+				{
+					return default(string);
+				}
+			}
+		}
+		
+		/// <summary>
+		/// Indicates whether Standard model types for AI Prompts are enabled.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("aipromptsstandardmodeltypesenabled")]
+		public System.Nullable<bool> AiPromptsStandardModelTypesEnabled
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("aipromptsstandardmodeltypesenabled");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("aipromptsstandardmodeltypesenabled", value);
+			}
+		}
+		
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("aipromptsstandardmodeltypesenabledname")]
+		public string aipromptsstandardmodeltypesenabledName
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				if (this.FormattedValues.Contains("aipromptsstandardmodeltypesenabled"))
+				{
+					return this.FormattedValues["aipromptsstandardmodeltypesenabled"];
+				}
+				else
+				{
+					return default(string);
+				}
+			}
+		}
+		
+		/// <summary>
+		/// מציין אם סינכרון פנקס כתובות ברקע ב- Microsoft Office Outlook מותר.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("allowaddressbooksyncs")]
+		public System.Nullable<bool> AllowAddressBookSyncs
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("allowaddressbooksyncs");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("allowaddressbooksyncs", value);
+			}
+		}
+		
+		/// <summary>
+		/// Information that specifies whether all application users are allowed to access the environment
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("allowapplicationuseraccess")]
+		public System.Nullable<bool> AllowApplicationUserAccess
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("allowapplicationuseraccess");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("allowapplicationuseraccess", value);
+			}
+		}
+		
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("allowapplicationuseraccessname")]
+		public string allowapplicationuseraccessName
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				if (this.FormattedValues.Contains("allowapplicationuseraccess"))
+				{
+					return this.FormattedValues["allowapplicationuseraccess"];
+				}
+				else
+				{
+					return default(string);
+				}
+			}
+		}
+		
+		/// <summary>
+		/// מציין אם יצירת היענות אוטומטית מותרת.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("allowautoresponsecreation")]
+		public System.Nullable<bool> AllowAutoResponseCreation
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("allowautoresponsecreation");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("allowautoresponsecreation", value);
+			}
+		}
+		
+		/// <summary>
+		/// מציין אם ביטול מנוי אוטומטי מותר.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("allowautounsubscribe")]
+		public System.Nullable<bool> AllowAutoUnsubscribe
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("allowautounsubscribe");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("allowautounsubscribe", value);
+			}
+		}
+		
+		/// <summary>
+		/// מציין אם מותר לשלוח דואר אלקטרוני לאישור של ביטול מנוי אוטומטי.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("allowautounsubscribeacknowledgement")]
+		public System.Nullable<bool> AllowAutoUnsubscribeAcknowledgement
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("allowautounsubscribeacknowledgement");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("allowautounsubscribeacknowledgement", value);
+			}
+		}
+		
+		/// <summary>
+		/// מציין אם פרסום בסרגל ההודעות של לקוח Outlook מותר.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("allowclientmessagebarad")]
+		public System.Nullable<bool> AllowClientMessageBarAd
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("allowclientmessagebarad");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("allowclientmessagebarad", value);
+			}
+		}
+		
+		/// <summary>
+		/// מידע על מחברים מופעלים בפעולות Power Fx.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("allowconnectorsonpowerfxactions")]
+		public System.Nullable<bool> AllowConnectorsOnPowerFXActions
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("allowconnectorsonpowerfxactions");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("allowconnectorsonpowerfxactions", value);
+			}
+		}
+		
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("allowconnectorsonpowerfxactionsname")]
+		public string allowconnectorsonpowerfxactionsName
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				if (this.FormattedValues.Contains("allowconnectorsonpowerfxactions"))
+				{
+					return this.FormattedValues["allowconnectorsonpowerfxactions"];
+				}
+				else
+				{
+					return default(string);
+				}
+			}
+		}
+		
+		/// <summary>
+		/// Information that specifies the Applications that are in allow list for the accessing DV resources.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("allowedapplicationsfordvaccess")]
+		public string AllowedApplicationsForDVAccess
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("allowedapplicationsfordvaccess");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("allowedapplicationsfordvaccess", value);
+			}
+		}
+		
+		/// <summary>
+		/// Information that specifies the range of IP addresses that are in allow list for the firewall.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("allowediprangeforfirewall")]
+		public string AllowedIpRangeForFirewall
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("allowediprangeforfirewall");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("allowediprangeforfirewall", value);
+			}
+		}
+		
+		/// <summary>
+		/// Information that specifies the range of IP addresses that are in allowed list for generating the SAS URIs.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("allowediprangeforstorageaccesssignatures")]
+		public string AllowedIpRangeForStorageAccessSignatures
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("allowediprangeforstorageaccesssignatures");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("allowediprangeforstorageaccesssignatures", value);
+			}
+		}
+		
+		/// <summary>
+		/// Specifies list of allowed IP addresses for firewall.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("allowedlistofiprangesforfirewall")]
+		public string AllowedListOfIpRangesForFirewall
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("allowedlistofiprangesforfirewall");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("allowedlistofiprangesforfirewall", value);
+			}
+		}
+		
+		/// <summary>
+		/// Allow upload or download of certain mime types.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("allowedmimetypes")]
+		public string AllowedMimeTypes
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("allowedmimetypes");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("allowedmimetypes", value);
+			}
+		}
+		
+		/// <summary>
+		/// Information that specifies the List of Service Tags that should be allowed by the firewall.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("allowedservicetagsforfirewall")]
+		public string AllowedServiceTagsForFirewall
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("allowedservicetagsforfirewall");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("allowedservicetagsforfirewall", value);
+			}
+		}
+		
+		/// <summary>
+		/// מציין אם ביקורת של שינויים בישות מותרת במקרה שאף תכונה לא השתנתה.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("allowentityonlyaudit")]
+		public System.Nullable<bool> AllowEntityOnlyAudit
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("allowentityonlyaudit");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("allowentityonlyaudit", value);
+			}
+		}
+		
+		/// <summary>
+		/// מאפשר חיפושי 'מסתיים ב' ברשתות עם שימוש בתו כללי מוביל בכל הטבלאות בסביבה
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("allowleadingwildcardsingridsearch")]
+		public System.Nullable<bool> AllowLeadingWildcardsInGridSearch
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("allowleadingwildcardsingridsearch");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("allowleadingwildcardsingridsearch", value);
+			}
+		}
+		
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("allowleadingwildcardsingridsearchname")]
+		public string allowleadingwildcardsingridsearchName
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				if (this.FormattedValues.Contains("allowleadingwildcardsingridsearch"))
+				{
+					return this.FormattedValues["allowleadingwildcardsingridsearch"];
+				}
+				else
+				{
+					return default(string);
+				}
+			}
+		}
+		
+		/// <summary>
+		/// מאפשר חיפושי 'מסתיים ב' ברשתות עם שימוש בתו כללי מוביל בכל הטבלאות בסביבה
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("allowleadingwildcardsinquickfind")]
+		public System.Nullable<int> AllowLeadingWildcardsInQuickFind
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<int>>("allowleadingwildcardsinquickfind");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("allowleadingwildcardsinquickfind", value);
+			}
+		}
+		
+		/// <summary>
+		/// אפשר גישה לממשק משתמש מדור קודם של לקוח אינטרנט
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("allowlegacyclientexperience")]
+		public System.Nullable<bool> AllowLegacyClientExperience
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("allowlegacyclientexperience");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("allowlegacyclientexperience", value);
+			}
+		}
+		
+		/// <summary>
+		/// הפוך הטבעה לזמינה עבור תיבות דו-שיח מסוימות מדור קודם בלקוח הדפדפן של 'ממשק מאוחד'
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("allowlegacydialogsembedding")]
+		public System.Nullable<bool> AllowLegacyDialogsEmbedding
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("allowlegacydialogsembedding");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("allowlegacydialogsembedding", value);
+			}
+		}
+		
+		/// <summary>
+		/// מציין אם ביצוע דואר אלקטרוני לשיווק מותר.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("allowmarketingemailexecution")]
+		public System.Nullable<bool> AllowMarketingEmailExecution
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("allowmarketingemailexecution");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("allowmarketingemailexecution", value);
+			}
+		}
+		
+		/// <summary>
+		/// Information that specifies whether Microsoft Trusted Service Tags are allowed
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("allowmicrosofttrustedservicetags")]
+		public System.Nullable<bool> AllowMicrosoftTrustedServiceTags
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("allowmicrosofttrustedservicetags");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("allowmicrosofttrustedservicetags", value);
+			}
+		}
+		
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("allowmicrosofttrustedservicetagsname")]
+		public string allowmicrosofttrustedservicetagsName
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				if (this.FormattedValues.Contains("allowmicrosofttrustedservicetags"))
+				{
+					return this.FormattedValues["allowmicrosofttrustedservicetags"];
+				}
+				else
+				{
+					return default(string);
+				}
+			}
+		}
+		
+		/// <summary>
+		/// מציין אם סינכרון לא מקוון ברקע ב- Microsoft Office Outlook מותר.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("allowofflinescheduledsyncs")]
+		public System.Nullable<bool> AllowOfflineScheduledSyncs
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("allowofflinescheduledsyncs");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("allowofflinescheduledsyncs", value);
+			}
+		}
+		
+		/// <summary>
+		/// מציין אם סינכרונים מתוזמנים ל- Outlook מותרים.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("allowoutlookscheduledsyncs")]
+		public System.Nullable<bool> AllowOutlookScheduledSyncs
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("allowoutlookscheduledsyncs");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("allowoutlookscheduledsyncs", value);
+			}
+		}
+		
+		/// <summary>
+		/// קבע אם הארגון מאפשר הפניה מחדש של הגדרות מנהל מערכת מדור קודם לממשק משתמש מודרני
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("allowredirectadminsettingstomodernui")]
+		public System.Nullable<bool> AllowRedirectAdminSettingsToModernUI
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("allowredirectadminsettingstomodernui");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("allowredirectadminsettingstomodernui", value);
+			}
+		}
+		
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("allowredirectadminsettingstomodernuiname")]
+		public string allowredirectadminsettingstomodernuiName
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				if (this.FormattedValues.Contains("allowredirectadminsettingstomodernui"))
+				{
+					return this.FormattedValues["allowredirectadminsettingstomodernui"];
+				}
+				else
+				{
+					return default(string);
+				}
+			}
+		}
+		
+		/// <summary>
+		/// מציין אם למשתמשים מותר לשלוח דואר אלקטרוני לצדדים לא מפוענחים (לצדדים נדרשת עדיין כתובת דואר אלקטרוני).
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("allowunresolvedpartiesonemailsend")]
+		public System.Nullable<bool> AllowUnresolvedPartiesOnEmailSend
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("allowunresolvedpartiesonemailsend");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("allowunresolvedpartiesonemailsend", value);
+			}
+		}
+		
+		/// <summary>
+		/// מציין אם אנשים יכולים לבחור את העדפות מצב הטופס שלהם באפשרויות האישיות שלהם.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("allowuserformmodepreference")]
+		public System.Nullable<bool> AllowUserFormModePreference
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("allowuserformmodepreference");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("allowuserformmodepreference", value);
+			}
+		}
+		
+		/// <summary>
+		/// סמן כדי לציין אם האפשרות 'אפשר למשתמשי קצה להסתיר תצוגות מערכת ביישומים מונחי-דגמים' מופעלת
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("allowusershidingsystemviews")]
+		public System.Nullable<bool> AllowUsersHidingSystemViews
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("allowusershidingsystemviews");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("allowusershidingsystemviews", value);
+			}
+		}
+		
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("allowusershidingsystemviewsname")]
+		public string allowusershidingsystemviewsName
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				if (this.FormattedValues.Contains("allowusershidingsystemviews"))
+				{
+					return this.FormattedValues["allowusershidingsystemviews"];
+				}
+				else
+				{
+					return default(string);
+				}
+			}
+		}
+		
+		/// <summary>
+		/// מציין אם מותר להציג סרגלי הודעות של יישומי Tablet בדפדפן.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("allowusersseeappdownloadmessage")]
+		public System.Nullable<bool> AllowUsersSeeAppdownloadMessage
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("allowusersseeappdownloadmessage");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("allowusersseeappdownloadmessage", value);
+			}
+		}
+		
+		/// <summary>
+		/// אזהרה: מתן אפשרות להפעלת יישום ה-plug-in 'ישות וירטואלית' בקו צינור מקונן אינה מציעה תמיכה בעסקאות. כלומר, אם הקריאה בקו צינור של ישות מקורית נכשלת, הפעלת 'ישות וירטואלית' לא תבוטל.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("allowvirtualentitypluginexecutiononnestedpipeline")]
+		public System.Nullable<bool> AllowVirtualEntityPluginExecutionOnNestedPipeline
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("allowvirtualentitypluginexecutiononnestedpipeline");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("allowvirtualentitypluginexecutiononnestedpipeline", value);
+			}
+		}
+		
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("allowvirtualentitypluginexecutiononnestedpipelinename")]
+		public string allowvirtualentitypluginexecutiononnestedpipelineName
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				if (this.FormattedValues.Contains("allowvirtualentitypluginexecutiononnestedpipeline"))
+				{
+					return this.FormattedValues["allowvirtualentitypluginexecutiononnestedpipeline"];
+				}
+				else
+				{
+					return default(string);
+				}
+			}
+		}
+		
+		/// <summary>
+		/// מציין אם ייצוא מבוסס אינטרנט של טבלאות ל- Microsoft Office Excel מותר.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("allowwebexcelexport")]
+		public System.Nullable<bool> AllowWebExcelExport
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("allowwebexcelexport");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("allowwebexcelexport", value);
+			}
+		}
+		
+		/// <summary>
+		/// מציין AM שבו יש להשתמש בכל Microsoft Dynamics CRM.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("amdesignator")]
+		public string AMDesignator
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("amdesignator");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("amdesignator", value);
+			}
+		}
+		
+		/// <summary>
+		/// מציין אם appDesignerExperience זמין עבור הארגון.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("appdesignerexperienceenabled")]
+		public System.Nullable<bool> AppDesignerExperienceEnabled
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("appdesignerexperienceenabled");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("appdesignerexperienceenabled", value);
+			}
+		}
+		
+		/// <summary>
+		/// Application Based Access Control Mode. 0 is Disabled, 1 is audit mode , 2 is enforcement mode
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("applicationbasedaccesscontrolmode")]
+		public virtual Microsoft.Xrm.Sdk.OptionSetValue ApplicationBasedAccessControlMode
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.OptionSetValue>("applicationbasedaccesscontrolmode");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("applicationbasedaccesscontrolmode", value);
+			}
+		}
+		
+		/// <summary>
+		/// Application Based Access Control Mode. 0 is Disabled, 1 is audit mode , 2 is enforcement mode
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("applicationbasedaccesscontrolmode")]
+		public virtual organization_applicationbasedaccesscontrolmode? ApplicationBasedAccessControlModeEnum
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return ((organization_applicationbasedaccesscontrolmode?)(EntityOptionSetEnum.GetEnum(this, "applicationbasedaccesscontrolmode")));
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("applicationbasedaccesscontrolmode", value.HasValue ? new Microsoft.Xrm.Sdk.OptionSetValue((int)value) : null);
+			}
+		}
+		
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("applicationbasedaccesscontrolmodename")]
+		public string applicationbasedaccesscontrolmodeName
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				if (this.FormattedValues.Contains("applicationbasedaccesscontrolmode"))
+				{
+					return this.FormattedValues["applicationbasedaccesscontrolmode"];
+				}
+				else
+				{
+					return default(string);
+				}
+			}
+		}
+		
+		/// <summary>
+		/// Information on whether rich editing experience for Appointment is enabled.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("appointmentricheditorexperience")]
+		public System.Nullable<bool> AppointmentRichEditorExperience
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("appointmentricheditorexperience");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("appointmentricheditorexperience", value);
+			}
+		}
+		
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("appointmentricheditorexperiencename")]
+		public string appointmentricheditorexperienceName
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				if (this.FormattedValues.Contains("appointmentricheditorexperience"))
+				{
+					return this.FormattedValues["appointmentricheditorexperience"];
+				}
+				else
+				{
+					return default(string);
+				}
+			}
+		}
+		
+		/// <summary>
+		/// מידע המציין אם חוויית הפגישה של Teams עבור פגישה היא זמינה.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("appointmentwithteamsmeeting")]
+		public System.Nullable<bool> AppointmentWithTeamsMeeting
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("appointmentwithteamsmeeting");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("appointmentwithteamsmeeting", value);
+			}
+		}
+		
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("appointmentwithteamsmeetingname")]
+		public string appointmentwithteamsmeetingName
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				if (this.FormattedValues.Contains("appointmentwithteamsmeeting"))
+				{
+					return this.FormattedValues["appointmentwithteamsmeeting"];
+				}
+				else
+				{
+					return default(string);
+				}
+			}
+		}
+		
+		/// <summary>
+		/// מידע המציין אם חוויית הפגישה של Teams עבור פגישה מופעלת.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("appointmentwithteamsmeetingv2")]
+		public System.Nullable<bool> AppointmentWithTeamsMeetingV2
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("appointmentwithteamsmeetingv2");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("appointmentwithteamsmeetingv2", value);
+			}
+		}
+		
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("appointmentwithteamsmeetingv2name")]
+		public string appointmentwithteamsmeetingv2Name
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				if (this.FormattedValues.Contains("appointmentwithteamsmeetingv2"))
+				{
+					return this.FormattedValues["appointmentwithteamsmeetingv2"];
+				}
+				else
+				{
+					return default(string);
+				}
+			}
+		}
+		
+		/// <summary>
+		/// מציין אם Power Automate תכונות Preview של מרכז האוטומציה יהיו זמינות עבור כל המשתמשים בארגון הזה.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("areautomationcenterpreviewfeaturesenabled")]
+		public System.Nullable<bool> AreAutomationCenterPreviewFeaturesEnabled
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("areautomationcenterpreviewfeaturesenabled");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("areautomationcenterpreviewfeaturesenabled", value);
+			}
+		}
+		
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("areautomationcenterpreviewfeaturesenabledname")]
+		public string areautomationcenterpreviewfeaturesenabledName
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				if (this.FormattedValues.Contains("areautomationcenterpreviewfeaturesenabled"))
+				{
+					return this.FormattedValues["areautomationcenterpreviewfeaturesenabled"];
+				}
+				else
+				{
+					return default(string);
+				}
+			}
+		}
+		
+		/// <summary>
+		/// מציין אם תכונות ה-Preview של 'תובנות לגבי תהליכים' מופעלות בארגון זה.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("areprocessinsightspreviewfeaturesenabled")]
+		public System.Nullable<bool> AreProcessInsightsPreviewFeaturesEnabled
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("areprocessinsightspreviewfeaturesenabled");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("areprocessinsightspreviewfeaturesenabled", value);
+			}
+		}
+		
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("areprocessinsightspreviewfeaturesenabledname")]
+		public string areprocessinsightspreviewfeaturesenabledName
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				if (this.FormattedValues.Contains("areprocessinsightspreviewfeaturesenabled"))
+				{
+					return this.FormattedValues["areprocessinsightspreviewfeaturesenabled"];
+				}
+				else
+				{
+					return default(string);
+				}
+			}
+		}
+		
+		/// <summary>
+		/// מציין אם תכונת ההצעה לכתובות הופעלה עבור הארגון
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("aresalesaddresssuggestionsenabled")]
+		public System.Nullable<bool> AreSalesAddressSuggestionsEnabled
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("aresalesaddresssuggestionsenabled");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("aresalesaddresssuggestionsenabled", value);
+			}
+		}
+		
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("aresalesaddresssuggestionsenabledname")]
+		public string aresalesaddresssuggestionsenabledName
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				if (this.FormattedValues.Contains("aresalesaddresssuggestionsenabled"))
+				{
+					return this.FormattedValues["aresalesaddresssuggestionsenabled"];
+				}
+				else
+				{
+					return default(string);
+				}
+			}
+		}
+		
+		/// <summary>
+		/// הגדרות תקופת שמירה לביקורת המאוחסנות במסד נתונים של ארגון.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("auditretentionperiod")]
+		public System.Nullable<int> AuditRetentionPeriod
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<int>>("auditretentionperiod");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("auditretentionperiod", value);
+			}
+		}
+		
+		/// <summary>
+		/// הגדרות תקופת שמירה לביקורת המאוחסנות במסד נתונים של ארגון.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("auditretentionperiodv2")]
+		public System.Nullable<int> AuditRetentionPeriodV2
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<int>>("auditretentionperiodv2");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("auditretentionperiodv2", value);
+			}
+		}
+		
+		/// <summary>
+		/// Audit Settings of the organization
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("auditsettings")]
+		public string AuditSettings
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("auditsettings");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("auditsettings", value);
+			}
+		}
+		
+		/// <summary>
+		/// בחר אם יש להחיל אוטומטית את זכאות הלקוח המוגדרת כברירת מחדל בעת יצירת אירוע.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("autoapplydefaultoncasecreate")]
+		public System.Nullable<bool> AutoApplyDefaultonCaseCreate
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("autoapplydefaultoncasecreate");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("autoapplydefaultoncasecreate", value);
+			}
+		}
+		
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("autoapplydefaultoncasecreatename")]
+		public string AutoApplyDefaultonCaseCreateName
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				if (this.FormattedValues.Contains("autoapplydefaultoncasecreate"))
+				{
+					return this.FormattedValues["autoapplydefaultoncasecreate"];
+				}
+				else
+				{
+					return default(string);
+				}
+			}
+		}
+		
+		/// <summary>
+		/// בחר אם יש להחיל אוטומטית את זכאות הלקוח המוגדרת כברירת מחדל בעת עדכון אירוע.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("autoapplydefaultoncaseupdate")]
+		public System.Nullable<bool> AutoApplyDefaultonCaseUpdate
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("autoapplydefaultoncaseupdate");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("autoapplydefaultoncaseupdate", value);
+			}
+		}
+		
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("autoapplydefaultoncaseupdatename")]
+		public string AutoApplyDefaultonCaseUpdateName
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				if (this.FormattedValues.Contains("autoapplydefaultoncaseupdate"))
+				{
+					return this.FormattedValues["autoapplydefaultoncaseupdate"];
+				}
+				else
+				{
+					return default(string);
+				}
+			}
+		}
+		
+		/// <summary>
+		/// מציין אם להחיל אוטומטית SLA על עדכון רשומת אירוע לאחר ש- SLA הוחל ידנית.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("autoapplysla")]
+		public System.Nullable<bool> AutoApplySLA
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("autoapplysla");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("autoapplysla", value);
+			}
+		}
+		
+		/// <summary>
+		/// ‏‏לשימוש פנימי בלבד.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("azureschedulerjobcollectionname")]
+		public string AzureSchedulerJobCollectionName
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("azureschedulerjobcollectionname");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("azureschedulerjobcollectionname", value);
+			}
+		}
+		
+		/// <summary>
+		/// המזהה הייחודי של מטבע הבסיס של הארגון.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("basecurrencyid")]
+		public Microsoft.Xrm.Sdk.EntityReference BaseCurrencyId
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("basecurrencyid");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("basecurrencyid", value);
+			}
+		}
+		
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("basecurrencyidname")]
+		public string BaseCurrencyIdName
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				if (this.FormattedValues.Contains("basecurrencyid"))
+				{
+					return this.FormattedValues["basecurrencyid"];
+				}
+				else
+				{
+					return default(string);
+				}
+			}
+		}
+		
+		/// <summary>
+		/// מספר המקומות העשרוניים שניתן להשתמש בהם עבור מטבע הבסיס.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("basecurrencyprecision")]
+		public System.Nullable<int> BaseCurrencyPrecision
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<int>>("basecurrencyprecision");
+			}
+		}
+		
+		/// <summary>
+		/// הסמל שבשימוש עבור מטבע הבסיס.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("basecurrencysymbol")]
+		public string BaseCurrencySymbol
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("basecurrencysymbol");
+			}
+		}
+		
+		/// <summary>
+		/// מפתח Api לשימוש בבקשות לשירותי 'מפות Bing'.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("bingmapsapikey")]
+		public string BingMapsApiKey
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("bingmapsapikey");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("bingmapsapikey", value);
+			}
+		}
+		
+		/// <summary>
+		/// Enable this feature to prevent makers from accessing and downloading session transcripts
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("blockaccesstosessiontranscriptsforcopilotstudio")]
+		public System.Nullable<bool> BlockAccessToSessionTranscriptsForCopilotStudio
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("blockaccesstosessiontranscriptsforcopilotstudio");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("blockaccesstosessiontranscriptsforcopilotstudio", value);
+			}
+		}
+		
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("blockaccesstosessiontranscriptsforcopilotstudioname")]
+		public string blockaccesstosessiontranscriptsforcopilotstudioName
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				if (this.FormattedValues.Contains("blockaccesstosessiontranscriptsforcopilotstudio"))
+				{
+					return this.FormattedValues["blockaccesstosessiontranscriptsforcopilotstudio"];
+				}
+				else
+				{
+					return default(string);
+				}
+			}
+		}
+		
+		/// <summary>
+		/// Prevent makers from allowing end-users to use their credentials during authentication to use connectors, actions, flows, and triggers that are connected to an agent
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("blockcopilotauthorauthentication")]
+		public System.Nullable<bool> BlockCopilotAuthorAuthentication
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("blockcopilotauthorauthentication");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("blockcopilotauthorauthentication", value);
+			}
+		}
+		
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("blockcopilotauthorauthenticationname")]
+		public string blockcopilotauthorauthenticationName
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				if (this.FormattedValues.Contains("blockcopilotauthorauthentication"))
+				{
+					return this.FormattedValues["blockcopilotauthorauthentication"];
+				}
+				else
+				{
+					return default(string);
+				}
+			}
+		}
+		
+		/// <summary>
+		/// Information that specifies the Applications that are in block list for the accessing DV resources.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("blockedapplicationsfordvaccess")]
+		public string BlockedApplicationsForDVAccess
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("blockedapplicationsfordvaccess");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("blockedapplicationsfordvaccess", value);
+			}
+		}
+		
+		/// <summary>
+		/// מנע טעינה או הורדה של סוגים מסוימים של קבצים מצורפים שנחשבים למסוכנים.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("blockedattachments")]
+		public string BlockedAttachments
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("blockedattachments");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("blockedattachments", value);
+			}
+		}
+		
+		/// <summary>
+		/// Prevent upload or download of certain mime types that are considered dangerous.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("blockedmimetypes")]
+		public string BlockedMimeTypes
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("blockedmimetypes");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("blockedmimetypes", value);
+			}
+		}
+		
+		/// <summary>
+		/// Enable this feature to block access to session transcripts and conversational transcripts from being written to Dataverse for an individual environment
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("blocktranscriptrecordingforcopilotstudio")]
+		public System.Nullable<bool> BlockTranscriptRecordingForCopilotStudio
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("blocktranscriptrecordingforcopilotstudio");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("blocktranscriptrecordingforcopilotstudio", value);
+			}
+		}
+		
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("blocktranscriptrecordingforcopilotstudioname")]
+		public string blocktranscriptrecordingforcopilotstudioName
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				if (this.FormattedValues.Contains("blocktranscriptrecordingforcopilotstudio"))
+				{
+					return this.FormattedValues["blocktranscriptrecordingforcopilotstudio"];
+				}
+				else
+				{
+					return default(string);
+				}
+			}
+		}
+		
+		/// <summary>
+		/// Enable this feature to block URLs and images in Copilot Studio and agent responses for an individual environment. URLs will be replaced with placeholders.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("blockurlsinresponsesforcopilotstudio")]
+		public System.Nullable<bool> BlockUrlsInResponsesForCopilotStudio
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("blockurlsinresponsesforcopilotstudio");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("blockurlsinresponsesforcopilotstudio", value);
+			}
+		}
+		
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("blockurlsinresponsesforcopilotstudioname")]
+		public string blockurlsinresponsesforcopilotstudioName
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				if (this.FormattedValues.Contains("blockurlsinresponsesforcopilotstudio"))
+				{
+					return this.FormattedValues["blockurlsinresponsesforcopilotstudio"];
+				}
+				else
+				{
+					return default(string);
+				}
+			}
+		}
+		
+		/// <summary>
+		/// הצג כרטיסים במצב מורחב עבור לוח מחוונים אינטראקטיבי
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("bounddashboarddefaultcardexpanded")]
+		public System.Nullable<bool> BoundDashboardDefaultCardExpanded
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("bounddashboarddefaultcardexpanded");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("bounddashboarddefaultcardexpanded", value);
+			}
+		}
+		
+		/// <summary>
+		/// קידומת המשמשת למספור פעולות צובר.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("bulkoperationprefix")]
+		public string BulkOperationPrefix
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("bulkoperationprefix");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("bulkoperationprefix", value);
+			}
+		}
+		
+		/// <summary>
+		/// BusinessCardOptions
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("businesscardoptions")]
+		public string BusinessCardOptions
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("businesscardoptions");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("businesscardoptions", value);
+			}
+		}
+		
+		/// <summary>
+		/// המזהה הייחודי של לוח תאריכי סגירת העסק של הארגון.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("businessclosurecalendarid")]
+		public System.Nullable<System.Guid> BusinessClosureCalendarId
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<System.Guid>>("businessclosurecalendarid");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("businessclosurecalendarid", value);
+			}
+		}
+		
+		/// <summary>
+		/// סוג לוח שנה עבור המערכת. מוגדר כ'לועזי ארה''ב' כברירת מחדל.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("calendartype")]
+		public System.Nullable<int> CalendarType
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<int>>("calendartype");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("calendartype", value);
+			}
+		}
+		
+		/// <summary>
+		/// קידומת המשמשת למספור קמפיינים.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("campaignprefix")]
+		public string CampaignPrefix
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("campaignprefix");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("campaignprefix", value);
+			}
+		}
+		
+		/// <summary>
+		/// מציין אם הארגון יכול לבטל את הצטרפותו לחוויית חיפוש הרלוונטיות החדשה (הופץ באוקטובר 2020)
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("canoptoutnewsearchexperience")]
+		public System.Nullable<bool> CanOptOutNewSearchExperience
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("canoptoutnewsearchexperience");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("canoptoutnewsearchexperience", value);
+			}
+		}
+		
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("canoptoutnewsearchexperiencename")]
+		public string canoptoutnewsearchexperienceName
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				if (this.FormattedValues.Contains("canoptoutnewsearchexperience"))
+				{
+					return this.FormattedValues["canoptoutnewsearchexperience"];
+				}
+				else
+				{
+					return default(string);
+				}
+			}
+		}
+		
+		/// <summary>
+		/// סמן בדגל כדי לדרג עדכון במקרה.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("cascadestatusupdate")]
+		public System.Nullable<bool> CascadeStatusUpdate
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("cascadestatusupdate");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("cascadestatusupdate", value);
+			}
+		}
+		
+		/// <summary>
+		/// קידומת לשימוש עבור כל האירועים ב- Microsoft Dynamics 365.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("caseprefix")]
+		public string CasePrefix
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("caseprefix");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("caseprefix", value);
+			}
+		}
+		
+		/// <summary>
+		/// הקלד את הקידומת שבה יש להשתמש עבור כל הקטגוריות ב- Microsoft Dynamics 365.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("categoryprefix")]
+		public string CategoryPrefix
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("categoryprefix");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("categoryprefix", value);
+			}
+		}
+		
+		/// <summary>
+		/// תכונות לקוח שיש להפוך לזמינות כ- BLOB של XML.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("clientfeatureset")]
+		public string ClientFeatureSet
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("clientfeatureset");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("clientfeatureset", value);
+			}
+		}
+		
+		/// <summary>
+		/// קביעת מדיניות עבור CSP
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("contentsecuritypolicyconfiguration")]
+		public string ContentSecurityPolicyConfiguration
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("contentsecuritypolicyconfiguration");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("contentsecuritypolicyconfiguration", value);
+			}
+		}
+		
+		/// <summary>
+		/// קביעת מדיניות אבטחת תוכן ליישומי בד ציור.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("contentsecuritypolicyconfigurationforcanvas")]
+		public string ContentSecurityPolicyConfigurationForCanvas
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("contentsecuritypolicyconfigurationforcanvas");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("contentsecuritypolicyconfigurationforcanvas", value);
+			}
+		}
+		
+		/// <summary>
+		/// אפשרויות מדיניות אבטחת תוכן.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("contentsecuritypolicyoptions")]
+		public System.Nullable<int> ContentSecurityPolicyOptions
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<int>>("contentsecuritypolicyoptions");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("contentsecuritypolicyoptions", value);
+			}
+		}
+		
+		/// <summary>
+		/// Uri של דוח מדיניות אבטחת תוכן.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("contentsecuritypolicyreporturi")]
+		public string ContentSecurityPolicyReportUri
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("contentsecuritypolicyreporturi");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("contentsecuritypolicyreporturi", value);
+			}
+		}
+		
+		/// <summary>
+		/// קידומת לשימוש עבור כל החוזים ב- Microsoft Dynamics 365.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("contractprefix")]
+		public string ContractPrefix
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("contractprefix");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("contractprefix", value);
+			}
+		}
+		
+		/// <summary>
+		/// קצב הרענון של נתוני נוכחות משותפת בשניות.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("copresencerefreshrate")]
+		public System.Nullable<int> CopresenceRefreshRate
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<int>>("copresencerefreshrate");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("copresencerefreshrate", value);
+			}
+		}
+		
+		/// <summary>
+		/// מציין אם התכונה תהליכי זרימת CortanaProactiveExperience צריכה להיות זמינה עבור הארגון.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("cortanaproactiveexperienceenabled")]
+		public System.Nullable<bool> CortanaProactiveExperienceEnabled
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("cortanaproactiveexperienceenabled");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("cortanaproactiveexperienceenabled", value);
+			}
+		}
+		
+		/// <summary>
+		/// המזהה הייחודי של המשתמש שיצר את הארגון.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdby")]
+		public Microsoft.Xrm.Sdk.EntityReference CreatedBy
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("createdby");
+			}
+		}
+		
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdbyname")]
+		public string CreatedByName
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				if (this.FormattedValues.Contains("createdby"))
+				{
+					return this.FormattedValues["createdby"];
+				}
+				else
+				{
+					return default(string);
+				}
+			}
+		}
+		
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdbyyominame")]
+		public string CreatedByYomiName
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				if (this.FormattedValues.Contains("createdby"))
+				{
+					return this.FormattedValues["createdby"];
+				}
+				else
+				{
+					return default(string);
+				}
+			}
+		}
+		
+		/// <summary>
+		/// התאריך והשעה שבהם נוצר הארגון.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdon")]
+		public System.Nullable<System.DateTime> CreatedOn
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<System.DateTime>>("createdon");
+			}
+		}
+		
+		/// <summary>
+		/// המזהה הייחודי של המשתמש הנציג שיצר את הארגון.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdonbehalfby")]
+		public Microsoft.Xrm.Sdk.EntityReference CreatedOnBehalfBy
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("createdonbehalfby");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("createdonbehalfby", value);
+			}
+		}
+		
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdonbehalfbyname")]
+		public string CreatedOnBehalfByName
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				if (this.FormattedValues.Contains("createdonbehalfby"))
+				{
+					return this.FormattedValues["createdonbehalfby"];
+				}
+				else
+				{
+					return default(string);
+				}
+			}
+		}
+		
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdonbehalfbyyominame")]
+		public string CreatedOnBehalfByYomiName
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				if (this.FormattedValues.Contains("createdonbehalfby"))
+				{
+					return this.FormattedValues["createdonbehalfby"];
+				}
+				else
+				{
+					return default(string);
+				}
+			}
+		}
+		
+		/// <summary>
+		/// אפשר למצב ההתחלתי של מוצרים חדשים שנוצרים להיות 'פעיל' במקום 'טיוטה'
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createproductswithoutparentinactivestate")]
+		public System.Nullable<bool> CreateProductsWithoutParentInActiveState
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("createproductswithoutparentinactivestate");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("createproductswithoutparentinactivestate", value);
+			}
+		}
+		
+		/// <summary>
+		/// Default time to live in minutes for new records in the Flow Logs entity for CUA logs.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("cuaflowlogsttlinminutes")]
+		public System.Nullable<int> CuaFlowLogsTtlInMinutes
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<int>>("cuaflowlogsttlinminutes");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("cuaflowlogsttlinminutes", value);
+			}
+		}
+		
+		/// <summary>
+		/// Set the level of detail the computer use logs allow.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("cuaflowlogsverbosity")]
+		public virtual Microsoft.Xrm.Sdk.OptionSetValue CuaFlowLogsVerbosity
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.OptionSetValue>("cuaflowlogsverbosity");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("cuaflowlogsverbosity", value);
+			}
+		}
+		
+		/// <summary>
+		/// Set the level of detail the computer use logs allow.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("cuaflowlogsverbosity")]
+		public virtual Organization_CuaFlowLogsVerbosity? CuaFlowLogsVerbosityEnum
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return ((Organization_CuaFlowLogsVerbosity?)(EntityOptionSetEnum.GetEnum(this, "cuaflowlogsverbosity")));
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("cuaflowlogsverbosity", value.HasValue ? new Microsoft.Xrm.Sdk.OptionSetValue((int)value) : null);
+			}
+		}
+		
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("cuaflowlogsverbosityname")]
+		public string cuaflowlogsverbosityName
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				if (this.FormattedValues.Contains("cuaflowlogsverbosity"))
+				{
+					return this.FormattedValues["cuaflowlogsverbosity"];
+				}
+				else
+				{
+					return default(string);
+				}
+			}
+		}
+		
+		/// <summary>
+		/// מספר המקומות העשרוניים שניתן להשתמש בהם עבור מטבע.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("currencydecimalprecision")]
+		public System.Nullable<int> CurrencyDecimalPrecision
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<int>>("currencydecimalprecision");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("currencydecimalprecision", value);
+			}
+		}
+		
+		/// <summary>
+		/// מציין אם להציג שדות כספים עם קוד מטבע או סמל מטבע.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("currencydisplayoption")]
+		public virtual Microsoft.Xrm.Sdk.OptionSetValue CurrencyDisplayOption
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.OptionSetValue>("currencydisplayoption");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("currencydisplayoption", value);
+			}
+		}
+		
+		/// <summary>
+		/// מציין אם להציג שדות כספים עם קוד מטבע או סמל מטבע.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("currencydisplayoption")]
+		public virtual Organization_CurrencyDisplayOption? CurrencyDisplayOptionEnum
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return ((Organization_CurrencyDisplayOption?)(EntityOptionSetEnum.GetEnum(this, "currencydisplayoption")));
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("currencydisplayoption", value.HasValue ? new Microsoft.Xrm.Sdk.OptionSetValue((int)value) : null);
+			}
+		}
+		
+		/// <summary>
+		/// מידע המציין כיצד סמלי מטבע ממוקמים בכל Microsoft Dynamics CRM.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("currencyformatcode")]
+		public virtual Microsoft.Xrm.Sdk.OptionSetValue CurrencyFormatCode
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.OptionSetValue>("currencyformatcode");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("currencyformatcode", value);
+			}
+		}
+		
+		/// <summary>
+		/// מידע המציין כיצד סמלי מטבע ממוקמים בכל Microsoft Dynamics CRM.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("currencyformatcode")]
+		public virtual Organization_CurrencyFormatCode? CurrencyFormatCodeEnum
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return ((Organization_CurrencyFormatCode?)(EntityOptionSetEnum.GetEnum(this, "currencyformatcode")));
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("currencyformatcode", value.HasValue ? new Microsoft.Xrm.Sdk.OptionSetValue((int)value) : null);
+			}
+		}
+		
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("currencyformatcodename")]
+		public string CurrencyFormatCodeName
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				if (this.FormattedValues.Contains("currencyformatcode"))
+				{
+					return this.FormattedValues["currencyformatcode"];
+				}
+				else
+				{
+					return default(string);
+				}
+			}
+		}
+		
+		/// <summary>
+		/// הסמל המשמש עבור מטבע בכל Microsoft Dynamics 365.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("currencysymbol")]
+		public string CurrencySymbol
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("currencysymbol");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("currencysymbol", value);
+			}
+		}
+		
+		/// <summary>
+		/// מספר פעולת הצובר הנוכחית. לא בשימוש. השתמש בהודעת SetAutoNumberSeed.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("currentbulkoperationnumber")]
+		[System.ObsoleteAttribute()]
+		public System.Nullable<int> CurrentBulkOperationNumber
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<int>>("currentbulkoperationnumber");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("currentbulkoperationnumber", value);
+			}
+		}
+		
+		/// <summary>
+		/// מספר הקמפיין הנוכחי. לא בשימוש. השתמש בהודעת SetAutoNumberSeed.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("currentcampaignnumber")]
+		[System.ObsoleteAttribute()]
+		public System.Nullable<int> CurrentCampaignNumber
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<int>>("currentcampaignnumber");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("currentcampaignnumber", value);
+			}
+		}
+		
+		/// <summary>
+		/// מספר האירוע הראשון שבו יש להשתמש. לא בשימוש. השתמש בהודעת SetAutoNumberSeed.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("currentcasenumber")]
+		[System.ObsoleteAttribute()]
+		public System.Nullable<int> CurrentCaseNumber
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<int>>("currentcasenumber");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("currentcasenumber", value);
+			}
+		}
+		
+		/// <summary>
+		/// הזן את המספר הראשון שבו יש להשתמש עבור קטגוריות. לא בשימוש. השתמש בהודעת SetAutoNumberSeed.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("currentcategorynumber")]
+		[System.ObsoleteAttribute()]
+		public System.Nullable<int> CurrentCategoryNumber
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<int>>("currentcategorynumber");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("currentcategorynumber", value);
+			}
+		}
+		
+		/// <summary>
+		/// מספר החוזה הראשון שבו יש להשתמש. לא בשימוש. השתמש בהודעת SetAutoNumberSeed.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("currentcontractnumber")]
+		[System.ObsoleteAttribute()]
+		public System.Nullable<int> CurrentContractNumber
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<int>>("currentcontractnumber");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("currentcontractnumber", value);
+			}
+		}
+		
+		/// <summary>
+		/// רצף הייבוא שבו יש להשתמש.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("currentimportsequencenumber")]
+		public System.Nullable<int> CurrentImportSequenceNumber
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<int>>("currentimportsequencenumber");
+			}
+		}
+		
+		/// <summary>
+		/// מספר החשבונית הראשון שבו יש להשתמש. לא בשימוש. השתמש בהודעת SetAutoNumberSeed.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("currentinvoicenumber")]
+		[System.ObsoleteAttribute()]
+		public System.Nullable<int> CurrentInvoiceNumber
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<int>>("currentinvoicenumber");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("currentinvoicenumber", value);
+			}
+		}
+		
+		/// <summary>
+		/// הזן את המספר הראשון שבו יש להשתמש עבור מאמרי ידע. לא בשימוש. השתמש בהודעת SetAutoNumberSeed.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("currentkanumber")]
+		[System.ObsoleteAttribute()]
+		public System.Nullable<int> CurrentKaNumber
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<int>>("currentkanumber");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("currentkanumber", value);
+			}
+		}
+		
+		/// <summary>
+		/// מספר המאמר הראשון שבו יש להשתמש. לא בשימוש. השתמש בהודעת SetAutoNumberSeed.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("currentkbnumber")]
+		[System.ObsoleteAttribute()]
+		public System.Nullable<int> CurrentKbNumber
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<int>>("currentkbnumber");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("currentkbnumber", value);
+			}
+		}
+		
+		/// <summary>
+		/// מספר ההזמנה הראשון שבו יש להשתמש. לא בשימוש. השתמש בהודעת SetAutoNumberSeed.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("currentordernumber")]
+		[System.ObsoleteAttribute()]
+		public System.Nullable<int> CurrentOrderNumber
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<int>>("currentordernumber");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("currentordernumber", value);
+			}
+		}
+		
+		/// <summary>
+		/// המספר הראשון של טבלה שנותחה שבו יש להשתמש.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("currentparsedtablenumber")]
+		public System.Nullable<int> CurrentParsedTableNumber
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<int>>("currentparsedtablenumber");
+			}
+		}
+		
+		/// <summary>
+		/// מספר הצעת המחיר הראשון שבו יש להשתמש. לא בשימוש. השתמש בהודעת SetAutoNumberSeed.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("currentquotenumber")]
+		[System.ObsoleteAttribute()]
+		public System.Nullable<int> CurrentQuoteNumber
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<int>>("currentquotenumber");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("currentquotenumber", value);
+			}
+		}
+		
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("dateformatcodename")]
+		public string DateFormatCodeName
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				if (this.FormattedValues.Contains("dateformatcode"))
+				{
+					return this.FormattedValues["dateformatcode"];
+				}
+				else
+				{
+					return default(string);
+				}
+			}
+		}
+		
+		/// <summary>
+		/// מחרוזת המראה כיצד מוצג התאריך בכל Microsoft CRM.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("dateformatstring")]
+		public string DateFormatString
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("dateformatstring");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("dateformatstring", value);
+			}
+		}
+		
+		/// <summary>
+		/// תו המשמש להפרדת החודש, היום והשנה בתאריכים בכל Microsoft Dynamics 365.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("dateseparator")]
+		public string DateSeparator
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("dateseparator");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("dateseparator", value);
+			}
+		}
+		
+		/// <summary>
+		/// Number of days before we migrate email description to blob.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("daysbeforeemaildescriptionismigrated")]
+		public System.Nullable<int> DaysBeforeEmailDescriptionIsMigrated
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<int>>("daysbeforeemaildescriptionismigrated");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("daysbeforeemaildescriptionismigrated", value);
+			}
+		}
+		
+		/// <summary>
+		/// ימים של חוסר פעילות לפני הפיכת סינכרון ללא זמין עבור צ'אט של Teams.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("daysbeforeinactiveteamschatsyncdisabled")]
+		public System.Nullable<int> DaysBeforeInactiveTeamsChatSyncDisabled
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<int>>("daysbeforeinactiveteamschatsyncdisabled");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("daysbeforeinactiveteamschatsyncdisabled", value);
+			}
+		}
+		
+		/// <summary>
+		/// הערך המרבי עבור הגדרת Mobile Offline של הימים מאז השינוי האחרון של הרשומה
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("dayssincerecordlastmodifiedmaxvalue")]
+		public System.Nullable<int> DaysSinceRecordLastModifiedMaxValue
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<int>>("dayssincerecordlastmodifiedmaxvalue");
+			}
+		}
+		
+		/// <summary>
+		/// סמל המשמש עבור שברים עשרוניים ב- Microsoft Dynamics 365.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("decimalsymbol")]
+		public string DecimalSymbol
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("decimalsymbol");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("decimalsymbol", value);
+			}
+		}
+		
+		/// <summary>
+		/// אזור טקסט להזנת קידומת מדינה המהווה ברירת מחדל.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("defaultcountrycode")]
+		public string DefaultCountryCode
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("defaultcountrycode");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("defaultcountrycode", value);
+			}
+		}
+		
+		/// <summary>
+		/// השם של ה- CRM Custom שמוגדר כברירת מחדל.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("defaultcrmcustomname")]
+		public string DefaultCrmCustomName
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("defaultcrmcustomname");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("defaultcrmcustomname", value);
+			}
+		}
+		
+		/// <summary>
+		/// מזהה ייחודי של הפרופיל של שרת הדואר האלקטרוני המוגדר כברירת מחדל.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("defaultemailserverprofileid")]
+		public Microsoft.Xrm.Sdk.EntityReference DefaultEmailServerProfileId
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("defaultemailserverprofileid");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("defaultemailserverprofileid", value);
+			}
+		}
+		
+		/// <summary>
+		/// שם הפרופיל של שרת הדואר האלקטרוני שישמש בתור פרופיל ברירת המחדל עבור תיבות הדואר.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("defaultemailserverprofileidname")]
+		public string DefaultEmailServerProfileIdName
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				if (this.FormattedValues.Contains("defaultemailserverprofileid"))
+				{
+					return this.FormattedValues["defaultemailserverprofileid"];
+				}
+				else
+				{
+					return default(string);
+				}
+			}
+		}
+		
+		/// <summary>
+		/// מחרוזת XML המכילה את הגדרות ברירת המחדל של הדואר האלקטרוני שחלות כאשר משתמש או תור נוצר.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("defaultemailsettings")]
+		public string DefaultEmailSettings
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("defaultemailsettings");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("defaultemailsettings", value);
+			}
+		}
+		
+		/// <summary>
+		/// מזהה ייחודי של פרופיל Mobile Offline‬ המהווה ברירת מחדל.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("defaultmobileofflineprofileid")]
+		public Microsoft.Xrm.Sdk.EntityReference DefaultMobileOfflineProfileId
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("defaultmobileofflineprofileid");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("defaultmobileofflineprofileid", value);
+			}
+		}
+		
+		/// <summary>
+		/// שם פרופיל Mobile Offline המהווה ברירת מחדל שישמש כפרופיל ברירת המחדל עבור Mobile Offline.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("defaultmobileofflineprofileidname")]
+		public string DefaultMobileOfflineProfileIdName
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				if (this.FormattedValues.Contains("defaultmobileofflineprofileid"))
+				{
+					return this.FormattedValues["defaultmobileofflineprofileid"];
+				}
+				else
+				{
+					return default(string);
+				}
+			}
+		}
+		
+		/// <summary>
+		/// סוג תאריך טווח סיום המופע החוזר המוגדר כברירת מחדל.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("defaultrecurrenceendrangetype")]
+		public virtual Microsoft.Xrm.Sdk.OptionSetValue DefaultRecurrenceEndRangeType
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.OptionSetValue>("defaultrecurrenceendrangetype");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("defaultrecurrenceendrangetype", value);
+			}
+		}
+		
+		/// <summary>
+		/// סוג תאריך טווח סיום המופע החוזר המוגדר כברירת מחדל.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("defaultrecurrenceendrangetype")]
+		public virtual Organization_DefaultRecurrenceEndRangeType? DefaultRecurrenceEndRangeTypeEnum
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return ((Organization_DefaultRecurrenceEndRangeType?)(EntityOptionSetEnum.GetEnum(this, "defaultrecurrenceendrangetype")));
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("defaultrecurrenceendrangetype", value.HasValue ? new Microsoft.Xrm.Sdk.OptionSetValue((int)value) : null);
+			}
+		}
+		
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("defaultrecurrenceendrangetypename")]
+		public string DefaultRecurrenceEndRangeTypeName
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				if (this.FormattedValues.Contains("defaultrecurrenceendrangetype"))
+				{
+					return this.FormattedValues["defaultrecurrenceendrangetype"];
+				}
+				else
+				{
+					return default(string);
+				}
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("defaultrecurrenceendrangetypename", value);
+			}
+		}
+		
+		/// <summary>
+		/// מציין אם כותרת ברירת המחדל עבור צ'אט מקושר של Teams היא שם הרשומה
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("defaultteamschattitlerecordname")]
+		public System.Nullable<bool> DefaultTeamsChatTitleRecordName
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("defaultteamschattitlerecordname");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("defaultteamschattitlerecordname", value);
+			}
+		}
+		
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("defaultteamschattitlerecordnamename")]
+		public string defaultteamschattitlerecordnameName
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				if (this.FormattedValues.Contains("defaultteamschattitlerecordname"))
+				{
+					return this.FormattedValues["defaultteamschattitlerecordname"];
+				}
+				else
+				{
+					return default(string);
+				}
+			}
+		}
+		
+		/// <summary>
+		/// נתוני ערכת נושא המהווים ברירת מחדל עבור הארגון.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("defaultthemedata")]
+		public string DefaultThemeData
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("defaultthemedata");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("defaultthemedata", value);
+			}
+		}
+		
+		/// <summary>
+		/// המזהה הייחודי של המשתמש המהווה מנהל מוסמך עבור הארגון.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("delegatedadminuserid")]
+		public System.Nullable<System.Guid> DelegatedAdminUserId
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<System.Guid>>("delegatedadminuserid");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("delegatedadminuserid", value);
+			}
+		}
+		
+		/// <summary>
+		/// משך החיים - בדקות - המהווה את ברירת המחדל עבור רשומות חדשות בנושא תורי זרימת שולחן עבודה.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("desktopflowqueuelogsttlinminutes")]
+		public System.Nullable<int> DesktopFlowQueueLogsTtlInMinutes
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<int>>("desktopflowqueuelogsttlinminutes");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("desktopflowqueuelogsttlinminutes", value);
+			}
+		}
+		
+		/// <summary>
+		/// החליפו את ההפעלה של Power Automate יומני הפעולה של Desktop Flow.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("desktopflowrunactionlogsstatus")]
+		public virtual Microsoft.Xrm.Sdk.OptionSetValue DesktopFlowRunActionLogsStatus
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.OptionSetValue>("desktopflowrunactionlogsstatus");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("desktopflowrunactionlogsstatus", value);
+			}
+		}
+		
+		/// <summary>
+		/// החליפו את ההפעלה של Power Automate יומני הפעולה של Desktop Flow.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("desktopflowrunactionlogsstatus")]
+		public virtual Organization_DesktopFlowRunActionLogsStatus? DesktopFlowRunActionLogsStatusEnum
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return ((Organization_DesktopFlowRunActionLogsStatus?)(EntityOptionSetEnum.GetEnum(this, "desktopflowrunactionlogsstatus")));
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("desktopflowrunactionlogsstatus", value.HasValue ? new Microsoft.Xrm.Sdk.OptionSetValue((int)value) : null);
+			}
+		}
+		
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("desktopflowrunactionlogsstatusname")]
+		public string desktopflowrunactionlogsstatusName
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				if (this.FormattedValues.Contains("desktopflowrunactionlogsstatus"))
+				{
+					return this.FormattedValues["desktopflowrunactionlogsstatus"];
+				}
+				else
+				{
+					return default(string);
+				}
+			}
+		}
+		
+		/// <summary>
+		/// איזו רמת פירוט מאפשרים יומני הפעולות של הפעלת זרימה ב-Power Automate לשולחן העבודה.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("desktopflowrunactionlogverbosity")]
+		public virtual Microsoft.Xrm.Sdk.OptionSetValue DesktopFlowRunActionLogVerbosity
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.OptionSetValue>("desktopflowrunactionlogverbosity");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("desktopflowrunactionlogverbosity", value);
+			}
+		}
+		
+		/// <summary>
+		/// איזו רמת פירוט מאפשרים יומני הפעולות של הפעלת זרימה ב-Power Automate לשולחן העבודה.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("desktopflowrunactionlogverbosity")]
+		public virtual Organization_DesktopFlowRunActionLogVerbosity? DesktopFlowRunActionLogVerbosityEnum
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return ((Organization_DesktopFlowRunActionLogVerbosity?)(EntityOptionSetEnum.GetEnum(this, "desktopflowrunactionlogverbosity")));
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("desktopflowrunactionlogverbosity", value.HasValue ? new Microsoft.Xrm.Sdk.OptionSetValue((int)value) : null);
+			}
+		}
+		
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("desktopflowrunactionlogverbosityname")]
+		public string desktopflowrunactionlogverbosityName
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				if (this.FormattedValues.Contains("desktopflowrunactionlogverbosity"))
+				{
+					return this.FormattedValues["desktopflowrunactionlogverbosity"];
+				}
+				else
+				{
+					return default(string);
+				}
+			}
+		}
+		
+		/// <summary>
+		/// איפה שמאוחסנים יומני רישום הפעולות של זרימת שולחן העבודה ב-Power Automate.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("desktopflowrunactionlogversion")]
+		public virtual Microsoft.Xrm.Sdk.OptionSetValue DesktopFlowRunActionLogVersion
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.OptionSetValue>("desktopflowrunactionlogversion");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("desktopflowrunactionlogversion", value);
+			}
+		}
+		
+		/// <summary>
+		/// איפה שמאוחסנים יומני רישום הפעולות של זרימת שולחן העבודה ב-Power Automate.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("desktopflowrunactionlogversion")]
+		public virtual Organization_DesktopFlowRunActionLogVersion? DesktopFlowRunActionLogVersionEnum
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return ((Organization_DesktopFlowRunActionLogVersion?)(EntityOptionSetEnum.GetEnum(this, "desktopflowrunactionlogversion")));
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("desktopflowrunactionlogversion", value.HasValue ? new Microsoft.Xrm.Sdk.OptionSetValue((int)value) : null);
+			}
+		}
+		
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("desktopflowrunactionlogversionname")]
+		public string desktopflowrunactionlogversionName
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				if (this.FormattedValues.Contains("desktopflowrunactionlogversion"))
+				{
+					return this.FormattedValues["desktopflowrunactionlogversion"];
+				}
+				else
+				{
+					return default(string);
+				}
+			}
+		}
+		
+		/// <summary>
+		/// הסיבה להפיכת הארגון ללא זמין.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("disabledreason")]
+		public string DisabledReason
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("disabledreason");
+			}
+		}
+		
+		/// <summary>
+		/// מציין אם Social Care לא זמין.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("disablesocialcare")]
+		public System.Nullable<bool> DisableSocialCare
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("disablesocialcare");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("disablesocialcare", value);
+			}
+		}
+		
+		/// <summary>
+		/// השבת את תוויות מערכת השיתוף עבור הארגון.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("disablesystemlabelscachesharing")]
+		public System.Nullable<bool> DisableSystemLabelsCacheSharing
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("disablesystemlabelscachesharing");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("disablesystemlabelscachesharing", value);
+			}
+		}
+		
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("disablesystemlabelscachesharingname")]
+		public string disablesystemlabelscachesharingName
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				if (this.FormattedValues.Contains("disablesystemlabelscachesharing"))
+				{
+					return this.FormattedValues["disablesystemlabelscachesharing"];
+				}
+				else
+				{
+					return default(string);
+				}
+			}
+		}
+		
+		/// <summary>
+		/// שיטת חישוב הנחה עבור מוצר QOOI.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("discountcalculationmethod")]
+		public virtual Microsoft.Xrm.Sdk.OptionSetValue DiscountCalculationMethod
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.OptionSetValue>("discountcalculationmethod");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("discountcalculationmethod", value);
+			}
+		}
+		
+		/// <summary>
+		/// שיטת חישוב הנחה עבור מוצר QOOI.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("discountcalculationmethod")]
+		public virtual Organization_DiscountCalculationMethod? DiscountCalculationMethodEnum
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return ((Organization_DiscountCalculationMethod?)(EntityOptionSetEnum.GetEnum(this, "discountcalculationmethod")));
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("discountcalculationmethod", value.HasValue ? new Microsoft.Xrm.Sdk.OptionSetValue((int)value) : null);
+			}
+		}
+		
+		/// <summary>
+		/// מציין אם סיור ניווט מוצג או לא.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("displaynavigationtour")]
+		public System.Nullable<bool> DisplayNavigationTour
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("displaynavigationtour");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("displaynavigationtour", value);
+			}
+		}
+		
+		/// <summary>
+		/// בחר אם ברצונך להשתמש בנתב הדואר האלקטרוני או בסינכרון בצד השרת לצורך עיבוד דואר אלקטרוני.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("emailconnectionchannel")]
+		public virtual Microsoft.Xrm.Sdk.OptionSetValue EmailConnectionChannel
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.OptionSetValue>("emailconnectionchannel");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("emailconnectionchannel", value);
+			}
+		}
+		
+		/// <summary>
+		/// בחר אם ברצונך להשתמש בנתב הדואר האלקטרוני או בסינכרון בצד השרת לצורך עיבוד דואר אלקטרוני.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("emailconnectionchannel")]
+		public virtual Organization_EmailConnectionChannel? EmailConnectionChannelEnum
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return ((Organization_EmailConnectionChannel?)(EntityOptionSetEnum.GetEnum(this, "emailconnectionchannel")));
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("emailconnectionchannel", value.HasValue ? new Microsoft.Xrm.Sdk.OptionSetValue((int)value) : null);
+			}
+		}
+		
+		/// <summary>
+		/// דגל להפעלה או כיבוי של מתאם דואר אלקטרוני.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("emailcorrelationenabled")]
+		public System.Nullable<bool> EmailCorrelationEnabled
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("emailcorrelationenabled");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("emailcorrelationenabled", value);
+			}
+		}
+		
+		/// <summary>
+		/// תדירות תשאול רגילה המשמשת עבור שליחת דואר אלקטרוני ב- Microsoft Office Outlook.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("emailsendpollingperiod")]
+		public System.Nullable<int> EmailSendPollingPeriod
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<int>>("emailsendpollingperiod");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("emailsendpollingperiod", value);
+			}
+		}
+		
+		/// <summary>
+		/// מציין את תצוגת ברירת המחדל שנבחרה בחוויה המשופרת של הוספת תבנית דואר אלקטרוני.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("emailtemplatedefaultview")]
+		public virtual Microsoft.Xrm.Sdk.OptionSetValue EmailTemplateDefaultView
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.OptionSetValue>("emailtemplatedefaultview");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("emailtemplatedefaultview", value);
+			}
+		}
+		
+		/// <summary>
+		/// מציין את תצוגת ברירת המחדל שנבחרה בחוויה המשופרת של הוספת תבנית דואר אלקטרוני.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("emailtemplatedefaultview")]
+		public virtual TemplateDefaultView? EmailTemplateDefaultViewEnum
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return ((TemplateDefaultView?)(EntityOptionSetEnum.GetEnum(this, "emailtemplatedefaultview")));
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("emailtemplatedefaultview", value.HasValue ? new Microsoft.Xrm.Sdk.OptionSetValue((int)value) : null);
+			}
+		}
+		
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("emailtemplatedefaultviewname")]
+		public string emailtemplatedefaultviewName
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				if (this.FormattedValues.Contains("emailtemplatedefaultview"))
+				{
+					return this.FormattedValues["emailtemplatedefaultview"];
+				}
+				else
+				{
+					return default(string);
+				}
+			}
+		}
+		
+		/// <summary>
+		/// קובע אם רשומות שמוזגו באמצעות תיבת הדו-שיח של המיזוג ב- UCI ימוזגו באופן אסינכרוני
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("enableasyncmergeapiforuci")]
+		public System.Nullable<bool> EnableAsyncMergeAPIForUCI
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("enableasyncmergeapiforuci");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("enableasyncmergeapiforuci", value);
+			}
+		}
+		
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("enableasyncmergeapiforuciname")]
+		public string enableasyncmergeapiforuciName
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				if (this.FormattedValues.Contains("enableasyncmergeapiforuci"))
+				{
+					return this.FormattedValues["enableasyncmergeapiforuci"];
+				}
+				else
+				{
+					return default(string);
+				}
+			}
+		}
+		
+		/// <summary>
+		/// מתן אפשרות לשילוב עם 'מפות Bing'
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("enablebingmapsintegration")]
+		public System.Nullable<bool> EnableBingMapsIntegration
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("enablebingmapsintegration");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("enablebingmapsintegration", value);
+			}
+		}
+		
+		/// <summary>
+		/// מציין אם לאפשר ייצוא וייבוא של לוח שנה עם SLA.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("enablecalendarimportexport")]
+		public System.Nullable<bool> EnableCalendarImportExport
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("enablecalendarimportexport");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("enablecalendarimportexport", value);
+			}
+		}
+		
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("enablecalendarimportexportname")]
+		public string enablecalendarimportexportName
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				if (this.FormattedValues.Contains("enablecalendarimportexport"))
+				{
+					return this.FormattedValues["enablecalendarimportexport"];
+				}
+				else
+				{
+					return default(string);
+				}
+			}
+		}
+		
+		/// <summary>
+		/// הערה: הפיכת תכונה זו לזמינה תאפשר גם יצירה אוטומטית של משתני סביבה בעת הוספת מקורות נתונים עבור האפליקציות שלך.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("enablecanvasappsinsolutionsbydefault")]
+		public System.Nullable<bool> EnableCanvasAppsInSolutionsByDefault
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("enablecanvasappsinsolutionsbydefault");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("enablecanvasappsinsolutionsbydefault", value);
+			}
+		}
+		
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("enablecanvasappsinsolutionsbydefaultname")]
+		public string enablecanvasappsinsolutionsbydefaultName
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				if (this.FormattedValues.Contains("enablecanvasappsinsolutionsbydefault"))
+				{
+					return this.FormattedValues["enablecanvasappsinsolutionsbydefault"];
+				}
+				else
+				{
+					return default(string);
+				}
+			}
+		}
+		
+		/// <summary>
+		/// Enable this feature to allow cross-geo boundary sharing of aggregated analytics data if your preferred data location for Viva Insights is different than the location of your environment
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("enablecopilotstudiocrossgeosharedatawithvivainsights")]
+		public System.Nullable<bool> EnableCopilotStudioCrossGeoShareDataWithVivaInsights
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("enablecopilotstudiocrossgeosharedatawithvivainsights");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("enablecopilotstudiocrossgeosharedatawithvivainsights", value);
+			}
+		}
+		
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("enablecopilotstudiocrossgeosharedatawithvivainsightsname")]
+		public string enablecopilotstudiocrossgeosharedatawithvivainsightsName
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				if (this.FormattedValues.Contains("enablecopilotstudiocrossgeosharedatawithvivainsights"))
+				{
+					return this.FormattedValues["enablecopilotstudiocrossgeosharedatawithvivainsights"];
+				}
+				else
+				{
+					return default(string);
+				}
+			}
+		}
+		
+		/// <summary>
+		/// (Deprecated) Enable this feature to allow Copilot Studio to share aggregated analytics data for custom agents with Viva Insights for an individual environment
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("enablecopilotstudiosharedatawithvi")]
+		[System.Obsolete("This attribute is deprecated.")]
+		public System.Nullable<bool> EnableCopilotStudioShareDataWithVI
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("enablecopilotstudiosharedatawithvi");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("enablecopilotstudiosharedatawithvi", value);
+			}
+		}
+		
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("enablecopilotstudiosharedatawithviname")]
+		public string enablecopilotstudiosharedatawithviName
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				if (this.FormattedValues.Contains("enablecopilotstudiosharedatawithvi"))
+				{
+					return this.FormattedValues["enablecopilotstudiosharedatawithvi"];
+				}
+				else
+				{
+					return default(string);
+				}
+			}
+		}
+		
+		/// <summary>
+		/// Enable this feature to allow Copilot Studio to share aggregated analytics data for custom agents with Viva Insights for an individual environment
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("enablecopilotstudiosharedatawithvivainsights")]
+		public System.Nullable<bool> EnableCopilotStudioShareDataWithVivaInsights
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("enablecopilotstudiosharedatawithvivainsights");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("enablecopilotstudiosharedatawithvivainsights", value);
+			}
+		}
+		
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("enablecopilotstudiosharedatawithvivainsightsname")]
+		public string enablecopilotstudiosharedatawithvivainsightsName
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				if (this.FormattedValues.Contains("enablecopilotstudiosharedatawithvivainsights"))
+				{
+					return this.FormattedValues["enablecopilotstudiosharedatawithvivainsights"];
+				}
+				else
+				{
+					return default(string);
+				}
+			}
+		}
+		
+		/// <summary>
+		/// מציין אם לאפשר תצוגות תבנית דואר אלקטרוני בתבנית 'דואר אלקטרוני משופר'.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("enableemailtemplateviews")]
+		public System.Nullable<bool> EnableEmailTemplateViews
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("enableemailtemplateviews");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("enableemailtemplateviews", value);
+			}
+		}
+		
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("enableemailtemplateviewsname")]
+		public string enableemailtemplateviewsName
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				if (this.FormattedValues.Contains("enableemailtemplateviews"))
+				{
+					return this.FormattedValues["enableemailtemplateviews"];
+				}
+				else
+				{
+					return default(string);
+				}
+			}
+		}
+		
+		/// <summary>
+		/// Enables the Environment Settings App
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("enableenvironmentsettingsapp")]
+		public System.Nullable<bool> EnableEnvironmentSettingsApp
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("enableenvironmentsettingsapp");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("enableenvironmentsettingsapp", value);
+			}
+		}
+		
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("enableenvironmentsettingsappname")]
+		public string enableenvironmentsettingsappName
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				if (this.FormattedValues.Contains("enableenvironmentsettingsapp"))
+				{
+					return this.FormattedValues["enableenvironmentsettingsapp"];
+				}
+				else
+				{
+					return default(string);
+				}
+			}
+		}
+		
+		/// <summary>
+		/// מציין אם יצירת הזרימות מתבצעת בתוך פתרון כברירת מחדל עבור ארגון זה.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("enableflowsinsolutionbydefault")]
+		public System.Nullable<bool> EnableFlowsInSolutionByDefault
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("enableflowsinsolutionbydefault");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("enableflowsinsolutionbydefault", value);
+			}
+		}
+		
+		/// <summary>
+		/// ארגונים עם תכונה זו המוגדרת כ'אמת' יקבלו תקופת חסד ולא ייכללו בהפעלה הראשונית העולמית של 'יצירת זרימות בתוך פתרון כברירת מחדל'. לאחר תום תקופת החסד, הפונקציונליות תהפוך לזמינה בארגון שלך.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("enableflowsinsolutionbydefaultgraceperiod")]
+		public System.Nullable<bool> EnableFlowsInSolutionByDefaultGracePeriod
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("enableflowsinsolutionbydefaultgraceperiod");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("enableflowsinsolutionbydefaultgraceperiod", value);
+			}
+		}
+		
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("enableflowsinsolutionbydefaultgraceperiodname")]
+		public string enableflowsinsolutionbydefaultgraceperiodName
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				if (this.FormattedValues.Contains("enableflowsinsolutionbydefaultgraceperiod"))
+				{
+					return this.FormattedValues["enableflowsinsolutionbydefaultgraceperiod"];
+				}
+				else
+				{
+					return default(string);
+				}
+			}
+		}
+		
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("enableflowsinsolutionbydefaultname")]
+		public string enableflowsinsolutionbydefaultName
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				if (this.FormattedValues.Contains("enableflowsinsolutionbydefault"))
+				{
+					return this.FormattedValues["enableflowsinsolutionbydefault"];
+				}
+				else
+				{
+					return default(string);
+				}
+			}
+		}
+		
+		/// <summary>
+		/// אפשר שילוב עם Immersive Skype
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("enableimmersiveskypeintegration")]
+		public System.Nullable<bool> EnableImmersiveSkypeIntegration
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("enableimmersiveskypeintegration");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("enableimmersiveskypeintegration", value);
+			}
+		}
+		
+		/// <summary>
+		/// Information that specifies whether IP based cookie binding is enabled
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("enableipbasedcookiebinding")]
+		public System.Nullable<bool> EnableIpBasedCookieBinding
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("enableipbasedcookiebinding");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("enableipbasedcookiebinding", value);
+			}
+		}
+		
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("enableipbasedcookiebindingname")]
+		public string enableipbasedcookiebindingName
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				if (this.FormattedValues.Contains("enableipbasedcookiebinding"))
+				{
+					return this.FormattedValues["enableipbasedcookiebinding"];
+				}
+				else
+				{
+					return default(string);
+				}
+			}
+		}
+		
+		/// <summary>
+		/// Information that specifies whether IP based firewall rule is enabled
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("enableipbasedfirewallrule")]
+		public System.Nullable<bool> EnableIpBasedFirewallRule
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("enableipbasedfirewallrule");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("enableipbasedfirewallrule", value);
+			}
+		}
+		
+		/// <summary>
+		/// Information that specifies whether IP based firewall rule is enabled in Audit Only Mode
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("enableipbasedfirewallruleinauditmode")]
+		public System.Nullable<bool> EnableIpBasedFirewallRuleInAuditMode
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("enableipbasedfirewallruleinauditmode");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("enableipbasedfirewallruleinauditmode", value);
+			}
+		}
+		
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("enableipbasedfirewallruleinauditmodename")]
+		public string enableipbasedfirewallruleinauditmodeName
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				if (this.FormattedValues.Contains("enableipbasedfirewallruleinauditmode"))
+				{
+					return this.FormattedValues["enableipbasedfirewallruleinauditmode"];
+				}
+				else
+				{
+					return default(string);
+				}
+			}
+		}
+		
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("enableipbasedfirewallrulename")]
+		public string enableipbasedfirewallruleName
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				if (this.FormattedValues.Contains("enableipbasedfirewallrule"))
+				{
+					return this.FormattedValues["enableipbasedfirewallrule"];
+				}
+				else
+				{
+					return default(string);
+				}
+			}
+		}
+		
+		/// <summary>
+		/// Information that specifies whether IP based SAS URI generation rule is enabled
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("enableipbasedstorageaccesssignaturerule")]
+		public System.Nullable<bool> EnableIpBasedStorageAccessSignatureRule
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("enableipbasedstorageaccesssignaturerule");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("enableipbasedstorageaccesssignaturerule", value);
+			}
+		}
+		
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("enableipbasedstorageaccesssignaturerulename")]
+		public string enableipbasedstorageaccesssignatureruleName
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				if (this.FormattedValues.Contains("enableipbasedstorageaccesssignaturerule"))
+				{
+					return this.FormattedValues["enableipbasedstorageaccesssignaturerule"];
+				}
+				else
+				{
+					return default(string);
+				}
+			}
+		}
+		
+		/// <summary>
+		/// מציין אם המשתמש הפך את התכונה 'כרטיס אדם פעיל' לזמינה או ללא זמינה ב- UCI.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("enablelivepersonacarduci")]
+		public System.Nullable<bool> EnableLivePersonaCardUCI
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("enablelivepersonacarduci");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("enablelivepersonacarduci", value);
+			}
+		}
+		
+		/// <summary>
+		/// מציין אם המשתמש הפך את התכונה LivePersonCardIntegration לזמינה או ללא זמינה ב- Office.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("enablelivepersoncardintegrationinoffice")]
+		public System.Nullable<bool> EnableLivePersonCardIntegrationInOffice
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("enablelivepersoncardintegrationinoffice");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("enablelivepersoncardintegrationinoffice", value);
+			}
+		}
+		
+		/// <summary>
+		/// בחר כדי להפוך עריכת נתיב למידה לזמינה.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("enablelpauthoring")]
+		public System.Nullable<bool> EnableLPAuthoring
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("enablelpauthoring");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("enablelpauthoring", value);
+			}
+		}
+		
+		/// <summary>
+		/// קבע אם הארגון יעביר את Maker Portal למצב קלאסי
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("enablemakerswitchtoclassic")]
+		public System.Nullable<bool> EnableMakerSwitchToClassic
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("enablemakerswitchtoclassic");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("enablemakerswitchtoclassic", value);
+			}
+		}
+		
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("enablemakerswitchtoclassicname")]
+		public string enablemakerswitchtoclassicName
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				if (this.FormattedValues.Contains("enablemakerswitchtoclassic"))
+				{
+					return this.FormattedValues["enablemakerswitchtoclassic"];
+				}
+				else
+				{
+					return default(string);
+				}
+			}
+		}
+		
+		/// <summary>
+		/// אפשר שילוב עם Microsoft Flow
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("enablemicrosoftflowintegration")]
+		public System.Nullable<bool> EnableMicrosoftFlowIntegration
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("enablemicrosoftflowintegration");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("enablemicrosoftflowintegration", value);
+			}
+		}
+		
+		/// <summary>
+		/// הפוך חישובי תמחור בקריאה ליצירה לזמינים.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("enablepricingoncreate")]
+		public System.Nullable<bool> EnablePricingOnCreate
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("enablepricingoncreate");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("enablepricingoncreate", value);
+			}
+		}
+		
+		/// <summary>
+		/// הפוך תוויות רגישות לזמינה או ללא זמינה בדואר אלקטרוני.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("enablesensitivitylabels")]
+		public System.Nullable<bool> EnableSensitivityLabels
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("enablesensitivitylabels");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("enablesensitivitylabels", value);
+			}
+		}
+		
+		/// <summary>
+		/// מציין אם תכונות של פרטיות ורגישות ליצירת צוות חדש הפכו לזמינות
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("enablesensitivitylabelsforteamscollab")]
+		public System.Nullable<bool> EnableSensitivityLabelsForTeamsCollab
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("enablesensitivitylabelsforteamscollab");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("enablesensitivitylabelsforteamscollab", value);
+			}
+		}
+		
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("enablesensitivitylabelsforteamscollabname")]
+		public string enablesensitivitylabelsforteamscollabName
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				if (this.FormattedValues.Contains("enablesensitivitylabelsforteamscollab"))
+				{
+					return this.FormattedValues["enablesensitivitylabelsforteamscollab"];
+				}
+				else
+				{
+					return default(string);
+				}
+			}
+		}
+		
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("enablesensitivitylabelsname")]
+		public string enablesensitivitylabelsName
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				if (this.FormattedValues.Contains("enablesensitivitylabels"))
+				{
+					return this.FormattedValues["enablesensitivitylabels"];
+				}
+				else
+				{
+					return default(string);
+				}
+			}
+		}
+		
+		/// <summary>
+		/// השתמש בהתאמה חכמה.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("enablesmartmatching")]
+		public System.Nullable<bool> EnableSmartMatching
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("enablesmartmatching");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("enablesmartmatching", value);
+			}
+		}
+		
+		/// <summary>
+		/// השאר ריק כדי להשתמש בהגדרת ברירת המחדל. הגדר כ'פועל'/'כבוי' כדי להפוך את CDN לזמין/ללא זמין עבור UCI.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("enableunifiedclientcdn")]
+		public System.Nullable<bool> EnableUnifiedClientCDN
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("enableunifiedclientcdn");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("enableunifiedclientcdn", value);
+			}
+		}
+		
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("enableunifiedclientcdnname")]
+		public string enableunifiedclientcdnName
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				if (this.FormattedValues.Contains("enableunifiedclientcdn"))
+				{
+					return this.FormattedValues["enableunifiedclientcdn"];
+				}
+				else
+				{
+					return default(string);
+				}
+			}
+		}
+		
+		/// <summary>
+		/// הפוך עדכון מפת אתר ופקודות לזמין
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("enableunifiedinterfaceshellrefresh")]
+		public System.Nullable<bool> EnableUnifiedInterfaceShellRefresh
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("enableunifiedinterfaceshellrefresh");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("enableunifiedinterfaceshellrefresh", value);
+			}
+		}
+		
+		/// <summary>
+		/// הגדרת ארגון לאכיפת תוספים לקריאה בלבד
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("enforcereadonlyplugins")]
+		public System.Nullable<bool> EnforceReadOnlyPlugins
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("enforcereadonlyplugins");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("enforcereadonlyplugins", value);
+			}
+		}
+		
+		/// <summary>
+		/// מחרוזת JSON המכילה הגדרות לחוויה משופרת של הוספת מוצרים ב- Sales
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("enhancedoqoiaddproductssettings")]
+		public string EnhancedOQOIAddProductsSettings
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("enhancedoqoiaddproductssettings");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("enhancedoqoiaddproductssettings", value);
+			}
+		}
+		
+		/// <summary>
+		/// תמונת ברירת המחדל עבור הישות.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("entityimage")]
+		public byte[] EntityImage
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<byte[]>("entityimage");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("entityimage", value);
+			}
+		}
+		
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("entityimage_timestamp")]
+		public System.Nullable<long> EntityImage_Timestamp
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<long>>("entityimage_timestamp");
+			}
+		}
+		
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("entityimage_url")]
+		public string EntityImage_URL
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("entityimage_url");
+			}
+		}
+		
+		/// <summary>
+		/// לשימוש פנימי בלבד.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("entityimageid")]
+		public System.Nullable<System.Guid> EntityImageId
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<System.Guid>>("entityimageid");
+			}
+		}
+		
+		/// <summary>
+		/// מספר הימים המרבי להשארת רשומות שנמחקו במעקב אחר שינויים
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("expirechangetrackingindays")]
+		public System.Nullable<int> ExpireChangeTrackingInDays
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<int>>("expirechangetrackingindays");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("expirechangetrackingindays", value);
+			}
+		}
+		
+		/// <summary>
+		/// מספר ימים מרבי לפני מחיקת מנויים לא פעילים.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("expiresubscriptionsindays")]
+		public System.Nullable<int> ExpireSubscriptionsInDays
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<int>>("expiresubscriptionsindays");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("expiresubscriptionsindays", value);
+			}
+		}
+		
+		/// <summary>
+		/// ציין את כתובת ה- URL המהווה בסיס שבה יש להשתמש כדי לחפש הצעות מסמכים חיצוניות.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("externalbaseurl")]
+		public string ExternalBaseUrl
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("externalbaseurl");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("externalbaseurl", value);
+			}
+		}
+		
+		/// <summary>
+		/// מחרוזת XML המכילה את מפתחות המתאם של ישויות ExternalPartyEnabled לצורך שיוך של ישויות מופע צד חיצוני קיימות לישויות IsExternalPartyEnabled חדשות שנוצרו. לשימוש פנימי בלבד.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("externalpartycorrelationkeys")]
+		public string ExternalPartyCorrelationKeys
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("externalpartycorrelationkeys");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("externalpartycorrelationkeys", value);
+			}
+		}
+		
+		/// <summary>
+		/// מחרוזת XML המכילה את הגדרות הישויות של ExternalPartyEnabled.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("externalpartyentitysettings")]
+		public string ExternalPartyEntitySettings
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("externalpartyentitysettings");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("externalpartyentitysettings", value);
+			}
+		}
+		
+		/// <summary>
+		/// תכונות שיש להפוך לזמינות כ- BLOB של XML.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("featureset")]
+		public string FeatureSet
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("featureset");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("featureset", value);
+			}
+		}
+		
+		/// <summary>
+		/// תאריך התחלה עבור תקופת הכספים שבה יש להשתמש בכל Microsoft CRM.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("fiscalcalendarstart")]
+		public System.Nullable<System.DateTime> FiscalCalendarStart
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<System.DateTime>>("fiscalcalendarstart");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("fiscalcalendarstart", value);
+			}
+		}
+		
+		/// <summary>
+		/// מידע המציין כיצד מוצג שמה של תקופת הכספים בכל Microsoft CRM.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("fiscalperiodformat")]
+		public string FiscalPeriodFormat
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("fiscalperiodformat");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("fiscalperiodformat", value);
+			}
+		}
+		
+		/// <summary>
+		/// התבנית שבה תוצג תקופת הכספים.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("fiscalperiodformatperiod")]
+		public virtual Microsoft.Xrm.Sdk.OptionSetValue FiscalPeriodFormatPeriod
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.OptionSetValue>("fiscalperiodformatperiod");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("fiscalperiodformatperiod", value);
+			}
+		}
+		
+		/// <summary>
+		/// התבנית שבה תוצג תקופת הכספים.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("fiscalperiodformatperiod")]
+		public virtual Organization_FiscalPeriodFormatPeriod? FiscalPeriodFormatPeriodEnum
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return ((Organization_FiscalPeriodFormatPeriod?)(EntityOptionSetEnum.GetEnum(this, "fiscalperiodformatperiod")));
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("fiscalperiodformatperiod", value.HasValue ? new Microsoft.Xrm.Sdk.OptionSetValue((int)value) : null);
+			}
+		}
+		
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("fiscalperiodformatperiodname")]
+		public string FiscalPeriodFormatPeriodName
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				if (this.FormattedValues.Contains("fiscalperiodformatperiod"))
+				{
+					return this.FormattedValues["fiscalperiodformatperiod"];
+				}
+				else
+				{
+					return default(string);
+				}
+			}
+		}
+		
+		/// <summary>
+		/// סוג תקופת הכספים הנמצאת בשימוש בכל Microsoft CRM.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("fiscalperiodtype")]
+		public System.Nullable<int> FiscalPeriodType
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<int>>("fiscalperiodtype");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("fiscalperiodtype", value);
+			}
+		}
+		
+		/// <summary>
+		/// מידע המציין אם הגדרות הכספים עודכנו.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("fiscalsettingsupdated")]
+		[System.ObsoleteAttribute()]
+		public System.Nullable<bool> FiscalSettingsUpdated
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("fiscalsettingsupdated");
+			}
+		}
+		
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("fiscalsettingsupdatedname")]
+		[System.ObsoleteAttribute()]
+		public string FiscalSettingsUpdatedName
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				if (this.FormattedValues.Contains("fiscalsettingsupdated"))
+				{
+					return this.FormattedValues["fiscalsettingsupdated"];
+				}
+				else
+				{
+					return default(string);
+				}
+			}
+		}
+		
+		/// <summary>
+		/// מידע המציין אם יש להציג שנת כספים בהתבסס על תאריך ההתחלה או תאריך הסיום של שנת הכספים.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("fiscalyeardisplaycode")]
+		public System.Nullable<int> FiscalYearDisplayCode
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<int>>("fiscalyeardisplaycode");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("fiscalyeardisplaycode", value);
+			}
+		}
+		
+		/// <summary>
+		/// מידע המציין כיצד מוצג שמה של שנת הכספים בכל Microsoft CRM.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("fiscalyearformat")]
+		public string FiscalYearFormat
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("fiscalyearformat");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("fiscalyearformat", value);
+			}
+		}
+		
+		/// <summary>
+		/// תחילית עבור התצוגה של שנת הכספים.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("fiscalyearformatprefix")]
+		public virtual Microsoft.Xrm.Sdk.OptionSetValue FiscalYearFormatPrefix
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.OptionSetValue>("fiscalyearformatprefix");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("fiscalyearformatprefix", value);
+			}
+		}
+		
+		/// <summary>
+		/// תחילית עבור התצוגה של שנת הכספים.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("fiscalyearformatprefix")]
+		public virtual Organization_FiscalYearFormatPrefix? FiscalYearFormatPrefixEnum
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return ((Organization_FiscalYearFormatPrefix?)(EntityOptionSetEnum.GetEnum(this, "fiscalyearformatprefix")));
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("fiscalyearformatprefix", value.HasValue ? new Microsoft.Xrm.Sdk.OptionSetValue((int)value) : null);
+			}
+		}
+		
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("fiscalyearformatprefixname")]
+		public string FiscalYearFormatPrefixName
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				if (this.FormattedValues.Contains("fiscalyearformatprefix"))
+				{
+					return this.FormattedValues["fiscalyearformatprefix"];
+				}
+				else
+				{
+					return default(string);
+				}
+			}
+		}
+		
+		/// <summary>
+		/// סיומת עבור התצוגה של שנת הכספים.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("fiscalyearformatsuffix")]
+		public virtual Microsoft.Xrm.Sdk.OptionSetValue FiscalYearFormatSuffix
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.OptionSetValue>("fiscalyearformatsuffix");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("fiscalyearformatsuffix", value);
+			}
+		}
+		
+		/// <summary>
+		/// סיומת עבור התצוגה של שנת הכספים.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("fiscalyearformatsuffix")]
+		public virtual Organization_FiscalYearFormatSuffix? FiscalYearFormatSuffixEnum
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return ((Organization_FiscalYearFormatSuffix?)(EntityOptionSetEnum.GetEnum(this, "fiscalyearformatsuffix")));
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("fiscalyearformatsuffix", value.HasValue ? new Microsoft.Xrm.Sdk.OptionSetValue((int)value) : null);
+			}
+		}
+		
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("fiscalyearformatsuffixname")]
+		public string FiscalYearFormatSuffixName
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				if (this.FormattedValues.Contains("fiscalyearformatsuffix"))
+				{
+					return this.FormattedValues["fiscalyearformatsuffix"];
+				}
+				else
+				{
+					return default(string);
+				}
+			}
+		}
+		
+		/// <summary>
+		/// תבנית עבור השנה.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("fiscalyearformatyear")]
+		public virtual Microsoft.Xrm.Sdk.OptionSetValue FiscalYearFormatYear
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.OptionSetValue>("fiscalyearformatyear");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("fiscalyearformatyear", value);
+			}
+		}
+		
+		/// <summary>
+		/// תבנית עבור השנה.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("fiscalyearformatyear")]
+		public virtual Organization_FiscalYearFormatYear? FiscalYearFormatYearEnum
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return ((Organization_FiscalYearFormatYear?)(EntityOptionSetEnum.GetEnum(this, "fiscalyearformatyear")));
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("fiscalyearformatyear", value.HasValue ? new Microsoft.Xrm.Sdk.OptionSetValue((int)value) : null);
+			}
+		}
+		
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("fiscalyearformatyearname")]
+		public string FiscalYearFormatYearName
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				if (this.FormattedValues.Contains("fiscalyearformatyear"))
+				{
+					return this.FormattedValues["fiscalyearformatyear"];
+				}
+				else
+				{
+					return default(string);
+				}
+			}
+		}
+		
+		/// <summary>
+		/// מידע המציין כיצד יש לקשר בין שמותיהן של שנת הכספים ושל תקופת הכספים כשהשנה והתקופה מוצגות יחדיו.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("fiscalyearperiodconnect")]
+		public string FiscalYearPeriodConnect
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("fiscalyearperiodconnect");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("fiscalyearperiodconnect", value);
+			}
+		}
+		
+		/// <summary>
+		/// משך החיים - בדקות - המהווה את ברירת המחדל עבור רשומות חדשות בישות יומני הרישום של Flow.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("flowlogsttlinminutes")]
+		public System.Nullable<int> FlowLogsTtlInMinutes
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<int>>("flowlogsttlinminutes");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("flowlogsttlinminutes", value);
+			}
+		}
+		
+		/// <summary>
+		/// זמן להפעלה חיה (בשניות) של הפעלת זרימה
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("flowruntimetoliveinseconds")]
+		public System.Nullable<int> FlowRunTimeToLiveInSeconds
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<int>>("flowruntimetoliveinseconds");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("flowruntimetoliveinseconds", value);
+			}
+		}
+		
+		/// <summary>
+		/// סדר הצגת השמות בכל Microsoft CRM.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("fullnameconventioncode")]
+		public virtual Microsoft.Xrm.Sdk.OptionSetValue FullNameConventionCode
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.OptionSetValue>("fullnameconventioncode");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("fullnameconventioncode", value);
+			}
+		}
+		
+		/// <summary>
+		/// סדר הצגת השמות בכל Microsoft CRM.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("fullnameconventioncode")]
+		public virtual Organization_FullNameConventionCode? FullNameConventionCodeEnum
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return ((Organization_FullNameConventionCode?)(EntityOptionSetEnum.GetEnum(this, "fullnameconventioncode")));
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("fullnameconventioncode", value.HasValue ? new Microsoft.Xrm.Sdk.OptionSetValue((int)value) : null);
+			}
+		}
+		
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("fullnameconventioncodename")]
+		public string FullNameConventionCodeName
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				if (this.FormattedValues.Contains("fullnameconventioncode"))
+				{
+					return this.FormattedValues["fullnameconventioncode"];
+				}
+				else
+				{
+					return default(string);
+				}
+			}
+		}
+		
+		/// <summary>
+		/// מציין את מספר החודשים המרבי בעתיד שעבורו ניתן ליצור את הפעילויות החוזרות.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("futureexpansionwindow")]
+		public System.Nullable<int> FutureExpansionWindow
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<int>>("futureexpansionwindow");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("futureexpansionwindow", value);
+			}
+		}
+		
+		/// <summary>
+		/// מציין אם ייווצרו התראות עבור שגיאות.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("generatealertsforerrors")]
+		public System.Nullable<bool> GenerateAlertsForErrors
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("generatealertsforerrors");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("generatealertsforerrors", value);
+			}
+		}
+		
+		/// <summary>
+		/// מציין אם ייווצרו התראות עבור מידע.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("generatealertsforinformation")]
+		public System.Nullable<bool> GenerateAlertsForInformation
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("generatealertsforinformation");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("generatealertsforinformation", value);
+			}
+		}
+		
+		/// <summary>
+		/// מציין אם ייווצרו התראות עבור אזהרות.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("generatealertsforwarnings")]
+		public System.Nullable<bool> GenerateAlertsForWarnings
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("generatealertsforwarnings");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("generatealertsforwarnings", value);
+			}
+		}
+		
+		/// <summary>
+		/// מציין אם תוכן תחילת העבודה זמין עבור ארגון זה.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("getstartedpanecontentenabled")]
+		public System.Nullable<bool> GetStartedPaneContentEnabled
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("getstartedpanecontentenabled");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("getstartedpanecontentenabled", value);
+			}
+		}
+		
+		/// <summary>
+		/// מציין אם הפרמטרים של כתובת ה- URL של הצירוף זמינים.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("globalappendurlparametersenabled")]
+		public System.Nullable<bool> GlobalAppendUrlParametersEnabled
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("globalappendurlparametersenabled");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("globalappendurlparametersenabled", value);
+			}
+		}
+		
+		/// <summary>
+		/// כתובת URL של העזרה הכללית של דף האינטרנט.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("globalhelpurl")]
+		public string GlobalHelpUrl
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("globalhelpurl");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("globalhelpurl", value);
+			}
+		}
+		
+		/// <summary>
+		/// מציין אם העזרה הכללית הניתנת להתאמה אישית זמינה.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("globalhelpurlenabled")]
+		public System.Nullable<bool> GlobalHelpUrlEnabled
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("globalhelpurlenabled");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("globalhelpurlenabled", value);
+			}
+		}
+		
+		/// <summary>
+		/// מספר הימים לאחר תאריך הסיום של המטרה שלאחריו נפסק הסיכום של המטרה באופן אוטומטי.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("goalrollupexpirytime")]
+		public System.Nullable<int> GoalRollupExpiryTime
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<int>>("goalrollupexpirytime");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("goalrollupexpirytime", value);
+			}
+		}
+		
+		/// <summary>
+		/// מספר השעות בין משימות סיכום אוטומטיות.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("goalrollupfrequency")]
+		public System.Nullable<int> GoalRollupFrequency
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<int>>("goalrollupfrequency");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("goalrollupfrequency", value);
+			}
+		}
+		
+		/// <summary>
+		/// לשימוש פנימי בלבד.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("grantaccesstonetworkservice")]
+		public System.Nullable<bool> GrantAccessToNetworkService
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("grantaccesstonetworkservice");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("grantaccesstonetworkservice", value);
+			}
+		}
+		
+		/// <summary>
+		/// ההפרש המרבי המותר בין מספרי מילות מפתח של נושאים בהודעות הדואר האלקטרוני המיועדות להתאמה
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("hashdeltasubjectcount")]
+		public System.Nullable<int> HashDeltaSubjectCount
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<int>>("hashdeltasubjectcount");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("hashdeltasubjectcount", value);
+			}
+		}
+		
+		/// <summary>
+		/// מילות מפתח לסינון נושאים
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("hashfilterkeywords")]
+		public string HashFilterKeywords
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("hashfilterkeywords");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("hashfilterkeywords", value);
+			}
+		}
+		
+		/// <summary>
+		/// המספר המרבי של מילות מפתח של נושאים או של נמענים המשמש להתאמה
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("hashmaxcount")]
+		public System.Nullable<int> HashMaxCount
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<int>>("hashmaxcount");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("hashmaxcount", value);
+			}
+		}
+		
+		/// <summary>
+		/// המספר המינימלי של נמענים שצריכים להיות תואמים עבור הודעות הדואר האלקטרוני המיועדות להתאמה
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("hashminaddresscount")]
+		public System.Nullable<int> HashMinAddressCount
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<int>>("hashminaddresscount");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("hashminaddresscount", value);
+			}
+		}
+		
+		/// <summary>
+		/// נתוני ערכת נושא של חדות גבוהה עבור הארגון.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("highcontrastthemedata")]
+		public string HighContrastThemeData
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("highcontrastthemedata");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("highcontrastthemedata", value);
+			}
+		}
+		
+		/// <summary>
+		/// מציין אם יש לעקוב אחר דואר אלקטרוני נכנס שנשלח על-ידי משתמשים או תורים פנימיים של Microsoft Dynamics 365.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("ignoreinternalemail")]
+		public System.Nullable<bool> IgnoreInternalEmail
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("ignoreinternalemail");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("ignoreinternalemail", value);
+			}
+		}
+		
+		/// <summary>
+		/// מציין אם ארגון הסכים לשיתוף נתוני שאילתת חיפוש כדי לעזור בשיפור תוצאות החיפוש
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("improvesearchloggingenabled")]
+		public System.Nullable<bool> ImproveSearchLoggingEnabled
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("improvesearchloggingenabled");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("improvesearchloggingenabled", value);
+			}
+		}
+		
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("improvesearchloggingenabledname")]
+		public string improvesearchloggingenabledName
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				if (this.FormattedValues.Contains("improvesearchloggingenabled"))
+				{
+					return this.FormattedValues["improvesearchloggingenabled"];
+				}
+				else
+				{
+					return default(string);
+				}
+			}
+		}
+		
+		/// <summary>
+		/// מידע המציין אם זמן קצוב לחוסר פעילות זמין
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("inactivitytimeoutenabled")]
+		public System.Nullable<bool> InactivityTimeoutEnabled
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("inactivitytimeoutenabled");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("inactivitytimeoutenabled", value);
+			}
+		}
+		
+		/// <summary>
+		/// זמן קצוב לחוסר פעילות בדקות
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("inactivitytimeoutinmins")]
+		public System.Nullable<int> InactivityTimeoutInMins
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<int>>("inactivitytimeoutinmins");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("inactivitytimeoutinmins", value);
+			}
+		}
+		
+		/// <summary>
+		/// תזכורת זמן קצוב לחוסר פעילות בדקות
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("inactivitytimeoutreminderinmins")]
+		public System.Nullable<int> InactivityTimeoutReminderInMins
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<int>>("inactivitytimeoutreminderinmins");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("inactivitytimeoutreminderinmins", value);
+			}
+		}
+		
+		/// <summary>
+		/// הגדרה עבור תור תיבת הדואר של Async Service. מגדיר את גודל אצוות האחזור של שרת Exchange.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("incomingemailexchangeemailretrievalbatchsize")]
+		public System.Nullable<int> IncomingEmailExchangeEmailRetrievalBatchSize
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<int>>("incomingemailexchangeemailretrievalbatchsize");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("incomingemailexchangeemailretrievalbatchsize", value);
+			}
+		}
+		
+		/// <summary>
+		/// גירסה ראשונית של הארגון.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("initialversion")]
+		public string InitialVersion
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("initialversion");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("initialversion", value);
+			}
+		}
+		
+		/// <summary>
+		/// המזהה הייחודי של משתמש השילוב עבור הארגון.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("integrationuserid")]
+		public System.Nullable<System.Guid> IntegrationUserId
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<System.Guid>>("integrationuserid");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("integrationuserid", value);
+			}
+		}
+		
+		/// <summary>
+		/// תחילית שבה יש להשתמש עבור כל מספרי החשבוניות בכל Microsoft Dynamics 365.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("invoiceprefix")]
+		public string InvoicePrefix
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("invoiceprefix");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("invoiceprefix", value);
+			}
+		}
+		
+		/// <summary>
+		/// IP Based SAS mode.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("ipbasedstorageaccesssignaturemode")]
+		public virtual Microsoft.Xrm.Sdk.OptionSetValue IpBasedStorageAccessSignatureMode
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.OptionSetValue>("ipbasedstorageaccesssignaturemode");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("ipbasedstorageaccesssignaturemode", value);
+			}
+		}
+		
+		/// <summary>
+		/// IP Based SAS mode.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("ipbasedstorageaccesssignaturemode")]
+		public virtual Organization_IpBasedStorageAccessSignatureMode? IpBasedStorageAccessSignatureModeEnum
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return ((Organization_IpBasedStorageAccessSignatureMode?)(EntityOptionSetEnum.GetEnum(this, "ipbasedstorageaccesssignaturemode")));
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("ipbasedstorageaccesssignaturemode", value.HasValue ? new Microsoft.Xrm.Sdk.OptionSetValue((int)value) : null);
+			}
+		}
+		
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("ipbasedstorageaccesssignaturemodename")]
+		public string ipbasedstorageaccesssignaturemodeName
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				if (this.FormattedValues.Contains("ipbasedstorageaccesssignaturemode"))
+				{
+					return this.FormattedValues["ipbasedstorageaccesssignaturemode"];
+				}
+				else
+				{
+					return default(string);
+				}
+			}
+		}
+		
+		/// <summary>
+		/// מציין אם התכונה 'כרטיס פעולה' צריכה להיות זמינה עבור הארגון.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("isactioncardenabled")]
+		public System.Nullable<bool> IsActionCardEnabled
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("isactioncardenabled");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("isactioncardenabled", value);
+			}
+		}
+		
+		/// <summary>
+		/// מידע המציין אם תכונת תמיכה בפעולה זמינה
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("isactionsupportfeatureenabled")]
+		public System.Nullable<bool> IsActionSupportFeatureEnabled
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("isactionsupportfeatureenabled");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("isactionsupportfeatureenabled", value);
+			}
+		}
+		
+		/// <summary>
+		/// מציין אם התכונה 'ניתוח קשרי גומלין' צריכה להיות זמינה עבור הארגון.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("isactivityanalysisenabled")]
+		public System.Nullable<bool> IsActivityAnalysisEnabled
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("isactivityanalysisenabled");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("isactivityanalysisenabled", value);
+			}
+		}
+		
+		/// <summary>
+		/// מציין אם כל תכונות הכספים מומרות לערך עשרוני.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("isallmoneydecimal")]
+		public System.Nullable<bool> IsAllMoneyDecimal
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("isallmoneydecimal");
+			}
+		}
+		
+		/// <summary>
+		/// מציין אם טעינת Microsoft Dynamics 365 בחלון דפדפן שאינו כולל שורת כתובת, סרגל כלים ושורת תפריטים זמינה.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("isappmode")]
+		public System.Nullable<bool> IsAppMode
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("isappmode");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("isappmode", value);
+			}
+		}
+		
+		/// <summary>
+		/// הפוך סינכרון קבצים מצורפים לזמין או ללא זמין עבור Outlook ו- Exchange.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("isappointmentattachmentsyncenabled")]
+		public System.Nullable<bool> IsAppointmentAttachmentSyncEnabled
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("isappointmentattachmentsyncenabled");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("isappointmentattachmentsyncenabled", value);
+			}
+		}
+		
+		/// <summary>
+		/// הפוך סינכרון משימות מוקצות לזמין או ללא זמין עבור Outlook ו- Exchange.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("isassignedtaskssyncenabled")]
+		public System.Nullable<bool> IsAssignedTasksSyncEnabled
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("isassignedtaskssyncenabled");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("isassignedtaskssyncenabled", value);
+			}
+		}
+		
+		/// <summary>
+		/// הפוך ביקורת של שינויים לזמינה או ללא זמינה.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("isauditenabled")]
+		public System.Nullable<bool> IsAuditEnabled
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("isauditenabled");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("isauditenabled", value);
+			}
+		}
+		
+		/// <summary>
+		/// מציין אם התכונה 'לכידה אוטומטית' צריכה להיות זמינה עבור הארגון.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("isautodatacaptureenabled")]
+		public System.Nullable<bool> IsAutoDataCaptureEnabled
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("isautodatacaptureenabled");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("isautodatacaptureenabled", value);
+			}
+		}
+		
+		/// <summary>
+		/// מציין אם תכונת ה- V2 של 'לכידה אוטומטית' צריכה להיות זמינה עבור הארגון.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("isautodatacapturev2enabled")]
+		public System.Nullable<bool> IsAutoDataCaptureV2Enabled
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("isautodatacapturev2enabled");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("isautodatacapturev2enabled", value);
+			}
+		}
+		
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("isautoinstallappford365inteamsenabled")]
+		public System.Nullable<bool> IsAutoInstallAppForD365InTeamsEnabled
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("isautoinstallappford365inteamsenabled");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("isautoinstallappford365inteamsenabled", value);
+			}
+		}
+		
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("isautoinstallappford365inteamsenabledname")]
+		public string isautoinstallappford365inteamsenabledName
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				if (this.FormattedValues.Contains("isautoinstallappford365inteamsenabled"))
+				{
+					return this.FormattedValues["isautoinstallappford365inteamsenabled"];
+				}
+				else
+				{
+					return default(string);
+				}
+			}
+		}
+		
+		/// <summary>
+		/// מידע המציין אם שמירה אוטומטית זמינה.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("isautosaveenabled")]
+		public System.Nullable<bool> IsAutoSaveEnabled
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("isautosaveenabled");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("isautosaveenabled", value);
+			}
+		}
+		
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("isbasecardstaticfielddataenabled")]
+		public System.Nullable<bool> IsBaseCardStaticFieldDataEnabled
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("isbasecardstaticfielddataenabled");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("isbasecardstaticfielddataenabled", value);
+			}
+		}
+		
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("isbasecardstaticfielddataenabledname")]
+		public string isbasecardstaticfielddataenabledName
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				if (this.FormattedValues.Contains("isbasecardstaticfielddataenabled"))
+				{
+					return this.FormattedValues["isbasecardstaticfielddataenabled"];
+				}
+				else
+				{
+					return default(string);
+				}
+			}
+		}
+		
+		/// <summary>
+		/// קובע אם משתמשים יכולים לעשות שימוש בתכונות גיאו-מרחביות בסיסיות ביישומי בד ציור.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("isbasicgeospatialintegrationenabled")]
+		public System.Nullable<bool> IsBasicGeospatialIntegrationEnabled
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("isbasicgeospatialintegrationenabled");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("isbasicgeospatialintegrationenabled", value);
+			}
+		}
+		
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("isbasicgeospatialintegrationenabledname")]
+		public string isbasicgeospatialintegrationenabledName
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				if (this.FormattedValues.Contains("isbasicgeospatialintegrationenabled"))
+				{
+					return this.FormattedValues["isbasicgeospatialintegrationenabled"];
+				}
+				else
+				{
+					return default(string);
+				}
+			}
+		}
+		
+		/// <summary>
+		/// מידע המציין אם תכונת ההתאמה האישית של ישויות BPF זמינה
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("isbpfentitycustomizationfeatureenabled")]
+		public System.Nullable<bool> IsBPFEntityCustomizationFeatureEnabled
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("isbpfentitycustomizationfeatureenabled");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("isbpfentitycustomizationfeatureenabled", value);
+			}
+		}
+		
+		/// <summary>
+		/// Indicates whether Power Automate savings feature is enabled for Cloudflow.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("iscloudflowsavingsenabled")]
+		public System.Nullable<bool> IsCloudFlowSavingsEnabled
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("iscloudflowsavingsenabled");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("iscloudflowsavingsenabled", value);
+			}
+		}
+		
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("iscloudflowsavingsenabledname")]
+		public string iscloudflowsavingsenabledName
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				if (this.FormattedValues.Contains("iscloudflowsavingsenabled"))
+				{
+					return this.FormattedValues["iscloudflowsavingsenabled"];
+				}
+				else
+				{
+					return default(string);
+				}
+			}
+		}
+		
+		/// <summary>
+		/// דגל 'לקריאה בלבד' המציין אם קיבוץ באשכולות מופעל עבור הארגון.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("isclusteringenabled")]
+		public System.Nullable<bool> IsClusteringEnabled
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("isclusteringenabled");
+			}
+		}
+		
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("isclusteringenabledname")]
+		public string isclusteringenabledName
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				if (this.FormattedValues.Contains("isclusteringenabled"))
+				{
+					return this.FormattedValues["isclusteringenabled"];
+				}
+				else
+				{
+					return default(string);
+				}
+			}
+		}
+		
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("iscollaborationexperienceenabled")]
+		public System.Nullable<bool> IsCollaborationExperienceEnabled
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("iscollaborationexperienceenabled");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("iscollaborationexperienceenabled", value);
+			}
+		}
+		
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("iscollaborationexperienceenabledname")]
+		public string iscollaborationexperienceenabledName
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				if (this.FormattedValues.Contains("iscollaborationexperienceenabled"))
+				{
+					return this.FormattedValues["iscollaborationexperienceenabled"];
+				}
+				else
+				{
+					return default(string);
+				}
+			}
+		}
+		
+		/// <summary>
+		/// מציין אם תכונת שימוש המחשב ב-MCS מופעלת בארגון זה.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("iscomputeruseinmcsenabled")]
+		public System.Nullable<bool> IsComputerUseInMCSEnabled
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("iscomputeruseinmcsenabled");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("iscomputeruseinmcsenabled", value);
+			}
+		}
+		
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("iscomputeruseinmcsenabledname")]
+		public string iscomputeruseinmcsenabledName
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				if (this.FormattedValues.Contains("iscomputeruseinmcsenabled"))
+				{
+					return this.FormattedValues["iscomputeruseinmcsenabled"];
+				}
+				else
+				{
+					return default(string);
+				}
+			}
+		}
+		
+		/// <summary>
+		/// מידע המציין אם זיהוי התנגשויות זמין עבור לקוח נייד.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("isconflictdetectionenabledformobileclient")]
+		public System.Nullable<bool> IsConflictDetectionEnabledForMobileClient
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("isconflictdetectionenabledformobileclient");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("isconflictdetectionenabledformobileclient", value);
+			}
+		}
+		
+		/// <summary>
+		/// הפוך סינכרון כתובות משלוח לזמין או ללא זמין עבור Outlook ו- Exchange.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("iscontactmailingaddresssyncenabled")]
+		public System.Nullable<bool> IsContactMailingAddressSyncEnabled
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("iscontactmailingaddresssyncenabled");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("iscontactmailingaddresssyncenabled", value);
+			}
+		}
+		
+		/// <summary>
+		/// מציין אם התכונה 'מדיניות אבטחת תוכן‬' הפכה לזמינה עבור הארגון.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("iscontentsecuritypolicyenabled")]
+		public System.Nullable<bool> IsContentSecurityPolicyEnabled
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("iscontentsecuritypolicyenabled");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("iscontentsecuritypolicyenabled", value);
+			}
+		}
+		
+		/// <summary>
+		/// מציין אם התכונה 'מדיניות אבטחת תוכן‬' הפכה לזמינה עבור יישומי בד הציור של ארגון זה.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("iscontentsecuritypolicyenabledforcanvas")]
+		public System.Nullable<bool> IsContentSecurityPolicyEnabledForCanvas
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("iscontentsecuritypolicyenabledforcanvas");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("iscontentsecuritypolicyenabledforcanvas", value);
+			}
+		}
+		
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("iscontentsecuritypolicyenabledforcanvasname")]
+		public string iscontentsecuritypolicyenabledforcanvasName
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				if (this.FormattedValues.Contains("iscontentsecuritypolicyenabledforcanvas"))
+				{
+					return this.FormattedValues["iscontentsecuritypolicyenabledforcanvas"];
+				}
+				else
+				{
+					return default(string);
+				}
+			}
+		}
+		
+		/// <summary>
+		/// מציין אם חוויית דואר אלקטרוני הקשרית זמינה בארגון זה
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("iscontextualemailenabled")]
+		public System.Nullable<bool> IsContextualEmailEnabled
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("iscontextualemailenabled");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("iscontextualemailenabled", value);
+			}
+		}
+		
+		/// <summary>
+		/// בחר כדי להפוך עזרה הקשרית לזמינה ב- UCI.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("iscontextualhelpenabled")]
+		public System.Nullable<bool> IsContextualHelpEnabled
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("iscontextualhelpenabled");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("iscontextualhelpenabled", value);
+			}
+		}
+		
+		/// <summary>
+		/// Determines whether users can provide feedback Copilot experiences.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("iscopilotfeedbackenabled")]
+		public System.Nullable<bool> IsCopilotFeedbackEnabled
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("iscopilotfeedbackenabled");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("iscopilotfeedbackenabled", value);
+			}
+		}
+		
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("iscopilotfeedbackenabledname")]
+		public string iscopilotfeedbackenabledName
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				if (this.FormattedValues.Contains("iscopilotfeedbackenabled"))
+				{
+					return this.FormattedValues["iscopilotfeedbackenabled"];
+				}
+				else
+				{
+					return default(string);
+				}
+			}
+		}
+		
+		/// <summary>
+		/// Indicates whether Copy Opportunity is enabled for the organization
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("iscopyopportunityenabled")]
+		public System.Nullable<bool> IsCopyOpportunityEnabled
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("iscopyopportunityenabled");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("iscopyopportunityenabled", value);
+			}
+		}
+		
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("iscopyopportunityenabledname")]
+		public string iscopyopportunityenabledName
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				if (this.FormattedValues.Contains("iscopyopportunityenabled"))
+				{
+					return this.FormattedValues["iscopyopportunityenabled"];
+				}
+				else
+				{
+					return default(string);
+				}
+			}
+		}
+		
+		/// <summary>
+		/// Indicates whether CUA on Hosted Groups V2 feature is enabled in this organization.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("iscuaonhmgv2enabled")]
+		public System.Nullable<bool> IsCuaOnHmgV2Enabled
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("iscuaonhmgv2enabled");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("iscuaonhmgv2enabled", value);
+			}
+		}
+		
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("iscuaonhmgv2enabledname")]
+		public string iscuaonhmgv2enabledName
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				if (this.FormattedValues.Contains("iscuaonhmgv2enabled"))
+				{
+					return this.FormattedValues["iscuaonhmgv2enabled"];
+				}
+				else
+				{
+					return default(string);
+				}
+			}
+		}
+		
+		/// <summary>
+		/// מציין אם תכונת ‏‫פקדים מותאמים אישית‬ בבד הציור של PowerApps הפכה לזמינה עבור הארגון.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("iscustomcontrolsincanvasappsenabled")]
+		public System.Nullable<bool> IsCustomControlsInCanvasAppsEnabled
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("iscustomcontrolsincanvasappsenabled");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("iscustomcontrolsincanvasappsenabled", value);
+			}
+		}
+		
+		/// <summary>
+		/// הפוך בחירת קידומת מדינה לזמינה או ללא זמינה.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("isdefaultcountrycodecheckenabled")]
+		public System.Nullable<bool> IsDefaultCountryCodeCheckEnabled
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("isdefaultcountrycodecheckenabled");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("isdefaultcountrycodecheckenabled", value);
+			}
+		}
+		
+		/// <summary>
+		/// הפוך תוכן עם גישת הקצאה לזמין
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("isdelegateaccessenabled")]
+		public System.Nullable<bool> IsDelegateAccessEnabled
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("isdelegateaccessenabled");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("isdelegateaccessenabled", value);
+			}
+		}
+		
+		/// <summary>
+		/// מציין אם התכונה 'מרכז הפעולות' צריכה להיות זמינה עבור הארגון.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("isdelveactionhubintegrationenabled")]
+		public System.Nullable<bool> IsDelveActionHubIntegrationEnabled
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("isdelveactionhubintegrationenabled");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("isdelveactionhubintegrationenabled", value);
+			}
+		}
+		
+		/// <summary>
+		/// מציין אם חיבור המוטבע בזרימות שולחן עבודה זמינה בארגון זה.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("isdesktopflowconnectionembeddingenabled")]
+		public System.Nullable<bool> IsDesktopFlowConnectionEmbeddingEnabled
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("isdesktopflowconnectionembeddingenabled");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("isdesktopflowconnectionembeddingenabled", value);
+			}
+		}
+		
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("isdesktopflowconnectionembeddingenabledname")]
+		public string isdesktopflowconnectionembeddingenabledName
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				if (this.FormattedValues.Contains("isdesktopflowconnectionembeddingenabled"))
+				{
+					return this.FormattedValues["isdesktopflowconnectionembeddingenabled"];
+				}
+				else
+				{
+					return default(string);
+				}
+			}
+		}
+		
+		/// <summary>
+		/// מציין אם התכונה Desktop Flows UI Automation Repair Time Runtime for Attended מופעלת עבור ארגון זה.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("isdesktopflowruntimerepairattendedenabled")]
+		public System.Nullable<bool> IsDesktopFlowRuntimeRepairAttendedEnabled
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("isdesktopflowruntimerepairattendedenabled");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("isdesktopflowruntimerepairattendedenabled", value);
+			}
+		}
+		
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("isdesktopflowruntimerepairattendedenabledname")]
+		public string isdesktopflowruntimerepairattendedenabledName
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				if (this.FormattedValues.Contains("isdesktopflowruntimerepairattendedenabled"))
+				{
+					return this.FormattedValues["isdesktopflowruntimerepairattendedenabled"];
+				}
+				else
+				{
+					return default(string);
+				}
+			}
+		}
+		
+		/// <summary>
+		/// מציין אם התכונה Desktop Flows UI Automation Runtime Repair for Unattended מופעלת עבור ארגון זה.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("isdesktopflowruntimerepairunattendedenabled")]
+		public System.Nullable<bool> IsDesktopFlowRuntimeRepairUnattendedEnabled
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("isdesktopflowruntimerepairunattendedenabled");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("isdesktopflowruntimerepairunattendedenabled", value);
+			}
+		}
+		
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("isdesktopflowruntimerepairunattendedenabledname")]
+		public string isdesktopflowruntimerepairunattendedenabledName
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				if (this.FormattedValues.Contains("isdesktopflowruntimerepairunattendedenabled"))
+				{
+					return this.FormattedValues["isdesktopflowruntimerepairunattendedenabled"];
+				}
+				else
+				{
+					return default(string);
+				}
+			}
+		}
+		
+		/// <summary>
+		/// Indicates whether Power Automate savings feature is enabled for Desktopflow.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("isdesktopflowsavingsenabled")]
+		public System.Nullable<bool> IsDesktopFlowSavingsEnabled
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("isdesktopflowsavingsenabled");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("isdesktopflowsavingsenabled", value);
+			}
+		}
+		
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("isdesktopflowsavingsenabledname")]
+		public string isdesktopflowsavingsenabledName
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				if (this.FormattedValues.Contains("isdesktopflowsavingsenabled"))
+				{
+					return this.FormattedValues["isdesktopflowsavingsenabled"];
+				}
+				else
+				{
+					return default(string);
+				}
+			}
+		}
+		
+		/// <summary>
+		/// מציין אם סכימת גירסה 2 עבור זרימות שולחן עבודה זמינה בארגון זה.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("isdesktopflowschemav2enabled")]
+		public System.Nullable<bool> IsDesktopFlowSchemaV2Enabled
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("isdesktopflowschemav2enabled");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("isdesktopflowschemav2enabled", value);
+			}
+		}
+		
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("isdesktopflowschemav2enabledname")]
+		public string isdesktopflowschemav2enabledName
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				if (this.FormattedValues.Contains("isdesktopflowschemav2enabled"))
+				{
+					return this.FormattedValues["isdesktopflowschemav2enabled"];
+				}
+				else
+				{
+					return default(string);
+				}
+			}
+		}
+		
+		/// <summary>
+		/// מציין אם Windows Vanilla Image תהיה זמינה עבור משתמשי Desktop Flow בארגון הזה.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("isdesktopflowvanillaimagesharingenabled")]
+		public System.Nullable<bool> IsDesktopFlowVanillaImageSharingEnabled
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("isdesktopflowvanillaimagesharingenabled");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("isdesktopflowvanillaimagesharingenabled", value);
+			}
+		}
+		
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("isdesktopflowvanillaimagesharingenabledname")]
+		public string isdesktopflowvanillaimagesharingenabledName
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				if (this.FormattedValues.Contains("isdesktopflowvanillaimagesharingenabled"))
+				{
+					return this.FormattedValues["isdesktopflowvanillaimagesharingenabled"];
+				}
+				else
+				{
+					return default(string);
+				}
+			}
+		}
+		
+		/// <summary>
+		/// Indicates whether version control for Desktop Flows is enabled in this organization.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("isdesktopflowversioncontrolenabled")]
+		public System.Nullable<bool> IsDesktopFlowVersionControlEnabled
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("isdesktopflowversioncontrolenabled");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("isdesktopflowversioncontrolenabled", value);
+			}
+		}
+		
+		/// <summary>
+		/// Indicates if this organization will opt-in to automatically to enable version control for Desktop Flows.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("isdesktopflowversioncontrolenabledbydefault")]
+		public System.Nullable<bool> IsDesktopFlowVersionControlEnabledByDefault
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("isdesktopflowversioncontrolenabledbydefault");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("isdesktopflowversioncontrolenabledbydefault", value);
+			}
+		}
+		
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("isdesktopflowversioncontrolenabledbydefaultname")]
+		public string isdesktopflowversioncontrolenabledbydefaultName
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				if (this.FormattedValues.Contains("isdesktopflowversioncontrolenabledbydefault"))
+				{
+					return this.FormattedValues["isdesktopflowversioncontrolenabledbydefault"];
+				}
+				else
+				{
+					return default(string);
+				}
+			}
+		}
+		
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("isdesktopflowversioncontrolenabledname")]
+		public string isdesktopflowversioncontrolenabledName
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				if (this.FormattedValues.Contains("isdesktopflowversioncontrolenabled"))
+				{
+					return this.FormattedValues["isdesktopflowversioncontrolenabled"];
+				}
+				else
+				{
+					return default(string);
+				}
+			}
+		}
+		
+		/// <summary>
+		/// Overrides whether version control for Desktop Flows is enabled in this organization.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("isdesktopflowversioncontrolenabledoverride")]
+		public virtual Microsoft.Xrm.Sdk.OptionSetValue IsDesktopFlowVersionControlEnabledOverride
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.OptionSetValue>("isdesktopflowversioncontrolenabledoverride");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("isdesktopflowversioncontrolenabledoverride", value);
+			}
+		}
+		
+		/// <summary>
+		/// Overrides whether version control for Desktop Flows is enabled in this organization.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("isdesktopflowversioncontrolenabledoverride")]
+		public virtual Organization_IsDesktopFlowVersionControlEnabledOverride? IsDesktopFlowVersionControlEnabledOverrideEnum
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return ((Organization_IsDesktopFlowVersionControlEnabledOverride?)(EntityOptionSetEnum.GetEnum(this, "isdesktopflowversioncontrolenabledoverride")));
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("isdesktopflowversioncontrolenabledoverride", value.HasValue ? new Microsoft.Xrm.Sdk.OptionSetValue((int)value) : null);
+			}
+		}
+		
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("isdesktopflowversioncontrolenabledoverridename")]
+		public string isdesktopflowversioncontrolenabledoverrideName
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				if (this.FormattedValues.Contains("isdesktopflowversioncontrolenabledoverride"))
+				{
+					return this.FormattedValues["isdesktopflowversioncontrolenabledoverride"];
+				}
+				else
+				{
+					return default(string);
+				}
+			}
+		}
+		
+		/// <summary>
+		/// מידע המציין אם הארגון אינו זמין.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("isdisabled")]
+		public System.Nullable<bool> IsDisabled
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("isdisabled");
+			}
+		}
+		
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("isdisabledname")]
+		public string IsDisabledName
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				if (this.FormattedValues.Contains("isdisabled"))
+				{
+					return this.FormattedValues["isdisabled"];
+				}
+				else
+				{
+					return default(string);
+				}
+			}
+		}
+		
+		/// <summary>
+		/// מציין אם זיהוי כפילויות של רשומות זמין.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("isduplicatedetectionenabled")]
+		public System.Nullable<bool> IsDuplicateDetectionEnabled
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("isduplicatedetectionenabled");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("isduplicatedetectionenabled", value);
+			}
+		}
+		
+		/// <summary>
+		/// מציין אם זיהוי כפילויות של רשומות במהלך ייבוא זמין.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("isduplicatedetectionenabledforimport")]
+		public System.Nullable<bool> IsDuplicateDetectionEnabledForImport
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("isduplicatedetectionenabledforimport");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("isduplicatedetectionenabledforimport", value);
+			}
+		}
+		
+		/// <summary>
+		/// מציין אם זיהוי כפילויות של רשומות במהלך סינכרון לא מקוון זמין.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("isduplicatedetectionenabledforofflinesync")]
+		public System.Nullable<bool> IsDuplicateDetectionEnabledForOfflineSync
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("isduplicatedetectionenabledforofflinesync");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("isduplicatedetectionenabledforofflinesync", value);
+			}
+		}
+		
+		/// <summary>
+		/// מציין אם זיהוי כפילויות במהלך יצירה או עדכון מקוונים זמין.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("isduplicatedetectionenabledforonlinecreateupdate")]
+		public System.Nullable<bool> IsDuplicateDetectionEnabledForOnlineCreateUpdate
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("isduplicatedetectionenabledforonlinecreateupdate");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("isduplicatedetectionenabledforonlinecreateupdate", value);
+			}
+		}
+		
+		/// <summary>
+		/// Information on whether Smart Email Address Validation is enabled.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("isemailaddressvalidationenabled")]
+		public System.Nullable<bool> IsEmailAddressValidationEnabled
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("isemailaddressvalidationenabled");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("isemailaddressvalidationenabled", value);
+			}
+		}
+		
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("isemailaddressvalidationenabledname")]
+		public string isemailaddressvalidationenabledName
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				if (this.FormattedValues.Contains("isemailaddressvalidationenabled"))
+				{
+					return this.FormattedValues["isemailaddressvalidationenabled"];
+				}
+				else
+				{
+					return default(string);
+				}
+			}
+		}
+		
+		/// <summary>
+		/// אפשר מעקב אחר פעילות נמענים בהודעות דואר אלקטרוני שנשלחו.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("isemailmonitoringallowed")]
+		public System.Nullable<bool> IsEmailMonitoringAllowed
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("isemailmonitoringallowed");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("isemailmonitoringallowed", value);
+			}
+		}
+		
+		/// <summary>
+		/// הפוך סינון תוכן של פרופיל שרת דואר אלקטרוני לזמין
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("isemailserverprofilecontentfilteringenabled")]
+		public System.Nullable<bool> IsEmailServerProfileContentFilteringEnabled
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("isemailserverprofilecontentfilteringenabled");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("isemailserverprofilecontentfilteringenabled", value);
+			}
+		}
+		
+		/// <summary>
+		/// מציין אם שיתוף פעולה מוטבע ב- Teams‬ הפך לזמין עבור הארגון
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("isembedteamscollabenabled")]
+		public System.Nullable<bool> IsEmbedTeamsCollabEnabled
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("isembedteamscollabenabled");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("isembedteamscollabenabled", value);
+			}
+		}
+		
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("isembedteamscollabenabledname")]
+		public string isembedteamscollabenabledName
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				if (this.FormattedValues.Contains("isembedteamscollabenabled"))
+				{
+					return this.FormattedValues["isembedteamscollabenabled"];
+				}
+				else
+				{
+					return default(string);
+				}
+			}
+		}
+		
+		/// <summary>
+		/// מציין אם appmodule זמין עבור כל התפקידים
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("isenabledforallroles")]
+		public System.Nullable<bool> IsEnabledForAllRoles
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("isenabledforallroles");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("isenabledforallroles", value);
+			}
+		}
+		
+		/// <summary>
+		/// מציין אם הקבצים של הארגון מאוחסנים ב- Azure.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("isexternalfilestorageenabled")]
+		public System.Nullable<bool> IsExternalFileStorageEnabled
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("isexternalfilestorageenabled");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("isexternalfilestorageenabled", value);
+			}
+		}
+		
+		/// <summary>
+		/// בחר אם ניתן לסנכרן נתונים עם אינדקס חיפוש חיצוני.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("isexternalsearchindexenabled")]
+		public System.Nullable<bool> IsExternalSearchIndexEnabled
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("isexternalsearchindexenabled");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("isexternalsearchindexenabled", value);
+			}
+		}
+		
+		/// <summary>
+		/// מציין אם תקופת הכספים מוצגת כמספר החודש.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("isfiscalperiodmonthbased")]
+		public System.Nullable<bool> IsFiscalPeriodMonthBased
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("isfiscalperiodmonthbased");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("isfiscalperiodmonthbased", value);
+			}
+		}
+		
+		/// <summary>
+		/// בחר אם יש ליצור תיקיות באופן אוטומטי ב- SharePoint.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("isfolderautocreatedonsp")]
+		public System.Nullable<bool> IsFolderAutoCreatedonSP
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("isfolderautocreatedonsp");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("isfolderautocreatedonsp", value);
+			}
+		}
+		
+		/// <summary>
+		/// הפוך מעקב המבוסס על תיקיות לזמין או ללא זמין עבור סינכרון בצד השרת‬.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("isfolderbasedtrackingenabled")]
+		public System.Nullable<bool> IsFolderBasedTrackingEnabled
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("isfolderbasedtrackingenabled");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("isfolderbasedtrackingenabled", value);
+			}
+		}
+		
+		/// <summary>
+		/// מציין אם יש להפוך חיפוש טקסט מלא עבור ישויות חיפוש מהיר‬ לזמין עבור הארגון.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("isfulltextsearchenabled")]
+		public System.Nullable<bool> IsFullTextSearchEnabled
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("isfulltextsearchenabled");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("isfulltextsearchenabled", value);
+			}
+		}
+		
+		/// <summary>
+		/// מציין אם יכולות גיאו-מרחביות שממנפות את Azure Maps מופעלות.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("isgeospatialazuremapsintegrationenabled")]
+		public System.Nullable<bool> IsGeospatialAzureMapsIntegrationEnabled
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("isgeospatialazuremapsintegrationenabled");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("isgeospatialazuremapsintegrationenabled", value);
+			}
+		}
+		
+		/// <summary>
+		/// הפוך מודל אבטחה הירארכית לזמין
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("ishierarchicalsecuritymodelenabled")]
+		public System.Nullable<bool> IsHierarchicalSecurityModelEnabled
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("ishierarchicalsecuritymodelenabled");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("ishierarchicalsecuritymodelenabled", value);
+			}
+		}
+		
+		/// <summary>
+		/// Indicates whether data collection for ideas in canvas PowerApps has been enabled.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("isideasdatacollectionenabled")]
+		public System.Nullable<bool> IsIdeasDataCollectionEnabled
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("isideasdatacollectionenabled");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("isideasdatacollectionenabled", value);
+			}
+		}
+		
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("isideasdatacollectionenabledname")]
+		public string isideasdatacollectionenabledName
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				if (this.FormattedValues.Contains("isideasdatacollectionenabled"))
+				{
+					return this.FormattedValues["isideasdatacollectionenabled"];
+				}
+				else
+				{
+					return default(string);
+				}
+			}
+		}
+		
+		/// <summary>
+		/// תן הסכמתך להשתמש ב- LUIS בתוכנית Bot של Dynamics 365
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("isluisenabledford365bot")]
+		public System.Nullable<bool> IsLUISEnabledforD365Bot
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("isluisenabledford365bot");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("isluisenabledford365bot", value);
+			}
+		}
+		
+		/// <summary>
+		/// הפוך כפיית ביטול נעילה לזמינה או ללא זמינה עבור תיבות דואר של סינכרון בצד השרת‬.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("ismailboxforcedunlockingenabled")]
+		public System.Nullable<bool> IsMailboxForcedUnlockingEnabled
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("ismailboxforcedunlockingenabled");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("ismailboxforcedunlockingenabled", value);
+			}
+		}
+		
+		/// <summary>
+		/// הפוך אפשרות 'שמור-בחיים' של תיבת דואר לזמינה או ללא זמינה עבור סינכרון בצד השרת‬.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("ismailboxinactivebackoffenabled")]
+		public System.Nullable<bool> IsMailboxInactiveBackoffEnabled
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("ismailboxinactivebackoffenabled");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("ismailboxinactivebackoffenabled", value);
+			}
+		}
+		
+		/// <summary>
+		/// מציין אם תכונת תחזית המכירות הידנית הפכה לזמינה עבור הארגון.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("ismanualsalesforecastingenabled")]
+		public System.Nullable<bool> IsManualSalesForecastingEnabled
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("ismanualsalesforecastingenabled");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("ismanualsalesforecastingenabled", value);
+			}
+		}
+		
+		/// <summary>
+		/// מידע המציין אם סינכרון לפי דרישה של הלקוח הנייד זמין.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("ismobileclientondemandsyncenabled")]
+		public System.Nullable<bool> IsMobileClientOnDemandSyncEnabled
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("ismobileclientondemandsyncenabled");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("ismobileclientondemandsyncenabled", value);
+			}
+		}
+		
+		/// <summary>
+		/// מציין אם התכונה MobileOffline צריכה להיות זמינה עבור הארגון.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("ismobileofflineenabled")]
+		public System.Nullable<bool> IsMobileOfflineEnabled
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("ismobileofflineenabled");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("ismobileofflineenabled", value);
+			}
+		}
+		
+		/// <summary>
+		/// מציין אם ניתן להטביע יישומי מודל בתוך Microsoft Teams. זוהי תכונה מקדימה/ניסיונית בשליטת מנהל מערכת הדיירים.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("ismodeldrivenappsinmsteamsenabled")]
+		public System.Nullable<bool> IsModelDrivenAppsInMSTeamsEnabled
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("ismodeldrivenappsinmsteamsenabled");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("ismodeldrivenappsinmsteamsenabled", value);
+			}
+		}
+		
+		/// <summary>
+		/// מציין אם היוצר יכול ליצור כללי חיסכון מבוססי כסף ב-Power Automate.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("ismoneysavingsallowed")]
+		public System.Nullable<bool> IsMoneySavingsAllowed
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("ismoneysavingsallowed");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("ismoneysavingsallowed", value);
+			}
+		}
+		
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("ismoneysavingsallowedname")]
+		public string ismoneysavingsallowedName
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				if (this.FormattedValues.Contains("ismoneysavingsallowed"))
+				{
+					return this.FormattedValues["ismoneysavingsallowed"];
+				}
+				else
+				{
+					return default(string);
+				}
+			}
+		}
+		
+		/// <summary>
+		/// מציין אם תכונת שיתוף הפעולה של Microsoft Teams הפכה לזמינה עבור הארגון.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("ismsteamscollaborationenabled")]
+		public System.Nullable<bool> IsMSTeamsCollaborationEnabled
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("ismsteamscollaborationenabled");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("ismsteamscollaborationenabled", value);
+			}
+		}
+		
+		/// <summary>
+		/// מציין אם שילוב Microsoft Teams הפך לזמין עבור הארגון.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("ismsteamsenabled")]
+		public System.Nullable<bool> IsMSTeamsEnabled
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("ismsteamsenabled");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("ismsteamsenabled", value);
+			}
+		}
+		
+		/// <summary>
+		/// מציין אם המשתמש הפך את שילוב Microsoft Teams לזמין או ללא זמין.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("ismsteamssettingchangedbyuser")]
+		public System.Nullable<bool> IsMSTeamsSettingChangedByUser
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("ismsteamssettingchangedbyuser");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("ismsteamssettingchangedbyuser", value);
+			}
+		}
+		
+		/// <summary>
+		/// מציין אם תכונת סינכרון המשתמש של Microsoft Teams הפכה לזמינה עבור הארגון.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("ismsteamsusersyncenabled")]
+		public System.Nullable<bool> IsMSTeamsUserSyncEnabled
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("ismsteamsusersyncenabled");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("ismsteamsusersyncenabled", value);
+			}
+		}
+		
+		/// <summary>
+		/// מציין אם החוויה החדשה של הוספת מוצר זמינה.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("isnewaddproductexperienceenabled")]
+		public System.Nullable<bool> IsNewAddProductExperienceEnabled
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("isnewaddproductexperienceenabled");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("isnewaddproductexperienceenabled", value);
+			}
+		}
+		
+		/// <summary>
+		/// מציין אם התכונה 'ניתוח הערות' צריכה להיות זמינה עבור הארגון.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("isnotesanalysisenabled")]
+		public System.Nullable<bool> IsNotesAnalysisEnabled
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("isnotesanalysisenabled");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("isnotesanalysisenabled", value);
+			}
+		}
+		
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("isnotificationford365inteamsenabled")]
+		public System.Nullable<bool> IsNotificationForD365InTeamsEnabled
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("isnotificationford365inteamsenabled");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("isnotificationford365inteamsenabled", value);
+			}
+		}
+		
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("isnotificationford365inteamsenabledname")]
+		public string isnotificationford365inteamsenabledName
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				if (this.FormattedValues.Contains("isnotificationford365inteamsenabled"))
+				{
+					return this.FormattedValues["isnotificationford365inteamsenabled"];
+				}
+				else
+				{
+					return default(string);
+				}
+			}
+		}
+		
+		/// <summary>
+		/// מציין אם התכונה OfficeGraph צריכה להיות זמינה עבור הארגון.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("isofficegraphenabled")]
+		public System.Nullable<bool> IsOfficeGraphEnabled
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("isofficegraphenabled");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("isofficegraphenabled", value);
+			}
+		}
+		
+		/// <summary>
+		/// מציין אם התכונה OneDrive צריכה להיות זמינה עבור הארגון.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("isonedriveenabled")]
+		public System.Nullable<bool> IsOneDriveEnabled
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("isonedriveenabled");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("isonedriveenabled", value);
+			}
+		}
+		
+		/// <summary>
+		/// מציין אם התכונה PAI הפכה לזמינה עבור הארגון.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("ispaienabled")]
+		public System.Nullable<bool> IsPAIEnabled
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("ispaienabled");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("ispaienabled", value);
+			}
+		}
+		
+		/// <summary>
+		/// מציין אם התכונה 'יצירת PDF' הפכה לזמינה עבור הארגון.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("ispdfgenerationenabled")]
+		public string IsPDFGenerationEnabled
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("ispdfgenerationenabled");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("ispdfgenerationenabled", value);
+			}
+		}
+		
+		/// <summary>
+		/// מציין אם תכונת יתר הפריסה זמינה בארגון זה.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("isperprocesscapacityoverageenabled")]
+		public System.Nullable<bool> IsPerProcessCapacityOverageEnabled
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("isperprocesscapacityoverageenabled");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("isperprocesscapacityoverageenabled", value);
+			}
+		}
+		
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("isperprocesscapacityoverageenabledname")]
+		public string isperprocesscapacityoverageenabledName
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				if (this.FormattedValues.Contains("isperprocesscapacityoverageenabled"))
+				{
+					return this.FormattedValues["isperprocesscapacityoverageenabled"];
+				}
+				else
+				{
+					return default(string);
+				}
+			}
+		}
+		
+		/// <summary>
+		/// מציין אם תכונת המדריך הפכה לזמינה עבור הארגון.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("isplaybookenabled")]
+		public System.Nullable<bool> IsPlaybookEnabled
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("isplaybookenabled");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("isplaybookenabled", value);
+			}
+		}
+		
+		/// <summary>
+		/// מידע המציין אם נוכחות IM זמינה.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("ispresenceenabled")]
+		public System.Nullable<bool> IsPresenceEnabled
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("ispresenceenabled");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("ispresenceenabled", value);
+			}
+		}
+		
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("ispresenceenabledname")]
+		public string IsPresenceEnabledName
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				if (this.FormattedValues.Contains("ispresenceenabled"))
+				{
+					return this.FormattedValues["ispresenceenabled"];
+				}
+				else
+				{
+					return default(string);
+				}
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("ispresenceenabledname", value);
+			}
+		}
+		
+		/// <summary>
+		/// מציין אם תכונת ה- Preview עבור כרטיס הפעולה צריכה להיות זמינה עבור הארגון.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("ispreviewenabledforactioncard")]
+		public System.Nullable<bool> IsPreviewEnabledForActionCard
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("ispreviewenabledforactioncard");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("ispreviewenabledforactioncard", value);
+			}
+		}
+		
+		/// <summary>
+		/// מציין אם התכונה 'לכידה אוטומטית' צריכה להיות זמינה עבור הארגון בהגדרות התצוגה המקדימה.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("ispreviewforautocaptureenabled")]
+		public System.Nullable<bool> IsPreviewForAutoCaptureEnabled
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("ispreviewforautocaptureenabled");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("ispreviewforautocaptureenabled", value);
+			}
+		}
+		
+		/// <summary>
+		/// תצוגה מקדימה עבור ניטור דואר אלקטרוני מותרת.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("ispreviewforemailmonitoringallowed")]
+		public System.Nullable<bool> IsPreviewForEmailMonitoringAllowed
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("ispreviewforemailmonitoringallowed");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("ispreviewforemailmonitoringallowed", value);
+			}
+		}
+		
+		/// <summary>
+		/// מציין אם PriceList הוא שדה חובה בעת הוספת מוצרים קיימים לישויות מכירה.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("ispricelistmandatory")]
+		public System.Nullable<bool> IsPriceListMandatory
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("ispricelistmandatory");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("ispricelistmandatory", value);
+			}
+		}
+		
+		/// <summary>
+		/// מציין אם תכונת המימוש האוטומטי של קיבולת עיבוד מופעלת בארגון זה.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("isprocesscapacityautoclaimenabled")]
+		public System.Nullable<bool> IsProcessCapacityAutoClaimEnabled
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("isprocesscapacityautoclaimenabled");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("isprocesscapacityautoclaimenabled", value);
+			}
+		}
+		
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("isprocesscapacityautoclaimenabledname")]
+		public string isprocesscapacityautoclaimenabledName
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				if (this.FormattedValues.Contains("isprocesscapacityautoclaimenabled"))
+				{
+					return this.FormattedValues["isprocesscapacityautoclaimenabled"];
+				}
+				else
+				{
+					return default(string);
+				}
+			}
+		}
+		
+		/// <summary>
+		/// Indicates whether Process Mining is enabled in this organization.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("isprocessminingenabled")]
+		public System.Nullable<bool> IsProcessMiningEnabled
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("isprocessminingenabled");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("isprocessminingenabled", value);
+			}
+		}
+		
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("isprocessminingenabledname")]
+		public string isprocessminingenabledName
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				if (this.FormattedValues.Contains("isprocessminingenabled"))
+				{
+					return this.FormattedValues["isprocessminingenabled"];
+				}
+				else
+				{
+					return default(string);
+				}
+			}
+		}
+		
+		/// <summary>
+		/// בחר אם להשתמש בחוויה סטנדרטית מוכנה של סגירת הזדמנות או בחוויה מותאמת אישית.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("isquickcreateenabledforopportunityclose")]
+		public System.Nullable<bool> IsQuickCreateEnabledForOpportunityClose
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("isquickcreateenabledforopportunityclose");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("isquickcreateenabledforopportunityclose", value);
+			}
+		}
+		
+		/// <summary>
+		/// הפוך את הביקורת של פעולות קריאה לזמינה או ללא זמינה.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("isreadauditenabled")]
+		public System.Nullable<bool> IsReadAuditEnabled
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("isreadauditenabled");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("isreadauditenabled", value);
+			}
+		}
+		
+		/// <summary>
+		/// מציין אם התכונה Relationship Insights צריכה להיות זמינה עבור הארגון.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("isrelationshipinsightsenabled")]
+		public System.Nullable<bool> IsRelationshipInsightsEnabled
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("isrelationshipinsightsenabled");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("isrelationshipinsightsenabled", value);
+			}
+		}
+		
+		/// <summary>
+		/// מציין אם סינכרון הזמנת המשאבים של המשתמש עם Exchange זמין ברמת הארגון.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("isresourcebookingexchangesyncenabled")]
+		public System.Nullable<bool> IsResourceBookingExchangeSyncEnabled
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("isresourcebookingexchangesyncenabled");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("isresourcebookingexchangesyncenabled", value);
+			}
+		}
+		
+		/// <summary>
+		/// מציין אם החוויה של עורך טקסט עשיר עבור הערות זמינה בארגון זה
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("isrichtextnotesenabled")]
+		public System.Nullable<bool> IsRichTextNotesEnabled
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("isrichtextnotesenabled");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("isrichtextnotesenabled", value);
+			}
+		}
+		
+		/// <summary>
+		/// מציין אם הצטרפות ל- AAD עבור שינוי קנה מידה אוטומטי של RPA זמינה בארגון זה.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("isrpaautoscaleaadjoinenabled")]
+		public System.Nullable<bool> IsRpaAutoscaleAadJoinEnabled
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("isrpaautoscaleaadjoinenabled");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("isrpaautoscaleaadjoinenabled", value);
+			}
+		}
+		
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("isrpaautoscaleaadjoinenabledname")]
+		public string isrpaautoscaleaadjoinenabledName
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				if (this.FormattedValues.Contains("isrpaautoscaleaadjoinenabled"))
+				{
+					return this.FormattedValues["isrpaautoscaleaadjoinenabled"];
+				}
+				else
+				{
+					return default(string);
+				}
+			}
+		}
+		
+		/// <summary>
+		/// מציין אם התכונה 'שינוי קנה מידה אוטומטי' עבור RPA זמינה בארגון זה.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("isrpaautoscaleenabled")]
+		public System.Nullable<bool> IsRpaAutoscaleEnabled
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("isrpaautoscaleenabled");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("isrpaautoscaleenabled", value);
+			}
+		}
+		
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("isrpaautoscaleenabledname")]
+		public string isrpaautoscaleenabledName
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				if (this.FormattedValues.Contains("isrpaautoscaleenabled"))
+				{
+					return this.FormattedValues["isrpaautoscaleenabled"];
+				}
+				else
+				{
+					return default(string);
+				}
+			}
+		}
+		
+		/// <summary>
+		/// מציין אם תכונת RPA Box מופעלת בארגון זה במיקומים מחוץ למיקום הגיאוגרפי של הדייר.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("isrpaboxcrossgeoenabled")]
+		public System.Nullable<bool> IsRpaBoxCrossGeoEnabled
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("isrpaboxcrossgeoenabled");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("isrpaboxcrossgeoenabled", value);
+			}
+		}
+		
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("isrpaboxcrossgeoenabledname")]
+		public string isrpaboxcrossgeoenabledName
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				if (this.FormattedValues.Contains("isrpaboxcrossgeoenabled"))
+				{
+					return this.FormattedValues["isrpaboxcrossgeoenabled"];
+				}
+				else
+				{
+					return default(string);
+				}
+			}
+		}
+		
+		/// <summary>
+		/// מציין אם תכונת התיבה של RPA זמינה בארגון זה.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("isrpaboxenabled")]
+		public System.Nullable<bool> IsRpaBoxEnabled
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("isrpaboxenabled");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("isrpaboxenabled", value);
+			}
+		}
+		
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("isrpaboxenabledname")]
+		public string isrpaboxenabledName
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				if (this.FormattedValues.Contains("isrpaboxenabled"))
+				{
+					return this.FormattedValues["isrpaboxenabled"];
+				}
+				else
+				{
+					return default(string);
+				}
+			}
+		}
+		
+		/// <summary>
+		/// מציין אם התכונה 'ריצות ללא התערבות' עבור RPA זמינה בארגון זה.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("isrpaunattendedenabled")]
+		public System.Nullable<bool> IsRpaUnattendedEnabled
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("isrpaunattendedenabled");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("isrpaunattendedenabled", value);
+			}
+		}
+		
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("isrpaunattendedenabledname")]
+		public string isrpaunattendedenabledName
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				if (this.FormattedValues.Contains("isrpaunattendedenabled"))
+				{
+					return this.FormattedValues["isrpaunattendedenabled"];
+				}
+				else
+				{
+					return default(string);
+				}
+			}
+		}
+		
+		/// <summary>
+		/// מציין אם האפליקציה למכשירים ניידים Sales Assistant הפכה לזמינה עבור הארגון.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("issalesassistantenabled")]
+		public System.Nullable<bool> IsSalesAssistantEnabled
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("issalesassistantenabled");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("issalesassistantenabled", value);
+			}
+		}
+		
+		/// <summary>
+		/// מציין אם האפליקציה Sales Mobile Preview הפכה לזמינה עבור הארגון
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("issalesmobilepreviewenabled")]
+		public System.Nullable<bool> IsSalesMobilePreviewEnabled
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("issalesmobilepreviewenabled");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("issalesmobilepreviewenabled", value);
+			}
+		}
+		
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("issalesmobilepreviewenabledname")]
+		public string issalesmobilepreviewenabledName
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				if (this.FormattedValues.Contains("issalesmobilepreviewenabled"))
+				{
+					return this.FormattedValues["issalesmobilepreviewenabled"];
+				}
+				else
+				{
+					return default(string);
+				}
+			}
+		}
+		
+		/// <summary>
+		/// Indicates whether sending CUA audit logs to Purview is enabled.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("issendcuaauditlogtopurviewenabled")]
+		public System.Nullable<bool> IsSendCuaAuditLogToPurviewEnabled
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("issendcuaauditlogtopurviewenabled");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("issendcuaauditlogtopurviewenabled", value);
+			}
+		}
+		
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("issendcuaauditlogtopurviewenabledname")]
+		public string issendcuaauditlogtopurviewenabledName
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				if (this.FormattedValues.Contains("issendcuaauditlogtopurviewenabled"))
+				{
+					return this.FormattedValues["issendcuaauditlogtopurviewenabled"];
+				}
+				else
+				{
+					return default(string);
+				}
+			}
+		}
+		
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("issharinginorgallowed")]
+		public System.Nullable<bool> IsSharingInOrgAllowed
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("issharinginorgallowed");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("issharinginorgallowed", value);
+			}
+		}
+		
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("issharinginorgallowedname")]
+		public string issharinginorgallowedName
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				if (this.FormattedValues.Contains("issharinginorgallowed"))
+				{
+					return this.FormattedValues["issharinginorgallowed"];
+				}
+				else
+				{
+					return default(string);
+				}
+			}
+		}
+		
+		/// <summary>
+		/// אפשר שילוב של עיבוד הזמנות מכירה.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("issopintegrationenabled")]
+		public System.Nullable<bool> IsSOPIntegrationEnabled
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("issopintegrationenabled");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("issopintegrationenabled", value);
+			}
+		}
+		
+		/// <summary>
+		/// מידע המציין אם גלישת טקסט זמינה.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("istextwrapenabled")]
+		public System.Nullable<bool> IsTextWrapEnabled
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("istextwrapenabled");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("istextwrapenabled", value);
+			}
+		}
+		
+		/// <summary>
+		/// Indicates whether CUA log upload to Dataverse is enabled.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("isuploadcualogtodataverseenabled")]
+		public System.Nullable<bool> IsUploadCuaLogToDataverseEnabled
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("isuploadcualogtodataverseenabled");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("isuploadcualogtodataverseenabled", value);
+			}
+		}
+		
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("isuploadcualogtodataverseenabledname")]
+		public string isuploadcualogtodataverseenabledName
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				if (this.FormattedValues.Contains("isuploadcualogtodataverseenabled"))
+				{
+					return this.FormattedValues["isuploadcualogtodataverseenabled"];
+				}
+				else
+				{
+					return default(string);
+				}
+			}
+		}
+		
+		/// <summary>
+		/// הפוך את הביקורת של גישת משתמש לזמינה או ללא זמינה.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("isuseraccessauditenabled")]
+		public System.Nullable<bool> IsUserAccessAuditEnabled
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("isuseraccessauditenabled");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("isuseraccessauditenabled", value);
+			}
+		}
+		
+		/// <summary>
+		/// מציין אם טעינת Microsoft Dynamics 365 בחלון דפדפן שאינו כולל שורת כתובת, סרגל כלים ושורת תפריטים זמינה.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("isvintegrationcode")]
+		public virtual Microsoft.Xrm.Sdk.OptionSetValue ISVIntegrationCode
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.OptionSetValue>("isvintegrationcode");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("isvintegrationcode", value);
+			}
+		}
+		
+		/// <summary>
+		/// מציין אם טעינת Microsoft Dynamics 365 בחלון דפדפן שאינו כולל שורת כתובת, סרגל כלים ושורת תפריטים זמינה.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("isvintegrationcode")]
+		public virtual Organization_ISVIntegrationCode? ISVIntegrationCodeEnum
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return ((Organization_ISVIntegrationCode?)(EntityOptionSetEnum.GetEnum(this, "isvintegrationcode")));
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("isvintegrationcode", value.HasValue ? new Microsoft.Xrm.Sdk.OptionSetValue((int)value) : null);
+			}
+		}
+		
+		/// <summary>
+		/// Indicates whether Power Automate savings feature is enabled for WorkQueue.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("isworkqueuesavingsenabled")]
+		public System.Nullable<bool> IsWorkQueueSavingsEnabled
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("isworkqueuesavingsenabled");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("isworkqueuesavingsenabled", value);
+			}
+		}
+		
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("isworkqueuesavingsenabledname")]
+		public string isworkqueuesavingsenabledName
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				if (this.FormattedValues.Contains("isworkqueuesavingsenabled"))
+				{
+					return this.FormattedValues["isworkqueuesavingsenabled"];
+				}
+				else
+				{
+					return default(string);
+				}
+			}
+		}
+		
+		/// <summary>
+		/// מציין אם ניתן להוסיף ‏‫מוצרים שאינם מופיעים ברשימה להזדמנות / להצעת מחיר / להזמנה / לחשבונית.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("iswriteinproductsallowed")]
+		public System.Nullable<bool> IsWriteInProductsAllowed
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("iswriteinproductsallowed");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("iswriteinproductsallowed", value);
+			}
+		}
+		
+		/// <summary>
+		/// הקלד את הקידומת שבה יש להשתמש עבור כל מאמרי הידע ב- Microsoft Dynamics 365.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("kaprefix")]
+		public string KaPrefix
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("kaprefix");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("kaprefix", value);
+			}
+		}
+		
+		/// <summary>
+		/// תחילית שבה יש להשתמש עבור כל המאמרים ב- Microsoft Dynamics 365.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("kbprefix")]
+		public string KbPrefix
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("kbprefix");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("kbprefix", value);
+			}
+		}
+		
+		/// <summary>
+		/// מחרוזת XML המכילה את הגדרות ניהול הידע המוחלות באשף ניהול הידע.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("kmsettings")]
+		public string KMSettings
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("kmsettings");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("kmsettings", value);
+			}
+		}
+		
+		/// <summary>
+		/// שפה מועדפת עבור הארגון.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("languagecode")]
+		public System.Nullable<int> LanguageCode
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<int>>("languagecode");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("languagecode", value);
+			}
+		}
+		
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("languagecodename")]
+		public string LanguageCodeName
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				if (this.FormattedValues.Contains("languagecode"))
+				{
+					return this.FormattedValues["languagecode"];
+				}
+				else
+				{
+					return default(string);
+				}
+			}
+		}
+		
+		/// <summary>
+		/// הצגת אפליקציה מדור קודם עבור מנהלי מערכת
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("legacyapptoggle")]
+		public virtual Microsoft.Xrm.Sdk.OptionSetValue LegacyAppToggle
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.OptionSetValue>("legacyapptoggle");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("legacyapptoggle", value);
+			}
+		}
+		
+		/// <summary>
+		/// הצגת אפליקציה מדור קודם עבור מנהלי מערכת
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("legacyapptoggle")]
+		public virtual Organization_LegacyAppToggle? LegacyAppToggleEnum
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return ((Organization_LegacyAppToggle?)(EntityOptionSetEnum.GetEnum(this, "legacyapptoggle")));
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("legacyapptoggle", value.HasValue ? new Microsoft.Xrm.Sdk.OptionSetValue((int)value) : null);
+			}
+		}
+		
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("legacyapptogglename")]
+		public string legacyapptoggleName
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				if (this.FormattedValues.Contains("legacyapptoggle"))
+				{
+					return this.FormattedValues["legacyapptoggle"];
+				}
+				else
+				{
+					return default(string);
+				}
+			}
+		}
+		
+		/// <summary>
+		/// המזהה הייחודי של אזור הארגון.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("localeid")]
+		public System.Nullable<int> LocaleId
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<int>>("localeid");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("localeid", value);
+			}
+		}
+		
+		/// <summary>
+		/// מידע המציין כיצד מוצגת התבנית 'תאריך ארוך' ב- Microsoft Dynamics 365.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("longdateformatcode")]
+		public System.Nullable<int> LongDateFormatCode
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<int>>("longdateformatcode");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("longdateformatcode", value);
+			}
+		}
+		
+		/// <summary>
+		/// מספר התווים המינימלי שיש להזין בפקד בדיקת המידע לפני פתרון הצעות
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("lookupcharactercountbeforeresolve")]
+		public System.Nullable<int> LookupCharacterCountBeforeResolve
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<int>>("lookupcharactercountbeforeresolve");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("lookupcharactercountbeforeresolve", value);
+			}
+		}
+		
+		/// <summary>
+		/// עיכוב מינימלי (באלפיות השניה) בין פריטי קלט עוקבים בפקד בדיקת מידע שיפעיל חיפוש אחר הצעות
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("lookupresolvedelayms")]
+		public System.Nullable<int> LookupResolveDelayMS
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<int>>("lookupresolvedelayms");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("lookupresolvedelayms", value);
+			}
+		}
+		
+		/// <summary>
+		/// סף תחתון עבור בעיה המתרחשת מפעם לפעם בתיבת דואר.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("mailboxintermittentissueminrange")]
+		public System.Nullable<int> MailboxIntermittentIssueMinRange
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<int>>("mailboxintermittentissueminrange");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("mailboxintermittentissueminrange", value);
+			}
+		}
+		
+		/// <summary>
+		/// סף תחתון עבור בעיה רציפה בתיבת דואר.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("mailboxpermanentissueminrange")]
+		public System.Nullable<int> MailboxPermanentIssueMinRange
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<int>>("mailboxpermanentissueminrange");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("mailboxpermanentissueminrange", value);
+			}
+		}
+		
+		/// <summary>
+		/// המספר המרבי של שלבי פעולה מותרים ב- BPF
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("maxactionstepsinbpf")]
+		public System.Nullable<int> MaxActionStepsInBPF
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<int>>("maxactionstepsinbpf");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("maxactionstepsinbpf", value);
+			}
+		}
+		
+		/// <summary>
+		/// Maximum Allowed Pending Rollup Job Count
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("maxallowedpendingrollupjobcount")]
+		public System.Nullable<int> MaxAllowedPendingRollupJobCount
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<int>>("maxallowedpendingrollupjobcount");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("maxallowedpendingrollupjobcount", value);
+			}
+		}
+		
+		/// <summary>
+		/// Percentage Of Entity Table Size For Kicking Off Bootstrap Job
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("maxallowedpendingrollupjobpercentage")]
+		public System.Nullable<int> MaxAllowedPendingRollupJobPercentage
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<int>>("maxallowedpendingrollupjobpercentage");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("maxallowedpendingrollupjobpercentage", value);
+			}
+		}
+		
+		/// <summary>
+		/// מספר הימים המרבי שבו יכולה פגישה להימשך.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("maxappointmentdurationdays")]
+		public System.Nullable<int> MaxAppointmentDurationDays
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<int>>("maxappointmentdurationdays");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("maxappointmentdurationdays", value);
+			}
+		}
+		
+		/// <summary>
+		/// המספר המרבי המותר של תנאים עבור מסנני Mobile Offline
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("maxconditionsformobileofflinefilters")]
+		public System.Nullable<int> MaxConditionsForMobileOfflineFilters
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<int>>("maxconditionsformobileofflinefilters");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("maxconditionsformobileofflinefilters", value);
+			}
+		}
+		
+		/// <summary>
+		/// עומק מרבי של הפצת אבטחה הירארכית.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("maxdepthforhierarchicalsecuritymodel")]
+		public System.Nullable<int> MaxDepthForHierarchicalSecurityModel
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<int>>("maxdepthforhierarchicalsecuritymodel");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("maxdepthforhierarchicalsecuritymodel", value);
+			}
+		}
+		
+		/// <summary>
+		/// המספר המרבי של מיפויי מעקב המבוסס על תיקיות שמשתמש יכול להוסיף
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("maxfolderbasedtrackingmappings")]
+		public System.Nullable<int> MaxFolderBasedTrackingMappings
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<int>>("maxfolderbasedtrackingmappings");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("maxfolderbasedtrackingmappings", value);
+			}
+		}
+		
+		/// <summary>
+		/// המספר המרבי של זרימות תהליכים עסקיים פעילות המותרות עבור ישות
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("maximumactivebusinessprocessflowsallowedperentity")]
+		public System.Nullable<int> MaximumActiveBusinessProcessFlowsAllowedPerEntity
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<int>>("maximumactivebusinessprocessflowsallowedperentity");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("maximumactivebusinessprocessflowsallowedperentity", value);
+			}
+		}
+		
+		/// <summary>
+		/// הגבל את המספר המקסימלי של מאפייני מוצר של משפחת מוצרים/חבילה
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("maximumdynamicpropertiesallowed")]
+		public System.Nullable<int> MaximumDynamicPropertiesAllowed
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<int>>("maximumdynamicpropertiesallowed");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("maximumdynamicpropertiesallowed", value);
+			}
+		}
+		
+		/// <summary>
+		/// המספר המרבי המותר של הסכמי SLA פעילים לכל ישות במצב מקוון
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("maximumentitieswithactivesla")]
+		public System.Nullable<int> MaximumEntitiesWithActiveSLA
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<int>>("maximumentitieswithactivesla");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("maximumentitieswithactivesla", value);
+			}
+		}
+		
+		/// <summary>
+		/// המספר המרבי המותר של מחווני KPI ל- SLA פעיל עבור ישות במצב מקוון
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("maximumslakpiperentitywithactivesla")]
+		public System.Nullable<int> MaximumSLAKPIPerEntityWithActiveSLA
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<int>>("maximumslakpiperentitywithactivesla");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("maximumslakpiperentitywithactivesla", value);
+			}
+		}
+		
+		/// <summary>
+		/// מספר מעקב מרבי לפני שמתרחש מיחזור.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("maximumtrackingnumber")]
+		public System.Nullable<int> MaximumTrackingNumber
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<int>>("maximumtrackingnumber");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("maximumtrackingnumber", value);
+			}
+		}
+		
+		/// <summary>
+		/// הגבל את מספר הפריטים המרבי בחבילה
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("maxproductsinbundle")]
+		public System.Nullable<int> MaxProductsInBundle
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<int>>("maxproductsinbundle");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("maxproductsinbundle", value);
+			}
+		}
+		
+		/// <summary>
+		/// מספר הרשומות המרבי שייוצא לגליון עבודה סטטי של Microsoft Office Excel בעת ייצוא מהטבלה.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("maxrecordsforexporttoexcel")]
+		public System.Nullable<int> MaxRecordsForExportToExcel
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<int>>("maxrecordsforexporttoexcel");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("maxrecordsforexporttoexcel", value);
+			}
+		}
+		
+		/// <summary>
+		/// מספר מרבי של רשומות בדיקת מידע ורשימת בחירה שהמשתמש יכול לבחור לצורך סינון.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("maxrecordsforlookupfilters")]
+		public System.Nullable<int> MaxRecordsForLookupFilters
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<int>>("maxrecordsforlookupfilters");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("maxrecordsforlookupfilters", value);
+			}
+		}
+		
+		/// <summary>
+		/// Maximum Rollup Fields Per Entity
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("maxrollupfieldsperentity")]
+		public System.Nullable<int> MaxRollupFieldsPerEntity
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<int>>("maxrollupfieldsperentity");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("maxrollupfieldsperentity", value);
+			}
+		}
+		
+		/// <summary>
+		/// Maximum Rollup Fields Per Organization
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("maxrollupfieldsperorg")]
+		public System.Nullable<int> MaxRollupFieldsPerOrg
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<int>>("maxrollupfieldsperorg");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("maxrollupfieldsperorg", value);
+			}
+		}
+		
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("maxslaitemspersla")]
+		public System.Nullable<int> MaxSLAItemsPerSLA
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<int>>("maxslaitemspersla");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("maxslaitemspersla", value);
+			}
+		}
+		
+		/// <summary>
+		/// הגירסה המרבית של IE שעבורה יש להפעיל אמולציית דפדפן בלקוח Outlook
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("maxsupportedinternetexplorerversion")]
+		public System.Nullable<int> MaxSupportedInternetExplorerVersion
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<int>>("maxsupportedinternetexplorerversion");
+			}
+		}
+		
+		/// <summary>
+		/// הגודל המרבי המותר של קובץ מצורף.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("maxuploadfilesize")]
+		public System.Nullable<int> MaxUploadFileSize
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<int>>("maxuploadfilesize");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("maxuploadfilesize", value);
+			}
+		}
+		
+		/// <summary>
+		/// ‏‏המספר המרבי של תיבות דואר שניתן לאפשר עבורן רישום מילולי
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("maxverboseloggingmailbox")]
+		public System.Nullable<int> MaxVerboseLoggingMailbox
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<int>>("maxverboseloggingmailbox");
+			}
+		}
+		
+		/// <summary>
+		/// ‏‏המספר המרבי של מחזורי סינכרון שעבורו רישום מילולי יהיה זמין כברירת מחדל
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("maxverboseloggingsynccycles")]
+		public System.Nullable<int> MaxVerboseLoggingSyncCycles
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<int>>("maxverboseloggingsynccycles");
+			}
+		}
+		
+		/// <summary>
+		/// (לא בשימוש) הסביבה שנבחרה עבור שילוב עם Microsoft Flow
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("microsoftflowenvironment")]
+		public string MicrosoftFlowEnvironment
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("microsoftflowenvironment");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("microsoftflowenvironment", value);
+			}
+		}
+		
+		/// <summary>
+		/// תדירות תשאול רגילה המשמשת עבור סינכרון פנקס כתובות ב- Microsoft Office Outlook.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("minaddressbooksyncinterval")]
+		public System.Nullable<int> MinAddressBookSyncInterval
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<int>>("minaddressbooksyncinterval");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("minaddressbooksyncinterval", value);
+			}
+		}
+		
+		/// <summary>
+		/// תדירות תשאול רגילה המשמשת עבור סינכרון לא מקוון ברקע ב- Microsoft Office Outlook.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("minofflinesyncinterval")]
+		public System.Nullable<int> MinOfflineSyncInterval
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<int>>("minofflinesyncinterval");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("minofflinesyncinterval", value);
+			}
+		}
+		
+		/// <summary>
+		/// זמן מינימלי מותר בין סינכרונים מתוזמנים של Outlook.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("minoutlooksyncinterval")]
+		public System.Nullable<int> MinOutlookSyncInterval
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<int>>("minoutlooksyncinterval");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("minoutlooksyncinterval", value);
+			}
+		}
+		
+		/// <summary>
+		/// המספר המינימלי של רשיונות המשתמשים הנדרשים עבור שירות Mobile Offline לארגון ייצור/תצוגה מקדימה
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("mobileofflineminlicenseprod")]
+		public System.Nullable<int> MobileOfflineMinLicenseProd
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<int>>("mobileofflineminlicenseprod");
+			}
+		}
+		
+		/// <summary>
+		/// המספר המינימלי של רשיונות המשתמשים הנדרשים עבור שירות Mobile Offline לארגון ניסיון
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("mobileofflineminlicensetrial")]
+		public System.Nullable<int> MobileOfflineMinLicenseTrial
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<int>>("mobileofflineminlicensetrial");
+			}
+		}
+		
+		/// <summary>
+		/// מרווח זמן לסינכרון עבור Mobile Offline.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("mobileofflinesyncinterval")]
+		public System.Nullable<int> MobileOfflineSyncInterval
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<int>>("mobileofflinesyncinterval");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("mobileofflinesyncinterval", value);
+			}
+		}
+		
+		/// <summary>
+		/// סמן כדי לציין אם סינון חיפוש מתקדם מודרני מופעל בכל הטבלאות ביישום מונחה-דגמים
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modernadvancedfindfiltering")]
+		public System.Nullable<bool> ModernAdvancedFindFiltering
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("modernadvancedfindfiltering");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("modernadvancedfindfiltering", value);
+			}
+		}
+		
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modernadvancedfindfilteringname")]
+		public string modernadvancedfindfilteringName
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				if (this.FormattedValues.Contains("modernadvancedfindfiltering"))
+				{
+					return this.FormattedValues["modernadvancedfindfiltering"];
+				}
+				else
+				{
+					return default(string);
+				}
+			}
+		}
+		
+		/// <summary>
+		/// מציין אם עריכה משותפת זמינה במעצב יישומים מודרני
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modernappdesignercoauthoringenabled")]
+		public System.Nullable<bool> ModernAppDesignerCoauthoringEnabled
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("modernappdesignercoauthoringenabled");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("modernappdesignercoauthoringenabled", value);
+			}
+		}
+		
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modernappdesignercoauthoringenabledname")]
+		public string modernappdesignercoauthoringenabledName
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				if (this.FormattedValues.Contains("modernappdesignercoauthoringenabled"))
+				{
+					return this.FormattedValues["modernappdesignercoauthoringenabled"];
+				}
+				else
+				{
+					return default(string);
+				}
+			}
+		}
+		
+		/// <summary>
+		/// המזהה הייחודי של המשתמש האחרון ששינה את הארגון.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedby")]
+		public Microsoft.Xrm.Sdk.EntityReference ModifiedBy
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("modifiedby");
+			}
+		}
+		
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedbyname")]
+		public string ModifiedByName
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				if (this.FormattedValues.Contains("modifiedby"))
+				{
+					return this.FormattedValues["modifiedby"];
+				}
+				else
+				{
+					return default(string);
+				}
+			}
+		}
+		
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedbyyominame")]
+		public string ModifiedByYomiName
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				if (this.FormattedValues.Contains("modifiedby"))
+				{
+					return this.FormattedValues["modifiedby"];
+				}
+				else
+				{
+					return default(string);
+				}
+			}
+		}
+		
+		/// <summary>
+		/// התאריך והשעה שבהם שונה הארגון בפעם האחרונה.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedon")]
+		public System.Nullable<System.DateTime> ModifiedOn
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<System.DateTime>>("modifiedon");
+			}
+		}
+		
+		/// <summary>
+		/// המזהה הייחודי של המשתמש הנציג ששינה לאחרונה את הארגון.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedonbehalfby")]
+		public Microsoft.Xrm.Sdk.EntityReference ModifiedOnBehalfBy
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("modifiedonbehalfby");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("modifiedonbehalfby", value);
+			}
+		}
+		
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedonbehalfbyname")]
+		public string ModifiedOnBehalfByName
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				if (this.FormattedValues.Contains("modifiedonbehalfby"))
+				{
+					return this.FormattedValues["modifiedonbehalfby"];
+				}
+				else
+				{
+					return default(string);
+				}
+			}
+		}
+		
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedonbehalfbyyominame")]
+		public string ModifiedOnBehalfByYomiName
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				if (this.FormattedValues.Contains("modifiedonbehalfby"))
+				{
+					return this.FormattedValues["modifiedonbehalfby"];
+				}
+				else
+				{
+					return default(string);
+				}
+			}
+		}
+		
+		/// <summary>
+		/// הצג את לחצן 'מיין לפי' בתצוגות
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("multicolumnsortenabled")]
+		public System.Nullable<int> MultiColumnSortEnabled
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<int>>("multicolumnsortenabled");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("multicolumnsortenabled", value);
+			}
+		}
+		
+		/// <summary>
+		/// שם הארגון. השם מוגדר בעת התקנת Microsoft CRM ואין לשנותו.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("name")]
+		public string Name
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("name");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("name", value);
+			}
+		}
+		
+		/// <summary>
+		/// הופך מסנן סיוע בשפה טבעית לזמין.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("naturallanguageassistfilter")]
+		public System.Nullable<bool> NaturalLanguageAssistFilter
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("naturallanguageassistfilter");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("naturallanguageassistfilter", value);
+			}
+		}
+		
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("naturallanguageassistfiltername")]
+		public string naturallanguageassistfilterName
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				if (this.FormattedValues.Contains("naturallanguageassistfilter"))
+				{
+					return this.FormattedValues["naturallanguageassistfilter"];
+				}
+				else
+				{
+					return default(string);
+				}
+			}
+		}
+		
+		/// <summary>
+		/// מידע המציין כיצד מוצגים מספרי מטבע שליליים בכל Microsoft Dynamics 365.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("negativecurrencyformatcode")]
+		public System.Nullable<int> NegativeCurrencyFormatCode
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<int>>("negativecurrencyformatcode");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("negativecurrencyformatcode", value);
+			}
+		}
+		
+		/// <summary>
+		/// מידע המציין כיצד מספרים שליליים מוצגים בכל Microsoft CRM.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("negativeformatcode")]
+		public virtual Microsoft.Xrm.Sdk.OptionSetValue NegativeFormatCode
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.OptionSetValue>("negativeformatcode");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("negativeformatcode", value);
+			}
+		}
+		
+		/// <summary>
+		/// מידע המציין כיצד מספרים שליליים מוצגים בכל Microsoft CRM.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("negativeformatcode")]
+		public virtual Organization_NegativeFormatCode? NegativeFormatCodeEnum
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return ((Organization_NegativeFormatCode?)(EntityOptionSetEnum.GetEnum(this, "negativeformatcode")));
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("negativeformatcode", value.HasValue ? new Microsoft.Xrm.Sdk.OptionSetValue((int)value) : null);
+			}
+		}
+		
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("negativeformatcodename")]
+		public string NegativeFormatCodeName
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				if (this.FormattedValues.Contains("negativeformatcode"))
+				{
+					return this.FormattedValues["negativeformatcode"];
+				}
+				else
+				{
+					return default(string);
+				}
+			}
+		}
+		
+		/// <summary>
+		/// מציין אם הארגון הפעיל את חוויית חיפוש הרלוונטיות החדשה (הופץ באוקטובר 2020) עבור הארגון
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("newsearchexperienceenabled")]
+		public System.Nullable<bool> NewSearchExperienceEnabled
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("newsearchexperienceenabled");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("newsearchexperienceenabled", value);
+			}
+		}
+		
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("newsearchexperienceenabledname")]
+		public string newsearchexperienceenabledName
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				if (this.FormattedValues.Contains("newsearchexperienceenabled"))
+				{
+					return this.FormattedValues["newsearchexperienceenabled"];
+				}
+				else
+				{
+					return default(string);
+				}
+			}
+		}
+		
+		/// <summary>
+		/// האסימון הבא שימוקם בשורת הנושא של הודעת דואר אלקטרוני.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("nexttrackingnumber")]
+		public System.Nullable<int> NextTrackingNumber
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<int>>("nexttrackingnumber");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("nexttrackingnumber", value);
+			}
+		}
+		
+		/// <summary>
+		/// מציין אם בעלים של תיבת דואר יקבלו הודעה על התראות ברמת הפרופיל של שרת הדואר האלקטרוני.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("notifymailboxownerofemailserverlevelalerts")]
+		public System.Nullable<bool> NotifyMailboxOwnerOfEmailServerLevelAlerts
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("notifymailboxownerofemailserverlevelalerts");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("notifymailboxownerofemailserverlevelalerts", value);
+			}
+		}
+		
+		/// <summary>
+		/// ציון האופן שבו מספרים מוצגים בכל Microsoft CRM.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("numberformat")]
+		public string NumberFormat
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("numberformat");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("numberformat", value);
+			}
+		}
+		
+		/// <summary>
+		/// חיווי המציין כיצד מקובצים מספרים ב- Microsoft Dynamics 365.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("numbergroupformat")]
+		public string NumberGroupFormat
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("numbergroupformat");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("numbergroupformat", value);
+			}
+		}
+		
+		/// <summary>
+		/// סימן המשמש להפרדת מספרים ב- Microsoft Dynamics 365.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("numberseparator")]
+		public string NumberSeparator
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("numberseparator");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("numberseparator", value);
+			}
+		}
+		
+		/// <summary>
+		/// מציין אם הפריסה האוטומטית של יישומי Office זמינה עבור הארגון.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("officeappsautodeploymentenabled")]
+		public System.Nullable<bool> OfficeAppsAutoDeploymentEnabled
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("officeappsautodeploymentenabled");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("officeappsautodeploymentenabled", value);
+			}
+		}
+		
+		/// <summary>
+		/// כתובת ה- URL לפתיחת Delve עבור הארגון.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("officegraphdelveurl")]
+		public string OfficeGraphDelveUrl
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("officegraphdelveurl");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("officegraphdelveurl", value);
+			}
+		}
+		
+		/// <summary>
+		/// הפוך לוגיקת חישוב תמחור של OOB לזמינה עבור ישויות הזדמנות, הצעת מחיר, הזמנה וחשבונית.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("oobpricecalculationenabled")]
+		public System.Nullable<bool> OOBPriceCalculationEnabled
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("oobpricecalculationenabled");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("oobpricecalculationenabled", value);
+			}
+		}
+		
+		/// <summary>
+		/// מציין אם ארגון זה יבטל את הסכמתו להפעלה אוטומטית של סכמה v2 בארגון.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("optoutschemav2enabledbydefault")]
+		public System.Nullable<bool> OptOutSchemaV2EnabledByDefault
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("optoutschemav2enabledbydefault");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("optoutschemav2enabledbydefault", value);
+			}
+		}
+		
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("optoutschemav2enabledbydefaultname")]
+		public string optoutschemav2enabledbydefaultName
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				if (this.FormattedValues.Contains("optoutschemav2enabledbydefault"))
+				{
+					return this.FormattedValues["optoutschemav2enabledbydefault"];
+				}
+				else
+				{
+					return default(string);
+				}
+			}
+		}
+		
+		/// <summary>
+		/// קידומת לשימוש עבור כל ההזמנות ב- Microsoft Dynamics 365.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("orderprefix")]
+		public string OrderPrefix
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("orderprefix");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("orderprefix", value);
+			}
+		}
+		
+		/// <summary>
+		/// המזהה הייחודי של הארגון.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("organizationid")]
+		public System.Nullable<System.Guid> OrganizationId
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<System.Guid>>("organizationid");
+			}
+		}
+		
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("organizationid")]
+		public override System.Guid Id
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return base.Id;
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				base.Id = value;
+			}
+		}
+		
+		/// <summary>
+		/// מציין את מצב מחזור החיים של הארגון
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("organizationstate")]
+		public virtual Microsoft.Xrm.Sdk.OptionSetValue OrganizationState
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.OptionSetValue>("organizationstate");
+			}
+		}
+		
+		/// <summary>
+		/// מציין את מצב מחזור החיים של הארגון
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("organizationstate")]
+		public virtual Organization_OrganizationState? OrganizationStateEnum
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return ((Organization_OrganizationState?)(EntityOptionSetEnum.GetEnum(this, "organizationstate")));
+			}
+		}
+		
+		/// <summary>
+		/// הגדרות ארגון המאוחסנות במסד נתונים של ארגון.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("orgdborgsettings")]
+		public string OrgDbOrgSettings
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("orgdborgsettings");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("orgdborgsettings", value);
+			}
+		}
+		
+		/// <summary>
+		/// בחר אם יש להפעיל תובנות ארגון עבור הארגון.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("orginsightsenabled")]
+		public System.Nullable<bool> OrgInsightsEnabled
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("orginsightsenabled");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("orginsightsenabled", value);
+			}
+		}
+		
+		/// <summary>
+		/// מציין אם ‏‫תכונת גירסת Preview הפכה לזמינה עבור הארגון.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("paipreviewscenarioenabled")]
+		public System.Nullable<bool> PaiPreviewScenarioEnabled
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("paipreviewscenarioenabled");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("paipreviewscenarioenabled", value);
+			}
+		}
+		
+		/// <summary>
+		/// קידומת המשמשת עבור עמודות טבלה שנותחה.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("parsedtablecolumnprefix")]
+		public string ParsedTableColumnPrefix
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("parsedtablecolumnprefix");
+			}
+		}
+		
+		/// <summary>
+		/// קידומת המשמשת עבור טבלאות שנותחו.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("parsedtableprefix")]
+		public string ParsedTablePrefix
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("parsedtableprefix");
+			}
+		}
+		
+		/// <summary>
+		/// מציין את המספר המרבי של חודשים בעבר שעבורם ניתן ליצור את הפעילויות החוזרות.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("pastexpansionwindow")]
+		public System.Nullable<int> PastExpansionWindow
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<int>>("pastexpansionwindow");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("pastexpansionwindow", value);
+			}
+		}
+		
+		/// <summary>
+		/// השאר ריק כדי להשתמש בהגדרת ברירת המחדל. הגדר להפעלה/כיבוי כדי להפעיל/להשבית החלפה של רשתות ברירת המחדל לרשתות מודרניות ביישומים מונחי-דגמים.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("pcfdatasetgridenabled")]
+		public string PcfDatasetGridEnabled
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("pcfdatasetgridenabled");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("pcfdatasetgridenabled", value);
+			}
+		}
+		
+		/// <summary>
+		/// הגדרה זו מכילה את התאריך והשעה לפני שניתן לבצע סנכרון ACT.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("performactsyncafter")]
+		public System.Nullable<System.DateTime> PerformACTSyncAfter
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<System.DateTime>>("performactsyncafter");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("performactsyncafter", value);
+			}
+		}
+		
+		/// <summary>
+		/// לשימוש פנימי בלבד.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("picture")]
+		public string Picture
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("picture");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("picture", value);
+			}
+		}
+		
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("pinpointlanguagecode")]
+		public System.Nullable<int> PinpointLanguageCode
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<int>>("pinpointlanguagecode");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("pinpointlanguagecode", value);
+			}
+		}
+		
+		/// <summary>
+		/// הגדרת יומן המעקב של התוסף עבור הארגון.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("plugintracelogsetting")]
+		public virtual Microsoft.Xrm.Sdk.OptionSetValue PluginTraceLogSetting
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.OptionSetValue>("plugintracelogsetting");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("plugintracelogsetting", value);
+			}
+		}
+		
+		/// <summary>
+		/// הגדרת יומן המעקב של התוסף עבור הארגון.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("plugintracelogsetting")]
+		public virtual Organization_PluginTraceLogSetting? PluginTraceLogSettingEnum
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return ((Organization_PluginTraceLogSetting?)(EntityOptionSetEnum.GetEnum(this, "plugintracelogsetting")));
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("plugintracelogsetting", value.HasValue ? new Microsoft.Xrm.Sdk.OptionSetValue((int)value) : null);
+			}
+		}
+		
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("plugintracelogsettingname")]
+		public string PluginTraceLogSettingName
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				if (this.FormattedValues.Contains("plugintracelogsetting"))
+				{
+					return this.FormattedValues["plugintracelogsetting"];
+				}
+				else
+				{
+					return default(string);
+				}
+			}
+		}
+		
+		/// <summary>
+		/// מציין PM שבו יש להשתמש בכל Microsoft Dynamics 365.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("pmdesignator")]
+		public string PMDesignator
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("pmdesignator");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("pmdesignator", value);
+			}
+		}
+		
+		/// <summary>
+		/// ‏‏לשימוש פנימי בלבד.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("postmessagewhitelistdomains")]
+		public string PostMessageWhitelistDomains
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("postmessagewhitelistdomains");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("postmessagewhitelistdomains", value);
+			}
+		}
+		
+		/// <summary>
+		/// Indicates whether bot for makers is enabled.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("powerappsmakerbotenabled")]
+		public System.Nullable<bool> PowerAppsMakerBotEnabled
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("powerappsmakerbotenabled");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("powerappsmakerbotenabled", value);
+			}
+		}
+		
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("powerappsmakerbotenabledname")]
+		public string powerappsmakerbotenabledName
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				if (this.FormattedValues.Contains("powerappsmakerbotenabled"))
+				{
+					return this.FormattedValues["powerappsmakerbotenabled"];
+				}
+				else
+				{
+					return default(string);
+				}
+			}
+		}
+		
+		/// <summary>
+		/// מציין אם התכונה Power BI צריכה להיות זמינה עבור הארגון.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("powerbifeatureenabled")]
+		public System.Nullable<bool> PowerBiFeatureEnabled
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("powerbifeatureenabled");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("powerbifeatureenabled", value);
+			}
+		}
+		
+		/// <summary>
+		/// מספר המקומות העשרוניים שבהם ניתן להשתמש עבור מחירים.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("pricingdecimalprecision")]
+		public System.Nullable<int> PricingDecimalPrecision
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<int>>("pricingdecimalprecision");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("pricingdecimalprecision", value);
+			}
+		}
+		
+		/// <summary>
+		/// כתובת URL של הצהרת פרטיות
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("privacystatementurl")]
+		public string PrivacyStatementUrl
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("privacystatementurl");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("privacystatementurl", value);
+			}
+		}
+		
+		/// <summary>
+		/// המזהה הייחודי של הרשאת ברירת המחדל עבור משתמשים בארגון.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("privilegeusergroupid")]
+		public System.Nullable<System.Guid> PrivilegeUserGroupId
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<System.Guid>>("privilegeusergroupid");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("privilegeusergroupid", value);
+			}
+		}
+		
+		/// <summary>
+		/// לשימוש פנימי בלבד.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("privreportinggroupid")]
+		public System.Nullable<System.Guid> PrivReportingGroupId
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<System.Guid>>("privreportinggroupid");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("privreportinggroupid", value);
+			}
+		}
+		
+		/// <summary>
+		/// לשימוש פנימי בלבד.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("privreportinggroupname")]
+		public string PrivReportingGroupName
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("privreportinggroupname");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("privreportinggroupname", value);
+			}
+		}
+		
+		/// <summary>
+		/// בחר אם יש להפעיל המלצות על מוצרים עבור הארגון.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("productrecommendationsenabled")]
+		public System.Nullable<bool> ProductRecommendationsEnabled
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("productrecommendationsenabled");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("productrecommendationsenabled", value);
+			}
+		}
+		
+		/// <summary>
+		/// מציין אם יש להציג בקשה עבור חוויה חדשה של אישור הפניה
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("qualifyleadadditionaloptions")]
+		public string QualifyLeadAdditionalOptions
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("qualifyleadadditionaloptions");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("qualifyleadadditionaloptions", value);
+			}
+		}
+		
+		/// <summary>
+		/// סמן כדי לציין אם התכונה לשימוש בפעולה מהירה לפתיחת רשומות בחלונית הצד של החיפוש מופעלת
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("quickactiontoopenrecordsinsidepaneenabled")]
+		public System.Nullable<bool> QuickActionToOpenRecordsInSidePaneEnabled
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("quickactiontoopenrecordsinsidepaneenabled");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("quickactiontoopenrecordsinsidepaneenabled", value);
+			}
+		}
+		
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("quickactiontoopenrecordsinsidepaneenabledname")]
+		public string quickactiontoopenrecordsinsidepaneenabledName
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				if (this.FormattedValues.Contains("quickactiontoopenrecordsinsidepaneenabled"))
+				{
+					return this.FormattedValues["quickactiontoopenrecordsinsidepaneenabled"];
+				}
+				else
+				{
+					return default(string);
+				}
+			}
+		}
+		
+		/// <summary>
+		/// מציין אם מגבלה על רשומות חיפוש מהיר צריכה להיות זמינה עבור ארגון זה (מאפשר שאילתות מהירות יותר של חיפוש מהיר אך מונע חיפושים רחבים מדי).
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("quickfindrecordlimitenabled")]
+		public System.Nullable<bool> QuickFindRecordLimitEnabled
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("quickfindrecordlimitenabled");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("quickfindrecordlimitenabled", value);
+			}
+		}
+		
+		/// <summary>
+		/// קידומת לשימוש עבור כל הצעות המחיר ב- Microsoft Dynamics 365.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("quoteprefix")]
+		public string QuotePrefix
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("quoteprefix");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("quoteprefix", value);
+			}
+		}
+		
+		/// <summary>
+		/// מציין אם חישוב מחדש של SLA הפך לזמין עבור הארגון
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("recalculatesla")]
+		public System.Nullable<bool> RecalculateSLA
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("recalculatesla");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("recalculatesla", value);
+			}
+		}
+		
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("recalculateslaname")]
+		public string recalculateslaName
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				if (this.FormattedValues.Contains("recalculatesla"))
+				{
+					return this.FormattedValues["recalculatesla"];
+				}
+				else
+				{
+					return default(string);
+				}
+			}
+		}
+		
+		/// <summary>
+		/// מציין את ערך ברירת המחדל עבור שדה מספר מופעים בתיבת הדו-שיח של המופע החוזר.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("recurrencedefaultnumberofoccurrences")]
+		public System.Nullable<int> RecurrenceDefaultNumberOfOccurrences
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<int>>("recurrencedefaultnumberofoccurrences");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("recurrencedefaultnumberofoccurrences", value);
+			}
+		}
+		
+		/// <summary>
+		/// מציין את מרווח הזמן (בשניות) להשהיית משימת הרחבה.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("recurrenceexpansionjobbatchinterval")]
+		public System.Nullable<int> RecurrenceExpansionJobBatchInterval
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<int>>("recurrenceexpansionjobbatchinterval");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("recurrenceexpansionjobbatchinterval", value);
+			}
+		}
+		
+		/// <summary>
+		/// מציין את הערך של מספר המופעים הנוצרים במשימה לפי דרישה בניסיון בודד.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("recurrenceexpansionjobbatchsize")]
+		public System.Nullable<int> RecurrenceExpansionJobBatchSize
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<int>>("recurrenceexpansionjobbatchsize");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("recurrenceexpansionjobbatchsize", value);
+			}
+		}
+		
+		/// <summary>
+		/// מציין את מספר המופעים המרבי שיש ליצור באופן סינכרוני לאחר יצירת פגישה חוזרת.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("recurrenceexpansionsynchcreatemax")]
+		public System.Nullable<int> RecurrenceExpansionSynchCreateMax
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<int>>("recurrenceexpansionsynchcreatemax");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("recurrenceexpansionsynchcreatemax", value);
+			}
+		}
+		
+		/// <summary>
+		/// מחרוזת XML המגדירה את מבנה הניווט עבור היישום. זו מפת האתר מגירסת ה- Build ששודרגה בעבר והיא משמשת במיזוג תלת-כיווני במהלך שדרוג.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("referencesitemapxml")]
+		[System.ObsoleteAttribute()]
+		public string ReferenceSiteMapXml
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("referencesitemapxml");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("referencesitemapxml", value);
+			}
+		}
+		
+		/// <summary>
+		/// ערך הקצב הנוכחי של הארגון
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("releasecadence")]
+		public System.Nullable<int> ReleaseCadence
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<int>>("releasecadence");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("releasecadence", value);
+			}
+		}
+		
+		/// <summary>
+		/// ערוץ רענון אפליקציית מודל
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("releasechannel")]
+		public virtual Microsoft.Xrm.Sdk.OptionSetValue ReleaseChannel
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.OptionSetValue>("releasechannel");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("releasechannel", value);
+			}
+		}
+		
+		/// <summary>
+		/// ערוץ רענון אפליקציית מודל
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("releasechannel")]
+		public virtual Organization_ReleaseChannel? ReleaseChannelEnum
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return ((Organization_ReleaseChannel?)(EntityOptionSetEnum.GetEnum(this, "releasechannel")));
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("releasechannel", value.HasValue ? new Microsoft.Xrm.Sdk.OptionSetValue((int)value) : null);
+			}
+		}
+		
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("releasechannelname")]
+		public string releasechannelName
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				if (this.FormattedValues.Contains("releasechannel"))
+				{
+					return this.FormattedValues["releasechannel"];
+				}
+				else
+				{
+					return default(string);
+				}
+			}
+		}
+		
+		/// <summary>
+		/// גל הפצה מוחל על הסביבה.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("releasewavename")]
+		public string ReleaseWaveName
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("releasewavename");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("releasewavename", value);
+			}
+		}
+		
+		/// <summary>
+		/// מציין אם הופעל חיפוש רלוונטיות עבור הסביבה כחלק מחיפוש הרלוונטיות של Dataverse בעת ניקוי ברירת מחדל
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("relevancesearchenabledbyplatform")]
+		public System.Nullable<bool> RelevanceSearchEnabledByPlatform
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("relevancesearchenabledbyplatform");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("relevancesearchenabledbyplatform", value);
+			}
+		}
+		
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("relevancesearchenabledbyplatformname")]
+		public string relevancesearchenabledbyplatformName
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				if (this.FormattedValues.Contains("relevancesearchenabledbyplatform"))
+				{
+					return this.FormattedValues["relevancesearchenabledbyplatform"];
+				}
+				else
+				{
+					return default(string);
+				}
+			}
+		}
+		
+		/// <summary>
+		/// הגדרה זו מכילה את תאריך השינוי האחרון עבור הגדרת חיפוש הרלוונטיות המופיעה כלחצן דו-מצבי ב-PPAC.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("relevancesearchmodifiedon")]
+		public System.Nullable<System.DateTime> RelevanceSearchModifiedOn
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<System.DateTime>>("relevancesearchmodifiedon");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("relevancesearchmodifiedon", value);
+			}
+		}
+		
+		/// <summary>
+		/// דלג לעיבוד הגוף של הודעת דואר אלקטרוני בטופס האינטרנט ב- IFRAME שבו מוגדרת התכונה security='restricted'‎. הדבר מהווה אמצעי אבטחה נוסף, אך יכול להביא לבקשה להצגת אישורים.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("rendersecureiframeforemail")]
+		public System.Nullable<bool> RenderSecureIFrameForEmail
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("rendersecureiframeforemail");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("rendersecureiframeforemail", value);
+			}
+		}
+		
+		/// <summary>
+		/// לשימוש פנימי בלבד.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("reportinggroupid")]
+		public System.Nullable<System.Guid> ReportingGroupId
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<System.Guid>>("reportinggroupid");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("reportinggroupid", value);
+			}
+		}
+		
+		/// <summary>
+		/// לשימוש פנימי בלבד.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("reportinggroupname")]
+		public string ReportingGroupName
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("reportinggroupname");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("reportinggroupname", value);
+			}
+		}
+		
+		/// <summary>
+		/// רשימת בחירה לבחירת העדפת הארגון בנוגע לדיווח על שגיאות Scripting.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("reportscripterrors")]
+		public virtual Microsoft.Xrm.Sdk.OptionSetValue ReportScriptErrors
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.OptionSetValue>("reportscripterrors");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("reportscripterrors", value);
+			}
+		}
+		
+		/// <summary>
+		/// רשימת בחירה לבחירת העדפת הארגון בנוגע לדיווח על שגיאות Scripting.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("reportscripterrors")]
+		public virtual Organization_ReportScriptErrors? ReportScriptErrorsEnum
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return ((Organization_ReportScriptErrors?)(EntityOptionSetEnum.GetEnum(this, "reportscripterrors")));
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("reportscripterrors", value.HasValue ? new Microsoft.Xrm.Sdk.OptionSetValue((int)value) : null);
+			}
+		}
+		
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("reportscripterrorsname")]
+		public string ReportScriptErrorsName
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				if (this.FormattedValues.Contains("reportscripterrors"))
+				{
+					return this.FormattedValues["reportscripterrors"];
+				}
+				else
+				{
+					return default(string);
+				}
+			}
+		}
+		
+		/// <summary>
+		/// מציין אם הרשאת 'שלח כמשתמש אחר' זמינה.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("requireapprovalforqueueemail")]
+		public System.Nullable<bool> RequireApprovalForQueueEmail
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("requireapprovalforqueueemail");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("requireapprovalforqueueemail", value);
+			}
+		}
+		
+		/// <summary>
+		/// מציין אם הרשאת 'שלח כמשתמש אחר' זמינה.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("requireapprovalforuseremail")]
+		public System.Nullable<bool> RequireApprovalForUserEmail
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("requireapprovalforuseremail");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("requireapprovalforuseremail", value);
+			}
+		}
+		
+		/// <summary>
+		/// השתמש באותה כתובת דואר אלקטרוני לכל ההתאמות שלא פוענחו בעת הפענוח הידני עבור פריט אחד
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("resolvesimilarunresolvedemailaddress")]
+		public System.Nullable<bool> ResolveSimilarUnresolvedEmailAddress
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("resolvesimilarunresolvedemailaddress");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("resolvesimilarunresolvedemailaddress", value);
+			}
+		}
+		
+		/// <summary>
+		/// Information that specifies whether guest user restriction is enabled
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("restrictGuestUserAccess")]
+		public System.Nullable<bool> RestrictGuestUserAccess
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("restrictGuestUserAccess");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("restrictGuestUserAccess", value);
+			}
+		}
+		
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("restrictguestuseraccessname")]
+		public string restrictGuestUserAccessName
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				if (this.FormattedValues.Contains("restrictGuestUserAccess"))
+				{
+					return this.FormattedValues["restrictGuestUserAccess"];
+				}
+				else
+				{
+					return default(string);
+				}
+			}
+		}
+		
+		/// <summary>
+		/// סמן בדגל כדי להגביל עדכון במקרה.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("restrictstatusupdate")]
+		public System.Nullable<bool> RestrictStatusUpdate
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("restrictstatusupdate");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("restrictstatusupdate", value);
+			}
+		}
+		
+		/// <summary>
+		/// Information that specifies Reverse Proxy IP addresses from which requests have to be allowed.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("reverseproxyipaddresses")]
+		public string ReverseProxyIpAddresses
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("reverseproxyipaddresses");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("reverseproxyipaddresses", value);
+			}
+		}
+		
+		/// <summary>
+		/// מצב שגיאה של הקצאת Relationship Insights.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("rierrorstatus")]
+		public System.Nullable<int> RiErrorStatus
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<int>>("rierrorstatus");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("rierrorstatus", value);
+			}
+		}
+		
+		/// <summary>
+		/// השבת את האפשרות ליצור במהירות רשומות ופעילויות חדשות באפליקציה Sales עבור מכשירים ניידים
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("salesmobilequickcreatedisabled")]
+		public System.Nullable<bool> SalesMobileQuickCreateDisabled
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("salesmobilequickcreatedisabled");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("salesmobilequickcreatedisabled", value);
+			}
+		}
+		
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("salesmobilequickcreatedisabledname")]
+		public string salesmobilequickcreatedisabledName
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				if (this.FormattedValues.Contains("salesmobilequickcreatedisabled"))
+				{
+					return this.FormattedValues["salesmobilequickcreatedisabled"];
+				}
+				else
+				{
+					return default(string);
+				}
+			}
+		}
+		
+		/// <summary>
+		/// מציין אם האפליקציה Sales למכשירים ניידים צריכה להשתמש בטופסי UCI ליצירה
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("salesmobileuseuciformsforcreate")]
+		public System.Nullable<bool> SalesMobileUseUCIFormsForCreate
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("salesmobileuseuciformsforcreate");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("salesmobileuseuciformsforcreate", value);
+			}
+		}
+		
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("salesmobileuseuciformsforcreatename")]
+		public string salesmobileuseuciformsforcreateName
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				if (this.FormattedValues.Contains("salesmobileuseuciformsforcreate"))
+				{
+					return this.FormattedValues["salesmobileuseuciformsforcreate"];
+				}
+				else
+				{
+					return default(string);
+				}
+			}
+		}
+		
+		/// <summary>
+		/// מציין אם האפליקציה Sales למכשירים ניידים צריכה להשתמש בטופסי UCI לתצוגה
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("salesmobileuseuciformsforview")]
+		public System.Nullable<bool> SalesMobileUseUCIFormsForView
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("salesmobileuseuciformsforview");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("salesmobileuseuciformsforview", value);
+			}
+		}
+		
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("salesmobileuseuciformsforviewname")]
+		public string salesmobileuseuciformsforviewName
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				if (this.FormattedValues.Contains("salesmobileuseuciformsforview"))
+				{
+					return this.FormattedValues["salesmobileuseuciformsforview"];
+				}
+				else
+				{
+					return default(string);
+				}
+			}
+		}
+		
+		/// <summary>
+		/// Samesite mode for Session Cookie 0 is Default, 1 is None, 2 is Lax , 3 is Strict
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("samesitemodeforsessioncookie")]
+		public virtual Microsoft.Xrm.Sdk.OptionSetValue SameSiteModeForSessionCookie
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.OptionSetValue>("samesitemodeforsessioncookie");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("samesitemodeforsessioncookie", value);
+			}
+		}
+		
+		/// <summary>
+		/// Samesite mode for Session Cookie 0 is Default, 1 is None, 2 is Lax , 3 is Strict
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("samesitemodeforsessioncookie")]
+		public virtual organization_SamesitemodeforSessionCookie? SameSiteModeForSessionCookieEnum
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return ((organization_SamesitemodeforSessionCookie?)(EntityOptionSetEnum.GetEnum(this, "samesitemodeforsessioncookie")));
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("samesitemodeforsessioncookie", value.HasValue ? new Microsoft.Xrm.Sdk.OptionSetValue((int)value) : null);
+			}
+		}
+		
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("samesitemodeforsessioncookiename")]
+		public string samesitemodeforsessioncookieName
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				if (this.FormattedValues.Contains("samesitemodeforsessioncookie"))
+				{
+					return this.FormattedValues["samesitemodeforsessioncookie"];
+				}
+				else
+				{
+					return default(string);
+				}
+			}
+		}
+		
+		/// <summary>
+		/// המזהה הייחודי של משימת ייבוא הנתונים לדוגמה.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("sampledataimportid")]
+		public System.Nullable<System.Guid> SampleDataImportId
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<System.Guid>>("sampledataimportid");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("sampledataimportid", value);
+			}
+		}
+		
+		/// <summary>
+		/// אורך חיים בדקות המהווה ברירת מחדל עבור רשומות אירועי חיסכון חדשות של Power Automate במצבור זרימה.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("savingeventsttlinminutes")]
+		public System.Nullable<int> SavingEventsTTLInMinutes
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<int>>("savingeventsttlinminutes");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("savingeventsttlinminutes", value);
+			}
+		}
+		
+		/// <summary>
+		/// מנוע תזמון לפגישות ולפעילויות שירות
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("schedulingengine")]
+		public virtual Microsoft.Xrm.Sdk.OptionSetValue SchedulingEngine
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.OptionSetValue>("schedulingengine");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("schedulingengine", value);
+			}
+		}
+		
+		/// <summary>
+		/// מנוע תזמון לפגישות ולפעילויות שירות
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("schedulingengine")]
+		public virtual Organization_SchedulingEngine? SchedulingEngineEnum
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return ((Organization_SchedulingEngine?)(EntityOptionSetEnum.GetEnum(this, "schedulingengine")));
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("schedulingengine", value.HasValue ? new Microsoft.Xrm.Sdk.OptionSetValue((int)value) : null);
+			}
+		}
+		
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("schedulingenginename")]
+		public string schedulingengineName
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				if (this.FormattedValues.Contains("schedulingengine"))
+				{
+					return this.FormattedValues["schedulingengine"];
+				}
+				else
+				{
+					return default(string);
+				}
+			}
+		}
+		
+		/// <summary>
+		/// קידומת המשמשת עבור תכונות וישויות מותאמות אישית.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("schemanameprefix")]
+		public string SchemaNamePrefix
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("schemanameprefix");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("schemanameprefix", value);
+			}
+		}
+		
+		/// <summary>
+		/// מציין אם 'שלח דואר אלקטרוני לרשימת תפוצה ב- UCI' זמין עבור הארגון.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("sendbulkemailinuci")]
+		public System.Nullable<bool> SendBulkEmailInUCI
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("sendbulkemailinuci");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("sendbulkemailinuci", value);
+			}
+		}
+		
+		/// <summary>
+		/// תוכן שרת סטטי מ-CDN
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("servestaticresourcesfromazurecdn")]
+		public System.Nullable<bool> ServeStaticResourcesFromAzureCDN
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("servestaticresourcesfromazurecdn");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("servestaticresourcesfromazurecdn", value);
+			}
+		}
+		
+		/// <summary>
+		/// הפוך את תכונת הפעלת ההקלטה לזמינה כדי להקליט הפעלות משתמשים ב- UCI
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("sessionrecordingenabled")]
+		public System.Nullable<bool> SessionRecordingEnabled
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("sessionrecordingenabled");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("sessionrecordingenabled", value);
+			}
+		}
+		
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("sessionrecordingenabledname")]
+		public string sessionrecordingenabledName
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				if (this.FormattedValues.Contains("sessionrecordingenabled"))
+				{
+					return this.FormattedValues["sessionrecordingenabled"];
+				}
+				else
+				{
+					return default(string);
+				}
+			}
+		}
+		
+		/// <summary>
+		/// מידע המציין אם זמן קצוב להפעלה זמין
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("sessiontimeoutenabled")]
+		public System.Nullable<bool> SessionTimeoutEnabled
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("sessiontimeoutenabled");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("sessiontimeoutenabled", value);
+			}
+		}
+		
+		/// <summary>
+		/// זמן קצוב להפעלה בדקות
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("sessiontimeoutinmins")]
+		public System.Nullable<int> SessionTimeoutInMins
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<int>>("sessiontimeoutinmins");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("sessiontimeoutinmins", value);
+			}
+		}
+		
+		/// <summary>
+		/// תזכורת זמן קצוב להפעלה בדקות
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("sessiontimeoutreminderinmins")]
+		public System.Nullable<int> SessionTimeoutReminderInMins
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<int>>("sessiontimeoutreminderinmins");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("sessiontimeoutreminderinmins", value);
+			}
+		}
+		
+		/// <summary>
+		/// מציין איזה סוג פריסה של SharePoint מוגדר עבור חיבור משרת לשרת. (מקוון או מקומי)
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("sharepointdeploymenttype")]
+		public virtual Microsoft.Xrm.Sdk.OptionSetValue SharePointDeploymentType
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.OptionSetValue>("sharepointdeploymenttype");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("sharepointdeploymenttype", value);
+			}
+		}
+		
+		/// <summary>
+		/// מציין איזה סוג פריסה של SharePoint מוגדר עבור חיבור משרת לשרת. (מקוון או מקומי)
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("sharepointdeploymenttype")]
+		public virtual Organization_SharePointDeploymentType? SharePointDeploymentTypeEnum
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return ((Organization_SharePointDeploymentType?)(EntityOptionSetEnum.GetEnum(this, "sharepointdeploymenttype")));
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("sharepointdeploymenttype", value.HasValue ? new Microsoft.Xrm.Sdk.OptionSetValue((int)value) : null);
+			}
+		}
+		
+		/// <summary>
+		/// מידע המציין אם לשתף עם בעלים קודמים בעת הקצאה.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("sharetopreviousowneronassign")]
+		public System.Nullable<bool> ShareToPreviousOwnerOnAssign
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("sharetopreviousowneronassign");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("sharetopreviousowneronassign", value);
+			}
+		}
+		
+		/// <summary>
+		/// בחר אם יש להציג למשתמש הודעת יציאה משימוש של מאמר מאגר ידע‬.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("showkbarticledeprecationnotification")]
+		public System.Nullable<bool> ShowKBArticleDeprecationNotification
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("showkbarticledeprecationnotification");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("showkbarticledeprecationnotification", value);
+			}
+		}
+		
+		/// <summary>
+		/// מידע המציין אם להציג את מספר השבוע בתצוגות לוח שנה בכל Microsoft CRM.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("showweeknumber")]
+		public System.Nullable<bool> ShowWeekNumber
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("showweeknumber");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("showweeknumber", value);
+			}
+		}
+		
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("showweeknumbername")]
+		public string ShowWeekNumberName
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				if (this.FormattedValues.Contains("showweeknumber"))
+				{
+					return this.FormattedValues["showweeknumber"];
+				}
+				else
+				{
+					return default(string);
+				}
+			}
+		}
+		
+		/// <summary>
+		/// כתובת URL להורדת CRM for Outlook
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("signupoutlookdownloadfwlink")]
+		public string SignupOutlookDownloadFWLink
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("signupoutlookdownloadfwlink");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("signupoutlookdownloadfwlink", value);
+			}
+		}
+		
+		/// <summary>
+		/// מחרוזת XML המגדירה את מבנה הניווט עבור היישום.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("sitemapxml")]
+		[System.ObsoleteAttribute()]
+		public string SiteMapXml
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("sitemapxml");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("sitemapxml", value);
+			}
+		}
+		
+		/// <summary>
+		/// מציין אם לאפשר דו-שיח של בחירת רשומה בתבנית 'דואר אלקטרוני משופר'.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("skipselectrecorddialog")]
+		public System.Nullable<bool> SkipSelectRecordDialog
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("skipselectrecorddialog");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("skipselectrecorddialog", value);
+			}
+		}
+		
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("skipselectrecorddialogname")]
+		public string skipselectrecorddialogName
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				if (this.FormattedValues.Contains("skipselectrecorddialog"))
+				{
+					return this.FormattedValues["skipselectrecorddialog"];
+				}
+				else
+				{
+					return default(string);
+				}
+			}
+		}
+		
+		/// <summary>
+		/// מכיל את הערכים של מצב אירוע בהמתנה.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("slapausestates")]
+		public string SlaPauseStates
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("slapausestates");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("slapausestates", value);
+			}
+		}
+		
+		/// <summary>
+		/// דגל המציין אם הארגון משתמש בתובנות חברתיות.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("socialinsightsenabled")]
+		public System.Nullable<bool> SocialInsightsEnabled
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("socialinsightsenabled");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("socialinsightsenabled", value);
+			}
+		}
+		
+		/// <summary>
+		/// המזהה של מופע 'תובנות חברתיות' עבור הארגון.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("socialinsightsinstance")]
+		public string SocialInsightsInstance
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("socialinsightsinstance");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("socialinsightsinstance", value);
+			}
+		}
+		
+		/// <summary>
+		/// דגל המציין אם הארגון קיבל את תנאי השימוש של 'תובנות חברתיות'.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("socialinsightstermsaccepted")]
+		public System.Nullable<bool> SocialInsightsTermsAccepted
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("socialinsightstermsaccepted");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("socialinsightstermsaccepted", value);
+			}
+		}
+		
+		/// <summary>
+		/// לשימוש פנימי בלבד.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("sortid")]
+		public System.Nullable<int> SortId
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<int>>("sortid");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("sortid", value);
+			}
+		}
+		
+		/// <summary>
+		/// לשימוש פנימי בלבד.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("sqlaccessgroupid")]
+		public System.Nullable<System.Guid> SqlAccessGroupId
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<System.Guid>>("sqlaccessgroupid");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("sqlaccessgroupid", value);
+			}
+		}
+		
+		/// <summary>
+		/// לשימוש פנימי בלבד.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("sqlaccessgroupname")]
+		public string SqlAccessGroupName
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("sqlaccessgroupname");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("sqlaccessgroupname", value);
+			}
+		}
+		
+		/// <summary>
+		/// הגדרה עבור אוסף נתוני SQM,‏ 0 לא, 1 כן זמין
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("sqmenabled")]
+		public System.Nullable<bool> SQMEnabled
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("sqmenabled");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("sqmenabled", value);
+			}
+		}
+		
+		/// <summary>
+		/// המזהה הייחודי של משתמש התמיכה עבור הארגון.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("supportuserid")]
+		public System.Nullable<System.Guid> SupportUserId
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<System.Guid>>("supportuserid");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("supportuserid", value);
+			}
+		}
+		
+		/// <summary>
+		/// מציין אם SLA מושמט.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("suppresssla")]
+		public System.Nullable<bool> SuppressSLA
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("suppresssla");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("suppresssla", value);
+			}
+		}
+		
+		/// <summary>
+		/// השאר ריק כדי להשתמש בהגדרת ברירת המחדל. הגדר למצב מופעלים/מושבתים כדי להפעיל/להשבית הודעות דואר אלקטרוני של מנהל מערכת כאשר אימות בודק הפתרונות נכשל.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("suppressvalidationemails")]
+		public System.Nullable<bool> SuppressValidationEmails
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("suppressvalidationemails");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("suppressvalidationemails", value);
+			}
+		}
+		
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("suppressvalidationemailsname")]
+		public string suppressvalidationemailsName
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				if (this.FormattedValues.Contains("suppressvalidationemails"))
+				{
+					return this.FormattedValues["suppressvalidationemails"];
+				}
+				else
+				{
+					return default(string);
+				}
+			}
+		}
+		
+		/// <summary>
+		/// מספר הרשומות לעדכון בכל פעולה עבור השהיה/חידוש/ביטול של סינכרון בצובר
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("syncbulkoperationbatchsize")]
+		public System.Nullable<int> SyncBulkOperationBatchSize
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<int>>("syncbulkoperationbatchsize");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("syncbulkoperationbatchsize", value);
+			}
+		}
+		
+		/// <summary>
+		/// מספר הרשומות הכולל המרבי לעדכון במסד נתונים עבור השהיה/חידוש/ביטול של סינכרון בצובר
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("syncbulkoperationmaxlimit")]
+		public System.Nullable<int> SyncBulkOperationMaxLimit
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<int>>("syncbulkoperationmaxlimit");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("syncbulkoperationmaxlimit", value);
+			}
+		}
+		
+		/// <summary>
+		/// מציין את הבחירה לשימוש במסגרת הסינכרון של Azure ב- Dynamics 365 או בסינכרון בצד הלקוח.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("syncoptinselection")]
+		public System.Nullable<bool> SyncOptInSelection
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("syncoptinselection");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("syncoptinselection", value);
+			}
+		}
+		
+		/// <summary>
+		/// מציין את המצב של פעולת הסכמת ההצטרפות או ביטול ההצטרפות עבור סינכרון של Azure ב- Dynamics 365.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("syncoptinselectionstatus")]
+		public virtual Microsoft.Xrm.Sdk.OptionSetValue SyncOptInSelectionStatus
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.OptionSetValue>("syncoptinselectionstatus");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("syncoptinselectionstatus", value);
+			}
+		}
+		
+		/// <summary>
+		/// מציין את המצב של פעולת הסכמת ההצטרפות או ביטול ההצטרפות עבור סינכרון של Azure ב- Dynamics 365.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("syncoptinselectionstatus")]
+		public virtual Organization_SyncOptInSelectionStatus? SyncOptInSelectionStatusEnum
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return ((Organization_SyncOptInSelectionStatus?)(EntityOptionSetEnum.GetEnum(this, "syncoptinselectionstatus")));
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("syncoptinselectionstatus", value.HasValue ? new Microsoft.Xrm.Sdk.OptionSetValue((int)value) : null);
+			}
+		}
+		
+		/// <summary>
+		/// המזהה הייחודי של משתמש המערכת עבור הארגון.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("systemuserid")]
+		public System.Nullable<System.Guid> SystemUserId
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<System.Guid>>("systemuserid");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("systemuserid", value);
+			}
+		}
+		
+		/// <summary>
+		/// שולט במראה של אפשרות חיפוש בטבלה בודדת באינדקס של חיפוש DV בחיפוש הגלובלי של יישומים מונחי דגמים בכותרת.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("tablescopeddvsearchinapps")]
+		public System.Nullable<bool> TableScopedDVSearchInApps
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("tablescopeddvsearchinapps");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("tablescopeddvsearchinapps", value);
+			}
+		}
+		
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("tablescopeddvsearchinappsname")]
+		public string tablescopeddvsearchinappsName
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				if (this.FormattedValues.Contains("tablescopeddvsearchinapps"))
+				{
+					return this.FormattedValues["tablescopeddvsearchinapps"];
+				}
+				else
+				{
+					return default(string);
+				}
+			}
+		}
+		
+		/// <summary>
+		/// המספר המרבי של מחזורי תשאול אגרסיבי המבוצעים עבור תיוג אוטומטי של דואר אלקטרוני בעת קבלת דואר אלקטרוני חדש.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("tagmaxaggressivecycles")]
+		public System.Nullable<int> TagMaxAggressiveCycles
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<int>>("tagmaxaggressivecycles");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("tagmaxaggressivecycles", value);
+			}
+		}
+		
+		/// <summary>
+		/// תדירות תשאול רגיל המשמשת לתיוג אוטומטי בעת קבלת דואר אלקטרוני ב- Outlook.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("tagpollingperiod")]
+		public System.Nullable<int> TagPollingPeriod
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<int>>("tagpollingperiod");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("tagpollingperiod", value);
+			}
+		}
+		
+		/// <summary>
+		/// בחר אם יש להפעיל זרימות משימה עבור הארגון.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("taskbasedflowenabled")]
+		public System.Nullable<bool> TaskBasedFlowEnabled
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("taskbasedflowenabled");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("taskbasedflowenabled", value);
+			}
+		}
+		
+		/// <summary>
+		/// מידע המציין אם סינכרון נתוני צ'אט של Teams זמין.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("teamschatdatasync")]
+		public System.Nullable<bool> TeamsChatDataSync
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("teamschatdatasync");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("teamschatdatasync", value);
+			}
+		}
+		
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("teamschatdatasyncname")]
+		public string teamschatdatasyncName
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				if (this.FormattedValues.Contains("teamschatdatasync"))
+				{
+					return this.FormattedValues["teamschatdatasync"];
+				}
+				else
+				{
+					return default(string);
+				}
+			}
+		}
+		
+		/// <summary>
+		/// Instrumentation key for Application Insights used to log plugins telemetry.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("telemetryinstrumentationkey")]
+		public string TelemetryInstrumentationKey
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("telemetryinstrumentationkey");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("telemetryinstrumentationkey", value);
+			}
+		}
+		
+		/// <summary>
+		/// בחר אם יש להפעיל ניתוח טקסט עבור הארגון.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("textanalyticsenabled")]
+		public System.Nullable<bool> TextAnalyticsEnabled
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("textanalyticsenabled");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("textanalyticsenabled", value);
+			}
+		}
+		
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("timeformatcodename")]
+		public string TimeFormatCodeName
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				if (this.FormattedValues.Contains("timeformatcode"))
+				{
+					return this.FormattedValues["timeformatcode"];
+				}
+				else
+				{
+					return default(string);
+				}
+			}
+		}
+		
+		/// <summary>
+		/// טקסט עבור אופן הצגת שעה ב- Microsoft Dynamics 365.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("timeformatstring")]
+		public string TimeFormatString
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("timeformatstring");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("timeformatstring", value);
+			}
+		}
+		
+		/// <summary>
+		/// טקסט עבור האופן שבו מוצג מפריד השעה בכל Microsoft Dynamics 365.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("timeseparator")]
+		public string TimeSeparator
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("timeseparator");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("timeseparator", value);
+			}
+		}
+		
+		/// <summary>
+		/// לשימוש פנימי בלבד.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("timezoneruleversionnumber")]
+		public System.Nullable<int> TimeZoneRuleVersionNumber
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<int>>("timezoneruleversionnumber");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("timezoneruleversionnumber", value);
+			}
+		}
+		
+		/// <summary>
+		/// משך הזמן המשמש לתפוגת אסימון.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("tokenexpiry")]
+		public System.Nullable<int> TokenExpiry
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<int>>("tokenexpiry");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("tokenexpiry", value);
+			}
+		}
+		
+		/// <summary>
+		/// מפתח אסימון.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("tokenkey")]
+		public string TokenKey
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("tokenkey");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("tokenkey", value);
+			}
+		}
+		
+		/// <summary>
+		/// הגיל המרבי של רשומת יומן מעקב בימים
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("tracelogmaximumageindays")]
+		public System.Nullable<int> TraceLogMaximumAgeInDays
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<int>>("tracelogmaximumageindays");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("tracelogmaximumageindays", value);
+			}
+		}
+		
+		/// <summary>
+		/// רשימת היסטוריה לאיתור תחיליות של אסימונים.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("trackingprefix")]
+		public string TrackingPrefix
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("trackingprefix");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("trackingprefix", value);
+			}
+		}
+		
+		/// <summary>
+		/// מספר בסיס המשמש לאספקת מזהים נפרדים של אסימוני מעקב למשתמשים המשתייכים לפריסות שונות.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("trackingtokenidbase")]
+		public System.Nullable<int> TrackingTokenIdBase
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<int>>("trackingtokenidbase");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("trackingtokenidbase", value);
+			}
+		}
+		
+		/// <summary>
+		/// מספר הספרות המשמש לייצוג מזהה של אסימון מעקב.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("trackingtokeniddigits")]
+		public System.Nullable<int> TrackingTokenIdDigits
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<int>>("trackingtokeniddigits");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("trackingtokeniddigits", value);
+			}
+		}
+		
+		/// <summary>
+		/// מספר התווים המצורפים למספרי חשבוניות, הצעות מחיר והזמנות.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("uniquespecifierlength")]
+		public System.Nullable<int> UniqueSpecifierLength
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<int>>("uniquespecifierlength");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("uniquespecifierlength", value);
+			}
+		}
+		
+		/// <summary>
+		/// מציין אם יש לבטל את הזיהוי של כתובת הדואר האלקטרוני אם נמצאו התאמות מרובות
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("unresolveemailaddressifmultiplematch")]
+		public System.Nullable<bool> UnresolveEmailAddressIfMultipleMatch
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("unresolveemailaddressifmultiplematch");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("unresolveemailaddressifmultiplematch", value);
+			}
+		}
+		
+		/// <summary>
+		/// דגל המציין אם להשתמש בכלל מוכלל עבור DefaultPricelist.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("useinbuiltrulefordefaultpricelistselection")]
+		public System.Nullable<bool> UseInbuiltRuleForDefaultPricelistSelection
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("useinbuiltrulefordefaultpricelistselection");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("useinbuiltrulefordefaultpricelistselection", value);
+			}
+		}
+		
+		/// <summary>
+		/// בחר אם להשתמש בעיבוד טפסים מדור קודם.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("uselegacyrendering")]
+		public System.Nullable<bool> UseLegacyRendering
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("uselegacyrendering");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("uselegacyrendering", value);
+			}
+		}
+		
+		/// <summary>
+		/// השתמש בהירארכיית עמדות
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("usepositionhierarchy")]
+		public System.Nullable<bool> UsePositionHierarchy
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("usepositionhierarchy");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("usepositionhierarchy", value);
+			}
+		}
+		
+		/// <summary>
+		/// מציין אם חיפוש ברשת צריך להשתמש בתצוגת החיפוש המהיר עבור הישות.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("usequickfindviewforgridsearch")]
+		public System.Nullable<bool> UseQuickFindViewForGridSearch
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("usequickfindviewforgridsearch");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("usequickfindviewforgridsearch", value);
+			}
+		}
+		
+		/// <summary>
+		/// מרווח הזמן שבו גישת משתמש נבדקת לצורך ביקורת.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("useraccessauditinginterval")]
+		public System.Nullable<int> UserAccessAuditingInterval
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<int>>("useraccessauditinginterval");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("useraccessauditinginterval", value);
+			}
+		}
+		
+		/// <summary>
+		/// מציין אם הטופס הממוטב לקריאה צריך להיות זמין עבור ארגון זה.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("usereadform")]
+		public System.Nullable<bool> UseReadForm
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("usereadform");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("usereadform", value);
+			}
+		}
+		
+		/// <summary>
+		/// המזהה הייחודי של קבוצת ברירת המחדל של משתמשים בארגון.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("usergroupid")]
+		public System.Nullable<System.Guid> UserGroupId
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<System.Guid>>("usergroupid");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("usergroupid", value);
+			}
+		}
+		
+		/// <summary>
+		/// הפוך את תכונת דירוג המשתמשים לזמינה כדי להציג את ניקוד ה- NSAT וההערה ליוצר
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("userratingenabled")]
+		public System.Nullable<bool> UserRatingEnabled
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("userratingenabled");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("userratingenabled", value);
+			}
+		}
+		
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("userratingenabledname")]
+		public string userratingenabledName
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				if (this.FormattedValues.Contains("userratingenabled"))
+				{
+					return this.FormattedValues["userratingenabled"];
+				}
+				else
+				{
+					return default(string);
+				}
+			}
+		}
+		
+		/// <summary>
+		/// מציין את פרוטוקול ברירת המחדל שנבחר עבור ארגון.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("useskypeprotocol")]
+		public System.Nullable<bool> UseSkypeProtocol
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("useskypeprotocol");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("useskypeprotocol", value);
+			}
+		}
+		
+		/// <summary>
+		/// קוד אזור הזמן שהיה בשימוש בעת יצירת הרשומה.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("utcconversiontimezonecode")]
+		public System.Nullable<int> UTCConversionTimeZoneCode
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<int>>("utcconversiontimezonecode");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("utcconversiontimezonecode", value);
+			}
+		}
+		
+		/// <summary>
+		/// קוד Hash של קובץ תצורת callout של V3.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("v3calloutconfighash")]
+		public string V3CalloutConfigHash
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("v3calloutconfighash");
+			}
+		}
+		
+		/// <summary>
+		/// מצב אימות עבור יישומים בסביבה זו
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("validationmode")]
+		public virtual Microsoft.Xrm.Sdk.OptionSetValue ValidationMode
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.OptionSetValue>("validationmode");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("validationmode", value);
+			}
+		}
+		
+		/// <summary>
+		/// מצב אימות עבור יישומים בסביבה זו
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("validationmode")]
+		public virtual Organization_ValidationMode? ValidationModeEnum
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return ((Organization_ValidationMode?)(EntityOptionSetEnum.GetEnum(this, "validationmode")));
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("validationmode", value.HasValue ? new Microsoft.Xrm.Sdk.OptionSetValue((int)value) : null);
+			}
+		}
+		
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("validationmodename")]
+		public string validationmodeName
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				if (this.FormattedValues.Contains("validationmode"))
+				{
+					return this.FormattedValues["validationmode"];
+				}
+				else
+				{
+					return default(string);
+				}
+			}
+		}
+		
+		/// <summary>
+		/// מספר גירסה של הארגון.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("versionnumber")]
+		public System.Nullable<long> VersionNumber
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<long>>("versionnumber");
+			}
+		}
+		
+		/// <summary>
+		/// ערך Hash של משאבי אינטרנט.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("webresourcehash")]
+		public string WebResourceHash
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("webresourcehash");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("webresourcehash", value);
+			}
+		}
+		
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("weekstartdaycodename")]
+		public string WeekStartDayCodeName
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				if (this.FormattedValues.Contains("weekstartdaycode"))
+				{
+					return this.FormattedValues["weekstartdaycode"];
+				}
+				else
+				{
+					return default(string);
+				}
+			}
+		}
+		
+		/// <summary>
+		/// ‏‏לשימוש פנימי בלבד.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("widgetproperties")]
+		public string WidgetProperties
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("widgetproperties");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("widgetproperties", value);
+			}
+		}
+		
+		/// <summary>
+		/// ציון מזהה הקבוצה של Yammer
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("yammergroupid")]
+		public System.Nullable<int> YammerGroupId
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<int>>("yammergroupid");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("yammergroupid", value);
+			}
+		}
+		
+		/// <summary>
+		/// ציון הקישור המתמיד של רשת Yammer
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("yammernetworkpermalink")]
+		public string YammerNetworkPermalink
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("yammernetworkpermalink");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("yammernetworkpermalink", value);
+			}
+		}
+		
+		/// <summary>
+		/// ציון אם התוקף של אסימון הגישה של OAuth עבור רשת Yammer פג
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("yammeroauthaccesstokenexpired")]
+		public System.Nullable<bool> YammerOAuthAccessTokenExpired
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("yammeroauthaccesstokenexpired");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("yammeroauthaccesstokenexpired", value);
+			}
+		}
+		
+		/// <summary>
+		/// שימוש פנימי בלבד
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("yammerpostmethod")]
+		public virtual Microsoft.Xrm.Sdk.OptionSetValue YammerPostMethod
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.OptionSetValue>("yammerpostmethod");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("yammerpostmethod", value);
+			}
+		}
+		
+		/// <summary>
+		/// שימוש פנימי בלבד
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("yammerpostmethod")]
+		public virtual Organization_YammerPostMethod? YammerPostMethodEnum
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return ((Organization_YammerPostMethod?)(EntityOptionSetEnum.GetEnum(this, "yammerpostmethod")));
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("yammerpostmethod", value.HasValue ? new Microsoft.Xrm.Sdk.OptionSetValue((int)value) : null);
+			}
+		}
+		
+		/// <summary>
+		/// מידע המציין כיצד השבוע הראשון בשנה מצוין ב- Microsoft Dynamics 365.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("yearstartweekcode")]
+		public System.Nullable<int> YearStartWeekCode
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<int>>("yearstartweekcode");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetAttributeValue("yearstartweekcode", value);
+			}
+		}
+		
+		/// <summary>
+		/// 1:N organization_business_units
+		/// </summary>
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("organization_business_units")]
+		public System.Collections.Generic.IEnumerable<Delek.DynamicsCRM.Model.BusinessUnit> organization_business_units
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntities<Delek.DynamicsCRM.Model.BusinessUnit>("organization_business_units", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetRelatedEntities<Delek.DynamicsCRM.Model.BusinessUnit>("organization_business_units", null, value);
+			}
+		}
+		
+		/// <summary>
+		/// 1:N organization_competitors
+		/// </summary>
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("organization_competitors")]
+		public System.Collections.Generic.IEnumerable<Delek.DynamicsCRM.Model.Competitor> organization_competitors
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntities<Delek.DynamicsCRM.Model.Competitor>("organization_competitors", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetRelatedEntities<Delek.DynamicsCRM.Model.Competitor>("organization_competitors", null, value);
+			}
+		}
+		
+		/// <summary>
+		/// 1:N organization_el_agent
+		/// </summary>
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("organization_el_agent")]
+		public System.Collections.Generic.IEnumerable<Delek.DynamicsCRM.Model.el_agent> organization_el_agent
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntities<Delek.DynamicsCRM.Model.el_agent>("organization_el_agent", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetRelatedEntities<Delek.DynamicsCRM.Model.el_agent>("organization_el_agent", null, value);
+			}
+		}
+		
+		/// <summary>
+		/// 1:N organization_el_asha_duty
+		/// </summary>
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("organization_el_asha_duty")]
+		public System.Collections.Generic.IEnumerable<Delek.DynamicsCRM.Model.el_asha_duty> organization_el_asha_duty
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntities<Delek.DynamicsCRM.Model.el_asha_duty>("organization_el_asha_duty", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetRelatedEntities<Delek.DynamicsCRM.Model.el_asha_duty>("organization_el_asha_duty", null, value);
+			}
+		}
+		
+		/// <summary>
+		/// 1:N organization_el_asha_log
+		/// </summary>
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("organization_el_asha_log")]
+		public System.Collections.Generic.IEnumerable<Delek.DynamicsCRM.Model.el_asha_log> organization_el_asha_log
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntities<Delek.DynamicsCRM.Model.el_asha_log>("organization_el_asha_log", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetRelatedEntities<Delek.DynamicsCRM.Model.el_asha_log>("organization_el_asha_log", null, value);
+			}
+		}
+		
+		/// <summary>
+		/// 1:N organization_el_asha_schedule_report
+		/// </summary>
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("organization_el_asha_schedule_report")]
+		public System.Collections.Generic.IEnumerable<Delek.DynamicsCRM.Model.el_asha_schedule_report> organization_el_asha_schedule_report
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntities<Delek.DynamicsCRM.Model.el_asha_schedule_report>("organization_el_asha_schedule_report", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetRelatedEntities<Delek.DynamicsCRM.Model.el_asha_schedule_report>("organization_el_asha_schedule_report", null, value);
+			}
+		}
+		
+		/// <summary>
+		/// 1:N organization_el_asha_task_type
+		/// </summary>
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("organization_el_asha_task_type")]
+		public System.Collections.Generic.IEnumerable<Delek.DynamicsCRM.Model.el_asha_task_type> organization_el_asha_task_type
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntities<Delek.DynamicsCRM.Model.el_asha_task_type>("organization_el_asha_task_type", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetRelatedEntities<Delek.DynamicsCRM.Model.el_asha_task_type>("organization_el_asha_task_type", null, value);
+			}
+		}
+		
+		/// <summary>
+		/// 1:N organization_el_asha_timetabe_setting
+		/// </summary>
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("organization_el_asha_timetabe_setting")]
+		public System.Collections.Generic.IEnumerable<Delek.DynamicsCRM.Model.el_asha_timetabe_setting> organization_el_asha_timetabe_setting
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntities<Delek.DynamicsCRM.Model.el_asha_timetabe_setting>("organization_el_asha_timetabe_setting", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetRelatedEntities<Delek.DynamicsCRM.Model.el_asha_timetabe_setting>("organization_el_asha_timetabe_setting", null, value);
+			}
+		}
+		
+		/// <summary>
+		/// 1:N organization_el_autonumbering
+		/// </summary>
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("organization_el_autonumbering")]
+		public System.Collections.Generic.IEnumerable<Delek.DynamicsCRM.Model.el_autonumbering> organization_el_autonumbering
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntities<Delek.DynamicsCRM.Model.el_autonumbering>("organization_el_autonumbering", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetRelatedEntities<Delek.DynamicsCRM.Model.el_autonumbering>("organization_el_autonumbering", null, value);
+			}
+		}
+		
+		/// <summary>
+		/// 1:N organization_el_car_fleet
+		/// </summary>
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("organization_el_car_fleet")]
+		public System.Collections.Generic.IEnumerable<Delek.DynamicsCRM.Model.el_car_fleet> organization_el_car_fleet
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntities<Delek.DynamicsCRM.Model.el_car_fleet>("organization_el_car_fleet", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetRelatedEntities<Delek.DynamicsCRM.Model.el_car_fleet>("organization_el_car_fleet", null, value);
+			}
+		}
+		
+		/// <summary>
+		/// 1:N organization_el_color
+		/// </summary>
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("organization_el_color")]
+		public System.Collections.Generic.IEnumerable<Delek.DynamicsCRM.Model.el_color> organization_el_color
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntities<Delek.DynamicsCRM.Model.el_color>("organization_el_color", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetRelatedEntities<Delek.DynamicsCRM.Model.el_color>("organization_el_color", null, value);
+			}
+		}
+		
+		/// <summary>
+		/// 1:N organization_el_commitment_type
+		/// </summary>
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("organization_el_commitment_type")]
+		public System.Collections.Generic.IEnumerable<Delek.DynamicsCRM.Model.el_commitment_type> organization_el_commitment_type
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntities<Delek.DynamicsCRM.Model.el_commitment_type>("organization_el_commitment_type", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetRelatedEntities<Delek.DynamicsCRM.Model.el_commitment_type>("organization_el_commitment_type", null, value);
+			}
+		}
+		
+		/// <summary>
+		/// 1:N organization_el_contractor
+		/// </summary>
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("organization_el_contractor")]
+		public System.Collections.Generic.IEnumerable<Delek.DynamicsCRM.Model.el_contractor> organization_el_contractor
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntities<Delek.DynamicsCRM.Model.el_contractor>("organization_el_contractor", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetRelatedEntities<Delek.DynamicsCRM.Model.el_contractor>("organization_el_contractor", null, value);
+			}
+		}
+		
+		/// <summary>
+		/// 1:N organization_el_disqualify_primary_reason
+		/// </summary>
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("organization_el_disqualify_primary_reason")]
+		public System.Collections.Generic.IEnumerable<Delek.DynamicsCRM.Model.el_disqualify_primary_reason> organization_el_disqualify_primary_reason
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntities<Delek.DynamicsCRM.Model.el_disqualify_primary_reason>("organization_el_disqualify_primary_reason", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetRelatedEntities<Delek.DynamicsCRM.Model.el_disqualify_primary_reason>("organization_el_disqualify_primary_reason", null, value);
+			}
+		}
+		
+		/// <summary>
+		/// 1:N organization_el_disqualify_secondary_reason
+		/// </summary>
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("organization_el_disqualify_secondary_reason")]
+		public System.Collections.Generic.IEnumerable<Delek.DynamicsCRM.Model.el_disqualify_secondary_reason> organization_el_disqualify_secondary_reason
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntities<Delek.DynamicsCRM.Model.el_disqualify_secondary_reason>("organization_el_disqualify_secondary_reason", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetRelatedEntities<Delek.DynamicsCRM.Model.el_disqualify_secondary_reason>("organization_el_disqualify_secondary_reason", null, value);
+			}
+		}
+		
+		/// <summary>
+		/// 1:N organization_el_do_not_call_me_results
+		/// </summary>
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("organization_el_do_not_call_me_results")]
+		public System.Collections.Generic.IEnumerable<Delek.DynamicsCRM.Model.el_do_not_call_me_results> organization_el_do_not_call_me_results
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntities<Delek.DynamicsCRM.Model.el_do_not_call_me_results>("organization_el_do_not_call_me_results", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetRelatedEntities<Delek.DynamicsCRM.Model.el_do_not_call_me_results>("organization_el_do_not_call_me_results", null, value);
+			}
+		}
+		
+		/// <summary>
+		/// 1:N organization_el_doc_fields
+		/// </summary>
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("organization_el_doc_fields")]
+		public System.Collections.Generic.IEnumerable<Delek.DynamicsCRM.Model.el_doc_fields> organization_el_doc_fields
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntities<Delek.DynamicsCRM.Model.el_doc_fields>("organization_el_doc_fields", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetRelatedEntities<Delek.DynamicsCRM.Model.el_doc_fields>("organization_el_doc_fields", null, value);
+			}
+		}
+		
+		/// <summary>
+		/// 1:N organization_el_doc_template
+		/// </summary>
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("organization_el_doc_template")]
+		public System.Collections.Generic.IEnumerable<Delek.DynamicsCRM.Model.el_doc_template> organization_el_doc_template
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntities<Delek.DynamicsCRM.Model.el_doc_template>("organization_el_doc_template", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetRelatedEntities<Delek.DynamicsCRM.Model.el_doc_template>("organization_el_doc_template", null, value);
+			}
+		}
+		
+		/// <summary>
+		/// 1:N organization_el_event_day_settings
+		/// </summary>
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("organization_el_event_day_settings")]
+		public System.Collections.Generic.IEnumerable<Delek.DynamicsCRM.Model.el_event_day_settings> organization_el_event_day_settings
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntities<Delek.DynamicsCRM.Model.el_event_day_settings>("organization_el_event_day_settings", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetRelatedEntities<Delek.DynamicsCRM.Model.el_event_day_settings>("organization_el_event_day_settings", null, value);
+			}
+		}
+		
+		/// <summary>
+		/// 1:N organization_el_family_discount
+		/// </summary>
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("organization_el_family_discount")]
+		public System.Collections.Generic.IEnumerable<Delek.DynamicsCRM.Model.el_family_discount> organization_el_family_discount
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntities<Delek.DynamicsCRM.Model.el_family_discount>("organization_el_family_discount", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetRelatedEntities<Delek.DynamicsCRM.Model.el_family_discount>("organization_el_family_discount", null, value);
+			}
+		}
+		
+		/// <summary>
+		/// 1:N organization_el_family_model
+		/// </summary>
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("organization_el_family_model")]
+		public System.Collections.Generic.IEnumerable<Delek.DynamicsCRM.Model.el_family_model> organization_el_family_model
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntities<Delek.DynamicsCRM.Model.el_family_model>("organization_el_family_model", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetRelatedEntities<Delek.DynamicsCRM.Model.el_family_model>("organization_el_family_model", null, value);
+			}
+		}
+		
+		/// <summary>
+		/// 1:N organization_el_general_system_parameter
+		/// </summary>
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("organization_el_general_system_parameter")]
+		public System.Collections.Generic.IEnumerable<Delek.DynamicsCRM.Model.el_general_system_parameter> organization_el_general_system_parameter
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntities<Delek.DynamicsCRM.Model.el_general_system_parameter>("organization_el_general_system_parameter", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetRelatedEntities<Delek.DynamicsCRM.Model.el_general_system_parameter>("organization_el_general_system_parameter", null, value);
+			}
+		}
+		
+		/// <summary>
+		/// 1:N organization_el_global_family
+		/// </summary>
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("organization_el_global_family")]
+		public System.Collections.Generic.IEnumerable<Delek.DynamicsCRM.Model.el_global_family> organization_el_global_family
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntities<Delek.DynamicsCRM.Model.el_global_family>("organization_el_global_family", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetRelatedEntities<Delek.DynamicsCRM.Model.el_global_family>("organization_el_global_family", null, value);
+			}
+		}
+		
+		/// <summary>
+		/// 1:N organization_el_global_model
+		/// </summary>
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("organization_el_global_model")]
+		public System.Collections.Generic.IEnumerable<Delek.DynamicsCRM.Model.el_global_model> organization_el_global_model
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntities<Delek.DynamicsCRM.Model.el_global_model>("organization_el_global_model", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetRelatedEntities<Delek.DynamicsCRM.Model.el_global_model>("organization_el_global_model", null, value);
+			}
+		}
+		
+		/// <summary>
+		/// 1:N organization_el_id_type
+		/// </summary>
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("organization_el_id_type")]
+		public System.Collections.Generic.IEnumerable<Delek.DynamicsCRM.Model.el_id_type> organization_el_id_type
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntities<Delek.DynamicsCRM.Model.el_id_type>("organization_el_id_type", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetRelatedEntities<Delek.DynamicsCRM.Model.el_id_type>("organization_el_id_type", null, value);
+			}
+		}
+		
+		/// <summary>
+		/// 1:N organization_el_main_subject
+		/// </summary>
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("organization_el_main_subject")]
+		public System.Collections.Generic.IEnumerable<Delek.DynamicsCRM.Model.el_main_subject> organization_el_main_subject
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntities<Delek.DynamicsCRM.Model.el_main_subject>("organization_el_main_subject", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetRelatedEntities<Delek.DynamicsCRM.Model.el_main_subject>("organization_el_main_subject", null, value);
+			}
+		}
+		
+		/// <summary>
+		/// 1:N organization_el_model
+		/// </summary>
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("organization_el_model")]
+		public System.Collections.Generic.IEnumerable<Delek.DynamicsCRM.Model.el_model> organization_el_model
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntities<Delek.DynamicsCRM.Model.el_model>("organization_el_model", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetRelatedEntities<Delek.DynamicsCRM.Model.el_model>("organization_el_model", null, value);
+			}
+		}
+		
+		/// <summary>
+		/// 1:N organization_el_primary_area
+		/// </summary>
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("organization_el_primary_area")]
+		public System.Collections.Generic.IEnumerable<Delek.DynamicsCRM.Model.el_primary_area> organization_el_primary_area
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntities<Delek.DynamicsCRM.Model.el_primary_area>("organization_el_primary_area", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetRelatedEntities<Delek.DynamicsCRM.Model.el_primary_area>("organization_el_primary_area", null, value);
+			}
+		}
+		
+		/// <summary>
+		/// 1:N organization_el_primary_channel
+		/// </summary>
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("organization_el_primary_channel")]
+		public System.Collections.Generic.IEnumerable<Delek.DynamicsCRM.Model.el_primary_channel> organization_el_primary_channel
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntities<Delek.DynamicsCRM.Model.el_primary_channel>("organization_el_primary_channel", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetRelatedEntities<Delek.DynamicsCRM.Model.el_primary_channel>("organization_el_primary_channel", null, value);
+			}
+		}
+		
+		/// <summary>
+		/// 1:N organization_el_recording
+		/// </summary>
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("organization_el_recording")]
+		public System.Collections.Generic.IEnumerable<Delek.DynamicsCRM.Model.el_recording> organization_el_recording
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntities<Delek.DynamicsCRM.Model.el_recording>("organization_el_recording", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetRelatedEntities<Delek.DynamicsCRM.Model.el_recording>("organization_el_recording", null, value);
+			}
+		}
+		
+		/// <summary>
+		/// 1:N organization_el_sales_campaign
+		/// </summary>
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("organization_el_sales_campaign")]
+		public System.Collections.Generic.IEnumerable<Delek.DynamicsCRM.Model.el_sales_campaign> organization_el_sales_campaign
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntities<Delek.DynamicsCRM.Model.el_sales_campaign>("organization_el_sales_campaign", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetRelatedEntities<Delek.DynamicsCRM.Model.el_sales_campaign>("organization_el_sales_campaign", null, value);
+			}
+		}
+		
+		/// <summary>
+		/// 1:N organization_el_secondary_area
+		/// </summary>
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("organization_el_secondary_area")]
+		public System.Collections.Generic.IEnumerable<Delek.DynamicsCRM.Model.el_secondary_area> organization_el_secondary_area
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntities<Delek.DynamicsCRM.Model.el_secondary_area>("organization_el_secondary_area", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetRelatedEntities<Delek.DynamicsCRM.Model.el_secondary_area>("organization_el_secondary_area", null, value);
+			}
+		}
+		
+		/// <summary>
+		/// 1:N organization_el_secondary_channel
+		/// </summary>
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("organization_el_secondary_channel")]
+		public System.Collections.Generic.IEnumerable<Delek.DynamicsCRM.Model.el_secondary_channel> organization_el_secondary_channel
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntities<Delek.DynamicsCRM.Model.el_secondary_channel>("organization_el_secondary_channel", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetRelatedEntities<Delek.DynamicsCRM.Model.el_secondary_channel>("organization_el_secondary_channel", null, value);
+			}
+		}
+		
+		/// <summary>
+		/// 1:N organization_el_secondary_subject
+		/// </summary>
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("organization_el_secondary_subject")]
+		public System.Collections.Generic.IEnumerable<Delek.DynamicsCRM.Model.el_secondary_subject> organization_el_secondary_subject
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntities<Delek.DynamicsCRM.Model.el_secondary_subject>("organization_el_secondary_subject", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetRelatedEntities<Delek.DynamicsCRM.Model.el_secondary_subject>("organization_el_secondary_subject", null, value);
+			}
+		}
+		
+		/// <summary>
+		/// 1:N organization_el_service_point
+		/// </summary>
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("organization_el_service_point")]
+		public System.Collections.Generic.IEnumerable<Delek.DynamicsCRM.Model.el_service_point> organization_el_service_point
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntities<Delek.DynamicsCRM.Model.el_service_point>("organization_el_service_point", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetRelatedEntities<Delek.DynamicsCRM.Model.el_service_point>("organization_el_service_point", null, value);
+			}
+		}
+		
+		/// <summary>
+		/// 1:N organization_el_sla
+		/// </summary>
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("organization_el_sla")]
+		public System.Collections.Generic.IEnumerable<Delek.DynamicsCRM.Model.el_sla> organization_el_sla
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntities<Delek.DynamicsCRM.Model.el_sla>("organization_el_sla", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetRelatedEntities<Delek.DynamicsCRM.Model.el_sla>("organization_el_sla", null, value);
+			}
+		}
+		
+		/// <summary>
+		/// 1:N organization_el_sla_type
+		/// </summary>
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("organization_el_sla_type")]
+		public System.Collections.Generic.IEnumerable<Delek.DynamicsCRM.Model.el_sla_type> organization_el_sla_type
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntities<Delek.DynamicsCRM.Model.el_sla_type>("organization_el_sla_type", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetRelatedEntities<Delek.DynamicsCRM.Model.el_sla_type>("organization_el_sla_type", null, value);
+			}
+		}
+		
+		/// <summary>
+		/// 1:N organization_el_sms_template
+		/// </summary>
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("organization_el_sms_template")]
+		public System.Collections.Generic.IEnumerable<Delek.DynamicsCRM.Model.el_sms_template> organization_el_sms_template
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntities<Delek.DynamicsCRM.Model.el_sms_template>("organization_el_sms_template", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetRelatedEntities<Delek.DynamicsCRM.Model.el_sms_template>("organization_el_sms_template", null, value);
+			}
+		}
+		
+		/// <summary>
+		/// 1:N organization_el_test_driver
+		/// </summary>
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("organization_el_test_driver")]
+		public System.Collections.Generic.IEnumerable<Delek.DynamicsCRM.Model.el_test_driver> organization_el_test_driver
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntities<Delek.DynamicsCRM.Model.el_test_driver>("organization_el_test_driver", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetRelatedEntities<Delek.DynamicsCRM.Model.el_test_driver>("organization_el_test_driver", null, value);
+			}
+		}
+		
+		/// <summary>
+		/// 1:N organization_el_tradein_manufacturer
+		/// </summary>
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("organization_el_tradein_manufacturer")]
+		public System.Collections.Generic.IEnumerable<Delek.DynamicsCRM.Model.el_tradein_manufacturer> organization_el_tradein_manufacturer
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntities<Delek.DynamicsCRM.Model.el_tradein_manufacturer>("organization_el_tradein_manufacturer", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetRelatedEntities<Delek.DynamicsCRM.Model.el_tradein_manufacturer>("organization_el_tradein_manufacturer", null, value);
+			}
+		}
+		
+		/// <summary>
+		/// 1:N organization_el_tradein_model
+		/// </summary>
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("organization_el_tradein_model")]
+		public System.Collections.Generic.IEnumerable<Delek.DynamicsCRM.Model.el_tradein_model> organization_el_tradein_model
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntities<Delek.DynamicsCRM.Model.el_tradein_model>("organization_el_tradein_model", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetRelatedEntities<Delek.DynamicsCRM.Model.el_tradein_model>("organization_el_tradein_model", null, value);
+			}
+		}
+		
+		/// <summary>
+		/// 1:N organization_el_tutorial_video
+		/// </summary>
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("organization_el_tutorial_video")]
+		public System.Collections.Generic.IEnumerable<Delek.DynamicsCRM.Model.el_tutorial_video> organization_el_tutorial_video
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntities<Delek.DynamicsCRM.Model.el_tutorial_video>("organization_el_tutorial_video", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetRelatedEntities<Delek.DynamicsCRM.Model.el_tutorial_video>("organization_el_tutorial_video", null, value);
+			}
+		}
+		
+		/// <summary>
+		/// 1:N organization_mailbox
+		/// </summary>
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("organization_mailbox")]
+		public System.Collections.Generic.IEnumerable<Delek.DynamicsCRM.Model.Mailbox> organization_mailbox
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntities<Delek.DynamicsCRM.Model.Mailbox>("organization_mailbox", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetRelatedEntities<Delek.DynamicsCRM.Model.Mailbox>("organization_mailbox", null, value);
+			}
+		}
+		
+		/// <summary>
+		/// 1:N organization_queueitems
+		/// </summary>
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("organization_queueitems")]
+		public System.Collections.Generic.IEnumerable<Delek.DynamicsCRM.Model.QueueItem> organization_queueitems
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntities<Delek.DynamicsCRM.Model.QueueItem>("organization_queueitems", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetRelatedEntities<Delek.DynamicsCRM.Model.QueueItem>("organization_queueitems", null, value);
+			}
+		}
+		
+		/// <summary>
+		/// 1:N organization_roles
+		/// </summary>
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("organization_roles")]
+		public System.Collections.Generic.IEnumerable<Delek.DynamicsCRM.Model.Role> organization_roles
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntities<Delek.DynamicsCRM.Model.Role>("organization_roles", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetRelatedEntities<Delek.DynamicsCRM.Model.Role>("organization_roles", null, value);
+			}
+		}
+		
+		/// <summary>
+		/// 1:N organization_sites
+		/// </summary>
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("organization_sites")]
+		public System.Collections.Generic.IEnumerable<Delek.DynamicsCRM.Model.Site> organization_sites
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntities<Delek.DynamicsCRM.Model.Site>("organization_sites", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetRelatedEntities<Delek.DynamicsCRM.Model.Site>("organization_sites", null, value);
+			}
+		}
+		
+		/// <summary>
+		/// 1:N organization_system_users
+		/// </summary>
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("organization_system_users")]
+		public System.Collections.Generic.IEnumerable<Delek.DynamicsCRM.Model.SystemUser> organization_system_users
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntities<Delek.DynamicsCRM.Model.SystemUser>("organization_system_users", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetRelatedEntities<Delek.DynamicsCRM.Model.SystemUser>("organization_system_users", null, value);
+			}
+		}
+		
+		/// <summary>
+		/// 1:N organization_teams
+		/// </summary>
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("organization_teams")]
+		public System.Collections.Generic.IEnumerable<Delek.DynamicsCRM.Model.Team> organization_teams
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntities<Delek.DynamicsCRM.Model.Team>("organization_teams", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetRelatedEntities<Delek.DynamicsCRM.Model.Team>("organization_teams", null, value);
+			}
+		}
+		
+		/// <summary>
+		/// 1:N organization_territories
+		/// </summary>
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("organization_territories")]
+		public System.Collections.Generic.IEnumerable<Delek.DynamicsCRM.Model.Territory> organization_territories
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntities<Delek.DynamicsCRM.Model.Territory>("organization_territories", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetRelatedEntities<Delek.DynamicsCRM.Model.Territory>("organization_territories", null, value);
+			}
+		}
+		
+		/// <summary>
+		/// 1:N organization_transactioncurrencies
+		/// </summary>
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("organization_transactioncurrencies")]
+		public System.Collections.Generic.IEnumerable<Delek.DynamicsCRM.Model.TransactionCurrency> organization_transactioncurrencies
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntities<Delek.DynamicsCRM.Model.TransactionCurrency>("organization_transactioncurrencies", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetRelatedEntities<Delek.DynamicsCRM.Model.TransactionCurrency>("organization_transactioncurrencies", null, value);
+			}
+		}
+		
+		/// <summary>
+		/// 1:N webresource_organization
+		/// </summary>
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("webresource_organization")]
+		public System.Collections.Generic.IEnumerable<Delek.DynamicsCRM.Model.WebResource> webresource_organization
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntities<Delek.DynamicsCRM.Model.WebResource>("webresource_organization", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetRelatedEntities<Delek.DynamicsCRM.Model.WebResource>("webresource_organization", null, value);
+			}
+		}
+		
+		/// <summary>
+		/// N:1 basecurrency_organization
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("basecurrencyid")]
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("basecurrency_organization")]
+		public Delek.DynamicsCRM.Model.TransactionCurrency basecurrency_organization
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntity<Delek.DynamicsCRM.Model.TransactionCurrency>("basecurrency_organization", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetRelatedEntity<Delek.DynamicsCRM.Model.TransactionCurrency>("basecurrency_organization", null, value);
+			}
+		}
+		
+		/// <summary>
+		/// N:1 lk_organization_createdonbehalfby
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdonbehalfby")]
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_organization_createdonbehalfby")]
+		public Delek.DynamicsCRM.Model.SystemUser lk_organization_createdonbehalfby
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntity<Delek.DynamicsCRM.Model.SystemUser>("lk_organization_createdonbehalfby", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetRelatedEntity<Delek.DynamicsCRM.Model.SystemUser>("lk_organization_createdonbehalfby", null, value);
+			}
+		}
+		
+		/// <summary>
+		/// N:1 lk_organization_modifiedonbehalfby
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedonbehalfby")]
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_organization_modifiedonbehalfby")]
+		public Delek.DynamicsCRM.Model.SystemUser lk_organization_modifiedonbehalfby
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntity<Delek.DynamicsCRM.Model.SystemUser>("lk_organization_modifiedonbehalfby", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetRelatedEntity<Delek.DynamicsCRM.Model.SystemUser>("lk_organization_modifiedonbehalfby", null, value);
+			}
+		}
+		
+		/// <summary>
+		/// N:1 lk_organizationbase_createdby
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdby")]
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_organizationbase_createdby")]
+		public Delek.DynamicsCRM.Model.SystemUser lk_organizationbase_createdby
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntity<Delek.DynamicsCRM.Model.SystemUser>("lk_organizationbase_createdby", null);
+			}
+		}
+		
+		/// <summary>
+		/// N:1 lk_organizationbase_modifiedby
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedby")]
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_organizationbase_modifiedby")]
+		public Delek.DynamicsCRM.Model.SystemUser lk_organizationbase_modifiedby
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntity<Delek.DynamicsCRM.Model.SystemUser>("lk_organizationbase_modifiedby", null);
+			}
+		}
+		
+		/// <summary>
+		/// N:1 Template_Organization
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("acknowledgementtemplateid")]
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("Template_Organization")]
+		public Delek.DynamicsCRM.Model.Template Template_Organization
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntity<Delek.DynamicsCRM.Model.Template>("Template_Organization", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetRelatedEntity<Delek.DynamicsCRM.Model.Template>("Template_Organization", null, value);
+			}
+		}
+		
+		/// <summary>
+		/// Constructor for populating via LINQ queries given a LINQ anonymous type
+		/// <param name="anonymousType">LINQ anonymous type.</param>
+		/// </summary>
+		[System.Diagnostics.DebuggerNonUserCode()]
+		public Organization(object anonymousType) : 
+				this()
+		{
+            foreach (var p in anonymousType.GetType().GetProperties())
+            {
+                var value = p.GetValue(anonymousType, null);
+                var name = p.Name.ToLower();
+            
+                if (value != null && name.EndsWith("enum") && value.GetType().BaseType == typeof(System.Enum))
+                {
+                    value = new Microsoft.Xrm.Sdk.OptionSetValue((int) value);
+                    name = name.Remove(name.Length - "enum".Length);
+                }
+            
+                switch (name)
+                {
+                    case "id":
+                        base.Id = (System.Guid)value;
+                        Attributes["organizationid"] = base.Id;
+                        break;
+                    case "organizationid":
+                        var id = (System.Nullable<System.Guid>) value;
+                        if(id == null){ continue; }
+                        base.Id = id.Value;
+                        Attributes[name] = base.Id;
+                        break;
+                    case "formattedvalues":
+                        // Add Support for FormattedValues
+                        FormattedValues.AddRange((Microsoft.Xrm.Sdk.FormattedValueCollection)value);
+                        break;
+                    default:
+                        Attributes[name] = value;
+                        break;
+                }
+            }
+		}
+	}
+	
+	/// <summary>
 	/// פעילות של שיחת טלפון. עשויה להיות מסוג SLA.
 	/// </summary>
 	[System.Runtime.Serialization.DataContractAttribute()]
@@ -250714,6 +264692,20 @@ namespace Delek.DynamicsCRM.Model
 		}
 		
 		/// <summary>
+		/// N:1 organization_queueitems
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("organizationid")]
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("organization_queueitems")]
+		public Delek.DynamicsCRM.Model.Organization organization_queueitems
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntity<Delek.DynamicsCRM.Model.Organization>("organization_queueitems", null);
+			}
+		}
+		
+		/// <summary>
 		/// N:1 PhoneCall_QueueItem
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("objectid")]
@@ -256827,6 +270819,20 @@ namespace Delek.DynamicsCRM.Model
 			get
 			{
 				return this.GetRelatedEntity<Delek.DynamicsCRM.Model.SystemUser>("lk_rolebase_modifiedby", null);
+			}
+		}
+		
+		/// <summary>
+		/// N:1 organization_roles
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("organizationid")]
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("organization_roles")]
+		public Delek.DynamicsCRM.Model.Organization organization_roles
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntity<Delek.DynamicsCRM.Model.Organization>("organization_roles", null);
 			}
 		}
 		
@@ -264985,6 +278991,20 @@ namespace Delek.DynamicsCRM.Model
 			get
 			{
 				return this.GetRelatedEntity<Delek.DynamicsCRM.Model.SystemUser>("lk_sitebase_modifiedby", null);
+			}
+		}
+		
+		/// <summary>
+		/// N:1 organization_sites
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("organizationid")]
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("organization_sites")]
+		public Delek.DynamicsCRM.Model.Organization organization_sites
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntity<Delek.DynamicsCRM.Model.Organization>("organization_sites", null);
 			}
 		}
 		
@@ -282475,6 +296495,78 @@ namespace Delek.DynamicsCRM.Model
 		}
 		
 		/// <summary>
+		/// 1:N lk_organization_createdonbehalfby
+		/// </summary>
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_organization_createdonbehalfby")]
+		public System.Collections.Generic.IEnumerable<Delek.DynamicsCRM.Model.Organization> lk_organization_createdonbehalfby
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntities<Delek.DynamicsCRM.Model.Organization>("lk_organization_createdonbehalfby", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetRelatedEntities<Delek.DynamicsCRM.Model.Organization>("lk_organization_createdonbehalfby", null, value);
+			}
+		}
+		
+		/// <summary>
+		/// 1:N lk_organization_modifiedonbehalfby
+		/// </summary>
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_organization_modifiedonbehalfby")]
+		public System.Collections.Generic.IEnumerable<Delek.DynamicsCRM.Model.Organization> lk_organization_modifiedonbehalfby
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntities<Delek.DynamicsCRM.Model.Organization>("lk_organization_modifiedonbehalfby", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetRelatedEntities<Delek.DynamicsCRM.Model.Organization>("lk_organization_modifiedonbehalfby", null, value);
+			}
+		}
+		
+		/// <summary>
+		/// 1:N lk_organizationbase_createdby
+		/// </summary>
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_organizationbase_createdby")]
+		public System.Collections.Generic.IEnumerable<Delek.DynamicsCRM.Model.Organization> lk_organizationbase_createdby
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntities<Delek.DynamicsCRM.Model.Organization>("lk_organizationbase_createdby", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetRelatedEntities<Delek.DynamicsCRM.Model.Organization>("lk_organizationbase_createdby", null, value);
+			}
+		}
+		
+		/// <summary>
+		/// 1:N lk_organizationbase_modifiedby
+		/// </summary>
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_organizationbase_modifiedby")]
+		public System.Collections.Generic.IEnumerable<Delek.DynamicsCRM.Model.Organization> lk_organizationbase_modifiedby
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntities<Delek.DynamicsCRM.Model.Organization>("lk_organizationbase_modifiedby", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetRelatedEntities<Delek.DynamicsCRM.Model.Organization>("lk_organizationbase_modifiedby", null, value);
+			}
+		}
+		
+		/// <summary>
 		/// 1:N lk_phonecall_createdby
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_phonecall_createdby")]
@@ -286048,6 +300140,20 @@ namespace Delek.DynamicsCRM.Model
 			get
 			{
 				return this.GetRelatedEntity<Delek.DynamicsCRM.Model.SystemUser>("lk_systemuserbase_modifiedby", Microsoft.Xrm.Sdk.EntityRole.Referencing);
+			}
+		}
+		
+		/// <summary>
+		/// N:1 organization_system_users
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("organizationid")]
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("organization_system_users")]
+		public Delek.DynamicsCRM.Model.Organization organization_system_users
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntity<Delek.DynamicsCRM.Model.Organization>("organization_system_users", null);
 			}
 		}
 		
@@ -292768,6 +306874,20 @@ namespace Delek.DynamicsCRM.Model
 		}
 		
 		/// <summary>
+		/// N:1 organization_teams
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("organizationid")]
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("organization_teams")]
+		public Delek.DynamicsCRM.Model.Organization organization_teams
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntity<Delek.DynamicsCRM.Model.Organization>("organization_teams", null);
+			}
+		}
+		
+		/// <summary>
 		/// N:1 TransactionCurrency_Team
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("transactioncurrencyid")]
@@ -294002,6 +308122,24 @@ namespace Delek.DynamicsCRM.Model
 		}
 		
 		/// <summary>
+		/// 1:N Template_Organization
+		/// </summary>
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("Template_Organization")]
+		public System.Collections.Generic.IEnumerable<Delek.DynamicsCRM.Model.Organization> Template_Organization
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntities<Delek.DynamicsCRM.Model.Organization>("Template_Organization", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetRelatedEntities<Delek.DynamicsCRM.Model.Organization>("Template_Organization", null, value);
+			}
+		}
+		
+		/// <summary>
 		/// 1:N Template_ProcessSessions
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("Template_ProcessSessions")]
@@ -295008,6 +309146,20 @@ namespace Delek.DynamicsCRM.Model
 		}
 		
 		/// <summary>
+		/// N:1 organization_territories
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("organizationid")]
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("organization_territories")]
+		public Delek.DynamicsCRM.Model.Organization organization_territories
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntity<Delek.DynamicsCRM.Model.Organization>("organization_territories", null);
+			}
+		}
+		
+		/// <summary>
 		/// N:1 system_user_territories
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("managerid")]
@@ -295766,6 +309918,24 @@ namespace Delek.DynamicsCRM.Model
 		}
 		
 		/// <summary>
+		/// 1:N basecurrency_organization
+		/// </summary>
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("basecurrency_organization")]
+		public System.Collections.Generic.IEnumerable<Delek.DynamicsCRM.Model.Organization> basecurrency_organization
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntities<Delek.DynamicsCRM.Model.Organization>("basecurrency_organization", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SetRelatedEntities<Delek.DynamicsCRM.Model.Organization>("basecurrency_organization", null, value);
+			}
+		}
+		
+		/// <summary>
 		/// 1:N bulkoperation_transactioncurrency_transactioncurrencyid
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("bulkoperation_transactioncurrency_transactioncurrencyid")]
@@ -296512,6 +310682,20 @@ namespace Delek.DynamicsCRM.Model
 			get
 			{
 				return this.GetRelatedEntity<Delek.DynamicsCRM.Model.SystemUser>("lk_transactioncurrencybase_modifiedby", null);
+			}
+		}
+		
+		/// <summary>
+		/// N:1 organization_transactioncurrencies
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("organizationid")]
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("organization_transactioncurrencies")]
+		public Delek.DynamicsCRM.Model.Organization organization_transactioncurrencies
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntity<Delek.DynamicsCRM.Model.Organization>("organization_transactioncurrencies", null);
 			}
 		}
 		
@@ -297332,6 +311516,20 @@ namespace Delek.DynamicsCRM.Model
 			get
 			{
 				return this.GetRelatedEntity<Delek.DynamicsCRM.Model.SystemUser>("webresource_modifiedby", null);
+			}
+		}
+		
+		/// <summary>
+		/// N:1 webresource_organization
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("organizationid")]
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("webresource_organization")]
+		public Delek.DynamicsCRM.Model.Organization webresource_organization
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntity<Delek.DynamicsCRM.Model.Organization>("webresource_organization", null);
 			}
 		}
 		
