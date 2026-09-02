@@ -12,31 +12,62 @@ CommonsCrmActionParameters.CheckForDuplicates = function ( duplicateType, target
     this.UntilTime = untilTime;
 };
 
-CommonsCrmActionParameters.CheckForDuplicates.prototype.getMetadata = function () {
+CommonsCrmActionParameters.CheckForDuplicates.prototype.getMetadata = function (_baseEntityTypecode, _baseEntity, _id, _recordColumns ) {
     return {
-        boundParameter: null,
-        operationType: 0,      // Action
-        operationName: "el_action_duplicate_detection_records",
-        parameterTypes: {
-            DuplicateType: {
-                typeName: "Edm.Int32",
-                structuralProperty: 1
-            },
-            TargetId: {
-                typeName: "Edm.Guid",
-                structuralProperty: 1
-            },
-            UserId: {
-                typeName: "Edm.Guid",
-                structuralProperty: 1
-            },
-           
-            recordColumns: {
-                typeName: "Edm.String",
-                structuralProperty: 1
-            }
+        //    boundParameter: null,
+        //    operationType: 0,      // Action
+        //    operationName: "el_action_duplicate_detection_records",
+        //    parameterTypes: {
+        //        baseEntityTypecode: {
+        //            typeName: "Edm.String",
+        //            structuralProperty: 1
+        //        },
+        //        baseEntity: {
+        //            typeName: "Edm.String",
+        //            structuralProperty: 1
+        //        },
+        //        id: {
+        //            typeName: "Edm.String",
+        //            structuralProperty: 1
+        //        },
+
+        //        recordColumns: {
+        //            typeName: "Edm.String",
+        //            structuralProperty: 1
+        //        }
+        //    }
+        //};
+        baseEntityTypecode: _baseEntityTypecode,
+        baseEntity: _baseEntity,
+        id: _id,
+        recordColumns: _recordColumns,
+
+        getMetadata: function () {
+            return {
+                boundParameter: null, // Global Action → null
+                parameterTypes: {
+                    baseEntityTypecode: {
+                        typeName: "Edm.String",
+                        structuralProperty: 1 // PrimitiveType
+                    },
+                    baseEntity: {
+                        typeName: "Edm.String",
+                        structuralProperty: 1
+                    },
+                    id: {
+                        typeName: "Edm.String",
+                        structuralProperty: 1
+                    },
+                    recordColumns: {
+                        typeName: "Edm.String",
+                        structuralProperty: 1
+                    }
+                },
+                operationType: 0,
+                operationName: "el_action_duplicate_detection_records"
+            };
         }
-    };
+    }
 };
 
 (function (elad_commons_obj) {
@@ -389,13 +420,13 @@ CommonsCrmActionParameters.CheckForDuplicates.prototype.getMetadata = function (
         });
     };
 
-    elad_commons_obj.IsDuplicateRecordExist = function (DuplicateType, TargetId, UserId, recordColumns) { //recordColumnsrecordColumns
+    elad_commons_obj.IsDuplicateRecordExist = function (baseEntityTypecode, baseEntity, id, recordColumns) { //recordColumnsrecordColumns
         //Each error message is different, to separate the steps that could cause an error.
         return new Promise(function (resolve, reject) {
             try {
                 var errorObj = {};
 
-                var checkForDuplicates = new CommonsCrmActionParameters.CheckForDuplicates(DuplicateType, TargetId, UserId, recordColumns);
+                var checkForDuplicates = new CommonsCrmActionParameters.CheckForDuplicates.prototype.getMetadata(baseEntityTypecode, baseEntity, id, recordColumns);
                 Xrm.WebApi.online.execute(checkForDuplicates).then(function (result) {
                     if (result.ok) {
                         result.json().then(
@@ -404,14 +435,8 @@ CommonsCrmActionParameters.CheckForDuplicates.prototype.getMetadata = function (
                                     errorObj.message = "checkForDuplicates Error: JSON parse did not return a response";
                                     reject(errorObj);
                                 }
-                                else {
-                                    if (response.Success) {
-                                        resolve(response.IsDuplicate);
-                                    }
-                                    else {
-                                        errorObj.message = "checkForDuplicates Error: The action returned a failed status";
-                                        reject(errorObj);
-                                    }
+                                else {     
+                                    resolve(response.stringOutput);
                                 }
                             },
                             function (error) {
@@ -2024,16 +2049,25 @@ CommonsCrmActionParameters.CheckForDuplicates.prototype.getMetadata = function (
         Xrm.WebApi.online.execute(req).then(
             function (result) {
                 if (result.ok) {
-                    result.json().then(function (response) {
+                    if (result.status !== 204) {
+                        result.json().then(
+                            function (response) {
+                                if (successCallback)
+                                    successCallback(response)
+                            }, function (error) {
+                                elad_commons_obj.HandlePageErrorAndIndicator("elad_commons_obj.executeRequest error: ", error, "\n(אין פרטי שגיאה להצגה)", "", "executeRequest", false, true);
+                                if (errorCallback)
+                                    errorCallback(error);
+                            });
+                    }
+                    else {
                         if (successCallback)
-                            successCallback(response)
-                    }, function (error) {
-                        elad_commons_obj.HandlePageErrorAndIndicator("executeRequest error: ", error, "\n(אין פרטי שגיאה להצגה)", "", "executeRequest", false, true);
-                    });
+                            successCallback(result)
+                    }
                 }
                 else {
                     if (errorCallback)
-                        errorCallback(response);
+                        errorCallback(result);
                 }
             },
             function (error) {
@@ -2313,22 +2347,7 @@ CommonsCrmActionParameters.CheckForDuplicates.prototype.getMetadata = function (
                 )
         })
     }
-    elad_commons_obj.UserHasRole = function (roleName) {
-        return new Promise(function (resolve, reject) {
-            elad_commons_obj.GetCurrentUserSecurityRoles()
-                .then(
-                    function (userRoles) {
-                        Object.keys(userRoles).forEach(rName => {
-                            if (rName === roleName ) {
-                                resolve(true);
-                            }
-                        });
-                        resolve(false);
-                    },
-                    err => reject(err)
-                )
-        })
-    }
+    
 
     /**
      * Method return an Opener information
@@ -2508,7 +2527,7 @@ CommonsCrmActionParameters.CheckForDuplicates.prototype.getMetadata = function (
                 statuscode: statusCode
             };
 
-            return elad_commons_obj.UpdateRecord(
+            return elad_commons_obj.updateRecord(
                 entityName,
                 elad_commons_obj.StripGuid(recordId),
                 updateEntity
@@ -3446,6 +3465,13 @@ CommonsCrmActionParameters.CheckForDuplicates.prototype.getMetadata = function (
         });
 
         return true;
+    };
+    elad_commons_obj.GetPrimaryAttributeValue = function () {//elad_commons_obj._formContext
+        if (!elad_commons_obj._formContext || !elad_commons_obj._formContext.data || !elad_commons_obj._formContext.data.entity) {
+            return null;
+        }
+
+        return elad_commons_obj._formContext.data.entity.getPrimaryAttributeValue();
     };
     //--- AYA END ---
 })(window.elad_commons_obj = window.elad_commons_obj || {});

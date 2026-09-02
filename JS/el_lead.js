@@ -93,9 +93,9 @@
 
     el_lead.setDisqualifyTab = function () {
         if (commons.GetLookupId("el_id_disqualify_primary_reason"))
-            commons.SetTabVisibility("lead_disqualify_tab", true);
+            commons.SetSectionVisibility("tab_2", "lead_disqualify_section", true);
         else
-            commons.SetTabVisibility("lead_disqualify_tab", false);
+            commons.SetSectionVisibility("tab_2", "lead_disqualify_section", false);
     }
 
     el_lead.showAdditionalDetailsFieldAfterFillingMainReason = async function () {
@@ -105,10 +105,10 @@
             var primary_reasonAfterRetrieve = await commons.RetrieveRecord("el_disqualify_primary_reason", primary_reason.replace(/[{}]/g, ""), "?$select=el_name")
             if (primary_reasonAfterRetrieve != null) {
                 if (primary_reasonAfterRetrieve.el_name == "אחר") {
-                    common.SetRequiredLevel("el_s_disqualify_notes", "required")
+                    commons.SetRequiredLevel("el_s_disqualify_notes", "required")
                 }
                 else {
-                    common.SetRequiredLevel("el_s_disqualify_notes", "none")
+                    commons.SetRequiredLevel("el_s_disqualify_notes", "none")
                 }
             }
         }
@@ -186,32 +186,23 @@
         }
     }
 
-    //To Check -> Check duplication method full
+    
     el_lead.checkDuplicate = function (Context) {
         if (!commons.GetFormContext()) {
             commons.SetFormContext(Context);
         }
-
+        
         var eventArgs = Context.getEventArgs();
-        if (eventArgs.getSaveMode() === Enum.SaveMode.Save || eventArgs.getSaveMode() === Enum.SaveMode.SaveAndClose || eventArgs.getSaveMode() === Enum.SaveMode.SaveAndNew || eventArgs.getSaveMode() === Enum.SaveMode.AutoSave && !commons.GetTab("lead_disqualify_tab").getVisible()) {
+        if (eventArgs.getSaveMode() === Enum.SaveMode.Save || eventArgs.getSaveMode() === Enum.SaveMode.SaveAndClose || eventArgs.getSaveMode() === Enum.SaveMode.SaveAndNew || eventArgs.getSaveMode() === Enum.SaveMode.AutoSave && !commons.GetTab('tab_2').sections.get("lead_disqualify_section").getVisible()) {
             if (IS_DUPLICATION_CHECKING == false && IS_DUPLICATION_CHECKED == false) {
                 IS_DUPLICATION_CHECKING = true;
                 IS_DUPLICATION_CHECKED = true;
                 if (commons.GetFormType() === Enum.FormType.Create) {
                     commons.SetFieldValue('el_b_to_check_duplicates', true);
                     IS_DUPLICATION_CHECKING = false;
-
-                    commons.RefreshData(true)
-
-                    // commons.Save()
-                    //     .then(
-                    //         function () { 
-                    //             commons.RefreshData(true) 
-                    //         });
                 }
 
 
-                //To Check
                 var req = {
 
                     baseEntityTypecode: "4",
@@ -252,7 +243,7 @@
 
                             var pageInput = {
                                 pageType: "webresource",
-                                webresourceName: "el_action_duplicate_detection_records", //Point to problem -> schem name or name
+                                webresourceName: "el_duplicates_table.html",
                             };
 
                             var navigationOptions = {
@@ -262,7 +253,7 @@
                                 position: 1 // 1 for center, 2 for side pane
                             };
 
-                            localStorage.setItem('duplicatesString', result.stringOutput);
+                            localStorage.setItem('duplicatesString', successResult.stringOutput);
                             Context.getEventArgs().preventDefault();
 
                             commons.NavigateTo(pageInput, navigationOptions)
@@ -278,70 +269,20 @@
                         }
                     },
                     function (error) {
-                        console.error(error);
-                        commons.SetFormNotification("Error on el_lead.checkDuplicate => executeRequest()", commons.FormNotificationLevel.ERROR, "el_lead.checkDuplicate => executeRequest()");
+                        console.error("Error on el_lead.checkDuplicate => executeRequest(): ", error);
+                        commons.SetFormNotification("Error on el_lead.checkDuplicate => executeRequest(): " + error.message, commons.FormNotificationLevel.ERROR, "el_lead.checkDuplicate => executeRequest()");
                     }
                 )
-
-                // var parameters = {
-                //     baseEntityTypecode: "4",
-                //     baseEntity: "lead",
-                //     id: commons.GetCurrentEntityId(),
-                //     recordColumns: "subject,mobilephone,el_id_showroom,emailaddress1,telephone1"
-                // };
-
-                // var request = motors.Utilities.buildActionRequest("", "", true, "el_action_duplicate_detection_records", parameters, null, false);
-                // var service = motors.Services.XrmService.V81;
-                // var result = service.CallAction(request);
-
-                // if (result != null && result.stringOutput != "[]") {
-                //     localStorage.setItem('duplicatesString', result.stringOutput);
-                //     var DialogOption = new Xrm.DialogOptions;
-                //     DialogOption.width = 850;
-                //     DialogOption.height = 560;
-                //     Context.getEventArgs().preventDefault();
-
-                //     Xrm.Internal.openDialog(Xrm.Page.context.getClientUrl() + "/webresources/el_duplicates_table.html", DialogOption, null, null, el_lead.saveOrExit);
-                // }
             }
         }
-        else if (commons.GetVisible("lead_disqualify_tab") && eventArgs.getSaveMode() == Enum.SaveMode.AutoSave) {
+        else if (commons.GetTab('tab_2').sections.get("lead_disqualify_section").getVisible() && eventArgs.getSaveMode() == Enum.SaveMode.AutoSave) {
             eventArgs.preventDefault();
         }
     }
 
-    //To Check
     el_lead.checkDuplicatesOnLoad = function () {
-
         if (commons.GetFormType() !== 4 && commons.GetFormType() !== Enum.FormType.Create) {
-            //if (Xrm.Page.getAttribute('el_b_to_check_duplicates') != null && Xrm.Page.getAttribute('el_b_to_check_duplicates').getValue() == true)
-            //{
-            //Xrm.Page.getAttribute('el_b_to_check_duplicates').setValue(false);
-            //IS_DUPLICATION_CHECKING = true;
             if (!commons.GetLookupId("parentaccountid")) {
-
-                // var parameters = {
-                //     baseEntityTypecode: "4",
-                //     baseEntity: "lead",
-                //     id: commons.GetCurrentEntityId(),
-                //     recordColumns: "subject,mobilephone,el_id_showroom,emailaddress1,telephone1"
-                // };
-
-
-                // var request = motors.Utilities.buildActionRequest("", "", true, "el_action_duplicate_detection_records", parameters, null, false);
-                // var service = motors.Services.XrmService.V81;
-                // var result = service.CallAction(request);
-
-                // if (result != null && result.stringOutput != "[]") {
-                //     localStorage.setItem('duplicatesString', result.stringOutput);
-                //     var DialogOption = new Xrm.DialogOptions;
-                //     DialogOption.width = 850;
-                //     DialogOption.height = 560;
-                //     Xrm.Internal.openDialog(Xrm.Page.context.getClientUrl() + "/webresources/el_duplicates_table.html",
-                //         DialogOption, null, null, function () { });
-                // }
-
-                //To Check
                 var req = {
 
                     baseEntityTypecode: "4",
@@ -382,7 +323,7 @@
 
                             var pageInput = {
                                 pageType: "webresource",
-                                webresourceName: "el_action_duplicate_detection_records", //Point to problem -> schem name or name
+                                webresourceName: "el_duplicates_table.html",
                             };
 
                             var navigationOptions = {
@@ -393,7 +334,6 @@
                             };
 
                             localStorage.setItem('duplicatesString', successResult.stringOutput);
-                            Context.getEventArgs().preventDefault();
 
                             commons.NavigateTo(pageInput, navigationOptions)
                                 .then(
@@ -406,8 +346,8 @@
                         }
                     },
                     function (error) {
-                        console.error(error);
-                        commons.SetFormNotification("Error on el_lead.checkDuplicatesOnLoad => executeRequest()", commons.FormNotificationLevel.ERROR, "el_lead.checkDuplicatesOnLoad => executeRequest()");
+                        console.error("Error on el_lead.checkDuplicatesOnLoad => executeRequest(): ", error);
+                        commons.SetFormNotification("Error on el_lead.checkDuplicatesOnLoad => executeRequest(): " + error.message, commons.FormNotificationLevel.ERROR, "el_lead.checkDuplicatesOnLoad => executeRequest()");
                     }
                 )
             }
@@ -638,42 +578,12 @@
             .then(
                 function success(result) {
                     el_lead.logOnConsoleAndOpenAlertDialog(Const.Message.Hebrew.UpdateOfAuditingLeadIsSuccessfully);    //TASK 1344
-                    //To Check
-                    // if (Xrm.Page.getAttribute("el_b_auditing_lead") != null) {
-                    //     Xrm.Page.getAttribute("el_b_auditing_lead").setValue(true);
-                    // }
                 },
                 err => {
                     console.error(err)
                     el_lead.logOnConsoleAndOpenAlertDialog(Const.Message.Hebrew.UpdateOfAuditingLeadIsFailed + err.message); //TASK 1344
                 }
             )
-
-
-        // var updateUrl = Xrm.Page.context.getClientUrl() + "/api/data/v8.1/leads(" + leadId + ")";
-        // var xhr = new XMLHttpRequest();
-        // xhr.open("PATCH", updateUrl, true);
-        // xhr.setRequestHeader("OData-MaxVersion", "4.0");
-        // xhr.setRequestHeader("OData-Version", "4.0");
-        // xhr.setRequestHeader("Accept", "application/json");
-        // xhr.setRequestHeader("Content-Type", "application/json; charset=utf-8");
-
-        // xhr.onreadystatechange = function () {
-        //     if (xhr.readyState === 4 && commons != null) {
-        //         if (xhr.status === 204) {
-        //             // Update successful
-        //             el_lead.logOnConsoleAndOpenAlertDialog(Const.Message.Hebrew.UpdateOfAuditingLeadIsSuccessfully);    //TASK 1344
-        //             if (Xrm.Page.getAttribute("el_b_auditing_lead") != null) {
-        //                 Xrm.Page.getAttribute("el_b_auditing_lead").setValue(true);
-        //             }
-        //         } else {
-        //             // Handle update error
-        //             el_lead.logOnConsoleAndOpenAlertDialog(Const.Message.Hebrew.UpdateOfAuditingLeadIsFailed + xhr.statusText); //TASK 1344
-        //         }
-        //     }
-        // };
-
-        // xhr.send(JSON.stringify(fieldsToUpdate));
     }
 
     /**
@@ -1055,6 +965,7 @@
 
 
     el_lead.exqcuteQualification = function () {
+        commons.PageClearMessages("el_lead_exqcuteQualification_error");
         commons.OpenProgressIndicator("אישור ליד ...");
 
         var qulifyLeadRequest = {
@@ -1074,7 +985,7 @@
             },
             entity: { "entityType": "lead", "id": commons.StripGuid(commons.GetCurrentEntityId()) },
             CreateAccount: true,
-            CreateContact: true,
+            CreateContact: false,
             CreateOpportunity: true,
             Status: 3 // 3 = Qualification
         };
@@ -1082,40 +993,34 @@
         commons.executeRequest(qulifyLeadRequest,
             function success(response) {
                 commons.CloseProgressIndicator();
-                if (response.ok) {
-                    response.json()
-                        .then(
-                            function (result) {
-                                if (result.CreatedEntities && result.CreatedEntities.length > 0) {
-                                    var opportunityRecord = result.CreatedEntities.find(function (e) {
-                                        return e.entityType === "opportunity";
-                                    });
+                if (response && response.value && response.value.length > 0) {
+                    var opportunityRecord = response.value.find(function (e) {
+                        return e["@odata.type"].includes('opportunity');
+                    });
 
-                                    if (opportunityRecord) {
+                    if (opportunityRecord) {
+                        debugger;
+                        var pageInput = {
+                            pageType: "entityrecord",
+                            entityName: "opportunity",
+                            entityId: opportunityRecord.opportunityid
+                        }
 
-                                        var pageInput = {
-                                            pageType: "entityrecord",
-                                            entityName: "opportunity",
-                                            entityId: opportunityRecord.id
-                                        }
+                        var navigationOptions = {
+                            target: 1, //  1 opens it inline
+                        };
 
-                                        var navigationOptions = {
-                                            target: 1, //  1 opens it inline
-                                        };
-
-                                        //To Check
-                                        commons.NavigateTo(pageInput, navigationOptions)
-                                    }
-                                    else
-                                        commons.RefreshData()
-                                }
-                            }
-                        )
+                        //To Check
+                        commons.NavigateTo(pageInput, navigationOptions)
+                    }
+                    else
+                        commons.RefreshData()
                 }
             },
             err => {
                 commons.CloseProgressIndicator();
                 console.error("Error on el_lead.exqcuteQualification(): ", err)
+                commons.SetFormNotification("Error on el_lead.exqcuteQualification(): " + err.message, "ERROR", "el_lead_exqcuteQualification_error");
             })
     }
 
@@ -1144,8 +1049,9 @@
                             }
 
                             if (commons.GetAttribute("el_b_mixed_showroom")) {
-                                if (showroom.results[0].el_id_showroom.el_b_mixed_showroom) {
-                                    commons.SetFieldValue("el_b_mixed_showroom", showroom.results[0].el_id_showroom.el_b_mixed_showroom);
+                                debugger;
+                                if (showroomData.el_b_mixed_showroom) {
+                                    commons.SetFieldValue("el_b_mixed_showroom", showroomData.el_b_mixed_showroom);
                                     commons.SetVisible("el_id_manufacturer", true);
                                 }
                                 else {
@@ -1270,8 +1176,6 @@
     }
 
     el_lead.Ribbon.executeCreateEmailWorkFlow = function (primaryControl) {
-        debugger;
-
         if (!commons) {
             commons = new elad_commons();
             commons.SetFormContext(primaryControl);
@@ -1285,16 +1189,15 @@
     }
 
     el_lead.Ribbon.disqualifyLead = function (primaryControl) {
-        debugger;
-
         if (!commons) {
             commons = new elad_commons();
             commons.SetFormContext(primaryControl);
         }
 
         if (!commons.GetLookupId("el_id_disqualify_primary_reason") || !commons.GetLookupId("el_id_disqualify_secondary_reason")) {
-            commons.SetTabVisibility("lead_disqualify_tab", true);
-            commons.SetFocus("lead_disqualify_tab");
+            
+            commons.SetSectionVisibility("tab_2", "lead_disqualify_section", true);
+            commons.FocusOnTab("tab_2");
 
             var leadFilter =
                 "<filter type='and'>" +
@@ -1307,12 +1210,19 @@
         }
     }
 
-    el_lead.Ribbon.updateLeadStatus = function (leadIds, selectedControl) {
+    el_lead.Ribbon.setAuditingLeadForm = function (primaryControl) {
+        el_lead.Ribbon.updateLeadStatus(null, null, primaryControl);
+    }
+
+    el_lead.Ribbon.updateLeadStatus = function (leadIds, selectedControl, primaryControl) {
         debugger;
         var countOfUpdatedLeads = 0;
         var unupdatedLeadsIds = "";
 
         if (leadIds && leadIds.length > 0) {
+            commons = null;
+            Xrm.Utility.showProgressIndicator("עדכון ליד ביקורת...");
+            
             leadIds.forEach(function (leadId) {
                 //For knowling of leads is unupdated OR update
                 if (el_lead.auditingLead(leadId) == true) {
@@ -1330,9 +1240,10 @@
             }
 
             var txtToShow = [unescape("%u200F%u200F"), "עודכנו: " + countOfUpdatedLeads.toString() + " מתוך " + leadIds.length.toString() + " לידים", unescape("%u200F")].join('');
-
-            Xrm.Navigation.openAlertDialog({ text: txtToShow })
-            // window.commons.OpenAlertDialog("עודכנו: " + countOfUpdatedLeads.toString() + " מתוך " + leadIds.length.toString() + " לידים") //TASK 1344
+            
+            Xrm.Utility.closeProgressIndicator();
+            
+            Xrm.Navigation.openAlertDialog({ text: txtToShow });
 
             console.log("The unupdated leads id's: " + unupdatedLeadsIds)   //TASK 1344
         } else {
@@ -1397,7 +1308,6 @@
     }
 
     el_lead.Ribbon.reactiveLead = function (primaryControl) {
-        debugger;
         if (!commons) {
             commons = new elad_commons();
             commons.SetFormContext(primaryControl);
@@ -1412,9 +1322,8 @@
         commons.updateRecord("lead", commons.StripGuid(commons.GetCurrentEntityId()), entityData)
             .then(
                 function (result) {
-                    debugger;
                     if (result) {
-                        commons.SetTabVisibility("lead_disqualify_tab", false);
+                        commons.SetSectionVisibility("tab_2", "lead_disqualify_section", false);
                         commons.SetRequiredLevel("el_id_disqualify_primary_reason", "none");
                         commons.SetRequiredLevel("el_id_disqualify_secondary_reason", "none");
                         commons.RefreshData(false);
@@ -1422,62 +1331,33 @@
                 },
                 err => commons.OpenAlertDialog(err.message)
             )
-
-
-        // var entity = {};
-        // entity.statuscode = 1;
-        // entity.statecode = 0;
-        // var leadId = commons.GetCurrentEntityId();
-        // leadId = leadId.slice(1, leadId.length - 1);
-        // var req = new XMLHttpRequest();
-        // //Xrm.Page.data.entity.save();
-        // req.open("PATCH", Xrm.Page.context.getClientUrl() + "/api/data/v8.1/leads(" + leadId + ")", true);
-        // req.setRequestHeader("OData-MaxVersion", "4.0");
-        // req.setRequestHeader("OData-Version", "4.0");
-        // req.setRequestHeader("Accept", "application/json");
-        // req.setRequestHeader("Content-Type", "application/json; charset=utf-8");
-        // req.onreadystatechange = function () {
-        //     if (this.readyState === 4) {
-        //         req.onreadystatechange = null;
-        //         if (this.status === 204) {
-
-        //             //Xrm.Page.data.save().then(successCallback(){Xrm.Page.data.refresh();}, errorCallback(err){});
-        //             Xrm.Page.ui.tabs.get("lead_disqualify_tab").setVisible(false);
-        //             Xrm.Page.getAttribute("el_id_disqualify_primary_reason").setRequiredLevel("none");
-        //             Xrm.Page.getAttribute("el_id_disqualify_secondary_reason").setRequiredLevel("none");
-        //             Xrm.Page.data.refresh(false);
-
-        //         }
-        //         else {
-        //             Xrm.Utility.alertDialog(this.statusText);
-        //         }
-        //     }
-        // };
-        // req.send(JSON.stringify(entity));
     }
 
     el_lead.Ribbon.executeSendSmsDetailsOfShoowroom = function (primaryControl) {
-        debugger;
         if (!commons) {
             commons = new elad_commons();
             commons.SetFormContext(primaryControl);
         }
+
+        commons.OpenProgressIndicator("שולח הודעה ללקוח...");
 
         const workflowId = 'CB11C0E6-FA6D-4071-810C-F87FF6A2A50C';
         el_lead.runWorkflow(workflowId, commons.GetCurrentEntityId());// ליד - שלח פרטי אולם תצוגה
-        commons.OpenAlertDialog("נשלחה הודעה ללקוח");
+
+        commons.CloseProgressIndicator();
     }
 
     el_lead.Ribbon.executeSendSmsLeadTriedToReach = function (primaryControl) {
-        debugger;
         if (!commons) {
             commons = new elad_commons();
             commons.SetFormContext(primaryControl);
         }
+        commons.OpenProgressIndicator("שולח הודעה ללקוח...")
 
         var workflowId = '77D9EF6F-8B51-4600-8B95-22071C07BC8D';
         el_lead.runWorkflow(workflowId, commons.GetCurrentEntityId());// ליד - ניסינו להשיגך
-        commons.OpenAlertDialog("נשלחה הודעה ללקוח");
+
+        commons.CloseProgressIndicator();
     }
 
     el_lead.Ribbon.convertLeadQuick = function (gridControl, records, entityTypeCode) {
@@ -1567,7 +1447,7 @@
             commons.UserHasRoleOrIsAdmin("סימון ליד ביקורת")
                 .then(
                     function (result) {
-                        commons.SetVisible("el_b_auditing_lead", true);
+                        // commons.SetVisible("el_b_auditing_lead", true);
                         resolve(result === true ? true : false);
                     },
                     err => {
