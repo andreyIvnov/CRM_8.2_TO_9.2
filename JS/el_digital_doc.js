@@ -5,7 +5,7 @@
             debugger;
             commons = new elad_commons();
             commons.SetFormContext(executionContext.getFormContext());
-            
+
             el_digital_doc.setRequiredField("none");
             el_digital_doc.ShowTab();
             el_digital_doc.setupBasicEvents();
@@ -90,185 +90,132 @@
                 });
 
             }).catch(function (error) {
-                commons.PageErrorHandler(error,"el_digital_doc.ShowTab" );
+                commons.PageErrorHandler(error, "el_digital_doc.ShowTab");
             });
 
         } catch (error) {
             commons.PageErrorHandler(error, "el_digital_doc.ShowTab");
         }
     };
-    
+
     el_digital_doc.retrieveAndSetValues = async function (entityId, entityType) {
         try {
             var customerDetails = null;
             var carDetails = null;
-            var incidentNumber = null;
-            var incidentCreatedDate = null;
 
-            if (entityType == "account") {
+            if (entityType === "account") {
+                var accResult = await commons.RetrieveRecord("account", entityId, "?$select=el_s_first_name,el_s_last_name,emailaddress1,telephone1");
 
-                var account = await commons.RetrieveRecord(
-                    "account",
-                    commons.StripGuid(entityId),
-                    "?$select=" +
-                    "el_s_first_name," +
-                    "el_s_last_name," +
-                    "emailaddress1," +
-                    "telephone1"
-                );
-                if (account) {
+                if (accResult) {
                     customerDetails = {
-                        mobilephone: account.telephone1,
-                        firstname: account.el_s_first_name,
-                        lastname: account.el_s_last_name,
-                        email: account.emailaddress1
+                        mobilephone: accResult.telephone1,
+                        firstname: accResult.el_s_first_name,
+                        lastname: accResult.el_s_last_name,
+                        email: accResult.emailaddress1
                     };
                 }
-            }
-            else if (entityType == "incident") {
 
-                var incident = await commons.RetrieveRecord(
-                    "incident",
-                    commons.StripGuid(entityId),
-                    "?$select=" +
-                    "el_s_incident_number," +
-                    "createdon" +
-                    "&$expand=" +
-                    "el_id_car(" +
-                    "$select=" +
-                    "el_name," +
-                    "el_s_chassis," +
-                    "el_dt_purchase;" +
-                    "$expand=" +
-                    "el_id_manufacturer($select=el_name)," +
-                    "el_id_family($select=el_name)," +
-                    "el_id_model($select=el_name)" +
-                    ")," +
-                    "customerid_account(" +
-                    "$select=" +
-                    "el_s_first_name," +
-                    "el_s_last_name," +
-                    "telephone1," +
-                    "emailaddress1," +
-                    "el_s_idnumber_text;" +
-                    "$expand=" +
-                    "el_id_address($select=el_name)" +
-                    ")," +
-                    "ownerid($select=fullname)"
-                );
-                if (incident) {
-                    var formType =
-                        commons.GetFieldValue("el_id_document_type");
-                    incidentNumber = incident.el_s_incident_number;
-                    incidentCreatedDate = incident.createdon;
-                    if (incident.customerid_account) {
+            } else if (entityType === "incident") {
+
+                var incidentResult = await commons.RetrieveRecord("incident", entityId, "?$select=_el_id_car_value,el_s_incident_number,_customerid_value,createdon,_ownerid_value");
+
+                if (incidentResult) {
+
+                    var formType = commons.GetLookupName("el_id_document_type");
+                    var car = incidentResult.el_id_car;
+                    var incidentNumber = incidentResult.el_s_incident_number;
+                    var incidentCreatedDate = incidentResult.createdon;
+                    var customerId = incidentResult.customerid_account;
+
+                    var carResult = await commons.RetrieveRecord("el_car", car.id, "?$select=el_name,_el_id_manufacturer_value,_el_id_family_value,_el_id_model_value,el_s_chassis,el_dt_purchase");
+                    var customerResult = await commons.RetrieveRecord("account", customerId.id, "?$select=el_s_first_name,el_s_last_name,telephone1,emailaddress1,el_s_idnumber_text");
+
+                    if (customerResult) {
                         customerDetails = {
-                            mobilephone:
-                                incident.customerid_account.telephone1,
-                            firstname:
-                                incident.customerid_account.el_s_first_name,
-                            lastname:
-                                incident.customerid_account.el_s_last_name,
-                            idnumber:
-                                incident.customerid_account.el_s_idnumber_text,
-                            address:
-                                incident.customerid_account.el_id_address,
-                            email:
-                                incident.customerid_account.emailaddress1
+                            mobilephone: customerResult.telephone1,
+                            firstname: customerResult.el_s_first_name,
+                            lastname: customerResult.el_s_last_name,
+                            idnumber: customerResult.el_s_idnumber_text,
+                            email: customerResult.emailaddress1     //new
                         };
                     }
-                    if (incident.el_id_car) {
-
+                    if (carResult) {
                         carDetails = {
-                            licensNumber:
-                                incident.el_id_car.el_name,
-                            shildNumber:
-                                incident.el_id_car.el_s_chassis,
-                            model:
-                                incident.el_id_car.el_id_model,
-                            family:
-                                incident.el_id_car.el_id_family,
-                            manufacturer:
-                                incident.el_id_car.el_id_manufacturer,
-                            dateRecived:
-                                incident.el_id_car.el_dt_purchase
+                            licensNumber: carResult.el_name,
+                            shildNumber: carResult.el_s_chassis,
+                            model: carResult.el_id_model,
+                            family: carResult.el_id_family,
+                            manufacturer: carResult.el_id_manufacturer,
+                            dateRecived: carResult.el_dt_purchase,
                         };
                     }
-                    if (formType && formType[0]) {
-                        var formTypeName = formType[0].name;
-
-                        if (formTypeName == "רצון טוב") {
-                            commons.SetFieldValue("el_s_incident_number", incidentNumber, commons.OnChangeBehavior.None);
-
+                    if (formType) {
+                        if (formType === "רצון טוב") {
+                            commons.SetFieldValue("el_s_incident_number", incidentNumber);
                             var dateReceived = commons.TicksToDate(carDetails.dateRecived);
-
                             if (dateReceived instanceof Date && !isNaN(dateReceived)) {
-                                commons.SetFieldValue("el_dt_vehicle_delivery_date", dateReceived, commons.OnChangeBehavior.None);
+                                commons.SetFieldValue("el_dt_vehicle_delivery_date", dateReceived);
                             }
+                            if (incidentNumber != null)
+                                commons.SetFieldValue("el_s_incident_number", incidentNumber);
                         }
-
-                        if (formTypeName == "אישור קבלת רכב חליפי") {
-                            commons.SetLookupValue("el_id_approves_replacement_vehicle_accout", incident.ownerid.systemuserid, incident.ownerid.fullname, "systemuser", true);
+                        if (formType === "אישור קבלת רכב חליפי") {
+                            commons.SetLookupValue("el_id_approves_replacement_vehicle_accout", incidentResult.ownerid.id, incidentResult.ownerid.entityname, "systemuser");
                         }
-
-                        if (formTypeName == "טופס החזרת רכב") {
-                            commons.SetLookupValue("el_id_name_of_owner", incident.ownerid.systemuserid, incident.ownerid.fullname, "systemuser", true);
-                        }
-                    }
-
-                    if (customerDetails && carDetails) {
-
-                        if (carDetails.manufacturer) {
-                            commons.SetLookupValue("el_id_manufacturer", carDetails.manufacturer.el_manufacturerid, carDetails.manufacturer.el_name, "el_manufacturer", true);
-                        }
-
-                        if (carDetails.family) {
-                            commons.SetLookupValue("el_id_family", carDetails.family.el_familyid, carDetails.family.el_name, "el_family", true);
-                        }
-
-                        if (carDetails.model) {
-                            commons.SetLookupValue("el_id_car_model", carDetails.model.el_modelid, carDetails.model.el_name, "el_model", true);
-                        }
-
-                        if (customerDetails.address) {
-                            commons.SetLookupValue("el_id_address", customerDetails.address.el_addressid, customerDetails.address.el_name, "el_address", true);
-                        }
-
-                        if (carDetails.licensNumber != null) {
-                            commons.SetFieldValue("el_s_car_number", carDetails.licensNumber, commons.OnChangeBehavior.None);
-                        }
-
-                        if (carDetails.shildNumber != null) {
-                            commons.SetFieldValue("el_s_shield_number", carDetails.shildNumber, commons.OnChangeBehavior.None);
-                        }
-
-                        if (customerDetails.idnumber != null) {
-                            commons.SetFieldValue("el_s_idnumber_text", customerDetails.idnumber, commons.OnChangeBehavior.None);
-                        }
-
-                        if (customerDetails.mobilephone != null) {
-                            commons.SetFieldValue("el_s_mobilephone_number", customerDetails.mobilephone, commons.OnChangeBehavior.None);
-                        }
-
-                        if (customerDetails.email != null) {
-                            commons.SetFieldValue("el_s_email", customerDetails.email, commons.OnChangeBehavior.None);
+                        if (formType === "טופס החזרת רכב") {
+                            commons.SetLookupValue("el_id_name_of_owner", incidentResult.ownerid.id, incidentResult.ownerid.entityname, "systemuser");
                         }
                     }
-
-                    return [
-                        customerDetails,
-                        carDetails,
-                        incidentNumber,
-                        incidentCreatedDate
-                    ];
-
                 }
             }
+
+
+            if (customerDetails) {
+                if (carDetails) {
+                    if (carDetails.manufacturer) {
+                        commons.SetLookupValue("el_id_manufacturer", carDetails.manufacturer.id, carDetails.manufacturer.entityname, "el_manufacturer");
+                    }
+
+                    if (carDetails.family != null) {
+                        commons.SetLookupValue("el_id_family", carDetails.family.id, carDetails.family.entityname, "el_family");
+                    }
+
+                    if (carDetails.model != null) {
+                        commons.SetLookupValue("el_id_car_model", carDetails.model.id, carDetails.model.entityname, "el_model");
+                    }
+
+                    // if (customerDetails.address != null) {
+                    //     commons.SetLookupValue("el_id_address", customerDetails.address.id, customerDetails.address.name, "el_address");
+                    // }
+
+                    if (carDetails.licensNumber != null) {
+                        commons.SetFieldValue("el_s_car_number", carDetails.licensNumber);
+                    }
+
+                    if (carDetails.shildNumber != null) {
+                        commons.SetFieldValue("el_s_shield_number", carDetails.shildNumber);
+                    }
+
+                    if (customerDetails.idnumber != null) {
+                        commons.SetFieldValue("el_s_idnumber_text", customerDetails.idnumber);
+                    }
+
+                    /////////////////////////           new
+                    if (customerDetails.mobilephone != null) {
+                        commons.SetFieldValue("el_s_mobilephone_number", customerDetails.mobilephone)
+                    }
+
+                    if (customerDetails.email != null) {
+                        commons.SetFieldValue("el_s_email", customerDetails.email)
+                    }
+
+                    /////////////////////////           new
+                }
+            }
+
+            return [customerDetails, carDetails, incidentNumber, incidentCreatedDate];
         } catch (error) {
-            commons.PageErrorHandler(
-                error,
-                "el_digital_doc.retrieveAndSetValues"
-            );
+            commons.PageErrorHandler(error, "el_digital_doc.retrieveAndSetValues");
 
             return [null, null, null, null];
         }
@@ -356,12 +303,12 @@
             commons.PageErrorHandler(error, "el_digital_doc.setRequiredFieldForReturnCar");
         }
     };
-    el_digital_doc.sendAndOpenForm = async function (formData, formType,customerDetails, carDetails,incidentNumber, incidentCreatedDate) {
+    el_digital_doc.sendAndOpenForm = async function (formData, formType, customerDetails, carDetails, incidentNumber, incidentCreatedDate) {
         try {
             el_digital_doc.hideAllTabs();
 
-            var isWriteRole = commons.UserHasRole(Const.SecurityRolesName.DIGITAL_DOC_WRITE_ROLE);
-            var isReadRole = commons.UserHasRole(Const.SecurityRolesName.DIGITAL_DOC_READ_ROLE);
+            var isWriteRole = await commons.UserHasRoleOrIsAdmin(Const.SecurityRolesName.DIGITAL_DOC_WRITE_ROLE);
+            var isReadRole = await commons.UserHasRoleOrIsAdmin(Const.SecurityRolesName.DIGITAL_DOC_READ_ROLE);
 
             if (isWriteRole) {
                 formData.append("user_permission", "1");
@@ -656,19 +603,19 @@
                 return;
             }
 
-            await el_digital_doc.retrieveAndSetValues(entityId,entityType );
+            await el_digital_doc.retrieveAndSetValues(entityId, entityType);
 
         } catch (error) {
-            commons.PageErrorHandler(error,"el_digital_doc.initialChecks");
+            commons.PageErrorHandler(error, "el_digital_doc.initialChecks");
         }
     };
 
     el_digital_doc.SetRequiredLevelToArray = function (fieldsArr, requiredLevel) {
-        if(fieldsArr && fieldsArr.length > 0) {
+        if (fieldsArr && fieldsArr.length > 0) {
             fieldsArr.forEach(function (fieldName) {
                 commons.SetRequiredLevel(fieldName, requiredLevel);
             });
         }
     };
-   
+
 })((window.el_digital_doc = window.el_digital_doc || {}))

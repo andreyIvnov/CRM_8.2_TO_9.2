@@ -1317,11 +1317,11 @@
             "statecode": 0,
             "statuscode": 1
         };
-
-        //To Check
+        commons.OpenProgressIndicator("הפעלת ליד...")
         commons.updateRecord("lead", commons.StripGuid(commons.GetCurrentEntityId()), entityData)
             .then(
                 function (result) {
+                    commons.CloseProgressIndicator();
                     if (result) {
                         commons.SetSectionVisibility("tab_2", "lead_disqualify_section", false);
                         commons.SetRequiredLevel("el_id_disqualify_primary_reason", "none");
@@ -1329,7 +1329,10 @@
                         commons.RefreshData(false);
                     }
                 },
-                err => commons.OpenAlertDialog(err.message)
+                err => {
+                    commons.CloseProgressIndicator();
+                    commons.PageErrorHandler(err, "el_lead.Ribbon.reactiveLead: Update Record")
+                }
             )
     }
 
