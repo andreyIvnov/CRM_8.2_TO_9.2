@@ -73,7 +73,7 @@
             opportunity.checkCarLicense();
             opportunity.setNameFieldOnLoad();
             opportunity.checkScannedOrderDocs();
-            opportunity.setDisqualifyTab();
+            opportunity.setDisqualifySection();
             opportunity.setGlobalModel();
             opportunity.setFundingField();
             opportunity.showBenfit();
@@ -114,7 +114,7 @@
             }
 
             var benefits = await commons.RetrieveMultipleRecords(
-                "el_benefit",
+                "el_benefits",
                 "?$select=el_name,createdon,el_benefitsid,el_b_status_benfit" +
                 "&$filter=_el_id_account_value eq " + commons.StripGuid(accountId) +
                 " and el_b_status_benfit eq false",
@@ -506,7 +506,7 @@
                 return;
             }
 
-            var date2 = account.el_dt_last_update ? commons.parseDate(account.el_dt_last_update) : 2464164000000;
+            var date2 = account.el_dt_last_update ? commons.ParseDate(account.el_dt_last_update) : 2464164000000;
             var date1 = new Date();
             var timeDiff = Math.abs(date2 - date1.getTime());
             var diffDays = Math.ceil(timeDiff / (1000 * 3600 * 24));
@@ -545,7 +545,7 @@
                 return;
             }
 
-            var date2 = account.el_dt_last_update ? commons.parseDate(account.el_dt_last_update) : 2464164000000;
+            var date2 = account.el_dt_last_update ? commons.ParseDate(account.el_dt_last_update) : 2464164000000;
             var date1 = new Date();
             var timeDiff = Math.abs(date2 - date1.getTime());
             var diffDays = Math.ceil(timeDiff / (1000 * 3600 * 24));
@@ -1407,20 +1407,20 @@
             commons.PageErrorHandler(error, "opportunity.setDisqualifyOpportunityFilter");
         }
     };
-    opportunity.setDisqualifyTab = function () {
+    opportunity.setDisqualifySection = function () {
         try {
-            if (commons.GetTab("opp_disqualify_tab")) {
+            if (commons.GetTab("tab_6").sections.get("tab_general_section_reason4reject")) {
                 var primaryReason = commons.GetLookupFieldValue("el_id_disqualify_primary_reason");
 
                 if (primaryReason) {
-                    commons.SetTabVisibility("opp_disqualify_tab", true);
+                    commons.SetSectionVisibility("tab_6", "tab_general_section_reason4reject", true)
                 } else {
-                    commons.SetTabVisibility("opp_disqualify_tab", false);
+                    commons.SetSectionVisibility("tab_6", "tab_general_section_reason4reject", false)
                 }
             }
 
         } catch (error) {
-            commons.PageErrorHandler(error, "opportunity.setDisqualifyTab");
+            commons.PageErrorHandler(error, "opportunity.setDisqualifySection");
         }
     };
     opportunity.UpdateYomanField = function () {
@@ -2304,10 +2304,13 @@
                 commons.SetSectionVisibility("tab_6","tab_general_section_reason4reject", true)
 
                 commons.GetControl("el_id_disqualify_primary_reason").addPreSearch(opportunity.setDisqualifyOpportunityFilter);
-
+                
                 commons.SetRequiredLevel("el_id_disqualify_primary_reason", "required");
                 commons.SetRequiredLevel("el_id_disqualify_secondary_reason", "required");
-            }
+                
+                commons.FocusOnTab("tab_6");
+                commons.SetFocus("el_id_disqualify_primary_reason");
+            }    
         }
         catch (error) {
             if (commons) {
