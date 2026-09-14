@@ -9,6 +9,9 @@
     var FILL_ONE_TELEPHONE_REQUIERED = "נדרש למלא לפחות אחד מבין השדות \'טלפון נייד\' או \'טלפון אחר\'";
     var IS_DUPLICATION_CHECKING = false;
     var IS_DUPLICATION_CHECKED = false;
+    var TYPE_LEAD_BPS = 2;
+    var TYPE_LEAD_NEW_CAR = 1;
+
 
     var commons;
 
@@ -186,12 +189,12 @@
         }
     }
 
-    
+
     el_lead.checkDuplicate = function (Context) {
         if (!commons.GetFormContext()) {
             commons.SetFormContext(Context);
         }
-        
+
         var eventArgs = Context.getEventArgs();
         if (eventArgs.getSaveMode() === Enum.SaveMode.Save || eventArgs.getSaveMode() === Enum.SaveMode.SaveAndClose || eventArgs.getSaveMode() === Enum.SaveMode.SaveAndNew || eventArgs.getSaveMode() === Enum.SaveMode.AutoSave && !commons.GetTab('tab_2').sections.get("lead_disqualify_section").getVisible()) {
             if (IS_DUPLICATION_CHECKING == false && IS_DUPLICATION_CHECKED == false) {
@@ -825,10 +828,12 @@
         if (isTradeInCampaign != true) {
             var isTradeInShowroom = await el_lead.isTradeInShowroomRelated();
             if (isTradeInShowroom == true) {
+                commons.SetFieldValue('el_l_lead_type', TYPE_LEAD_BPS);
                 commons.SetFieldValue('el_b_is_tradein_lead', true, commons.OnChangeBehavior.IfChanged);
                 return;
             }
             else {
+                commons.SetFieldValue('el_l_lead_type', TYPE_LEAD_NEW_CAR);
                 commons.SetFieldValue('el_b_is_tradein_lead', false, commons.OnChangeBehavior.IfChanged);
                 return;
             }
@@ -1195,9 +1200,7 @@
         }
 
         if (!commons.GetLookupId("el_id_disqualify_primary_reason") || !commons.GetLookupId("el_id_disqualify_secondary_reason")) {
-            
-            commons.SetSectionVisibility("tab_2", "lead_disqualify_section", true);
-            commons.FocusOnTab("tab_2");
+
 
             var leadFilter =
                 "<filter type='and'>" +
@@ -1206,7 +1209,13 @@
 
             commons.SetCustomFilterToLookupField("el_id_disqualify_primary_reason", "el_disqualify_primary_reason", leadFilter);
 
-            commons.OpenAlertDialog("חובה למלא סיבות פסילה בעת פסילת ליד");
+            commons.OpenAlertDialog("חובה למלא סיבות פסילה בעת פסילת ליד",
+                () => {
+                    commons.SetFocus("el_id_disqualify_primary_reason");
+                }
+            );
+            commons.FocusOnTab("tab_2");
+            commons.SetSectionVisibility("tab_2", "lead_disqualify_section", true);
         }
     }
 
@@ -1222,7 +1231,7 @@
         if (leadIds && leadIds.length > 0) {
             commons = null;
             Xrm.Utility.showProgressIndicator("עדכון ליד ביקורת...");
-            
+
             leadIds.forEach(function (leadId) {
                 //For knowling of leads is unupdated OR update
                 if (el_lead.auditingLead(leadId) == true) {
@@ -1240,9 +1249,9 @@
             }
 
             var txtToShow = [unescape("%u200F%u200F"), "עודכנו: " + countOfUpdatedLeads.toString() + " מתוך " + leadIds.length.toString() + " לידים", unescape("%u200F")].join('');
-            
+
             Xrm.Utility.closeProgressIndicator();
-            
+
             Xrm.Navigation.openAlertDialog({ text: txtToShow });
 
             console.log("The unupdated leads id's: " + unupdatedLeadsIds)   //TASK 1344
